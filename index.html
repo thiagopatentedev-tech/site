@@ -102,6 +102,30 @@ footer { background: var(--tinta); border-top: 1px solid rgba(243,239,230,0.08);
   .contato-links { flex-direction: column; align-items: stretch; }
   .contato-link { justify-content: center; }
 }
+
+.trajetoria-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: 2.5rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tinta);
+  border: 1px solid var(--terracota);
+  padding: 0.9rem 1.6rem;
+  text-decoration: none;
+  transition: background 0.25s, color 0.25s;
+}
+.trajetoria-cta:hover {
+  background: var(--terracota);
+  color: var(--papel);
+}
+.trajetoria-cta svg { color: var(--terracota); transition: color 0.25s; transform: translateY(-0.05em); }
+.trajetoria-cta:hover svg { color: var(--papel); }
+.trajetoria-cta .seta { font-family: 'Newsreader', serif; font-size: 14px; letter-spacing: 0; }
 </style>
 </head>
 <body>
@@ -210,6 +234,20 @@ footer { background: var(--tinta); border-top: 1px solid rgba(243,239,230,0.08);
     <p class="sobre-texto reveal">A liderança que pratico não é só sobre resultado. Sou <strong>Practitioner em Programação Neurolinguística</strong> e isso reflete uma convicção: time alto desempenho começa por gente que se sente vista. Foco em pessoas é o que torna o resto sustentável.</p>
 
     <p class="sobre-pessoal reveal">Pai de duas meninas, apaixonado por samba e músico nas horas vagas. É de tudo isso que vem boa parte do que aprendi sobre escuta, ritmo e aprendizado contínuo.</p>
+
+    <a class="trajetoria-cta reveal" href="/trajetoria">
+      <svg viewBox="0 0 100 100" width="14" height="14" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="square">
+          <path d="M 8 30 V 8 H 30"/>
+          <path d="M 70 8 H 92 V 30"/>
+          <path d="M 92 70 V 92 H 70"/>
+          <path d="M 30 92 H 8 V 70"/>
+        </g>
+        <circle cx="50" cy="50" r="16" fill="currentColor"/>
+      </svg>
+      <span>Ver trajetória completa</span>
+      <span class="seta">→</span>
+    </a>
   </div>
 </section>
 
