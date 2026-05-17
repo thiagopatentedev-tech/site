@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workshop Corporativo · Patente</title>
+<meta name="description" content="Workshop corporativo de IA aplicada para times executivos. Capacitação prática com caso real de empresa listada na NYSE.">
+<link rel="icon" type="image/svg+xml" href="/marca/patente-favicon-papel.svg" media="(prefers-color-scheme: light)" />
+<link rel="icon" type="image/svg+xml" href="/marca/patente-favicon-tinta.svg" media="(prefers-color-scheme: dark)" />
+<link rel="alternate icon" href="/marca/patente-favicon-32.png" />
+<link rel="apple-touch-icon" href="/marca/patente-favicon-180.png" />
+<meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#15202b" media="(prefers-color-scheme: dark)" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --papel: #f3efe6;
+  --tinta: #15202b;
+  --terracota: #7c2410;
+  --coral: #d97757;
+  --tinta-suave: #2a3a4a;
+  --linha: rgba(21,32,43,0.12);
+  --max: 720px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--papel);
+  border-bottom: 1px solid var(--linha);
+  padding: 0 2rem;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  color: var(--tinta);
+  text-decoration: none;
+  line-height: 1;
+}
+
+.nav-simbolo { color: var(--terracota); flex-shrink: 0; transform: translateY(-0.1em); }
+.nav-wordmark { color: var(--tinta); }
+.nav-ponto { color: var(--terracota); }
+
+.nav-icons { display: flex; align-items: center; gap: 1rem; }
+
+.nav-icon {
+  display: flex;
+  align-items: center;
+  color: var(--tinta);
+  opacity: 0.45;
+  transition: opacity 0.2s;
+  text-decoration: none;
+}
+
+.nav-icon:hover { opacity: 1; }
+
+.container {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section { padding: 7rem 0; }
+section + section { border-top: 1px solid var(--linha); }
+
+/* HERO */
+#hero {
+  padding-top: 12rem;
+  padding-bottom: 5rem;
+}
+
+.hero-eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terracota);
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.1s;
+}
+
+.hero-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--tinta);
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.25s;
+}
+
+.hero-headline em {
+  font-style: italic;
+  color: var(--terracota);
+}
+
+.hero-sub {
+  font-family: 'Newsreader', serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--tinta-suave);
+  max-width: 600px;
+  margin-bottom: 0;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.4s;
+}
+
+/* DADOS */
+#dados {
+  background: var(--tinta);
+  color: var(--papel);
+  border-top: none;
+}
+
+.dados-intro {
+  font-family: 'Newsreader', serif;
+  font-size: 1rem;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(243,239,230,0.6);
+  margin-bottom: 3rem;
+  border-left: 2px solid var(--coral);
+  padding-left: 1rem;
+  line-height: 1.75;
+}
+
+.dados-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.dado-item {
+  border-top: 1px solid rgba(217,119,87,0.45);
+  padding-top: 1.5rem;
+}
+
+.dado-numero {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-weight: 500;
+  color: var(--papel);
+  line-height: 1;
+  margin-bottom: 0.6rem;
+}
+
+.dado-numero span { color: var(--coral); font-weight: 700; margin-left: 0.05em; }
+
+.dado-desc {
+  font-family: 'Newsreader', serif;
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: rgba(243,239,230,0.7);
+  line-height: 1.7;
+  margin-bottom: 0.6rem;
+}
+
+.dado-fonte a {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(243,239,230,0.45);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+
+.dado-fonte a:hover { color: var(--coral); }
+
+/* LABELS E TÍTULOS */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terracota);
+  margin-bottom: 2.5rem;
+}
+
+.section-label-dark {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(243,239,230,0.4);
+  margin-bottom: 2.5rem;
+}
+
+.label-simbolo { flex-shrink: 0; }
+.section-label .label-simbolo { color: var(--terracota); }
+.section-label-dark .label-simbolo { color: var(--coral); }
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 500;
+  line-height: 1.28;
+  margin-bottom: 3rem;
+}
+
+/* ENTREGA */
+.entrega-lead {
+  font-family: 'Newsreader', serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: var(--tinta-suave);
+  line-height: 1.85;
+  margin-bottom: 3rem;
+  max-width: 600px;
+}
+
+.entrega-lead strong {
+  font-weight: 400;
+  color: var(--tinta);
+}
+
+.entrega-momentos { display: flex; flex-direction: column; }
+
+.momento {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 1.5rem;
+  padding: 2.2rem 0;
+  border-top: 1px solid var(--linha);
+  align-items: start;
+}
+
+.momento:last-child { border-bottom: 1px solid var(--linha); }
+
+.momento-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--terracota);
+  line-height: 1;
+  padding-top: 0.2rem;
+}
+
+.momento-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--tinta);
+  margin-bottom: 0.5rem;
+}
+
+.momento-desc {
+  font-family: 'Newsreader', serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--tinta-suave);
+  line-height: 1.78;
+  margin-bottom: 0.6rem;
+}
+
+.momento-resultado {
+  font-family: 'Newsreader', serif;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--terracota);
+}
+
+.entrega-saidas {
+  margin-top: 2.5rem;
+  padding: 2rem;
+  border: 1px solid var(--linha);
+  background: rgba(21,32,43,0.03);
+}
+
+.entrega-saidas-titulo {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terracota);
+  margin-bottom: 1.2rem;
+}
+
+.saidas-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.saida-item {
+  display: grid;
+  grid-template-columns: 16px 1fr;
+  gap: 0.8rem;
+  align-items: start;
+}
+
+.saida-dot {
+  width: 4px;
+  height: 4px;
+  background: var(--terracota);
+  border-radius: 50%;
+  margin-top: 0.6rem;
+}
+
+.saida-texto {
+  font-family: 'Newsreader', serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--tinta);
+  line-height: 1.7;
+}
+
+/* FORMATO */
+#formato { background: var(--tinta); color: var(--papel); border-top: none; }
+#formato .section-title { color: var(--papel); }
+
+.formato-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.formato-item {
+  border-top: 1px solid rgba(217,119,87,0.45);
+  padding-top: 1.5rem;
+}
+
+.formato-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(243,239,230,0.4);
+  margin-bottom: 0.5rem;
+}
+
+.formato-valor {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--papel);
+  margin-bottom: 0.3rem;
+}
+
+.formato-detalhe {
+  font-family: 'Newsreader', serif;
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: rgba(243,239,230,0.55);
+  line-height: 1.7;
+}
+
+.formato-nota {
+  font-family: 'Newsreader', serif;
+  font-size: 0.95rem;
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(243,239,230,0.55);
+  border-left: 2px solid var(--coral);
+  padding-left: 1rem;
+  line-height: 1.75;
+}
+
+/* PARA QUEM */
+.perfis { display: flex; flex-direction: column; }
+
+.perfil {
+  padding: 2.4rem 0;
+  border-top: 1px solid var(--linha);
+}
+
+.perfil:last-child { border-bottom: 1px solid var(--linha); }
+
+.perfil-area {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terracota);
+  margin-bottom: 0.8rem;
+}
+
+.perfil-tensao {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--tinta);
+  margin-bottom: 0.8rem;
+  line-height: 1.45;
+}
+
+.perfil-virada {
+  font-family: 'Newsreader', serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--tinta-suave);
+  line-height: 1.8;
+}
+
+/* CONDUTOR */
+#condutor { background: var(--tinta); color: var(--papel); border-top: none; }
+#condutor .section-title { color: var(--papel); }
+
+.condutor-texto {
+  font-family: 'Newsreader', serif;
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: rgba(243,239,230,0.75);
+  line-height: 1.9;
+  margin-bottom: 1.5rem;
+}
+
+.condutor-proof {
+  font-family: 'Newsreader', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: rgba(243,239,230,0.55);
+  border-left: 2px solid var(--coral);
+  padding-left: 1rem;
+  margin-bottom: 3rem;
+  line-height: 1.8;
+}
+
+/* CTA FINAL */
+#cta-final {
+  background: var(--papel);
+  text-align: center;
+}
+
+.cta-final-lead {
+  font-family: 'Newsreader', serif;
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--tinta-suave);
+  line-height: 1.85;
+  margin-bottom: 2.5rem;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#cta-final .section-label { justify-content: center; }
+#cta-final .section-title { text-align: center; }
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--papel);
+  background: var(--terracota);
+  padding: 1.1rem 2.4rem;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.cta-button:hover { opacity: 0.85; }
+
+/* FOOTER */
+footer {
+  background: var(--tinta);
+  border-top: 1px solid rgba(243,239,230,0.08);
+  padding: 2.5rem 2rem;
+}
+
+.footer-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-marca {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  color: rgba(243,239,230,0.55);
+  text-decoration: none;
+  line-height: 1;
+}
+
+.footer-marca .nav-simbolo { color: var(--coral); }
+.footer-marca .nav-ponto { color: var(--coral); }
+
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: flex-end;
+}
+
+.footer-by {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(243,239,230,0.25);
+}
+
+.footer-cargo {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: rgba(243,239,230,0.18);
+  text-transform: uppercase;
+}
+
+/* WHATSAPP FLOAT */
+.whatsapp-float {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 200;
+  width: 52px;
+  height: 52px;
+  background: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible { opacity: 1; transform: none; }
+
+@media (max-width: 600px) {
+  #hero { padding-top: 10rem; }
+  section { padding: 5rem 0; }
+  nav { padding: 0 1.2rem; }
+  .container { padding: 0 1.2rem; }
+  .dados-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .formato-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .whatsapp-float { bottom: 1.5rem; right: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">
+    <svg class="nav-simbolo" viewBox="0 0 100 100" width="22" height="22" aria-hidden="true">
+      <g fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="square">
+        <path d="M 8 30 V 8 H 30"/>
+        <path d="M 70 8 H 92 V 30"/>
+        <path d="M 92 70 V 92 H 70"/>
+        <path d="M 30 92 H 8 V 70"/>
+      </g>
+      <circle cx="50" cy="50" r="14" fill="currentColor"/>
+    </svg>
+    <span class="nav-wordmark">Patente<span class="nav-ponto">.</span></span>
+  </a>
+  <div class="nav-icons">
+    <a class="nav-icon" href="https://wa.me/5521988582351?text=Ol%C3%A1%2C%20Thiago.%20Vi%20sua%20p%C3%A1gina%20de%20workshop%20corporativo%20e%20quero%20conversar." target="_blank" aria-label="WhatsApp">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+    </a>
+    <a class="nav-icon" href="https://www.linkedin.com/in/thiagopatente" target="_blank" aria-label="LinkedIn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Workshop Corporativo · IA Aplicada</p>
+    <h1 class="hero-headline">Seu time já tem acesso à IA.<br><em>Falta saber o que fazer com ela.</em></h1>
+    <p class="hero-sub">78% das empresas adotaram IA em pelo menos uma função. Menos de 40% reportam qualquer impacto mensurável no resultado. A barreira não é a ferramenta. É o time que ainda não sabe como colocar o próprio conhecimento para trabalhar com ela.</p>
+  </div>
+</section>
+
+<!-- DADOS -->
+<section id="dados">
+  <div class="container">
+    <p class="dados-intro reveal">Os números abaixo não são argumento de venda. São o briefing que justifica a decisão internamente.</p>
+    <div class="dados-grid">
+      <div class="dado-item reveal">
+        <p class="dado-numero">46<span>%</span></p>
+        <p class="dado-desc">das empresas citam lacuna de habilidades como principal barreira para extrair resultado da IA. Não é falta de ferramenta.</p>
+        <p class="dado-fonte"><a href="https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/superagency-in-the-workplace-empowering-people-to-unlock-ais-full-potential-at-work" target="_blank">McKinsey · AI in the Workplace 2025</a></p>
+      </div>
+      <div class="dado-item reveal">
+        <p class="dado-numero">2<span>x</span></p>
+        <p class="dado-desc">mais ROI para empresas que treinaram o time antes de escalar. Licença sem capacitação é custo sem retorno.</p>
+        <p class="dado-fonte"><a href="https://ruinunes.com/ai-training-gap/" target="_blank">McKinsey · Generative AI Impact 2025</a></p>
+      </div>
+      <div class="dado-item reveal">
+        <p class="dado-numero">56<span>%</span></p>
+        <p class="dado-desc">de prêmio salarial médio para profissionais com competências em IA. Capacitação é retenção.</p>
+        <p class="dado-fonte"><a href="https://www.pwc.pt/pt/sala-imprensa/press-room/2025/pwc-2025-global-ai-jobs-barometer.html" target="_blank">PwC · Global AI Jobs Barometer 2025</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENTREGA -->
+<section id="entrega">
+  <div class="container">
+    <p class="section-label reveal">
+      <svg class="label-simbolo" viewBox="0 0 100 100" width="12" height="12" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="square"><path d="M 8 30 V 8 H 30"/><path d="M 70 8 H 92 V 30"/><path d="M 92 70 V 92 H 70"/><path d="M 30 92 H 8 V 70"/></g><circle cx="50" cy="50" r="16" fill="currentColor"/></svg>
+      <span>O que muda</span>
+    </p>
+    <h2 class="section-title reveal">Não é treinamento de ferramenta.<br>É mudança de como o time trabalha.</h2>
+
+    <p class="entrega-lead reveal">A maioria dos treinamentos corporativos de IA termina com o participante sabendo o que é a tecnologia. <strong>Este termina com ele sabendo o que fazer com ela na manhã seguinte.</strong></p>
+
+    <div class="entrega-momentos">
+
+      <div class="momento reveal">
+        <div class="momento-num">I</div>
+        <div>
+          <p class="momento-titulo">A demonstração que cria o "quero isso"</p>
+          <p class="momento-desc">A sessão começa com uma plataforma de inteligência estratégica construída por uma pessoa, em uma semana, fora do horário de trabalho. Sem time de desenvolvimento. O objetivo é mostrar o que se torna possível quando o conhecimento de negócio conduz a ferramenta.</p>
+          <p class="momento-resultado">O participante para de ver IA como ameaça. Começa a ver como alavanca.</p>
+        </div>
+      </div>
+
+      <div class="momento reveal">
+        <div class="momento-num">II</div>
+        <div>
+          <p class="momento-titulo">Estruturar o projeto antes de criar o prompt</p>
+          <p class="momento-desc">A maioria usa IA como buscador glorificado. O diferencial está em organizar o contexto primeiro: cargo, objetivo, restrições, tom, formato de entrega. Quando a IA recebe estrutura, ela responde no registro que o profissional precisa.</p>
+          <p class="momento-resultado">O participante sai com um projeto configurado com o contexto do próprio trabalho, pronto para usar.</p>
+        </div>
+      </div>
+
+      <div class="momento reveal">
+        <div class="momento-num">III</div>
+        <div>
+          <p class="momento-titulo">Caso de uso real: relatório anual da Verizon (NYSE)</p>
+          <p class="momento-desc">Trabalhamos ao vivo com o relatório anual da Verizon, empresa listada na NYSE. O participante aprende a extrair síntese estratégica, identificar movimentos competitivos e estruturar direção a partir de um documento real de mercado.</p>
+          <p class="momento-resultado">O participante sai com uma entrega concreta e com o repertório para replicar em qualquer fonte do seu setor.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="entrega-saidas reveal">
+      <p class="entrega-saidas-titulo">O que cada participante leva</p>
+      <div class="saidas-lista">
+        <div class="saida-item">
+          <div class="saida-dot"></div>
+          <p class="saida-texto">Projeto configurado com contexto do próprio cargo e área</p>
+        </div>
+        <div class="saida-item">
+          <div class="saida-dot"></div>
+          <p class="saida-texto">Conjunto de instruções personalizadas para o perfil de entrega</p>
+        </div>
+        <div class="saida-item">
+          <div class="saida-dot"></div>
+          <p class="saida-texto">Caso de uso aplicado e testado durante a sessão</p>
+        </div>
+        <div class="saida-item">
+          <div class="saida-dot"></div>
+          <p class="saida-texto">Clareza sobre onde IA amplifica e onde o julgamento humano é insubstituível</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMATO -->
+<section id="formato">
+  <div class="container">
+    <p class="section-label-dark reveal">
+      <svg class="label-simbolo" viewBox="0 0 100 100" width="12" height="12" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="square"><path d="M 8 30 V 8 H 30"/><path d="M 70 8 H 92 V 30"/><path d="M 92 70 V 92 H 70"/><path d="M 30 92 H 8 V 70"/></g><circle cx="50" cy="50" r="16" fill="currentColor"/></svg>
+      <span>Formato</span>
+    </p>
+    <h2 class="section-title reveal">Desenhado para encaixar<br>na agenda executiva.</h2>
+
+    <div class="formato-grid">
+      <div class="formato-item reveal">
+        <p class="formato-label">Duração</p>
+        <p class="formato-valor">2 horas</p>
+        <p class="formato-detalhe">Expositivo com demos ao vivo e aplicação prática. Sem teoria desconectada do trabalho real.</p>
+      </div>
+      <div class="formato-item reveal">
+        <p class="formato-label">Modalidade</p>
+        <p class="formato-valor">Online ou presencial</p>
+        <p class="formato-detalhe">Adaptado conforme logística da empresa. Mesma densidade em ambos os formatos.</p>
+      </div>
+      <div class="formato-item reveal">
+        <p class="formato-label">Tamanho de turma</p>
+        <p class="formato-valor">Até 10 pessoas</p>
+        <p class="formato-detalhe">Grupos menores garantem aplicação individual. Necessidades de escala podem ser discutidas.</p>
+      </div>
+      <div class="formato-item reveal">
+        <p class="formato-label">Customização</p>
+        <p class="formato-valor">Add-on disponível</p>
+        <p class="formato-detalhe">O conteúdo base é fixo, testado e validado. Customização por empresa tem escopo e custo definidos juntos.</p>
+      </div>
+    </div>
+
+    <p class="formato-nota reveal">O conteúdo fixo funciona para qualquer perfil de profissional analítico, independente de setor. Quando fizer sentido ir além, a customização existe como caminho.</p>
+  </div>
+</section>
+
+<!-- PARA QUEM -->
+<section id="para-quem">
+  <div class="container">
+    <p class="section-label reveal">
+      <svg class="label-simbolo" viewBox="0 0 100 100" width="12" height="12" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="square"><path d="M 8 30 V 8 H 30"/><path d="M 70 8 H 92 V 30"/><path d="M 92 70 V 92 H 70"/><path d="M 30 92 H 8 V 70"/></g><circle cx="50" cy="50" r="16" fill="currentColor"/></svg>
+      <span>Para quem</span>
+    </p>
+    <h2 class="section-title reveal">Qualquer área.<br>Um único pré-requisito.</h2>
+
+    <div class="perfis">
+
+      <div class="perfil reveal">
+        <p class="perfil-area">Estratégia e liderança</p>
+        <p class="perfil-tensao">"Precisamos escalar IA no time. Mas cada um usa de um jeito e ninguém mostra resultado."</p>
+        <p class="perfil-virada">O workshop cria base comum. Todo o time parte do mesmo repertório e aplica no próprio contexto.</p>
+      </div>
+
+      <div class="perfil reveal">
+        <p class="perfil-area">Marketing e inteligência</p>
+        <p class="perfil-tensao">"Meu time coleta dado, processa dado. A liderança quer direção, não relatório."</p>
+        <p class="perfil-virada">O método transforma análise em narrativa que a liderança usa de fato.</p>
+      </div>
+
+      <div class="perfil reveal">
+        <p class="perfil-area">Finanças e operações</p>
+        <p class="perfil-tensao">"Nossos ciclos de análise consomem tempo demais para o ritmo que o negócio exige."</p>
+        <p class="perfil-virada">IA comprime ciclos repetitivos sem comprometer rigor. O participante sabe exatamente onde aplicar.</p>
+      </div>
+
+      <div class="perfil reveal">
+        <p class="perfil-area">RH e desenvolvimento</p>
+        <p class="perfil-tensao">"Investimos em IA mas não vemos adoção real. O time instalou o app e nada mudou."</p>
+        <p class="perfil-virada">Adoção sem método produz uso superficial. O workshop entrega método, não só motivação.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONDUTOR -->
+<section id="condutor">
+  <div class="container">
+    <p class="section-label-dark reveal">
+      <svg class="label-simbolo" viewBox="0 0 100 100" width="12" height="12" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="square"><path d="M 8 30 V 8 H 30"/><path d="M 70 8 H 92 V 30"/><path d="M 92 70 V 92 H 70"/><path d="M 30 92 H 8 V 70"/></g><circle cx="50" cy="50" r="16" fill="currentColor"/></svg>
+      <span>Quem conduz</span>
+    </p>
+    <h2 class="section-title reveal">Thiago Patente</h2>
+
+    <p class="condutor-texto reveal">Marketing Strategy Manager · MBA em IA. Atua no cruzamento entre estratégia corporativa, marketing intelligence e inteligência artificial aplicada ao trabalho real. Não como tema de palestra. Como prática diária em ambiente de alta exigência analítica.</p>
+
+    <p class="condutor-proof reveal">A plataforma demonstrada na sessão foi construída sozinha, em uma semana, fora do horário de trabalho. Sem time de desenvolvimento. Sem investimento externo. É a prova mais direta do que IA nas mãos de quem sabe usá-la produz.</p>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section id="cta-final">
+  <div class="container">
+    <p class="section-label reveal">
+      <svg class="label-simbolo" viewBox="0 0 100 100" width="12" height="12" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="square"><path d="M 8 30 V 8 H 30"/><path d="M 70 8 H 92 V 30"/><path d="M 92 70 V 92 H 70"/><path d="M 30 92 H 8 V 70"/></g><circle cx="50" cy="50" r="16" fill="currentColor"/></svg>
+      <span>Próximo passo</span>
+    </p>
+    <h2 class="section-title reveal">A conversa define o workshop.<br>Comece por ela.</h2>
+
+    <p class="cta-final-lead reveal">Cada sessão é customizada antes de qualquer proposta. Uma conversa de 15 minutos para entender o contexto da empresa, o perfil do time e o objetivo da iniciativa.</p>
+
+    <a class="cta-button reveal" href="https://wa.me/5521988582351?text=Ol%C3%A1%2C%20Thiago.%20Vi%20sua%20p%C3%A1gina%20de%20workshop%20corporativo%20e%20quero%20conversar%20sobre%20uma%20sess%C3%A3o%20para%20minha%20empresa.">
+      Conversar pelo WhatsApp
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <a class="footer-marca" href="/">
+      <svg class="nav-simbolo" viewBox="0 0 100 100" width="18" height="18" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="square">
+          <path d="M 8 30 V 8 H 30"/>
+          <path d="M 70 8 H 92 V 30"/>
+          <path d="M 92 70 V 92 H 70"/>
+          <path d="M 30 92 H 8 V 70"/>
+        </g>
+        <circle cx="50" cy="50" r="14" fill="currentColor"/>
+      </svg>
+      <span>Patente<span class="nav-ponto">.</span></span>
+    </a>
+    <div class="footer-info">
+      <div class="footer-by">thiagopatente.com.br</div>
+      <div class="footer-cargo">Marketing Strategy Manager · MBA em IA</div>
+    </div>
+  </div>
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/5521988582351?text=Ol%C3%A1%2C%20Thiago.%20Vi%20sua%20p%C3%A1gina%20de%20workshop%20corporativo%20e%20quero%20conversar." target="_blank" aria-label="Conversar no WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+</a>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
