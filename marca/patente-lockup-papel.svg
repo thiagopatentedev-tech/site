@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 164" width="580" height="164">
+  <defs>
+    
+  </defs>
+  
+  <g transform="translate(24 32)">
+    <g fill="none" stroke="#7c2410" stroke-width="4.5" stroke-linecap="square">
+      <path d="M 8 30 V 8 H 30"></path>
+      <path d="M 70 8 H 92 V 30"></path>
+      <path d="M 92 70 V 92 H 70"></path>
+      <path d="M 30 92 H 8 V 70"></path>
+    </g>
+    <circle cx="50" cy="50" r="9" fill="#7c2410"></circle>
+  </g>
+  <text x="156" y="108" class="wm" fill="#15202b">Patente<tspan fill="#7c2410">.</tspan></text>
+</svg>
