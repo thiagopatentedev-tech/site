@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Workshop · A IA como sua nova camada de raciocínio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --papel: #f3efe6;
+  --tinta: #15202b;
+  --terracota: #7c2410;
+  --coral: #d97757;
+  --tinta-suave: #2a3a4a;
+  --linha: rgba(21,32,43,0.12);
+  --max: 720px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--papel);
+  border-bottom: 1px solid var(--linha);
+  padding: 0 2rem;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--tinta);
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.nav-logo span { color: var(--terracota); }
+
+.nav-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--tinta);
+  text-decoration: none;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.nav-link:hover { opacity: 1; }
+
+.container {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section { padding: 6rem 0; }
+section + section { border-top: 1px solid var(--linha); }
+
+#hero { padding-top: 11rem; padding-bottom: 4rem; }
+
+.hero-eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terracota);
+  margin-bottom: 2rem;
+}
+
+.hero-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 500;
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+  color: var(--tinta);
+  margin-bottom: 2rem;
+}
+
+.hero-headline em {
+  font-style: italic;
+  color: var(--terracota);
+}
+
+.hero-sub {
+  font-family: 'Newsreader', serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--tinta-suave);
+  max-width: 600px;
+  margin-bottom: 2.5rem;
+}
+
+.hero-meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 3rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--linha);
+  border-bottom: 1px solid var(--linha);
+}
+
+.hero-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.hero-meta-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terracota);
+}
+
+.hero-meta-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--tinta);
+}
+
+.cta-primary {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--papel);
+  background: var(--terracota);
+  padding: 1rem 2.2rem;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.cta-primary:hover { opacity: 0.85; }
+
+.section-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terracota);
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 500;
+  line-height: 1.28;
+  margin-bottom: 1.5rem;
+}
+
+.section-title em { font-style: italic; color: var(--terracota); }
+
+.section-intro {
+  font-family: 'Newsreader', serif;
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--tinta-suave);
+  line-height: 1.85;
+  margin-bottom: 3.5rem;
+  max-width: 580px;
+}
+
+#caso {
+  background: var(--tinta);
+  color: var(--papel);
+}
+
+#caso .section-label { color: var(--coral); }
+#caso .section-title { color: var(--papel); }
+#caso .section-title em { color: var(--coral); }
+
+#caso .section-intro {
+  color: rgba(243,239,230,0.75);
+}
+
+.caso-destaque {
+  margin-top: 2rem;
+  padding: 1.8rem 2rem;
+  border-left: 3px solid var(--coral);
+  background: rgba(243,239,230,0.04);
+  font-family: 'Newsreader', serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(243,239,230,0.9);
+  line-height: 1.85;
+}
+
+.caso-destaque strong {
+  font-style: normal;
+  font-weight: 500;
+  color: var(--papel);
+}
+
+.blocos { display: flex; flex-direction: column; }
+
+.bloco {
+  padding: 2.5rem 0;
+  border-top: 1px solid var(--linha);
+}
+
+.bloco:last-child { border-bottom: 1px solid var(--linha); }
+
+.bloco-header {
+  display: grid;
+  grid-template-columns: 48px 1fr 60px;
+  gap: 1.5rem;
+  align-items: baseline;
+  margin-bottom: 1rem;
+}
+
+.bloco-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--terracota);
+  line-height: 1;
+}
+
+.bloco-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--tinta);
+  line-height: 1.35;
+}
+
+.bloco-titulo em {
+  font-style: italic;
+  color: var(--terracota);
+  font-weight: 400;
+}
+
+.bloco-tempo {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--terracota);
+  text-align: right;
+}
+
+.bloco-desc {
+  font-family: 'Newsreader', serif;
+  font-size: 0.98rem;
+  font-weight: 300;
+  color: var(--tinta-suave);
+  line-height: 1.8;
+  margin-left: 4rem;
+  margin-bottom: 1.2rem;
+}
+
+.bloco-saida {
+  margin-left: 4rem;
+  padding: 0.7rem 1rem;
+  background: rgba(124,36,16,0.06);
+  border-left: 2px solid var(--terracota);
+}
+
+.bloco-saida-label {
+  display: inline;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terracota);
+  margin-right: 0.5rem;
+}
+
+.bloco-saida-texto {
+  font-family: 'Newsreader', serif;
+  font-size: 0.92rem;
+  font-style: italic;
+  color: var(--tinta);
+}
+
+.bloco-tempo-comparativo {
+  margin-left: 4rem;
+  margin-top: 0.8rem;
+  font-family: 'Newsreader', serif;
+  font-size: 0.88rem;
+  font-style: italic;
+  color: var(--tinta-suave);
+  opacity: 0.75;
+}
+
+.bloco-tempo-comparativo strong {
+  font-style: normal;
+  font-weight: 400;
+  color: var(--terracota);
+}
+
+.filtros-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-top: 1rem;
+}
+
+.filtro-coluna h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  color: var(--tinta);
+}
+
+.filtro-coluna h3 em {
+  font-style: italic;
+  color: var(--terracota);
+  font-weight: 400;
+}
+
+.filtro-lista {
+  list-style: none;
+  padding: 0;
+}
+
+.filtro-lista li {
+  font-family: 'Newsreader', serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--tinta-suave);
+  line-height: 1.7;
+  padding: 0.8rem 0;
+  border-top: 1px solid var(--linha);
+  display: flex;
+  gap: 0.8rem;
+  align-items: flex-start;
+}
+
+.filtro-lista li:last-child { border-bottom: 1px solid var(--linha); }
+
+.filtro-sinal {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  line-height: 1;
+  flex-shrink: 0;
+  padding-top: 0.1rem;
+}
+
+.filtro-positivo .filtro-sinal { color: var(--terracota); }
+.filtro-negativo .filtro-sinal { color: rgba(21,32,43,0.35); }
+.filtro-negativo li { color: rgba(21,32,43,0.55); }
+
+#turmas { background: var(--tinta); color: var(--papel); }
+#turmas .section-label { color: var(--coral); }
+#turmas .section-title { color: var(--papel); }
+#turmas .section-title em { color: var(--coral); }
+
+.turmas-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.turma-card {
+  border: 1px solid rgba(243,239,230,0.15);
+  padding: 1.8rem 1.2rem;
+  text-align: center;
+}
+
+.turma-data {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--papel);
+  margin-bottom: 0.4rem;
+}
+
+.turma-mes {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 1rem;
+}
+
+.turma-status {
+  font-family: 'Newsreader', serif;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: rgba(243,239,230,0.6);
+}
+
+.turmas-info {
+  font-family: 'Newsreader', serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: rgba(243,239,230,0.7);
+  line-height: 1.85;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.investimento-card {
+  margin-top: 4rem;
+  padding: 2.5rem 2rem;
+  border: 1px solid rgba(243,239,230,0.2);
+  background: rgba(243,239,230,0.03);
+}
+
+.investimento-titulo {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.investimento-valor-unico {
+  text-align: center;
+  padding: 1.5rem 0 2rem;
+}
+
+.valor-numero {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 500;
+  color: var(--papel);
+  line-height: 1;
+  margin-bottom: 0.6rem;
+}
+
+.valor-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(243,239,230,0.5);
+}
+
+.investimento-nota {
+  font-family: 'Newsreader', serif;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: rgba(243,239,230,0.55);
+  text-align: center;
+  line-height: 1.7;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(243,239,230,0.1);
+}
+
+.investimento-individual {
+  margin-top: 2.5rem;
+  padding: 2rem 1.8rem;
+  border: 1px dashed rgba(243,239,230,0.15);
+  text-align: center;
+}
+
+.individual-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 0.8rem;
+}
+
+.individual-texto {
+  font-family: 'Newsreader', serif;
+  font-size: 0.95rem;
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(243,239,230,0.7);
+  line-height: 1.75;
+  max-width: 460px;
+  margin: 0 auto 1.4rem;
+}
+
+.individual-cta {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(243,239,230,0.85);
+  text-decoration: none;
+  border-bottom: 1px solid var(--coral);
+  padding-bottom: 0.3rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.individual-cta:hover {
+  color: var(--papel);
+  border-color: var(--coral);
+}
+
+#autor { background: var(--tinta); color: var(--papel); }
+#autor .section-label { color: var(--coral); }
+#autor .section-title { color: var(--papel); }
+
+.autor-texto {
+  font-family: 'Newsreader', serif;
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: rgba(243,239,230,0.75);
+  line-height: 1.9;
+  margin-bottom: 2rem;
+}
+
+.cta-secondary {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--papel);
+  border: 1px solid rgba(243,239,230,0.3);
+  padding: 1rem 2.2rem;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.cta-secondary:hover {
+  background: var(--coral);
+  border-color: var(--coral);
+}
+
+#inscricao {
+  background: var(--papel);
+}
+
+.inscricao-intro {
+  font-family: 'Newsreader', serif;
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--tinta-suave);
+  line-height: 1.85;
+  margin-bottom: 2.5rem;
+  max-width: 560px;
+}
+
+.inscricao-aviso {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--terracota);
+  border: 1px solid rgba(124,36,16,0.25);
+  padding: 0.5rem 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.tally-wrapper {
+  width: 100%;
+  border: 1px solid var(--linha);
+  background: white;
+  min-height: 500px;
+}
+
+.tally-wrapper iframe {
+  width: 100%;
+  min-height: 500px;
+  border: none;
+  display: block;
+}
+
+footer {
+  background: var(--tinta);
+  border-top: 1px solid rgba(243,239,230,0.08);
+  padding: 2.5rem 2rem;
+}
+
+.footer-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-marca {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(243,239,230,0.4);
+  text-decoration: none;
+}
+
+.footer-marca span { color: var(--coral); }
+
+.footer-by {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(243,239,230,0.25);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible { opacity: 1; transform: none; }
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 1.8rem;
+  right: 1.8rem;
+  z-index: 200;
+  width: 56px;
+  height: 56px;
+  background: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.24);
+}
+
+@media (max-width: 600px) {
+  #hero { padding-top: 9rem; }
+  section { padding: 4rem 0; }
+  nav { padding: 0 1.2rem; }
+  .container { padding: 0 1.2rem; }
+  .turmas-grid { grid-template-columns: 1fr; }
+  .hero-meta { grid-template-columns: 1fr; gap: 1.2rem; }
+  .filtros-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .bloco-header { grid-template-columns: 36px 1fr; }
+  .bloco-tempo { grid-column: 2; text-align: left; margin-top: 0.3rem; }
+  .bloco-desc, .bloco-saida, .bloco-tempo-comparativo { margin-left: 0; }
+  .whatsapp-float { bottom: 1.4rem; right: 1.4rem; width: 52px; height: 52px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">Patente<span>.</span>Workshop</a>
+  <a class="nav-link" href="#inscricao">Garantir vaga</a>
+</nav>
+
+<section id="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Workshop online · Capacitação executiva · 120 minutos</p>
+    <h1 class="hero-headline">Em 2 horas, você incorpora IA na sua rotina analítica e passa a entregar em horas <em>o que hoje você faz em dias.</em></h1>
+    <p class="hero-sub">Não é teoria. É demonstração ao vivo, com caso real de empresa internacional, e aplicação direta no seu próprio trabalho ainda durante a aula.</p>
+
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Duração</span>
+        <span class="hero-meta-value">120 minutos</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Formato</span>
+        <span class="hero-meta-value">Online · Ao vivo</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Turma</span>
+        <span class="hero-meta-value">Até 4 pessoas</span>
+      </div>
+    </div>
+
+    <a class="cta-primary" href="#inscricao">Garantir minha vaga</a>
+  </div>
+</section>
+
+<section id="caso">
+  <div class="container">
+    <p class="section-label reveal">O caso âncora da aula</p>
+    <h2 class="section-title reveal">Vamos analisar uma <em>operadora americana</em> listada na NYSE, ao vivo.</h2>
+    <p class="section-intro reveal">Carregamos o relatório anual completo, transcrição da última call com investidores e o press release mais recente. Em minutos, a IA entrega análise estratégica em formato consultoria sênior. Você vê acontecendo, e replica no seu trabalho.</p>
+
+    <div class="caso-destaque reveal">
+      Não é simulação. <strong>É um caso real, com material público real, processado em tempo real diante dos seus olhos.</strong> No fim da aula, você sai com o método para fazer o mesmo no setor que importa para você.
+    </div>
+  </div>
+</section>
+
+<section id="jornada">
+  <div class="container">
+    <p class="section-label reveal">A jornada de 2 horas</p>
+    <h2 class="section-title reveal">Cada bloco é construção,<br>demonstração e aplicação.<br><em>Sem teoria perdida.</em></h2>
+
+    <div class="blocos">
+
+      <div class="bloco reveal">
+        <div class="bloco-header">
+          <div class="bloco-num">01</div>
+          <div class="bloco-titulo">Compreender o terreno</div>
+          <div class="bloco-tempo">15 MIN</div>
+        </div>
+        <p class="bloco-desc">Como IA realmente funciona. Tokens, janela de contexto, modelos de cobrança, e o mapa entre Claude, ChatGPT e Gemini.</p>
+        <div class="bloco-saida">
+          <span class="bloco-saida-label">Você sai fazendo</span>
+          <span class="bloco-saida-texto">entende quando usar qual ferramenta, sem chute</span>
+        </div>
+      </div>
+
+      <div class="bloco reveal">
+        <div class="bloco-header">
+          <div class="bloco-num">02</div>
+          <div class="bloco-titulo">O que IA muda no corporativo</div>
+          <div class="bloco-tempo">15 MIN</div>
+        </div>
+        <p class="bloco-desc">As cinco categorias de uso de alto impacto, ganhos documentados por BCG e McKinsey, e o princípio da divisão ótima de trabalho.</p>
+        <div class="bloco-saida">
+          <span class="bloco-saida-label">Você sai fazendo</span>
+          <span class="bloco-saida-texto">enxerga onde aplicar primeiro no seu próprio dia</span>
+        </div>
+      </div>
+
+      <div class="bloco reveal">
+        <div class="bloco-header">
+          <div class="bloco-num">03</div>
+          <div class="bloco-titulo">Pesquisa e síntese · <em>ao vivo</em></div>
+          <div class="bloco-tempo">25 MIN</div>
+        </div>
+        <p class="bloco-desc">Carregamos o relatório anual da operadora americana. A IA extrai tensões estratégicas, riscos não óbvios e implicações de negócio. Você assume o controle e faz drill-down em um ponto específico.</p>
+        <div class="bloco-saida">
+          <span class="bloco-saida-label">Você sai fazendo</span>
+          <span class="bloco-saida-texto">consegue dominar um setor desconhecido em horas</span>
+        </div>
+        <p class="bloco-tempo-comparativo"><strong>6 horas de leitura</strong> → 5 minutos de análise</p>
+      </div>
+
+      <div class="bloco reveal">
+        <div class="bloco-header">
+          <div class="bloco-num">04</div>
+          <div class="bloco-titulo">Decks e narrativa · <em>ao vivo</em></div>
+          <div class="bloco-tempo">25 MIN</div>
+        </div>
+        <p class="bloco-desc">Transformamos a análise em storyline executivo de 8 slides, com Pirâmide de Minto e action titles. PowerPoint pronto na sua frente, pronto para apresentar a um C-level.</p>
+        <div class="bloco-saida">
+          <span class="bloco-saida-label">Você sai fazendo</span>
+          <span class="bloco-saida-texto">cria deck padrão consultoria em minutos</span>
+        </div>
+        <p class="bloco-tempo-comparativo"><strong>Um dia de trabalho</strong> → 15 minutos</p>
+      </div>
+
+      <div class="bloco reveal">
+        <div class="bloco-header">
+          <div class="bloco-num">05</div>
+          <div class="bloco-titulo">Produtividade do dia a dia · <em>ao vivo</em></div>
+          <div class="bloco-tempo">25 MIN</div>
+        </div>
+        <p class="bloco-desc">Email executivo sensível, síntese de reunião estruturada, pauta para conversa difícil, e revisão crítica antes de enviar. Todas as tarefas reais que tomam horas semanais, agora em minutos.</p>
+        <div class="bloco-saida">
+          <span class="bloco-saida-label">Você sai fazendo</span>
+          <span class="bloco-saida-texto">tem revisor sênior 24/7 antes de cada comunicação</span>
+        </div>
+        <p class="bloco-tempo-comparativo"><strong>8 horas extras por semana</strong> → recuperadas</p>
+      </div>
+
+      <div class="bloco reveal">
+        <div class="bloco-header">
+          <div class="bloco-num">06</div>
+          <div class="bloco-titulo">Integrar na rotina</div>
+          <div class="bloco-tempo">15 MIN</div>
+        </div>
+        <p class="bloco-desc">Princípios de adoção sustentável, biblioteca pessoal de prompts validados e plano dos próximos 30 dias para fixar a prática.</p>
+        <div class="bloco-saida">
+          <span class="bloco-saida-label">Você sai fazendo</span>
+          <span class="bloco-saida-texto">sai com método para fazer durar, não só repetir</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="filtros">
+  <div class="container">
+    <p class="section-label reveal">Para quem é</p>
+    <h2 class="section-title reveal">Honestidade antes<br>da inscrição.</h2>
+
+    <div class="filtros-grid">
+      <div class="filtro-coluna reveal">
+        <h3>Para você, <em>se</em></h3>
+        <ul class="filtro-lista filtro-positivo">
+          <li><span class="filtro-sinal">+</span><span>Já abriu o ChatGPT e sentiu que poderia tirar muito mais</span></li>
+          <li><span class="filtro-sinal">+</span><span>Trabalha com análises, decks ou comunicação executiva</span></li>
+          <li><span class="filtro-sinal">+</span><span>Quer aplicar imediatamente, não estudar a tecnologia</span></li>
+          <li><span class="filtro-sinal">+</span><span>Precisa recuperar horas semanais sem perder qualidade</span></li>
+          <li><span class="filtro-sinal">+</span><span>Valoriza método sênior em vez de receita pronta</span></li>
+        </ul>
+      </div>
+
+      <div class="filtro-coluna reveal">
+        <h3>Não é para você, <em>se</em></h3>
+        <ul class="filtro-lista filtro-negativo">
+          <li><span class="filtro-sinal">−</span><span>Está procurando curso técnico de programação ou prompt engineering</span></li>
+          <li><span class="filtro-sinal">−</span><span>Quer apenas dicas genéricas que se acha em qualquer lugar</span></li>
+          <li><span class="filtro-sinal">−</span><span>Não tem demanda real de análise ou comunicação no trabalho</span></li>
+          <li><span class="filtro-sinal">−</span><span>Espera fórmula mágica sem aplicação prática própria</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="turmas">
+  <div class="container">
+    <p class="section-label reveal">Próximas turmas</p>
+    <h2 class="section-title reveal">Três datas em maio.<br><em>Quatro vagas em cada.</em></h2>
+
+    <div class="turmas-grid">
+      <div class="turma-card reveal">
+        <p class="turma-mes">Maio</p>
+        <p class="turma-data">12</p>
+        <p class="turma-status">Vagas abertas</p>
+      </div>
+      <div class="turma-card reveal">
+        <p class="turma-mes">Maio</p>
+        <p class="turma-data">19</p>
+        <p class="turma-status">Vagas abertas</p>
+      </div>
+      <div class="turma-card reveal">
+        <p class="turma-mes">Maio</p>
+        <p class="turma-data">26</p>
+        <p class="turma-status">Vagas abertas</p>
+      </div>
+    </div>
+
+    <p class="turmas-info">Todas as turmas acontecem às terças, das 19h às 21h, ao vivo online.</p>
+
+    <div class="investimento-card reveal">
+      <p class="investimento-titulo">Investimento</p>
+      <div class="investimento-valor-unico">
+        <p class="valor-numero">R$ 150</p>
+        <p class="valor-desc">por pessoa · turma de até 4</p>
+      </div>
+      <p class="investimento-nota">Inscrição confirmada por ordem de chegada. Pagamento via Pix após aprovação.</p>
+    </div>
+
+    <div class="investimento-individual reveal">
+      <p class="individual-label">Modalidade individual</p>
+      <p class="individual-texto">Aula privada, conteúdo customizado para o seu setor, agenda flexível. Para discutir formato e investimento, me procure no LinkedIn.</p>
+      <a class="individual-cta" href="https://www.linkedin.com/in/thiagopatente" target="_blank">Falar sobre aula privada</a>
+    </div>
+  </div>
+</section>
+
+<section id="autor">
+  <div class="container">
+    <p class="section-label reveal">Quem conduz</p>
+    <h2 class="section-title reveal">Thiago Patente</h2>
+    <p class="autor-texto reveal">Marketing Strategy Manager. MBA em IA. Atua no cruzamento entre estratégia corporativa, marketing intelligence e IA aplicada ao mundo real do negócio. Conduz o workshop com base em prática diária, não em teoria de palestra.</p>
+    <a class="cta-secondary reveal" href="https://www.linkedin.com/in/thiagopatente" target="_blank">Conhecer no LinkedIn</a>
+  </div>
+</section>
+
+<section id="inscricao">
+  <div class="container">
+    <p class="section-label reveal">Inscrição</p>
+    <h2 class="section-title reveal">Quer entrar na<br><em>próxima turma piloto?</em></h2>
+
+    <p class="inscricao-intro reveal">Cada inscrição é avaliada individualmente. O objetivo é garantir que o conteúdo corresponde ao seu momento profissional. Se fizer sentido, sua vaga é confirmada e você recebe os detalhes por email.</p>
+
+    <div class="reveal">
+      <span class="inscricao-aviso">4 vagas por turma · Aprovação manual</span>
+    </div>
+
+    <div class="tally-wrapper reveal">
+      <iframe
+        src="https://tally.so/embed/Me8Wvp?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+        loading="lazy"
+        width="100%"
+        height="500"
+        frameborder="0"
+        title="Inscrição no workshop">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <a class="footer-marca" href="/">Patente<span>.</span>Workshop</a>
+    <div class="footer-by">Conduzido por Thiago Patente</div>
+  </div>
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/5521988582351?text=Ol%C3%A1%20Thiago%2C%20vi%20a%20p%C3%A1gina%20do%20workshop%20e%20quero%20conversar." target="_blank" aria-label="Conversar no WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
