@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patente Intelligence · Patente</title>
+<meta name="description" content="Patente Intelligence: plataforma com quatro agentes de IA encadeados que convertem informação de mercado em direção estratégica.">
+<link rel="icon" type="image/svg+xml" href="/marca/patente-favicon-papel.svg" media="(prefers-color-scheme: light)" />
+<link rel="icon" type="image/svg+xml" href="/marca/patente-favicon-tinta.svg" media="(prefers-color-scheme: dark)" />
+<link rel="alternate icon" href="/marca/patente-favicon-32.png" />
+<link rel="apple-touch-icon" href="/marca/patente-favicon-180.png" />
+<meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#15202b" media="(prefers-color-scheme: dark)" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --papel: #f3efe6;
+  --tinta: #15202b;
+  --terracota: #7c2410;
+  --coral: #d97757;
+  --tinta-suave: #2a3a4a;
+  --linha: rgba(21,32,43,0.12);
+  --max: 720px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--papel);
+  border-bottom: 1px solid var(--linha);
+  padding: 0 2rem;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  color: var(--tinta);
+  text-decoration: none;
+  line-height: 1;
+}
+
+.nav-simbolo { color: var(--terracota); flex-shrink: 0; transform: translateY(-0.1em); }
+.nav-wordmark { color: var(--tinta); }
+.nav-ponto { color: var(--terracota); }
+
+.nav-icons { display: flex; align-items: center; gap: 1rem; }
+
+.nav-icon {
+  display: flex;
+  align-items: center;
+  color: var(--tinta);
+  opacity: 0.45;
+  transition: opacity 0.2s;
+  text-decoration: none;
+}
+
+.nav-icon:hover { opacity: 1; }
+
+.container {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section { padding: 7rem 0; }
+section + section { border-top: 1px solid var(--linha); }
+
+/* HERO */
+#hero {
+  padding-top: 12rem;
+  padding-bottom: 5rem;
+}
+
+.hero-eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terracota);
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.1s;
+}
+
+.hero-eyebrow .marca {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  font-weight: 500;
+  color: var(--tinta);
+}
+
+.hero-eyebrow .marca-ponto { color: var(--terracota); }
+
+.hero-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--tinta);
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.25s;
+}
+
+.hero-headline em {
+  font-style: italic;
+  color: var(--terracota);
+}
+
+.hero-sub {
+  font-family: 'Newsreader', serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--tinta-suave);
+  max-width: 600px;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.4s;
+}
+
+.hero-proof {
+  display: inline-block;
+  font-family: 'Newsreader', serif;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--tinta);
+  border-left: 2px solid var(--terracota);
+  padding-left: 1rem;
+  line-height: 1.75;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.55s;
+}
+
+/* NATUREZA */
+#natureza {
+  background: var(--tinta);
+  color: var(--papel);
+  border-top: none;
+}
+
+.natureza-lead {
+  font-family: 'Newsreader', serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: rgba(243,239,230,0.8);
+  line-height: 1.85;
+  margin-bottom: 1.5rem;
+}
+
+.natureza-lead strong {
+  font-weight: 400;
+  color: var(--papel);
+}
+
+.natureza-lead em {
+  font-style: italic;
+  color: var(--coral);
+}
+
+/* SECTION LABELS */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terracota);
+  margin-bottom: 2.5rem;
+}
+
+.section-label-dark {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(243,239,230,0.4);
+  margin-bottom: 2.5rem;
+}
+
+.label-simbolo { flex-shrink: 0; }
+.section-label .label-simbolo { color: var(--terracota); }
+.section-label-dark .label-simbolo { color: var(--coral); }
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 500;
+  line-height: 1.28;
+  margin-bottom: 3rem;
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--terracota);
+}
+
+/* AGENTES */
+.agentes-lead {
+  font-family: 'Newsreader', serif;
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--tinta-suave);
+  line-height: 1.85;
+  margin-bottom: 3rem;
+  max-width: 600px;
+}
+
+.agentes-lead strong {
+  font-weight: 400;
+  color: var(--tinta);
+}
+
+.agentes { display: flex; flex-direction: column; }
+
+.agente {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 1.5rem;
+  padding: 2.4rem 0;
+  border-top: 1px solid var(--linha);
+  align-items: start;
+}
+
+.agente:last-child { border-bottom: 1px solid var(--linha); }
+
+.agente-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--terracota);
+  line-height: 1;
+  padding-top: 0.2rem;
+}
+
+.agente-papel {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--terracota);
+  margin-bottom: 0.5rem;
+}
+
+.agente-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--tinta);
+  margin-bottom: 0.7rem;
+  line-height: 1.35;
+}
+
+.agente-desc {
+  font-family: 'Newsreader', serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--tinta-suave);
+  line-height: 1.78;
+  margin-bottom: 1rem;
+}
+
+.agente-entrega {
+  font-family: 'Newsreader', serif;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--terracota);
+  line-height: 1.6;
+}
+
+.fluxo-final {
+  margin-top: 2.5rem;
+  padding: 2rem;
+  border: 1px solid var(--linha);
+  background: rgba(21,32,43,0.03);
+}
+
+.fluxo-final p {
+  font-family: 'Newsreader', serif;
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--tinta);
+  line-height: 1.8;
+}
+
+.fluxo-final p strong {
+  font-style: normal;
+  font-weight: 500;
+  color: var(--terracota);
+}
+
+/* MANIFESTO */
+#manifesto { background: var(--tinta); color: var(--papel); border-top: none; }
+#manifesto .section-title { color: var(--papel); }
+
+.manifesto-bloco {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.manifesto-item {
+  padding: 2.2rem 0;
+  border-top: 1px solid rgba(217,119,87,0.45);
+}
+
+.manifesto-item:last-child { border-bottom: 1px solid rgba(217,119,87,0.45); }
+
+.manifesto-num {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--coral);
+  margin-bottom: 0.6rem;
+}
+
+.manifesto-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--papel);
+  margin-bottom: 0.6rem;
+}
+
+.manifesto-desc {
+  font-family: 'Newsreader', serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: rgba(243,239,230,0.7);
+  line-height: 1.8;
+}
+
+/* PROVA */
+.prova-quote {
+  font-family: 'Newsreader', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--tinta);
+  border-left: 2px solid var(--terracota);
+  padding-left: 1.2rem;
+  line-height: 1.85;
+  margin-bottom: 2rem;
+}
+
+.prova-quote strong {
+  font-style: normal;
+  font-weight: 500;
+  color: var(--terracota);
+}
+
+.prova-texto {
+  font-family: 'Newsreader', serif;
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--tinta-suave);
+  line-height: 1.85;
+  margin-bottom: 1.5rem;
+}
+
+.prova-texto strong {
+  font-weight: 400;
+  color: var(--tinta);
+}
+
+/* CTA FINAL */
+#cta-final {
+  background: var(--tinta);
+  color: var(--papel);
+  text-align: center;
+  border-top: none;
+  padding: 6rem 0;
+}
+
+#cta-final .section-label-dark { justify-content: center; }
+#cta-final .section-title { color: var(--papel); text-align: center; margin-bottom: 2rem; }
+
+.cta-final-sub {
+  font-family: 'Newsreader', serif;
+  font-size: 1.05rem;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(243,239,230,0.6);
+  line-height: 1.75;
+  margin-bottom: 3rem;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1rem 1.8rem;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.cta-link-primary {
+  background: var(--terracota);
+  color: var(--papel);
+  border: 1px solid var(--terracota);
+}
+
+.cta-link-primary:hover { background: transparent; }
+
+.cta-link-secondary {
+  color: var(--papel);
+  border: 1px solid rgba(217,119,87,0.55);
+}
+
+.cta-link-secondary:hover { background: rgba(217,119,87,0.12); border-color: var(--coral); }
+
+/* FOOTER */
+footer {
+  background: var(--tinta);
+  border-top: 1px solid rgba(243,239,230,0.08);
+  padding: 2.5rem 2rem;
+}
+
+.footer-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-marca {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  color: rgba(243,239,230,0.55);
+  text-decoration: none;
+  line-height: 1;
+}
+
+.footer-marca .nav-simbolo { color: var(--coral); }
+.footer-marca .nav-ponto { color: var(--coral); }
+
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: flex-end;
+}
+
+.footer-by {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(243,239,230,0.25);
+}
+
+.footer-cargo {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: rgba(243,239,230,0.18);
+  text-transform: uppercase;
+}
+
+/* WHATSAPP FLOAT */
+.whatsapp-float {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 200;
+  width: 52px;
+  height: 52px;
+  background: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible { opacity: 1; transform: none; }
+
+@media (max-width: 600px) {
+  #hero { padding-top: 10rem; }
+  section { padding: 5rem 0; }
+  nav { padding: 0 1.2rem; }
+  .container { padding: 0 1.2rem; }
+  .whatsapp-float { bottom: 1.5rem; right: 1.5rem; }
+  .cta-links { flex-direction: column; }
+  .cta-link { justify-content: center; }
+  .agente { grid-template-columns: 36px 1fr; gap: 1rem; }
+}
+
+
+/* ANIMAÇÃO ARQUITETURA */
+#arquitetura-visual {
+  background: var(--papel);
+  border-top: none;
+  border-bottom: 1px solid var(--linha);
+  padding: 5rem 0 6rem;
+  overflow: hidden;
+}
+
+.arq-wrap {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.arq-label {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: var(--tinta);
+  margin-bottom: 3rem;
+  line-height: 1.25;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.arq-label em { color: var(--terracota); font-style: italic; }
+
+.arq-stage {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 1;
+  margin: 0 auto;
+}
+
+.arq-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.arq-svg .conexao {
+  stroke: var(--terracota);
+  stroke-width: 1.2;
+  fill: none;
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  transition: stroke-dashoffset 0.9s ease;
+}
+
+.arq-svg .conexao.ativa { stroke-dashoffset: 0; }
+
+.arq-centro {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 88px;
+  height: 88px;
+  background: var(--tinta);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.7);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  box-shadow: 0 0 0 0 rgba(124, 36, 16, 0);
+}
+
+.arq-centro.ativa {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  animation: pulso 2.4s ease-in-out infinite;
+}
+
+@keyframes pulso {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(124, 36, 16, 0.4); }
+  50% { box-shadow: 0 0 0 14px rgba(124, 36, 16, 0); }
+}
+
+.arq-centro svg { color: var(--coral); }
+
+.arq-agente {
+  position: absolute;
+  width: 96px;
+  height: 96px;
+  border: 1px solid var(--terracota);
+  background: var(--papel);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.arq-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--terracota);
+  line-height: 1;
+}
+
+.arq-nome {
+  font-family: 'Inter', sans-serif;
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--tinta);
+  line-height: 1;
+}
+
+.arq-agente.ativa { opacity: 1; transform: scale(1); }
+
+.arq-agente.pos-1 { top: 6%; left: 6%; }
+.arq-agente.pos-2 { top: 6%; right: 6%; }
+.arq-agente.pos-3 { bottom: 6%; right: 6%; }
+.arq-agente.pos-4 { bottom: 6%; left: 6%; }
+
+
+
+.arq-legenda {
+  margin-top: 3.5rem;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--tinta);
+  line-height: 1.4;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.arq-legenda strong { color: var(--terracota); font-style: italic; font-weight: 500; }
+
+.arq-legenda.ativa { opacity: 1; }
+.arq-label.ativa { opacity: 1; }
+
+@media (max-width: 600px) {
+  .arq-stage { max-width: 340px; }
+  .arq-centro { width: 64px; height: 64px; }
+  .arq-centro svg { width: 30px; height: 30px; }
+  .arq-agente { width: 78px; height: 78px; padding: 0.4rem; }
+  .arq-num { font-size: 1.3rem; }
+  .arq-nome { font-size: 8.5px; letter-spacing: 0.1em; }
+}
+
+
+
+/* VIDEO EM BREVE */
+#video-prev {
+  background: var(--papel);
+  border-top: 1px solid var(--linha);
+  padding: 6rem 0 7rem;
+}
+
+.video-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.video-eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terracota);
+  text-align: center;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.video-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.3;
+  color: var(--tinta);
+  text-align: center;
+  margin-bottom: 3rem;
+  opacity: 0;
+  transition: opacity 0.6s ease 0.1s;
+}
+
+.video-titulo em { color: var(--terracota); }
+
+.video-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: var(--tinta);
+  border: 1px solid var(--linha);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease 0.2s, transform 0.7s ease 0.2s;
+}
+
+.video-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 40%, rgba(124,36,16,0.15) 0%, transparent 50%),
+    radial-gradient(circle at 70% 70%, rgba(217,119,87,0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.video-play {
+  position: relative;
+  width: 88px;
+  height: 88px;
+  background: var(--terracota);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  box-shadow: 0 0 0 0 rgba(124, 36, 16, 0);
+  animation: pulsoPlay 2.6s ease-in-out infinite;
+}
+
+.video-play::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 14px 0 14px 22px;
+  border-color: transparent transparent transparent var(--papel);
+  margin-left: 6px;
+}
+
+@keyframes pulsoPlay {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(217, 119, 87, 0.45); }
+  50% { box-shadow: 0 0 0 18px rgba(217, 119, 87, 0); }
+}
+
+.video-tag {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.5rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--coral);
+  z-index: 2;
+}
+
+.video-legenda {
+  font-family: 'Newsreader', serif;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--tinta-suave);
+  text-align: center;
+  margin-top: 2rem;
+  line-height: 1.7;
+  opacity: 0;
+  transition: opacity 0.6s ease 0.3s;
+}
+
+.video-prev-revelado .video-eyebrow,
+.video-prev-revelado .video-titulo,
+.video-prev-revelado .video-frame,
+.video-prev-revelado .video-legenda { opacity: 1; }
+
+.video-prev-revelado .video-frame { transform: translateY(0); }
+
+@media (max-width: 600px) {
+  #video-prev { padding: 4rem 0 5rem; }
+  .video-play { width: 64px; height: 64px; }
+  .video-play::before { border-width: 10px 0 10px 16px; margin-left: 4px; }
+  .video-tag { top: 0.8rem; left: 1rem; font-size: 9px; }
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">
+    <svg class="nav-simbolo" viewBox="0 0 100 100" width="22" height="22" aria-hidden="true">
+      <g fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="square">
+        <path d="M 8 30 V 8 H 30"/>
+        <path d="M 70 8 H 92 V 30"/>
+        <path d="M 92 70 V 92 H 70"/>
+        <path d="M 30 92 H 8 V 70"/>
+      </g>
+      <circle cx="50" cy="50" r="14" fill="currentColor"/>
+    </svg>
+    <span class="nav-wordmark">Patente<span class="nav-ponto">.</span></span>
+  </a>
+  <div class="nav-icons">
+    <a class="nav-icon" href="https://wa.me/5521988582351?text=Ol%C3%A1%2C%20Thiago.%20Vi%20a%20p%C3%A1gina%20da%20Patente%20Intelligence%20e%20quero%20conversar." target="_blank" aria-label="WhatsApp">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+    </a>
+    <a class="nav-icon" href="https://www.linkedin.com/in/thiagopatente" target="_blank" aria-label="LinkedIn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <p class="hero-eyebrow"><span class="marca">Patente<span class="marca-ponto">.</span>Intelligence</span> · Plataforma proprietária</p>
+    <h1 class="hero-headline">Quatro agentes de IA encadeados.<br><em>Uma posição defensável.</em></h1>
+    <p class="hero-sub">Não é dashboard. Não é chatbot. É uma plataforma de inteligência estratégica que converte informação de mercado em síntese analítica, cenários e narrativa executiva. Em minutos.</p>
+    <p class="hero-proof">Construída sozinha, em uma semana, fora do horário de trabalho. Sem time de desenvolvimento. Sem investimento externo.</p>
+  </div>
+</section>
+
+
+<!-- ARQUITETURA VISUAL -->
+<section id="arquitetura-visual">
+  <div class="arq-wrap">
+    <p class="arq-label">A arquitetura, <em>em movimento</em></p>
+
+    <div class="arq-stage" id="arqStage">
+
+      <svg class="arq-svg" viewBox="0 0 480 480" preserveAspectRatio="none" aria-hidden="true">
+        <path class="conexao c1" d="M 125 125 L 210 210" />
+        <path class="conexao c2" d="M 355 125 L 270 210" />
+        <path class="conexao c3" d="M 355 355 L 270 270" />
+        <path class="conexao c4" d="M 125 355 L 210 270" />
+      </svg>
+
+      <div class="arq-agente pos-1">
+        <span class="arq-num">I</span>
+        <span class="arq-nome">Mercado</span>
+      </div>
+      <div class="arq-agente pos-2">
+        <span class="arq-num">II</span>
+        <span class="arq-nome">Território</span>
+      </div>
+      <div class="arq-agente pos-3">
+        <span class="arq-num">III</span>
+        <span class="arq-nome">Decisão</span>
+      </div>
+      <div class="arq-agente pos-4">
+        <span class="arq-num">IV</span>
+        <span class="arq-nome">Narrativa</span>
+      </div>
+
+      <div class="arq-centro">
+        <svg viewBox="0 0 100 100" width="38" height="38" aria-hidden="true">
+          <g fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="square">
+            <path d="M 8 30 V 8 H 30"/>
+            <path d="M 70 8 H 92 V 30"/>
+            <path d="M 92 70 V 92 H 70"/>
+            <path d="M 30 92 H 8 V 70"/>
+          </g>
+          <circle cx="50" cy="50" r="14" fill="currentColor"/>
+        </svg>
+      </div>
+
+    </div>
+
+    <p class="arq-legenda">Quatro agentes especializados.<br><strong>Um núcleo que sintetiza.</strong></p>
+  </div>
+</section>
+
+
+<!-- VIDEO EM BREVE -->
+<section id="video-prev">
+  <div class="video-wrap">
+    <p class="video-eyebrow">Em breve</p>
+    <h2 class="video-titulo">A plataforma em ação,<br><em>do início ao fim.</em></h2>
+
+    <div class="video-frame">
+      <span class="video-tag">Em breve</span>
+      <div class="video-play" aria-label="Player de vídeo em preparação"></div>
+    </div>
+
+    <p class="video-legenda">Demonstração completa: um caso real percorrendo os quatro agentes em sequência. Em produção.</p>
+  </div>
+</section>
+
+<!-- NATUREZA -->
+<section id="natureza">
+  <div class="container">
+    <p class="section-label-dark reveal">
+      <svg class="label-simbolo" viewBox="0 0 100 100" width="12" height="12" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="square"><path d="M 8 30 V 8 H 30"/><path d="M 70 8 H 92 V 30"/><path d="M 92 70 V 92 H 70"/><path d="M 30 92 H 8 V 70"/></g><circle cx="50" cy="50" r="16" fill="currentColor"/></svg>
+      <span>Por que existe</span>
+    </p>
+    <h2 class="section-title" style="color: var(--papel);">Para responder uma pergunta:<br><em style="color: var(--coral);">o que IA permite construir quando o conhecimento de negócio conduz?</em></h2>
+
+    <p class="natureza-lead reveal">Patente Intelligence não foi feita para vender acesso. Foi feita para <strong>demonstrar capacidade</strong>. Uma pessoa, com domínio de estratégia e de IA aplicada, produzindo em uma semana o que normalmente exigiria um time de desenvolvimento e meses de roadmap.</p>
+
+    <p class="natureza-lead reveal">A plataforma é o método ensinado nos workshops, materializado em código. <em>É a prova mais direta do que se aprende.</em></p>
+  </div>
+</section>
+
+<!-- AGENTES -->
+<section id="agentes">
+  <div class="container">
+    <p class="section-label reveal">
+      <svg class="label-simbolo" viewBox="0 0 100 100" width="12" height="12" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="square"><path d="M 8 30 V 8 H 30"/><path d="M 70 8 H 92 V 30"/><path d="M 92 70 V 92 H 70"/><path d="M 30 92 H 8 V 70"/></g><circle cx="50" cy="50" r="16" fill="currentColor"/></svg>
+      <span>A arquitetura</span>
+    </p>
+    <h2 class="section-title reveal">Quatro agentes encadeados.<br>Contexto compartilhado.<br><em>Sequência editorial.</em></h2>
+
+    <p class="agentes-lead reveal">Cada agente tem função específica e recebe o contexto produzido pelo anterior. Não é um chatbot que tudo. <strong>É um time de quatro especialistas digitais, em sequência, cada um fazendo o que sabe fazer.</strong></p>
+
+    <div class="agentes">
+
+      <div class="agente reveal">
+        <div class="agente-num">I</div>
+        <div>
+          <p class="agente-papel">Leitura competitiva</p>
+          <p class="agente-titulo">Observador de Mercado</p>
+          <p class="agente-desc">Analisa um competidor específico a partir de movimentos públicos. Detecta sinais, lê urgência e decodifica intenção estratégica. Não resume notícia. Interpreta posição.</p>
+          <p class="agente-entrega">Entrega: leitura de posição competitiva, sinais relevantes e tese sobre intenção.</p>
+        </div>
+      </div>
+
+      <div class="agente reveal">
+        <div class="agente-num">II</div>
+        <div>
+          <p class="agente-papel">Mapeamento territorial</p>
+          <p class="agente-titulo">Analista de Território</p>
+          <p class="agente-desc">Mapeia potencial, risco e oportunidade por região do Brasil. Onde concentrar esforço, onde manter posição, onde recuar. Aplica lógica geográfica em decisão de alocação.</p>
+          <p class="agente-entrega">Entrega: mapa de prioridade territorial com justificativa por região.</p>
+        </div>
+      </div>
+
+      <div class="agente reveal">
+        <div class="agente-num">III</div>
+        <div>
+          <p class="agente-papel">Modelagem de decisão</p>
+          <p class="agente-titulo">Modelador de Decisão</p>
+          <p class="agente-desc">Simula três cenários a partir dos dois agentes anteriores: conservador, base e agressivo. Cada um com upside, downside e gatilhos explícitos de ativação. Substitui o "depende" por critérios.</p>
+          <p class="agente-entrega">Entrega: três cenários com gatilhos, métricas de acompanhamento e ponto de virada.</p>
+        </div>
+      </div>
+
+      <div class="agente reveal">
+        <div class="agente-num">IV</div>
+        <div>
+          <p class="agente-papel">Narrativa executiva</p>
+          <p class="agente-titulo">Arquiteto de Narrativa</p>
+          <p class="agente-desc">Converte tudo em estrutura de comitê: storyline executivo, action titles, recomendação ancorada em SCR e pergunta preparada para o board. Não é "fazer um deck". É preparar uma defesa.</p>
+          <p class="agente-entrega">Entrega: narrativa pronta para defender, com pergunta crítica explícita.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="fluxo-final reveal">
+      <p>O resultado não é um relatório de cinquenta páginas. É <strong>uma posição estratégica defensável</strong>, gerada em minutos, no formato que comitê C-level consome.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section id="manifesto">
+  <div class="container">
+    <p class="section-label-dark reveal">
+      <svg class="label-simbolo" viewBox="0 0 100 100" width="12" height="12" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="square"><path d="M 8 30 V 8 H 30"/><path d="M 70 8 H 92 V 30"/><path d="M 92 70 V 92 H 70"/><path d="M 30 92 H 8 V 70"/></g><circle cx="50" cy="50" r="16" fill="currentColor"/></svg>
+      <span>Princípios</span>
+    </p>
+    <h2 class="section-title reveal">O que esta plataforma<br>não é.</h2>
+
+    <div class="manifesto-bloco">
+
+      <div class="manifesto-item reveal">
+        <p class="manifesto-num">01</p>
+        <p class="manifesto-titulo">Não é dashboard de BI</p>
+        <p class="manifesto-desc">Dashboard mostra o que aconteceu. Esta plataforma diz o que fazer a partir disso. Análise não substitui decisão, mas pode chegar até a porta dela.</p>
+      </div>
+
+      <div class="manifesto-item reveal">
+        <p class="manifesto-num">02</p>
+        <p class="manifesto-titulo">Não é chatbot de mercado</p>
+        <p class="manifesto-desc">Chatbot responde pergunta. Esta plataforma constrói posição. Cada agente segue um framework reconhecível: Porter, BCG, SCR, Pirâmide de Minto. Rigor estrutural, não conversa.</p>
+      </div>
+
+      <div class="manifesto-item reveal">
+        <p class="manifesto-num">03</p>
+        <p class="manifesto-titulo">Não é substituto de consultoria</p>
+        <p class="manifesto-desc">Consultoria entrega julgamento humano. Esta plataforma entrega matéria-prima de qualidade para o julgamento humano operar. A diferença é matéria-prima estruturada, não opinião pronta.</p>
+      </div>
+
+      <div class="manifesto-item reveal">
+        <p class="manifesto-num">04</p>
+        <p class="manifesto-titulo">Não é mais uma ferramenta de IA</p>
+        <p class="manifesto-desc">É uma demonstração viva do que o método ensinado nos workshops produz quando aplicado por alguém que entende de negócio. A ferramenta é incidental. O método é o ativo.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROVA -->
+<section id="prova">
+  <div class="container">
+    <p class="section-label reveal">
+      <svg class="label-simbolo" viewBox="0 0 100 100" width="12" height="12" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="square"><path d="M 8 30 V 8 H 30"/><path d="M 70 8 H 92 V 30"/><path d="M 92 70 V 92 H 70"/><path d="M 30 92 H 8 V 70"/></g><circle cx="50" cy="50" r="16" fill="currentColor"/></svg>
+      <span>O que isso significa</span>
+    </p>
+    <h2 class="section-title reveal">Uma semana de uma pessoa<br>é o novo equivalente ao quê?</h2>
+
+    <p class="prova-quote reveal">"Patente Intelligence foi <strong>construída sozinha, em uma semana, fora do horário de trabalho</strong>. Sem time de desenvolvimento. Sem investimento externo. A plataforma é a evidência mais direta do que IA, nas mãos certas, é capaz de produzir."</p>
+
+    <p class="prova-texto reveal">O ponto não é a plataforma em si. É o que ela revela sobre o cenário de trabalho atual. <strong>Quando o conhecimento de negócio conduz a IA, a distância entre intenção e execução desaparece.</strong> O que antes exigia roadmap, time multidisciplinar e mês de execução passa a caber em uma semana de noites.</p>
+
+    <p class="prova-texto reveal">Esse é o salto que o workshop ensina. A plataforma é a prova material de que ele acontece.</p>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section id="cta-final">
+  <div class="container">
+    <p class="section-label-dark reveal">
+      <svg class="label-simbolo" viewBox="0 0 100 100" width="12" height="12" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="square"><path d="M 8 30 V 8 H 30"/><path d="M 70 8 H 92 V 30"/><path d="M 92 70 V 92 H 70"/><path d="M 30 92 H 8 V 70"/></g><circle cx="50" cy="50" r="16" fill="currentColor"/></svg>
+      <span>Próximo passo</span>
+    </p>
+    <h2 class="section-title">Quer aprender a fazer<br>algo parecido?</h2>
+    <p class="cta-final-sub reveal">O método por trás da Patente Intelligence é exatamente o que ensino nos workshops. Individual ou corporativo, dependendo do seu contexto.</p>
+    <div class="cta-links reveal">
+      <a class="cta-link cta-link-primary" href="/workshop">Workshop individual</a>
+      <a class="cta-link cta-link-secondary" href="/corporativo">Workshop corporativo</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <a class="footer-marca" href="/">
+      <svg class="nav-simbolo" viewBox="0 0 100 100" width="18" height="18" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="square">
+          <path d="M 8 30 V 8 H 30"/>
+          <path d="M 70 8 H 92 V 30"/>
+          <path d="M 92 70 V 92 H 70"/>
+          <path d="M 30 92 H 8 V 70"/>
+        </g>
+        <circle cx="50" cy="50" r="14" fill="currentColor"/>
+      </svg>
+      <span>Patente<span class="nav-ponto">.</span></span>
+    </a>
+    <div class="footer-info">
+      <div class="footer-by">thiagopatente.com.br</div>
+      <div class="footer-cargo">Marketing Strategy Manager · MBA em IA</div>
+    </div>
+  </div>
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/5521988582351?text=Ol%C3%A1%2C%20Thiago.%20Vi%20a%20p%C3%A1gina%20da%20Patente%20Intelligence%20e%20quero%20conversar." target="_blank" aria-label="Conversar no WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+</a>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+
+<script>
+  // Animação sequencial da arquitetura
+  const arqStage = document.getElementById('arqStage');
+  if (arqStage) {
+    const arqObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Sequência: label inicial, agentes aparecem, conexões se desenham, centro pulsa
+          const arqLabel = document.querySelector('.arq-label');
+          const agentes = document.querySelectorAll('.arq-agente');
+          const conexoes = document.querySelectorAll('.conexao');
+          const centro = document.querySelector('.arq-centro');
+          const legenda = document.querySelector('.arq-legenda');
+
+          setTimeout(() => arqLabel.classList.add('ativa'), 100);
+
+          agentes.forEach((agente, i) => {
+            setTimeout(() => agente.classList.add('ativa'), 500 + i * 200);
+          });
+
+          conexoes.forEach((conexao, i) => {
+            setTimeout(() => conexao.classList.add('ativa'), 1400 + i * 200);
+          });
+
+          setTimeout(() => centro.classList.add('ativa'), 2400);
+          setTimeout(() => legenda.classList.add('ativa'), 3000);
+
+          arqObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+
+    arqObserver.observe(arqStage);
+  }
+
+  // Reveal do bloco de video
+  const videoSection = document.getElementById('video-prev');
+  if (videoSection) {
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          videoSection.classList.add('video-prev-revelado');
+          videoObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    videoObserver.observe(videoSection);
+  }
+</script>
+</body>
+</html>
