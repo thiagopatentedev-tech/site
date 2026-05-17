@@ -3,844 +3,230 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Patente Intelligence</title>
+<title>Thiago Patente · Estratégia, Inteligência de Dados e IA Aplicada</title>
+<meta name="description" content="Marketing Strategy Manager com 20+ anos em inteligência de dados e estratégia comercial. Capacita profissionais e empresas a aplicar IA no trabalho real.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --papel: #f3efe6;
-    --tinta: #15202b;
-    --terracota: #7c2410;
-    --tinta-suave: #2a3a4a;
-    --linha: rgba(21,32,43,0.12);
-    --max: 700px;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--papel);
-    color: var(--tinta);
-    font-family: 'Newsreader', Georgia, serif;
-    font-size: 18px;
-    line-height: 1.75;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    background: var(--papel);
-    border-bottom: 1px solid var(--linha);
-    padding: 0 2rem;
-    height: 56px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .nav-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 15px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    color: var(--tinta);
-    text-transform: uppercase;
-  }
-
-  .nav-logo span { color: var(--terracota); }
-
-  .nav-icons {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .nav-icon {
-    display: flex;
-    align-items: center;
-    color: var(--tinta);
-    opacity: 0.5;
-    transition: opacity 0.2s;
-    text-decoration: none;
-  }
-
-  .nav-icon:hover { opacity: 1; }
-
-  .container {
-    max-width: var(--max);
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-
-  section { padding: 7rem 0; }
-  section + section { border-top: 1px solid var(--linha); }
-
-  /* HERO */
-  #hero { padding-top: 13rem; padding-bottom: 4rem; }
-
-  .hero-eyebrow {
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--terracota);
-    margin-bottom: 2rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.1s;
-  }
-
-  .hero-headline {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.2rem, 5vw, 3.4rem);
-    font-weight: 500;
-    line-height: 1.18;
-    letter-spacing: -0.01em;
-    color: var(--tinta);
-    margin-bottom: 2rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.25s;
-  }
-
-  .hero-headline em {
-    font-style: italic;
-    color: var(--terracota);
-  }
-
-  .hero-sub {
-    font-family: 'Newsreader', serif;
-    font-size: 1.1rem;
-    font-weight: 300;
-    line-height: 1.85;
-    color: var(--tinta-suave);
-    max-width: 580px;
-    margin-bottom: 2.5rem;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.4s;
-  }
-
-  .hero-proof {
-    display: block;
-    font-family: 'Newsreader', serif;
-    font-size: 0.95rem;
-    font-style: italic;
-    color: var(--tinta);
-    border-left: 2px solid var(--terracota);
-    padding-left: 1rem;
-    margin-bottom: 3rem;
-    line-height: 1.75;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.55s;
-  }
-
-  .cta-primary {
-    display: inline-block;
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--papel);
-    background: var(--terracota);
-    padding: 1rem 2.2rem;
-    text-decoration: none;
-    transition: opacity 0.2s;
-    opacity: 0;
-    animation: fadeUp 0.8s ease forwards 0.7s;
-  }
-
-  .cta-primary:hover { opacity: 0.85; }
-
-  /* TENSÃO */
-  #tensao p {
-    font-size: 1.1rem;
-    font-weight: 300;
-    color: var(--tinta-suave);
-    line-height: 1.9;
-  }
-
-  #tensao p + p { margin-top: 1.4rem; }
-  #tensao strong { font-weight: 400; color: var(--tinta); }
-  #tensao em { font-style: italic; color: var(--terracota); }
-
-  /* LABELS E TÍTULOS */
-  .section-label {
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--terracota);
-    margin-bottom: 2.5rem;
-  }
-
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.6rem, 3vw, 2.2rem);
-    font-weight: 500;
-    line-height: 1.28;
-    margin-bottom: 3.5rem;
-  }
-
-  /* AGENTES */
-  .agentes { display: flex; flex-direction: column; }
-
-  .agente {
-    display: grid;
-    grid-template-columns: 48px 1fr;
-    gap: 1.5rem;
-    padding: 2.2rem 0;
-    border-top: 1px solid var(--linha);
-    align-items: start;
-  }
-
-  .agente:last-child { border-bottom: 1px solid var(--linha); }
-
-  .agente-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.4rem;
-    font-weight: 400;
-    color: var(--terracota);
-    line-height: 1;
-    padding-top: 0.15rem;
-  }
-
-  .agente-titulo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.05rem;
-    font-weight: 500;
-    margin-bottom: 0.4rem;
-    color: var(--tinta);
-  }
-
-  .agente-desc {
-    font-family: 'Newsreader', serif;
-    font-size: 0.95rem;
-    font-weight: 300;
-    color: var(--tinta-suave);
-    line-height: 1.75;
-    margin-bottom: 0.6rem;
-  }
-
-  .agente-ganho {
-    font-family: 'Newsreader', serif;
-    font-size: 0.9rem;
-    font-style: italic;
-    color: var(--terracota);
-    line-height: 1.6;
-  }
-
-  .resultado-final {
-    margin-top: 2.5rem;
-    padding: 1.8rem;
-    border: 1px solid var(--linha);
-    background: rgba(21,32,43,0.03);
-  }
-
-  .resultado-final p {
-    font-family: 'Newsreader', serif;
-    font-size: 1rem;
-    font-style: italic;
-    font-weight: 300;
-    color: var(--tinta);
-    line-height: 1.8;
-  }
-
-  .resultado-final p strong {
-    font-style: normal;
-    font-weight: 500;
-    color: var(--terracota);
-  }
-
-  /* PERSONAS */
-  .personas { display: flex; flex-direction: column; }
-
-  .persona {
-    padding: 2.4rem 0;
-    border-top: 1px solid var(--linha);
-  }
-
-  .persona:last-child { border-bottom: 1px solid var(--linha); }
-
-  .persona-role {
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--terracota);
-    margin-bottom: 0.8rem;
-  }
-
-  .persona-tensao {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.05rem;
-    font-weight: 500;
-    font-style: italic;
-    color: var(--tinta);
-    margin-bottom: 0.8rem;
-    line-height: 1.45;
-  }
-
-  .persona-virada {
-    font-family: 'Newsreader', serif;
-    font-size: 0.95rem;
-    font-weight: 300;
-    color: var(--tinta-suave);
-    line-height: 1.8;
-  }
-
-  /* DIFERENCIAIS */
-  .diferenciais { display: flex; flex-direction: column; }
-
-  .diferencial {
-    padding: 2.2rem 0;
-    border-top: 1px solid var(--linha);
-  }
-
-  .diferencial:last-child { border-bottom: 1px solid var(--linha); }
-
-  .diferencial-num {
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    color: var(--terracota);
-    margin-bottom: 0.6rem;
-  }
-
-  .diferencial-titulo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.05rem;
-    font-weight: 500;
-    color: var(--tinta);
-    margin-bottom: 0.5rem;
-  }
-
-  .diferencial-desc {
-    font-family: 'Newsreader', serif;
-    font-size: 0.95rem;
-    font-weight: 300;
-    color: var(--tinta-suave);
-    line-height: 1.8;
-  }
-
-  /* AUTOR */
-  #autor { background: var(--tinta); color: var(--papel); }
-  #autor .section-label { color: rgba(243,239,230,0.4); }
-  #autor .section-title { color: var(--papel); }
-
-  .autor-texto {
-    font-family: 'Newsreader', serif;
-    font-size: 1.05rem;
-    font-weight: 300;
-    color: rgba(243,239,230,0.75);
-    line-height: 1.9;
-    margin-bottom: 1.5rem;
-  }
-
-  .autor-proof {
-    font-family: 'Newsreader', serif;
-    font-size: 1rem;
-    font-style: italic;
-    color: rgba(243,239,230,0.5);
-    border-left: 2px solid var(--terracota);
-    padding-left: 1rem;
-    margin-bottom: 3rem;
-    line-height: 1.8;
-  }
-
-  .cta-secondary {
-    display: inline-block;
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--papel);
-    border: 1px solid rgba(243,239,230,0.3);
-    padding: 1rem 2.2rem;
-    text-decoration: none;
-    transition: background 0.2s, border-color 0.2s;
-  }
-
-  .cta-secondary:hover {
-    background: var(--terracota);
-    border-color: var(--terracota);
-  }
-
-  footer {
-    background: var(--tinta);
-    border-top: 1px solid rgba(243,239,230,0.08);
-    padding: 2.5rem 2rem;
-  }
-
-  .footer-inner {
-    max-width: var(--max);
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-
-  .footer-marca {
-    font-family: 'Playfair Display', serif;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(243,239,230,0.4);
-  }
-
-  .footer-marca span { color: var(--terracota); }
-
-  .footer-links {
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-  }
-
-  .footer-linkedin {
-    display: flex;
-    align-items: center;
-    opacity: 0.35;
-    transition: opacity 0.2s;
-  }
-
-  .footer-linkedin:hover { opacity: 0.7; }
-
-  .footer-by {
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    color: rgba(243,239,230,0.25);
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(16px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  .reveal {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-
-  .reveal.visible { opacity: 1; transform: none; }
-
-  .whatsapp-float {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    z-index: 200;
-    width: 52px;
-    height: 52px;
-    background: #25d366;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
-    transition: transform 0.2s, box-shadow 0.2s;
-    text-decoration: none;
-  }
-
-  .whatsapp-float:hover {
-    transform: scale(1.08);
-    box-shadow: 0 6px 24px rgba(0,0,0,0.22);
-  }
-
-  @media (max-width: 600px) {
-    #hero { padding-top: 10rem; }
-    section { padding: 5rem 0; }
-    nav { padding: 0 1.2rem; }
-    .container { padding: 0 1.2rem; }
-    .whatsapp-float { bottom: 1.5rem; right: 1.5rem; }
-  }
-
-  /* DADOS */
-  #dados {
-    background: var(--tinta);
-    color: var(--papel);
-    border-top: none;
-  }
-
-  .dados-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
-    margin-top: 1rem;
-  }
-
-  .dado-item {
-    border-top: 1px solid rgba(243,239,230,0.15);
-    padding-top: 1.5rem;
-  }
-
-  .dado-numero {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.4rem, 5vw, 3.2rem);
-    font-weight: 500;
-    color: var(--papel);
-    line-height: 1;
-    margin-bottom: 0.6rem;
-  }
-
-  .dado-numero span {
-    color: var(--terracota);
-  }
-
-  .dado-desc {
-    font-family: 'Newsreader', serif;
-    font-size: 0.88rem;
-    font-weight: 300;
-    color: rgba(243,239,230,0.65);
-    line-height: 1.65;
-    margin-bottom: 0.5rem;
-  }
-
-  .dado-fonte {
-    font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    font-weight: 400;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(243,239,230,0.3);
-  }
-
-  @media (max-width: 600px) {
-    .dados-grid { grid-template-columns: 1fr; gap: 2rem; }
-  }
-
-  /* ACESSO */
-  #acesso {
-    background: var(--papel);
-  }
-
-  .acesso-intro {
-    font-family: 'Newsreader', serif;
-    font-size: 1.05rem;
-    font-weight: 300;
-    color: var(--tinta-suave);
-    line-height: 1.85;
-    margin-bottom: 3rem;
-    max-width: 560px;
-  }
-
-  .acesso-aviso {
-    display: inline-block;
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--terracota);
-    border: 1px solid rgba(124,36,16,0.25);
-    padding: 0.5rem 1rem;
-    margin-bottom: 2.5rem;
-  }
-
-  .tally-wrapper {
-    width: 100%;
-    border: 1px solid var(--linha);
-    background: white;
-    min-height: 420px;
-  }
-
-  .tally-wrapper iframe {
-    width: 100%;
-    min-height: 420px;
-    border: none;
-    display: block;
-  }
-
-  .tally-placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 320px;
-    background: rgba(21,32,43,0.03);
-    border: 1px dashed var(--linha);
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    color: rgba(21,32,43,0.3);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --papel: #f3efe6; --tinta: #15202b; --terracota: #7c2410;
+  --coral: #d97757; --tinta-suave: #2a3a4a;
+  --linha: rgba(21,32,43,0.12); --max: 720px;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--papel); color: var(--tinta); font-family: 'Newsreader', Georgia, serif; font-size: 18px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--papel); border-bottom: 1px solid var(--linha); padding: 0 2rem; height: 56px; display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 500; letter-spacing: 0.08em; color: var(--tinta); text-transform: uppercase; text-decoration: none; }
+.nav-logo span { color: var(--terracota); }
+.nav-icons { display: flex; align-items: center; gap: 1rem; }
+.nav-icon { display: flex; align-items: center; color: var(--tinta); opacity: 0.45; transition: opacity 0.2s; text-decoration: none; }
+.nav-icon:hover { opacity: 1; }
+.container { max-width: var(--max); margin: 0 auto; padding: 0 2rem; }
+section { padding: 7rem 0; }
+section + section { border-top: 1px solid var(--linha); }
+#hero { padding-top: 12rem; padding-bottom: 7rem; }
+.hero-eyebrow { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terracota); margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.1s; }
+.hero-headline { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 500; line-height: 1.2; letter-spacing: -0.01em; color: var(--tinta); margin-bottom: 2rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.25s; }
+.hero-headline em { font-style: italic; color: var(--terracota); }
+.hero-sub { font-family: 'Newsreader', serif; font-size: 1.1rem; font-weight: 300; line-height: 1.85; color: var(--tinta-suave); max-width: 600px; margin-bottom: 3rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.4s; }
+.hero-marcas { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(21,32,43,0.45); opacity: 0; animation: fadeUp 0.8s ease forwards 0.55s; }
+.hero-marcas strong { color: var(--terracota); font-weight: 500; }
+#trajetoria { background: var(--tinta); color: var(--papel); border-top: none; }
+.trajetoria-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
+.traj-item { border-top: 1px solid rgba(217,119,87,0.45); padding-top: 1.5rem; }
+.traj-numero { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 5vw, 3.2rem); font-weight: 500; color: var(--papel); line-height: 1; margin-bottom: 0.6rem; }
+.traj-numero span { color: var(--coral); font-weight: 700; margin-left: 0.05em; }
+.traj-desc { font-family: 'Newsreader', serif; font-size: 0.9rem; font-weight: 300; color: rgba(243,239,230,0.7); line-height: 1.7; }
+.section-label { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terracota); margin-bottom: 2.5rem; }
+.section-label-dark { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(243,239,230,0.4); margin-bottom: 2.5rem; }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 500; line-height: 1.28; margin-bottom: 3rem; }
+.ofertas { display: flex; flex-direction: column; }
+.oferta { display: block; padding: 2.5rem 0; border-top: 1px solid var(--linha); text-decoration: none; color: inherit; transition: padding-left 0.3s ease; }
+.oferta:hover { padding-left: 1rem; }
+.oferta:last-child { border-bottom: 1px solid var(--linha); }
+.oferta-tag { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--terracota); margin-bottom: 0.8rem; }
+.oferta-titulo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 500; color: var(--tinta); margin-bottom: 0.6rem; line-height: 1.3; }
+.oferta-desc { font-family: 'Newsreader', serif; font-size: 1rem; font-weight: 300; color: var(--tinta-suave); line-height: 1.75; margin-bottom: 1rem; }
+.oferta-cta { font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--terracota); border-bottom: 1px solid var(--terracota); padding-bottom: 1px; display: inline-block; }
+#prova { background: var(--tinta); color: var(--papel); border-top: none; }
+#prova .section-title { color: var(--papel); }
+.prova-lead { font-family: 'Newsreader', serif; font-size: 1.1rem; font-weight: 300; color: rgba(243,239,230,0.8); line-height: 1.85; margin-bottom: 2rem; max-width: 620px; }
+.prova-quote { font-family: 'Newsreader', serif; font-size: 1rem; font-style: italic; color: rgba(243,239,230,0.6); border-left: 2px solid var(--terracota); padding-left: 1rem; margin-bottom: 2.5rem; line-height: 1.8; }
+.prova-link { display: inline-block; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--papel); border: 1px solid rgba(217,119,87,0.55); padding: 0.9rem 1.8rem; text-decoration: none; transition: background 0.2s, border-color 0.2s, color 0.2s; }
+.prova-link:hover { background: var(--terracota); border-color: var(--terracota); }
+.sobre-texto { font-family: 'Newsreader', serif; font-size: 1.05rem; font-weight: 300; color: var(--tinta-suave); line-height: 1.95; margin-bottom: 1.5rem; }
+.sobre-texto strong { font-weight: 400; color: var(--tinta); }
+.sobre-pessoal { font-family: 'Newsreader', serif; font-size: 1rem; font-style: italic; color: var(--tinta-suave); border-left: 2px solid var(--terracota); padding-left: 1rem; line-height: 1.8; margin-top: 2rem; }
+#contato { background: var(--tinta); color: var(--papel); border-top: none; text-align: center; padding: 6rem 0; }
+#contato .section-title { color: var(--papel); margin-bottom: 2rem; }
+.contato-sub { font-family: 'Newsreader', serif; font-size: 1.05rem; font-weight: 300; font-style: italic; color: rgba(243,239,230,0.6); line-height: 1.75; margin-bottom: 3rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+.contato-links { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+.contato-link { display: inline-flex; align-items: center; gap: 0.6rem; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; padding: 0.9rem 1.8rem; transition: background 0.2s, border-color 0.2s; }
+.contato-link-primary { background: var(--terracota); color: var(--papel); border: 1px solid var(--terracota); }
+.contato-link-primary:hover { background: transparent; }
+.contato-link-secondary { color: var(--papel); border: 1px solid rgba(217,119,87,0.55); }
+.contato-link-secondary:hover { border-color: var(--coral); background: rgba(217,119,87,0.1); }
+footer { background: var(--tinta); border-top: 1px solid rgba(243,239,230,0.08); padding: 2.5rem 2rem; }
+.footer-inner { max-width: var(--max); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer-marca { font-family: 'Playfair Display', serif; font-size: 14px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(243,239,230,0.35); text-decoration: none; }
+.footer-marca span { color: var(--terracota); }
+.footer-info { display: flex; flex-direction: column; gap: 0.25rem; align-items: flex-end; }
+.footer-by { font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.08em; color: rgba(243,239,230,0.25); }
+.footer-cargo { font-family: 'Inter', sans-serif; font-size: 10px; letter-spacing: 0.08em; color: rgba(243,239,230,0.18); text-transform: uppercase; }
+.whatsapp-float { position: fixed; bottom: 2rem; right: 2rem; z-index: 200; width: 52px; height: 52px; background: #25d366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(0,0,0,0.18); transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; }
+.whatsapp-float:hover { transform: scale(1.08); box-shadow: 0 6px 24px rgba(0,0,0,0.22); }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: none; }
+@media (max-width: 600px) {
+  #hero { padding-top: 10rem; }
+  section { padding: 5rem 0; }
+  nav { padding: 0 1.2rem; }
+  .container { padding: 0 1.2rem; }
+  .trajetoria-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .whatsapp-float { bottom: 1.5rem; right: 1.5rem; }
+  .contato-links { flex-direction: column; align-items: stretch; }
+  .contato-link { justify-content: center; }
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="nav-logo">Patente<span>.</span>Intelligence</div>
+  <a class="nav-logo" href="#">Thiago<span>.</span>Patente</a>
   <div class="nav-icons">
-    <a class="nav-icon" href="https://wa.me/5521988582351?text=Ol%C3%A1%2C%20Thiago.%20Vi%20o%20Patente%20Intelligence%20e%20quero%20conversar." target="_blank" aria-label="WhatsApp">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
-      </svg>
+    <a class="nav-icon" href="https://wa.me/5521988582351?text=Ol%C3%A1%2C%20Thiago.%20Vi%20seu%20site%20e%20quero%20conversar." target="_blank" aria-label="WhatsApp">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
     </a>
     <a class="nav-icon" href="https://www.linkedin.com/in/thiagopatente" target="_blank" aria-label="LinkedIn">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-      </svg>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
     </a>
   </div>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div class="container">
-    <p class="hero-eyebrow">Inteligência estratégica com IA</p>
-    <h1 class="hero-headline">Seu conhecimento<br>sempre foi o ativo.<br><em>IA é o que o coloca em escala.</em></h1>
-    <p class="hero-sub">Patente Intelligence é uma plataforma com quatro agentes de IA encadeados que converte anos de experiência estratégica em análise rigorosa, cenários e direção. Em minutos. Sem depender de programação ou dado bruto.</p>
-    <span class="hero-proof">Desenvolvida sozinha, em uma semana, fora do horário de trabalho. Sem time. Sem investimento externo.</span>
+    <p class="hero-eyebrow">Thiago Patente · Estratégia, dados e IA aplicada</p>
+    <h1 class="hero-headline">Duas décadas transformando<br>dado em decisão.<br><em>Hoje, com IA.</em></h1>
+    <p class="hero-sub">Marketing Strategy Manager com mais de 20 anos em inteligência de mercado, business intelligence e planejamento comercial. Capacito profissionais e empresas a aplicar IA no trabalho real, com a profundidade de quem já fazia isso antes da IA virar moda.</p>
+    <p class="hero-marcas">Trajetória em <strong>TIM · Oi · V.tal · Blu · Escale · GSK · Unimed Rio</strong></p>
   </div>
 </section>
 
-
-<!-- DADOS -->
-<section id="dados">
+<section id="trajetoria">
   <div class="container">
-    <div class="dados-grid">
-
-      <div class="dado-item reveal">
-        <p class="dado-numero">4<span>,8x</span></p>
-        <p class="dado-desc">mais produtividade nos setores que já adotaram IA no trabalho, em comparação com os que não adotaram.</p>
-        <p class="dado-fonte">PwC · AI Jobs Barometer 2024</p>
+    <p class="section-label-dark reveal">Trajetória</p>
+    <div class="trajetoria-grid">
+      <div class="traj-item reveal">
+        <p class="traj-numero">20<span>+</span></p>
+        <p class="traj-desc">anos de trajetória, metade em posições de liderança, passando por contact center, saúde, marketing, planejamento comercial, BI e analytics engineering.</p>
       </div>
-
-      <div class="dado-item reveal">
-        <p class="dado-numero">56<span>%</span></p>
-        <p class="dado-desc">de prêmio salarial médio para profissionais com competências em IA, mais que o dobro do ano anterior.</p>
-        <p class="dado-fonte">PwC · Global AI Jobs Barometer 2025</p>
+      <div class="traj-item reveal">
+        <p class="traj-numero">100<span>+</span></p>
+        <p class="traj-desc">pessoas lideradas diretamente, e muitas outras indiretamente em projetos estratégicos de dados, performance e transformação.</p>
       </div>
-
-      <div class="dado-item reveal">
-        <p class="dado-numero">5<span>h</span></p>
-        <p class="dado-desc">economizadas por semana por profissional que usa IA, liberando foco para o que só você pode entregar.</p>
-        <p class="dado-fonte">Thomson Reuters · Future of Professionals 2025</p>
+      <div class="traj-item reveal">
+        <p class="traj-numero">3</p>
+        <p class="traj-desc">formações estruturantes: Analista de Sistemas, MBA em Gestão e Inteligência Competitiva (ESPM) e MBA em IA, Data Science e Big Data para Negócios (Ibmec).</p>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- TENSÃO -->
-<section id="tensao">
-  <div class="container reveal">
-    <p>Profissionais sênior acumulam anos de leitura de mercado, contexto setorial e experiência em decisão. <strong>Esse conhecimento é raro. É o que separa análise de opinião.</strong></p>
-    <p>A barreira nunca foi intelectual. Foi técnica. Programação, manipulação de dado, ferramentas que exigem aprendizado longo para entregar resultado incerto. <em>Essa barreira acabou.</em></p>
-    <p>IA coloca o profissional sênior no centro do processo. O conhecimento conduz. A ferramenta executa. A entrega é desproporcional ao esforço convencional.</p>
-  </div>
-</section>
-
-<!-- AGENTES -->
-<section id="agentes">
+<section id="ofertas">
   <div class="container">
-    <p class="section-label reveal">Como funciona</p>
-    <h2 class="section-title reveal">Quatro agentes encadeados.<br>Cada um amplifica o anterior.</h2>
+    <p class="section-label reveal">O que ensino</p>
+    <h2 class="section-title reveal">Capacitação prática.<br>Para quem decide, não para quem programa.</h2>
 
-    <div class="agentes">
+    <div class="ofertas">
 
-      <div class="agente reveal">
-        <div class="agente-num">I</div>
-        <div>
-          <p class="agente-titulo">Observador de Mercado</p>
-          <p class="agente-desc">Analisa um competidor específico, detecta sinais e decodifica intenção estratégica a partir de movimentos públicos.</p>
-          <p class="agente-ganho">Você para de reagir. Começa a antecipar.</p>
-        </div>
-      </div>
+      <a class="oferta reveal" href="/workshop">
+        <p class="oferta-tag">Workshop individual</p>
+        <p class="oferta-titulo">A IA como sua nova camada de raciocínio</p>
+        <p class="oferta-desc">Em duas horas, profissionais sêniores incorporam IA na rotina analítica e passam a entregar em horas o que hoje fazem em dias.</p>
+        <span class="oferta-cta">Ver detalhes →</span>
+      </a>
 
-      <div class="agente reveal">
-        <div class="agente-num">II</div>
-        <div>
-          <p class="agente-titulo">Analista de Território</p>
-          <p class="agente-desc">Mapeia potencial, risco e oportunidade por região. Entrega onde concentrar esforço e onde recuar.</p>
-          <p class="agente-ganho">Decisão territorial com fundamento, não com intuição isolada.</p>
-        </div>
-      </div>
-
-      <div class="agente reveal">
-        <div class="agente-num">III</div>
-        <div>
-          <p class="agente-titulo">Modelador de Decisão</p>
-          <p class="agente-desc">Simula três cenários, conservador, base e agressivo, com upside, downside e gatilhos explícitos para cada um.</p>
-          <p class="agente-ganho">Você apresenta direção. Não apresenta dúvida.</p>
-        </div>
-      </div>
-
-      <div class="agente reveal">
-        <div class="agente-num">IV</div>
-        <div>
-          <p class="agente-titulo">Arquiteto de Narrativa</p>
-          <p class="agente-desc">Converte tudo em estrutura executiva com slides, SCR e pergunta preparada. O formato que liderança sênior reconhece como rigoroso.</p>
-          <p class="agente-ganho">Sua análise chega no formato que faz a sala prestar atenção.</p>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="resultado-final reveal">
-      <p>O resultado não é um relatório. É <strong>a distância entre quem entrega dado e quem entrega direção</strong>, na prática, no seu trabalho, hoje.</p>
-    </div>
-  </div>
-</section>
-
-<!-- PARA QUEM -->
-<section id="para-quem">
-  <div class="container">
-    <p class="section-label reveal">Para quem</p>
-    <h2 class="section-title reveal">Três perfis.<br>Uma mesma virada.</h2>
-
-    <div class="personas">
-
-      <div class="persona reveal">
-        <p class="persona-role">Executivo sênior</p>
-        <p class="persona-tensao">"Tenho o conhecimento. Me falta tempo e ferramenta para transformar isso em entrega."</p>
-        <p class="persona-virada">Com IA aplicada à sua senioridade, você entrega em horas o que levaria dias. Sem depender de analista, sem esperar relatório de terceiro.</p>
-      </div>
-
-      <div class="persona reveal">
-        <p class="persona-role">Consultor e estrategista</p>
-        <p class="persona-tensao">"Meu diferencial é o raciocínio. Mas a produção ainda consome tempo demais."</p>
-        <p class="persona-virada">IA assume a execução operacional. Você concentra energia onde ninguém te substitui: na leitura, no julgamento, na relação com o cliente.</p>
-      </div>
-
-      <div class="persona reveal">
-        <p class="persona-role">Profissional sênior em qualquer área</p>
-        <p class="persona-tensao">"Tenho conhecimento acumulado. Me falta ferramenta para transformar isso em entrega rápida e estruturada."</p>
-        <p class="persona-virada">A barreira entre o que você sabe e o que você consegue produzir é técnica, não intelectual. IA elimina essa barreira. O que sobra é o que só você tem.</p>
-      </div>
+      <a class="oferta reveal" href="/corporativo">
+        <p class="oferta-tag">Workshop corporativo</p>
+        <p class="oferta-titulo">Capacitação executiva para empresas</p>
+        <p class="oferta-desc">Mesmo método aplicado a times inteiros. Sessão customizada por empresa, online ou presencial, com caso real de empresa listada na NYSE durante a aula.</p>
+        <span class="oferta-cta">Ver detalhes →</span>
+      </a>
 
     </div>
   </div>
 </section>
 
-<!-- DIFERENCIAIS -->
-<section id="diferenciais">
+<section id="prova">
   <div class="container">
-    <p class="section-label reveal">O que torna diferente</p>
-    <h2 class="section-title reveal">Não é programação.<br>Não é dado bruto.<br>É senioridade em escala.</h2>
+    <p class="section-label-dark reveal">Prova de execução</p>
+    <h2 class="section-title reveal">Não ensino IA na teoria.<br>Construo ferramentas com ela.</h2>
 
-    <div class="diferenciais">
+    <p class="prova-lead reveal">Patente Intelligence é uma plataforma com quatro agentes de IA encadeados que entrega análise estratégica em minutos. Observador de Mercado, Analista de Território, Modelador de Decisão e Arquiteto de Narrativa, em sequência, com contexto compartilhado.</p>
 
-      <div class="diferencial reveal">
-        <p class="diferencial-num">01</p>
-        <p class="diferencial-titulo">Feito para quem pensa, não para quem programa</p>
-        <p class="diferencial-desc">A plataforma não exige conhecimento técnico. Exige conhecimento de negócio. Quem tem anos de experiência estratégica extrai mais do que quem sabe codificar.</p>
-      </div>
+    <p class="prova-quote reveal">Desenvolvida sozinha, em uma semana, fora do horário de trabalho. Sem time de desenvolvimento. Sem investimento externo. É a evidência mais direta do que ensino na prática.</p>
 
-      <div class="diferencial reveal">
-        <p class="diferencial-num">02</p>
-        <p class="diferencial-titulo">Disciplina de framework em cada entrega</p>
-        <p class="diferencial-desc">Pirâmide de Minto, SCR, Porter, BCG Matrix. Nenhuma análise sem modelo reconhecível. Nenhuma recomendação sem evidência explícita. O rigor é estrutural, não estético.</p>
-      </div>
-
-      <div class="diferencial reveal">
-        <p class="diferencial-num">03</p>
-        <p class="diferencial-titulo">Ciclo completo em uma execução</p>
-        <p class="diferencial-desc">Leitura de mercado, mapeamento territorial, modelagem de cenários e narrativa. Quatro agentes que cobrem o arco completo, sem troca de ferramenta no meio do caminho.</p>
-      </div>
-
-      <div class="diferencial reveal">
-        <p class="diferencial-num">04</p>
-        <p class="diferencial-titulo">Visual que comunica antes do conteúdo</p>
-        <p class="diferencial-desc">Estrutura editorial com tipografia e paleta calibradas para padrão de consultoria sênior. O formato sinaliza rigor antes de qualquer palavra ser lida.</p>
-      </div>
-
-    </div>
+    <a class="prova-link reveal" href="/plataforma">Conhecer a plataforma</a>
   </div>
 </section>
 
-
-<!-- ACESSO -->
-<section id="acesso">
+<section id="sobre">
   <div class="container">
-    <p class="section-label reveal">Acesso</p>
-    <h2 class="section-title reveal">A plataforma não é aberta.<br>O acesso é por convite.</h2>
+    <p class="section-label reveal">Sobre</p>
+    <h2 class="section-title reveal">Quem está por trás disso.</h2>
 
-    <p class="acesso-intro reveal">Cada solicitação é avaliada individualmente. O objetivo é garantir que a ferramenta seja usada por quem tem contexto para extrair valor real dela. Se fizer sentido, o acesso é liberado e você recebe o link diretamente no email.</p>
+    <p class="sobre-texto reveal">Comecei como instrutor de informática em 1997. Passei por Caixa Econômica, Unimed Rio, GSK, Oi, Blu, Escale, V.tal e hoje atuo como <strong>Marketing Strategy Manager na TIM</strong>, conectando dados, mercado e negócio para suportar decisões executivas em B2C e PMEs.</p>
 
-    <div class="reveal">
-      <span class="acesso-aviso">Vagas limitadas · Aprovação manual</span>
-    </div>
+    <p class="sobre-texto reveal">Construí áreas de BI do zero, liderei times de analytics engineering, gerenciei planejamento comercial de bilhões em receita e desenvolvi modelos preditivos antes da IA generativa existir. <strong>A IA não substituiu o que eu já fazia. Multiplicou.</strong></p>
 
-    <div class="tally-wrapper reveal">
-      <!-- Substitua SEU_FORM_ID pelo ID do formulário criado no Tally -->
-      <!-- Exemplo: se a URL do seu form for tally.so/r/abc123, o ID é abc123 -->
-      <iframe
-        src="https://tally.so/embed/SEU_FORM_ID?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
-        loading="lazy"
-        width="100%"
-        height="420"
-        frameborder="0"
-        marginheight="0"
-        marginwidth="0"
-        title="Solicitar acesso">
-      </iframe>
-    </div>
+    <p class="sobre-texto reveal"><strong>Analista de Sistemas</strong> por formação original. O primeiro grande salto na carreira veio com o <strong>MBA em Gestão e Inteligência Competitiva pela ESPM</strong>, que abriu a ponte entre tecnologia e estratégia de negócio. Recentemente concluí o <strong>MBA em IA, Data Science e Big Data para Negócios no Ibmec</strong>, fechando o ciclo das três competências que sustentam meu trabalho hoje.</p>
 
+    <p class="sobre-texto reveal">A liderança que pratico não é só sobre resultado. Sou <strong>Practitioner em Programação Neurolinguística</strong> e isso reflete uma convicção: time alto desempenho começa por gente que se sente vista. Foco em pessoas é o que torna o resto sustentável.</p>
+
+    <p class="sobre-pessoal reveal">Pai de duas meninas, apaixonado por samba e músico nas horas vagas. É de tudo isso que vem boa parte do que aprendi sobre escuta, ritmo e aprendizado contínuo.</p>
   </div>
 </section>
 
-<!-- AUTOR -->
-<section id="autor">
+<section id="contato">
   <div class="container">
-    <p class="section-label reveal">Quem está por trás</p>
-    <h2 class="section-title reveal">Thiago Patente</h2>
-
-    <p class="autor-texto reveal">Atua no cruzamento entre estratégia corporativa, marketing intelligence e inteligência artificial aplicada ao mundo real do negócio. Não como tema de palestra. Como prática diária.</p>
-
-    <p class="autor-texto reveal">Patente Intelligence não foi encomendada para um time de desenvolvimento. Foi construída por uma pessoa, com conhecimento de negócio e domínio de IA, como prova concreta do que essa combinação produz.</p>
-
-    <p class="autor-proof reveal">Uma semana. Fora do horário de trabalho. Sem time. Sem investimento externo. O resultado está aqui.</p>
-
-    <p class="autor-texto reveal">Se você quer entender como aplicar isso ao seu trabalho, sua carreira ou sua equipe, o caminho começa por uma conversa.</p>
-
-    <a class="cta-secondary reveal" href="https://wa.me/5521988582351?text=Ol%C3%A1%2C%20Thiago.%20Vi%20o%20Patente%20Intelligence%20e%20quero%20conversar." target="_blank">Falar com Thiago no WhatsApp</a>
+    <p class="section-label-dark reveal">Próximo passo</p>
+    <h2 class="section-title reveal">Vamos conversar.</h2>
+    <p class="contato-sub reveal">Para workshop individual, corporativo, acesso à plataforma ou um caso específico, o caminho mais rápido começa por uma mensagem direta.</p>
+    <div class="contato-links reveal">
+      <a class="contato-link contato-link-primary" href="https://wa.me/5521988582351?text=Ol%C3%A1%2C%20Thiago.%20Vi%20seu%20site%20e%20quero%20conversar." target="_blank">WhatsApp</a>
+      <a class="contato-link contato-link-secondary" href="https://www.linkedin.com/in/thiagopatente" target="_blank">LinkedIn</a>
+    </div>
   </div>
 </section>
 
 <footer>
   <div class="footer-inner">
-    <div class="footer-marca">Patente<span>.</span>Intelligence</div>
-    <div class="footer-links">
-      <div class="footer-by">Desenvolvido por Thiago Patente</div>
-      <a class="footer-linkedin" href="https://www.linkedin.com/in/thiagopatente" target="_blank" aria-label="LinkedIn de Thiago Patente">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" fill="rgba(243,239,230,1)"/>
-        </svg>
-      </a>
+    <a class="footer-marca" href="#">Thiago<span>.</span>Patente</a>
+    <div class="footer-info">
+      <div class="footer-by">thiagopatente.com.br</div>
+      <div class="footer-cargo">Marketing Strategy Manager · MBA em IA</div>
     </div>
   </div>
 </footer>
 
-<script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12 });
-
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
-
-<a class="whatsapp-float" href="https://wa.me/5521988582351?text=Ol%C3%A1%2C%20Thiago.%20Vi%20o%20Patente%20Intelligence%20e%20quero%20conversar." target="_blank" aria-label="Conversar no WhatsApp">
-  <svg width="26" height="26" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
-  </svg>
+<a class="whatsapp-float" href="https://wa.me/5521988582351?text=Ol%C3%A1%2C%20Thiago.%20Vi%20seu%20site%20e%20quero%20conversar." target="_blank" aria-label="Conversar no WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
 </a>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 
 </body>
 </html>
