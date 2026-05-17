@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Workshop · A IA como sua nova camada de raciocínio</title>
+<link rel="icon" type="image/svg+xml" href="/marca/patente-favicon-papel.svg" media="(prefers-color-scheme: light)" />
+<link rel="icon" type="image/svg+xml" href="/marca/patente-favicon-tinta.svg" media="(prefers-color-scheme: dark)" />
+<link rel="alternate icon" href="/marca/patente-favicon-32.png" />
+<link rel="apple-touch-icon" href="/marca/patente-favicon-180.png" />
+<meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#15202b" media="(prefers-color-scheme: dark)" />
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -45,16 +52,21 @@ nav {
 }
 
 .nav-logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 22px;
   font-weight: 500;
-  letter-spacing: 0.08em;
+  letter-spacing: -0.025em;
   color: var(--tinta);
-  text-transform: uppercase;
   text-decoration: none;
+  line-height: 1;
 }
 
-.nav-logo span { color: var(--terracota); }
+.nav-simbolo { color: var(--terracota); flex-shrink: 0; }
+.nav-wordmark { color: var(--tinta); }
+.nav-ponto { color: var(--terracota); }
 
 .nav-link {
   font-family: 'Inter', sans-serif;
@@ -165,6 +177,9 @@ section + section { border-top: 1px solid var(--linha); }
 .cta-primary:hover { opacity: 0.85; }
 
 .section-label {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
   font-family: 'Inter', sans-serif;
   font-size: 11px;
   font-weight: 500;
@@ -173,6 +188,11 @@ section + section { border-top: 1px solid var(--linha); }
   color: var(--terracota);
   margin-bottom: 2rem;
 }
+
+.label-simbolo { flex-shrink: 0; color: var(--terracota); }
+#caso .label-simbolo,
+#turmas .label-simbolo,
+#autor .label-simbolo { color: var(--coral); }
 
 .section-title {
   font-family: 'Playfair Display', serif;
@@ -620,13 +640,13 @@ footer {
 }
 
 .footer-marca {
-  font-family: 'Playfair Display', serif;
-  font-size: 14px;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 18px;
   font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: rgba(243,239,230,0.4);
+  letter-spacing: -0.025em;
+  color: rgba(243,239,230,0.55);
   text-decoration: none;
+  line-height: 1;
 }
 
 .footer-marca span { color: var(--coral); }
@@ -686,7 +706,18 @@ footer {
 <body>
 
 <nav>
-  <a class="nav-logo" href="/">Patente<span>.</span>Workshop</a>
+  <a class="nav-logo" href="/">
+    <svg class="nav-simbolo" viewBox="0 0 100 100" width="22" height="22" aria-hidden="true">
+      <g fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="square">
+        <path d="M 8 30 V 8 H 30"/>
+        <path d="M 70 8 H 92 V 30"/>
+        <path d="M 92 70 V 92 H 70"/>
+        <path d="M 30 92 H 8 V 70"/>
+      </g>
+      <circle cx="50" cy="50" r="14" fill="currentColor"/>
+    </svg>
+    <span class="nav-wordmark">Patente<span class="nav-ponto">.</span></span>
+  </a>
   <a class="nav-link" href="#inscricao">Garantir vaga</a>
 </nav>
 
@@ -717,7 +748,7 @@ footer {
 
 <section id="caso">
   <div class="container">
-    <p class="section-label reveal">O caso âncora da aula</p>
+    <p class="section-label reveal"><svg class="label-simbolo" viewBox="0 0 100 100" width="12" height="12" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="square"><path d="M 8 30 V 8 H 30"/><path d="M 70 8 H 92 V 30"/><path d="M 92 70 V 92 H 70"/><path d="M 30 92 H 8 V 70"/></g><circle cx="50" cy="50" r="16" fill="currentColor"/></svg><span>O caso âncora da aula</span></p>
     <h2 class="section-title reveal">Vamos analisar uma <em>operadora americana</em> listada na NYSE, ao vivo.</h2>
     <p class="section-intro reveal">Carregamos o relatório anual completo, transcrição da última call com investidores e o press release mais recente. Em minutos, a IA entrega análise estratégica em formato consultoria sênior. Você vê acontecendo, e replica no seu trabalho.</p>
 
@@ -729,7 +760,7 @@ footer {
 
 <section id="jornada">
   <div class="container">
-    <p class="section-label reveal">A jornada de 2 horas</p>
+    <p class="section-label reveal"><svg class="label-simbolo" viewBox="0 0 100 100" width="12" height="12" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="square"><path d="M 8 30 V 8 H 30"/><path d="M 70 8 H 92 V 30"/><path d="M 92 70 V 92 H 70"/><path d="M 30 92 H 8 V 70"/></g><circle cx="50" cy="50" r="16" fill="currentColor"/></svg><span>A jornada de 2 horas</span></p>
     <h2 class="section-title reveal">Cada bloco é construção,<br>demonstração e aplicação.<br><em>Sem teoria perdida.</em></h2>
 
     <div class="blocos">
@@ -821,7 +852,7 @@ footer {
 
 <section id="filtros">
   <div class="container">
-    <p class="section-label reveal">Para quem é</p>
+    <p class="section-label reveal"><svg class="label-simbolo" viewBox="0 0 100 100" width="12" height="12" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="square"><path d="M 8 30 V 8 H 30"/><path d="M 70 8 H 92 V 30"/><path d="M 92 70 V 92 H 70"/><path d="M 30 92 H 8 V 70"/></g><circle cx="50" cy="50" r="16" fill="currentColor"/></svg><span>Para quem é</span></p>
     <h2 class="section-title reveal">Honestidade antes<br>da inscrição.</h2>
 
     <div class="filtros-grid">
@@ -851,7 +882,7 @@ footer {
 
 <section id="turmas">
   <div class="container">
-    <p class="section-label reveal">Próximas turmas</p>
+    <p class="section-label reveal"><svg class="label-simbolo" viewBox="0 0 100 100" width="12" height="12" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="square"><path d="M 8 30 V 8 H 30"/><path d="M 70 8 H 92 V 30"/><path d="M 92 70 V 92 H 70"/><path d="M 30 92 H 8 V 70"/></g><circle cx="50" cy="50" r="16" fill="currentColor"/></svg><span>Próximas turmas</span></p>
     <h2 class="section-title reveal">Três datas em maio.<br><em>Quatro vagas em cada.</em></h2>
 
     <div class="turmas-grid">
@@ -893,7 +924,7 @@ footer {
 
 <section id="autor">
   <div class="container">
-    <p class="section-label reveal">Quem conduz</p>
+    <p class="section-label reveal"><svg class="label-simbolo" viewBox="0 0 100 100" width="12" height="12" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="square"><path d="M 8 30 V 8 H 30"/><path d="M 70 8 H 92 V 30"/><path d="M 92 70 V 92 H 70"/><path d="M 30 92 H 8 V 70"/></g><circle cx="50" cy="50" r="16" fill="currentColor"/></svg><span>Quem conduz</span></p>
     <h2 class="section-title reveal">Thiago Patente</h2>
     <p class="autor-texto reveal">Marketing Strategy Manager. MBA em IA. Atua no cruzamento entre estratégia corporativa, marketing intelligence e IA aplicada ao mundo real do negócio. Conduz o workshop com base em prática diária, não em teoria de palestra.</p>
     <a class="cta-secondary reveal" href="https://www.linkedin.com/in/thiagopatente" target="_blank">Conhecer no LinkedIn</a>
@@ -902,7 +933,7 @@ footer {
 
 <section id="inscricao">
   <div class="container">
-    <p class="section-label reveal">Inscrição</p>
+    <p class="section-label reveal"><svg class="label-simbolo" viewBox="0 0 100 100" width="12" height="12" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="square"><path d="M 8 30 V 8 H 30"/><path d="M 70 8 H 92 V 30"/><path d="M 92 70 V 92 H 70"/><path d="M 30 92 H 8 V 70"/></g><circle cx="50" cy="50" r="16" fill="currentColor"/></svg><span>Inscrição</span></p>
     <h2 class="section-title reveal">Quer entrar na<br><em>próxima turma piloto?</em></h2>
 
     <p class="inscricao-intro reveal">Cada inscrição é avaliada individualmente. O objetivo é garantir que o conteúdo corresponde ao seu momento profissional. Se fizer sentido, sua vaga é confirmada e você recebe os detalhes por email.</p>
@@ -926,7 +957,7 @@ footer {
 
 <footer>
   <div class="footer-inner">
-    <a class="footer-marca" href="/">Patente<span>.</span>Workshop</a>
+    <a class="footer-marca" href="/">Patente<span>.</span></a>
     <div class="footer-by">Conduzido por Thiago Patente</div>
   </div>
 </footer>
