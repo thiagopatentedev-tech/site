@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6BCML72Q87"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-6BCML72Q87');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patente.Advisory · A sessão executiva de IA</title>
+<meta name="description" content="Mentoria 1:1 para profissionais sêniores que já passaram do básico em IA. Arquitetura de inteligência feita para o seu contexto, no seu nível.">
+<link rel="icon" type="image/svg+xml" href="/marca/patente-favicon-papel.svg" media="(prefers-color-scheme: light)" />
+<link rel="icon" type="image/svg+xml" href="/marca/patente-favicon-tinta.svg" media="(prefers-color-scheme: dark)" />
+<link rel="alternate icon" href="/marca/patente-favicon-32.png" />
+<link rel="apple-touch-icon" href="/marca/patente-favicon-180.png" />
+<meta name="theme-color" content="#f3efe6" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#15202b" media="(prefers-color-scheme: dark)" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --papel: #f3efe6;
+  --tinta: #15202b;
+  --terracota: #7c2410;
+  --coral: #d97757;
+  --tinta-suave: #2a3a4a;
+  --linha: rgba(21,32,43,0.12);
+  --max: 720px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--papel);
+  border-bottom: 1px solid var(--linha);
+  padding: 0 2rem;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  color: var(--tinta);
+  text-decoration: none;
+  line-height: 1;
+}
+
+.nav-simbolo { color: var(--terracota); flex-shrink: 0; transform: translateY(-0.1em); }
+.nav-wordmark { color: var(--tinta); }
+.nav-ponto { color: var(--terracota); }
+
+.nav-icons { display: flex; align-items: center; gap: 1rem; }
+
+.nav-icon {
+  display: flex;
+  align-items: center;
+  color: var(--tinta);
+  opacity: 0.45;
+  transition: opacity 0.2s;
+  text-decoration: none;
+}
+
+.nav-icon:hover { opacity: 1; }
+
+.container {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+section { padding: 7rem 0; }
+section + section { border-top: 1px solid var(--linha); }
+
+/* MARCA DO PRODUTO */
+.marca-ponto { color: var(--terracota); }
+.marca-ponto-dark { color: var(--coral); }
+
+/* SECTION LABELS */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--terracota);
+  margin-bottom: 2.5rem;
+}
+
+.section-label-dark {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 2.5rem;
+}
+
+.label-simbolo { flex-shrink: 0; }
+.section-label .label-simbolo { color: var(--terracota); }
+.section-label-dark .label-simbolo { color: var(--coral); }
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 500;
+  line-height: 1.28;
+  margin-bottom: 3rem;
+}
+
+.section-title em { font-style: italic; color: var(--terracota); }
+
+/* HERO (TINTA) */
+#hero {
+  background: var(--tinta);
+  color: var(--papel);
+  border-top: none;
+  padding-top: 12rem;
+  padding-bottom: 6rem;
+}
+
+.hero-eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.1s;
+}
+
+.hero-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--papel);
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.25s;
+}
+
+.hero-headline em { font-style: italic; color: var(--coral); }
+
+.hero-sub {
+  font-family: 'Newsreader', serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: rgba(243,239,230,0.75);
+  max-width: 600px;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.4s;
+}
+
+.hero-escassez {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: rgba(243,239,230,0.5);
+  border-left: 2px solid var(--coral);
+  padding-left: 0.9rem;
+  line-height: 1.6;
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards 0.55s;
+}
+
+/* ESPELHO (TINTA) */
+#espelho {
+  background: var(--tinta);
+  color: var(--papel);
+  border-top: 1px solid rgba(243,239,230,0.1);
+}
+#espelho .section-title { color: var(--papel); }
+#espelho .section-title em { color: var(--coral); }
+
+.espelho-corpo {
+  font-family: 'Newsreader', serif;
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: rgba(243,239,230,0.78);
+  line-height: 1.9;
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+}
+
+.espelho-lista {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.espelho-item {
+  display: grid;
+  grid-template-columns: 14px 1fr;
+  gap: 1rem;
+  align-items: start;
+  padding: 1.2rem 0;
+  border-top: 1px solid rgba(217,119,87,0.35);
+}
+
+.espelho-item:last-child { border-bottom: 1px solid rgba(217,119,87,0.35); }
+
+.espelho-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--coral);
+  border-radius: 50%;
+  margin-top: 0.7rem;
+}
+
+.espelho-texto {
+  font-family: 'Newsreader', serif;
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--papel);
+  line-height: 1.7;
+}
+
+/* MUDA (PAPEL) */
+.bloco-corpo {
+  font-family: 'Newsreader', serif;
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--tinta-suave);
+  line-height: 1.9;
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+}
+
+.bloco-corpo strong { font-weight: 400; color: var(--tinta); }
+.bloco-corpo em { font-style: italic; color: var(--terracota); }
+
+.destaque-quote {
+  font-family: 'Newsreader', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--tinta);
+  border-left: 2px solid var(--terracota);
+  padding-left: 1.2rem;
+  line-height: 1.8;
+  margin-top: 2.5rem;
+  max-width: 600px;
+}
+
+/* PLANOS (PAPEL) */
+.planos-intro {
+  font-family: 'Newsreader', serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--tinta-suave);
+  line-height: 1.8;
+  margin-bottom: 3rem;
+  max-width: 560px;
+}
+
+.planos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.plano-card {
+  border: 1px solid var(--linha);
+  background: rgba(21,32,43,0.015);
+  padding: 2.4rem 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.plano-operar {
+  border: 2px solid var(--terracota);
+  background: rgba(124,36,16,0.04);
+}
+
+.plano-tier {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 0.9rem;
+}
+
+.plano-operar .plano-tier { color: var(--terracota); }
+
+.plano-nome {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--tinta);
+  line-height: 1.25;
+  margin-bottom: 0.4rem;
+}
+
+.plano-meta {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--terracota);
+  margin-bottom: 1.4rem;
+}
+
+.plano-paraquem {
+  font-family: 'Newsreader', serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--tinta-suave);
+  line-height: 1.7;
+  margin-bottom: 1.6rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid var(--linha);
+}
+
+.plano-bloco-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terracota);
+  margin-bottom: 0.9rem;
+}
+
+.plano-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-bottom: 1.6rem;
+}
+
+.plano-li {
+  display: grid;
+  grid-template-columns: 14px 1fr;
+  gap: 0.7rem;
+  align-items: start;
+}
+
+.plano-li-dot {
+  width: 4px;
+  height: 4px;
+  background: var(--terracota);
+  border-radius: 50%;
+  margin-top: 0.6rem;
+}
+
+.plano-li-texto {
+  font-family: 'Newsreader', serif;
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: var(--tinta);
+  line-height: 1.65;
+}
+
+.plano-pratica {
+  border-left: 3px solid var(--terracota);
+  background: rgba(21,32,43,0.05);
+  padding: 1.1rem 1.3rem;
+  margin-bottom: 1.6rem;
+}
+
+.plano-pratica-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terracota);
+  margin-bottom: 0.6rem;
+}
+
+.plano-pratica-texto {
+  font-family: 'Newsreader', serif;
+  font-size: 0.95rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--tinta);
+  line-height: 1.7;
+}
+
+.plano-intervalo {
+  margin-bottom: 1.6rem;
+}
+
+.plano-intervalo-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+  margin-bottom: 0.5rem;
+}
+
+.plano-intervalo-texto {
+  font-family: 'Newsreader', serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--tinta-suave);
+  line-height: 1.65;
+}
+
+.plano-bonus {
+  border-top: 1px solid rgba(124,36,16,0.25);
+  padding-top: 1.6rem;
+  margin-bottom: 1.6rem;
+}
+
+.plano-bonus-titulo {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terracota);
+  margin-bottom: 1.2rem;
+}
+
+.bonus-item { margin-bottom: 1.3rem; }
+.bonus-item:last-child { margin-bottom: 0; }
+
+.bonus-badge {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--papel);
+  background: var(--terracota);
+  padding: 0.18rem 0.55rem;
+  margin-bottom: 0.6rem;
+}
+
+.bonus-nome {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--tinta);
+  margin-bottom: 0.4rem;
+}
+
+.bonus-desc {
+  font-family: 'Newsreader', serif;
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--tinta-suave);
+  line-height: 1.7;
+}
+
+.plano-preco {
+  margin-top: auto;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--linha);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--terracota);
+}
+
+.plano-preco span {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--tinta-suave);
+  margin-bottom: 0.3rem;
+}
+
+/* TABELA (PAPEL) */
+.tabela-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--linha);
+}
+
+table.comparativa {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+}
+
+table.comparativa th,
+table.comparativa td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--linha);
+  text-align: center;
+  vertical-align: middle;
+}
+
+table.comparativa thead th {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--tinta);
+  border-bottom: 1px solid var(--terracota);
+}
+
+table.comparativa td:first-child,
+table.comparativa th:first-child {
+  text-align: left;
+  font-family: 'Newsreader', serif;
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: var(--tinta);
+}
+
+table.comparativa thead th:first-child { font-family: 'Inter', sans-serif; color: var(--tinta-suave); }
+
+table.comparativa tbody td {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--terracota);
+}
+
+table.comparativa tbody td:first-child {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.92rem;
+  color: var(--tinta);
+}
+
+table.comparativa th:last-child,
+table.comparativa td:last-child {
+  background: rgba(124,36,16,0.07);
+}
+
+table.comparativa thead th:last-child {
+  color: var(--terracota);
+  border-bottom: 1px solid var(--terracota);
+}
+
+table.comparativa tbody tr:last-child td { border-bottom: none; }
+
+/* CONSTANTE (PAPEL) */
+.constante-item {
+  font-family: 'Newsreader', serif;
+  font-size: 1.02rem;
+  font-weight: 300;
+  color: var(--tinta-suave);
+  line-height: 1.9;
+  margin-bottom: 1.4rem;
+  max-width: 600px;
+}
+
+.constante-item strong { font-weight: 500; color: var(--terracota); }
+
+/* AGENDA (TINTA) */
+#agenda {
+  background: var(--tinta);
+  color: var(--papel);
+  border-top: none;
+}
+#agenda .section-title { color: var(--papel); }
+#agenda .section-title em { color: var(--coral); }
+
+.agenda-corpo {
+  font-family: 'Newsreader', serif;
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: rgba(243,239,230,0.78);
+  line-height: 1.9;
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+}
+
+/* NÃO É (PAPEL) */
+.nao-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.nao-item {
+  display: grid;
+  grid-template-columns: 16px 1fr;
+  gap: 0.8rem;
+  align-items: start;
+}
+
+.nao-marca {
+  font-family: 'Inter', sans-serif;
+  color: var(--terracota);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.nao-texto {
+  font-family: 'Newsreader', serif;
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--tinta);
+  line-height: 1.6;
+}
+
+.nao-fecho {
+  font-family: 'Newsreader', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--tinta);
+  border-left: 2px solid var(--terracota);
+  padding-left: 1.2rem;
+  line-height: 1.8;
+  max-width: 600px;
+}
+
+/* ONBOARDING (PAPEL) */
+.onb-corpo {
+  font-family: 'Newsreader', serif;
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: var(--tinta-suave);
+  line-height: 1.9;
+  margin-bottom: 1.5rem;
+  max-width: 600px;
+}
+
+.onb-corpo strong { font-weight: 400; color: var(--tinta); }
+
+.perguntas-titulo {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--terracota);
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+.perguntas {
+  border: 1px solid var(--linha);
+  background: rgba(21,32,43,0.03);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2.5rem;
+}
+
+.pergunta {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 1rem;
+  padding: 1.4rem 0;
+  border-top: 1px solid var(--linha);
+  align-items: start;
+}
+
+.pergunta:first-child { border-top: none; padding-top: 0; }
+.pergunta:last-child { padding-bottom: 0; }
+
+.pergunta-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--terracota);
+  line-height: 1.5;
+}
+
+.pergunta-texto {
+  font-family: 'Newsreader', serif;
+  font-size: 0.98rem;
+  font-weight: 300;
+  color: var(--tinta);
+  line-height: 1.7;
+}
+
+.onb-fecho {
+  font-family: 'Newsreader', serif;
+  font-size: 0.98rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--tinta-suave);
+  line-height: 1.8;
+  margin-bottom: 3rem;
+  max-width: 600px;
+}
+
+.cta-wrap { text-align: center; }
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--papel);
+  background: var(--terracota);
+  padding: 1.3rem 3rem;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.cta-button:hover { opacity: 0.85; }
+
+/* FOOTER */
+footer {
+  background: var(--tinta);
+  border-top: 1px solid rgba(243,239,230,0.08);
+  padding: 2.5rem 2rem;
+}
+
+.footer-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-marca {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  color: rgba(243,239,230,0.55);
+  text-decoration: none;
+  line-height: 1;
+}
+
+.footer-marca .nav-simbolo { color: var(--coral); }
+.footer-marca .nav-ponto { color: var(--coral); }
+
+.footer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: flex-end;
+}
+
+.footer-by {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(243,239,230,0.25);
+}
+
+.footer-cargo {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: rgba(243,239,230,0.18);
+  text-transform: uppercase;
+}
+
+/* WHATSAPP FLOAT */
+.whatsapp-float {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 200;
+  width: 52px;
+  height: 52px;
+  background: #25d366;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible { opacity: 1; transform: none; }
+
+@media (max-width: 600px) {
+  #hero { padding-top: 10rem; }
+  section { padding: 5rem 0; }
+  nav { padding: 0 1.2rem; }
+  .container { padding: 0 1.2rem; }
+  .planos-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .plano-card { padding: 2rem 1.5rem; }
+  .perguntas { padding: 1.5rem; }
+  .pergunta { grid-template-columns: 32px 1fr; gap: 0.7rem; }
+  .cta-button { padding: 1.1rem 2rem; font-size: 13px; }
+  .whatsapp-float { bottom: 1.5rem; right: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">
+    <svg class="nav-simbolo" viewBox="0 0 100 100" width="22" height="22" aria-hidden="true">
+      <g fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="square">
+        <path d="M 8 30 V 8 H 30"/>
+        <path d="M 70 8 H 92 V 30"/>
+        <path d="M 92 70 V 92 H 70"/>
+        <path d="M 30 92 H 8 V 70"/>
+      </g>
+      <circle cx="50" cy="50" r="14" fill="currentColor"/>
+    </svg>
+    <span class="nav-wordmark">Patente<span class="nav-ponto">.</span></span>
+  </a>
+  <div class="nav-icons">
+    <a class="nav-icon" href="https://wa.me/5521988582351?text=Ol%C3%A1%20Thiago%2C%20vim%20da%20p%C3%A1gina%20Patente.Advisory%20e%20quero%20come%C3%A7ar%20pelo%20meu%20Doss%C3%AA%20de%20Contexto." target="_blank" aria-label="WhatsApp">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+    </a>
+    <a class="nav-icon" href="https://www.linkedin.com/in/thiagopatente" target="_blank" aria-label="LinkedIn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    </a>
+  </div>
+</nav>
+
+<!-- BLOCO 1 · HERO -->
+<section id="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Patente<span class="marca-ponto-dark">.</span>Advisory · A sessão executiva de IA</p>
+    <h1 class="hero-headline">Você já passou do básico.<br><em>Falta a arquitetura.</em></h1>
+    <p class="hero-sub">Você usa IA todo dia e já entendeu o potencial. Mas bateu num teto que nenhum tutorial resolve. O Advisory é mentoria 1:1 para construir a arquitetura de inteligência que está na sua altura. Feita com os seus contextos, no seu nível, para o seu trabalho. Não para uma turma.</p>
+    <p class="hero-escassez">Formato 1:1, agenda limitada a quatro pessoas por mês.</p>
+  </div>
+</section>
+
+<!-- BLOCO 2 · O ESPELHO -->
+<section id="espelho">
+  <div class="container">
+    <p class="section-label-dark reveal">
+      <svg class="label-simbolo" viewBox="0 0 100 100" width="12" height="12" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="square"><path d="M 8 30 V 8 H 30"/><path d="M 70 8 H 92 V 30"/><path d="M 92 70 V 92 H 70"/><path d="M 30 92 H 8 V 70"/></g><circle cx="50" cy="50" r="16" fill="currentColor"/></svg>
+      <span>Se você se reconhece aqui, é para você</span>
+    </p>
+    <h2 class="section-title reveal">Você virou <em>o que mais sabe de IA na sua mesa.</em> E isso é o problema.</h2>
+
+    <p class="espelho-corpo reveal">Você testou, leu, aplicou. Hoje entrega com IA mais que a maioria à sua volta. Mas é justamente aí que trava: não tem mais de quem aprender no seu círculo, e o conteúdo que acha online é raso demais para o seu nível.</p>
+
+    <p class="espelho-corpo reveal">Você não precisa de mais um curso de introdução. Precisa de alguém no seu nível que construa com você o sistema que você já consegue imaginar, mas não teve tempo de arquitetar.</p>
+
+    <div class="espelho-lista reveal">
+      <div class="espelho-item">
+        <div class="espelho-dot"></div>
+        <p class="espelho-texto">Você tem contexto demais na cabeça e sistema de menos no Claude</p>
+      </div>
+      <div class="espelho-item">
+        <div class="espelho-dot"></div>
+        <p class="espelho-texto">Repete a mesma explicação a cada nova conversa, porque nada fica</p>
+      </div>
+      <div class="espelho-item">
+        <div class="espelho-dot"></div>
+        <p class="espelho-texto">Vê que dá para ir muito além, mas não sabe montar a estrutura</p>
+      </div>
+      <div class="espelho-item">
+        <div class="espelho-dot"></div>
+        <p class="espelho-texto">É o mais avançado da sua sala, e isso te deixou sem par para trocar</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCO 3 · O QUE MUDA -->
+<section id="muda">
+  <div class="container">
+    <p class="section-label reveal">
+      <svg class="label-simbolo" viewBox="0 0 100 100" width="12" height="12" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="square"><path d="M 8 30 V 8 H 30"/><path d="M 70 8 H 92 V 30"/><path d="M 92 70 V 92 H 70"/><path d="M 30 92 H 8 V 70"/></g><circle cx="50" cy="50" r="16" fill="currentColor"/></svg>
+      <span>O que você ganha</span>
+    </p>
+    <h2 class="section-title reveal">No fim, você diz: <em>"agora eu sei usar isso de verdade."</em></h2>
+
+    <p class="bloco-corpo reveal">O Advisory não te ensina sobre IA. Você já sabe que ela funciona. Construímos juntos o seu jeito de trabalhar com IA, calibrado com o seu contexto, os seus documentos, o seu modo de decidir.</p>
+
+    <p class="bloco-corpo reveal">A estrutura do método é a mesma para todos. O que muda é o resultado no dia de cada um. O gerente de marketing para de reescrever o mesmo briefing toda semana. O do financeiro recebe o relatório de resultado já analisado, não só os números crus. O de atendimento responde o caso difícil com o rascunho pronto para revisar. O método é o mesmo. O ganho é de cada um.</p>
+
+    <p class="destaque-quote reveal">O resultado não é saber mais sobre IA. É não conseguir mais trabalhar sem ela.</p>
+  </div>
+</section>
+
+<!-- BLOCO 4 · A PERSONALIZAÇÃO -->
+<section id="personalizacao">
+  <div class="container">
+    <p class="section-label reveal">
+      <svg class="label-simbolo" viewBox="0 0 100 100" width="12" height="12" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="square"><path d="M 8 30 V 8 H 30"/><path d="M 70 8 H 92 V 30"/><path d="M 92 70 V 92 H 70"/><path d="M 30 92 H 8 V 70"/></g><circle cx="50" cy="50" r="16" fill="currentColor"/></svg>
+      <span>O que torna isto diferente</span>
+    </p>
+    <h2 class="section-title reveal">Construído para o seu contexto. <em>Não para um aluno genérico.</em></h2>
+
+    <p class="bloco-corpo reveal">Antes da primeira sessão, você grava o seu Dossiê de Contexto por áudio. Eu interpreto e preparo a sua sessão sobre a sua realidade profissional. Quando começamos, eu já sei quem você é, o que você produz e onde você quer chegar.</p>
+
+    <p class="bloco-corpo reveal">Cada exemplo é do seu trabalho. Cada documento analisado é seu. Cada tarefa que a IA passa a resolver é de fato sua. Você não assiste a uma demonstração genérica. Você vê a sua própria IA ganhando forma na tela.</p>
+  </div>
+</section>
+
+<!-- BLOCO 5 · OS TRÊS PLANOS -->
+<section id="planos">
+  <div class="container">
+    <p class="section-label reveal">
+      <svg class="label-simbolo" viewBox="0 0 100 100" width="12" height="12" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="square"><path d="M 8 30 V 8 H 30"/><path d="M 70 8 H 92 V 30"/><path d="M 92 70 V 92 H 70"/><path d="M 30 92 H 8 V 70"/></g><circle cx="50" cy="50" r="16" fill="currentColor"/></svg>
+      <span>Três planos</span>
+    </p>
+    <h2 class="section-title reveal">Você escolhe a profundidade. <em>O método é o mesmo.</em></h2>
+
+    <p class="planos-intro reveal">Toda sessão é execução ao vivo, com você no teclado. Nada de teoria.</p>
+
+    <div class="planos-grid">
+
+      <!-- Plano i · Destravar -->
+      <div class="plano-card reveal">
+        <p class="plano-tier">Plano i</p>
+        <p class="plano-nome">Advisory Destravar</p>
+        <p class="plano-meta">2 horas · 1 sessão</p>
+        <p class="plano-paraquem">Para quem: você usa IA bem, mas quer a sua IA configurada para o seu trabalho principal, com resultado já na semana seguinte.</p>
+
+        <p class="plano-bloco-label">O que construímos juntos, ao vivo</p>
+        <div class="plano-lista">
+          <div class="plano-li"><div class="plano-li-dot"></div><p class="plano-li-texto">Um espaço de trabalho que conhece o seu contexto e não esquece quem você é a cada conversa</p></div>
+          <div class="plano-li"><div class="plano-li-dot"></div><p class="plano-li-texto">A memória da IA, com cargo, setor, prioridades e o seu jeito de decidir</p></div>
+          <div class="plano-li"><div class="plano-li-dot"></div><p class="plano-li-texto">A análise completa de um documento real seu, do começo ao fim</p></div>
+        </div>
+
+        <p class="plano-bloco-label">Você sai habilitado a</p>
+        <div class="plano-lista">
+          <div class="plano-li"><div class="plano-li-dot"></div><p class="plano-li-texto">Abrir a IA e ela já saber quem você é, sem reexplicar nada</p></div>
+          <div class="plano-li"><div class="plano-li-dot"></div><p class="plano-li-texto">Transformar um relatório denso em síntese executiva em minutos</p></div>
+          <div class="plano-li"><div class="plano-li-dot"></div><p class="plano-li-texto">Reaplicar o método sozinho, com a sua biblioteca de prompts</p></div>
+        </div>
+
+        <div class="plano-pratica">
+          <p class="plano-pratica-label">Na prática, isso é</p>
+          <p class="plano-pratica-texto">O relatório de quarenta páginas que chega na segunda vira síntese estratégica no formato que a sua diretoria espera, em dez minutos.</p>
+        </div>
+
+        <p class="plano-preco"><span>Investimento</span>R$ 1.200</p>
+      </div>
+
+      <!-- Plano ii · Aplicar -->
+      <div class="plano-card reveal">
+        <p class="plano-tier">Plano ii</p>
+        <p class="plano-nome">Advisory Aplicar</p>
+        <p class="plano-meta">4 horas · 2 sessões de 2h</p>
+        <p class="plano-paraquem">Para quem: você quer que a IA resolva as tarefas que mais consomem o seu tempo, e levar isso também para os seus projetos pessoais.</p>
+
+        <p class="plano-bloco-label">O que construímos juntos, ao vivo</p>
+        <div class="plano-lista">
+          <div class="plano-li"><div class="plano-li-dot"></div><p class="plano-li-texto">As três tarefas que mais tomam o seu tempo, prontas para a IA resolver sob um comando</p></div>
+          <div class="plano-li"><div class="plano-li-dot"></div><p class="plano-li-texto">Os seus entregáveis nascendo prontos: relatório que vira deck, planilha que vira dashboard</p></div>
+          <div class="plano-li"><div class="plano-li-dot"></div><p class="plano-li-texto">Pesquisa aprofundada calibrada para o seu setor</p></div>
+          <div class="plano-li"><div class="plano-li-dot"></div><p class="plano-li-texto">A IA escrevendo no seu tom, em relatório, email e apresentação</p></div>
+        </div>
+
+        <p class="plano-bloco-label">Você sai habilitado a</p>
+        <div class="plano-lista">
+          <div class="plano-li"><div class="plano-li-dot"></div><p class="plano-li-texto">Resolver em um comando as tarefas que você refazia toda semana</p></div>
+          <div class="plano-li"><div class="plano-li-dot"></div><p class="plano-li-texto">Gerar os seus entregáveis no seu padrão, sem montar do zero</p></div>
+          <div class="plano-li"><div class="plano-li-dot"></div><p class="plano-li-texto">Pesquisar um tema com profundidade de analista, em uma fração do tempo</p></div>
+          <div class="plano-li"><div class="plano-li-dot"></div><p class="plano-li-texto">Produzir texto que já sai no seu tom, sem reescrever</p></div>
+        </div>
+
+        <div class="plano-pratica">
+          <p class="plano-pratica-label">Na prática, isso é</p>
+          <p class="plano-pratica-texto">A síntese semanal que você montava toda sexta passa a sair pronta sob um comando, no seu tom, com a estrutura que a sua liderança reconhece.</p>
+        </div>
+
+        <div class="plano-intervalo">
+          <p class="plano-intervalo-label">O intervalo de aplicação</p>
+          <p class="plano-intervalo-texto">Sete dias entre as duas sessões. Não é pausa, é parte do método. Você aplica em tarefas reais, e a segunda sessão começa com dado de uso de verdade, não do zero.</p>
+        </div>
+
+        <p class="plano-preco"><span>Investimento</span>R$ 2.000</p>
+      </div>
+
+    </div>
+
+    <!-- Plano iii · Operar (tier topo) -->
+    <div class="plano-card plano-operar reveal">
+      <p class="plano-tier">Plano iii · Tier topo</p>
+      <p class="plano-nome">Advisory Operar</p>
+      <p class="plano-meta">8 horas · 4 sessões de 2h</p>
+      <p class="plano-paraquem">Para quem: você quer se tornar a referência em IA no seu contexto, capaz de resolver qualquer desafio novo sem depender de apoio.</p>
+
+      <p class="plano-bloco-label">O que construímos juntos, ao vivo</p>
+      <div class="plano-lista">
+        <div class="plano-li"><div class="plano-li-dot"></div><p class="plano-li-texto">As duas primeiras sessões são iguais ao plano Aplicar</p></div>
+        <div class="plano-li"><div class="plano-li-dot"></div><p class="plano-li-texto">A sua IA separada por frente de trabalho: a do emprego não se mistura com a do projeto pessoal nem com a dos clientes</p></div>
+        <div class="plano-li"><div class="plano-li-dot"></div><p class="plano-li-texto">A IA agindo entre as suas ferramentas: busca o anexo no email, cruza com a planilha e prepara o resumo, sem você abrir cada aba</p></div>
+        <div class="plano-li"><div class="plano-li-dot"></div><p class="plano-li-texto">Um modo de conduzir as decisões mais difíceis com a IA pensando junto, passo a passo, em vez de cuspir uma resposta rasa</p></div>
+      </div>
+
+      <p class="plano-bloco-label">Você sai habilitado a</p>
+      <div class="plano-lista">
+        <div class="plano-li"><div class="plano-li-dot"></div><p class="plano-li-texto">Trabalhar várias frentes sem uma contaminar a outra</p></div>
+        <div class="plano-li"><div class="plano-li-dot"></div><p class="plano-li-texto">Ter a IA puxando informação entre as suas ferramentas sozinha</p></div>
+        <div class="plano-li"><div class="plano-li-dot"></div><p class="plano-li-texto">Conduzir uma decisão complexa com método, não no improviso</p></div>
+        <div class="plano-li"><div class="plano-li-dot"></div><p class="plano-li-texto">Resolver qualquer novidade que apareça, sem depender de ninguém</p></div>
+      </div>
+
+      <div class="plano-pratica">
+        <p class="plano-pratica-label">Na prática, isso é</p>
+        <p class="plano-pratica-texto">Surge uma ferramenta nova, um desafio inédito. Em vez de procurar um curso, você mesmo monta a solução, porque entende como tudo se conecta.</p>
+      </div>
+
+      <div class="plano-intervalo">
+        <p class="plano-intervalo-label">O intervalo de aplicação</p>
+        <p class="plano-intervalo-texto">Sete dias entre as duas primeiras sessões, e trinta dias antes da última. Esse mês final é o que diferencia o plano: você opera sozinho, sem rede, e a sessão final calibra tudo pelo uso real.</p>
+      </div>
+
+      <div class="plano-bonus">
+        <p class="plano-bonus-titulo">Bônus exclusivos do Operar</p>
+        <div class="bonus-item">
+          <span class="bonus-badge">Exclusivo Operar</span>
+          <p class="bonus-nome">Lista de agentes sob medida.</p>
+          <p class="bonus-desc">Ao final do programa, você recebe uma lista de agentes personalizados, desenhados para o seu objetivo específico. Não modelos genéricos. Agentes pensados para o que você faz.</p>
+        </div>
+        <div class="bonus-item">
+          <span class="bonus-badge">Exclusivo Operar</span>
+          <p class="bonus-nome">Acesso ao Patente<span class="marca-ponto">.</span>Advisory Sênior.</p>
+          <p class="bonus-desc">Por três meses, você entra no círculo fechado dos demais profissionais do Operar. Gente no seu nível, construindo o mesmo tipo de sistema, cada um no seu contexto. Trocam o que funcionou, o que quebraram, como adaptaram. Não é suporte técnico. É a mesa de pares que falta para quem já é o mais avançado da própria sala. Eu participo com contribuições pontuais quando tenho algo relevante a acrescentar.</p>
+        </div>
+      </div>
+
+      <p class="plano-preco"><span>Investimento</span>R$ 3.600</p>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCO 6 · TABELA COMPARATIVA -->
+<section id="tabela">
+  <div class="container">
+    <p class="section-label reveal">
+      <svg class="label-simbolo" viewBox="0 0 100 100" width="12" height="12" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="square"><path d="M 8 30 V 8 H 30"/><path d="M 70 8 H 92 V 30"/><path d="M 92 70 V 92 H 70"/><path d="M 30 92 H 8 V 70"/></g><circle cx="50" cy="50" r="16" fill="currentColor"/></svg>
+      <span>Lado a lado</span>
+    </p>
+    <h2 class="section-title reveal"><em>O que cada plano entrega.</em></h2>
+
+    <div class="tabela-wrap reveal">
+      <table class="comparativa">
+        <thead>
+          <tr>
+            <th>Entregável</th>
+            <th>Destravar</th>
+            <th>Aplicar</th>
+            <th>Operar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Sessões</td><td>1 × 2h</td><td>2 × 2h</td><td>4 × 2h</td></tr>
+          <tr><td>IA configurada para o trabalho principal</td><td>sim</td><td>sim</td><td>sim</td></tr>
+          <tr><td>Memória e protocolo documentado</td><td>sim</td><td>sim</td><td>sim</td></tr>
+          <tr><td>Tarefas recorrentes resolvidas pela IA</td><td>—</td><td>sim</td><td>sim</td></tr>
+          <tr><td>Entregáveis e voz configurados</td><td>—</td><td>sim</td><td>sim</td></tr>
+          <tr><td>Pesquisa aprofundada</td><td>—</td><td>sim</td><td>sim</td></tr>
+          <tr><td>IA separada por frente de trabalho</td><td>—</td><td>—</td><td>sim</td></tr>
+          <tr><td>IA agindo entre seus aplicativos</td><td>—</td><td>—</td><td>sim</td></tr>
+          <tr><td>Lista de agentes sob medida</td><td>—</td><td>—</td><td>sim</td></tr>
+          <tr><td>Patente.Advisory Sênior · 3 meses</td><td>—</td><td>—</td><td>sim</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCO 7 · O QUE É CONSTANTE -->
+<section id="constante">
+  <div class="container">
+    <p class="section-label reveal">
+      <svg class="label-simbolo" viewBox="0 0 100 100" width="12" height="12" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="square"><path d="M 8 30 V 8 H 30"/><path d="M 70 8 H 92 V 30"/><path d="M 92 70 V 92 H 70"/><path d="M 30 92 H 8 V 70"/></g><circle cx="50" cy="50" r="16" fill="currentColor"/></svg>
+      <span>O que não muda entre os planos</span>
+    </p>
+    <h2 class="section-title reveal">A estrutura é igual para todos. <em>Os exemplos são cem por cento seus.</em></h2>
+
+    <p class="constante-item reveal"><strong>Primeiro:</strong> trabalhamos no seu material. Os seus documentos, os seus entregáveis, os seus casos. Nunca exercício genérico.</p>
+
+    <p class="constante-item reveal"><strong>Segundo:</strong> você fica no teclado. Eu conduzo, você opera. O sistema sai construído por você, não para você.</p>
+
+    <p class="constante-item reveal"><strong>Terceiro:</strong> você sai com protocolo documentado. Uma página, no seu formato, reutilizável de imediato. Não anotações de aula.</p>
+  </div>
+</section>
+
+<!-- BLOCO 8 · AGENDA LIMITADA -->
+<section id="agenda">
+  <div class="container">
+    <p class="section-label-dark reveal">
+      <svg class="label-simbolo" viewBox="0 0 100 100" width="12" height="12" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="square"><path d="M 8 30 V 8 H 30"/><path d="M 70 8 H 92 V 30"/><path d="M 92 70 V 92 H 70"/><path d="M 30 92 H 8 V 70"/></g><circle cx="50" cy="50" r="16" fill="currentColor"/></svg>
+      <span>Disponibilidade</span>
+    </p>
+    <h2 class="section-title reveal">Quatro pessoas <em>por mês.</em></h2>
+
+    <p class="agenda-corpo reveal">O formato é individual e a minha agenda comporta até quatro pessoas por mês. Não é escassez de marketing, é a matemática de um trabalho feito um a um, com material real e atenção dedicada.</p>
+
+    <p class="agenda-corpo reveal">Quem manda o Dossiê primeiro entra primeiro na fila do mês.</p>
+  </div>
+</section>
+
+<!-- BLOCO 9 · O QUE ISTO NÃO É -->
+<section id="nao-e">
+  <div class="container">
+    <p class="section-label reveal">
+      <svg class="label-simbolo" viewBox="0 0 100 100" width="12" height="12" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="square"><path d="M 8 30 V 8 H 30"/><path d="M 70 8 H 92 V 30"/><path d="M 92 70 V 92 H 70"/><path d="M 30 92 H 8 V 70"/></g><circle cx="50" cy="50" r="16" fill="currentColor"/></svg>
+      <span>Transparência</span>
+    </p>
+    <h2 class="section-title reveal"><em>Para evitar mal-entendido.</em></h2>
+
+    <div class="nao-lista reveal">
+      <div class="nao-item"><span class="nao-marca">Não</span><p class="nao-texto">É curso de IA com aulas gravadas</p></div>
+      <div class="nao-item"><span class="nao-marca">Não</span><p class="nao-texto">É treinamento em prompt engineering</p></div>
+      <div class="nao-item"><span class="nao-marca">Não</span><p class="nao-texto">É coaching de carreira ou de produtividade</p></div>
+      <div class="nao-item"><span class="nao-marca">Não</span><p class="nao-texto">É serviço recorrente cobrado por hora</p></div>
+    </div>
+
+    <p class="nao-fecho reveal">É advisory 1:1, com escopo finito, resultado documentado e sem dependência recorrente.</p>
+  </div>
+</section>
+
+<!-- BLOCO 10 · ONBOARDING E CTA -->
+<section id="onboarding">
+  <div class="container">
+    <p class="section-label reveal">
+      <svg class="label-simbolo" viewBox="0 0 100 100" width="12" height="12" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="square"><path d="M 8 30 V 8 H 30"/><path d="M 70 8 H 92 V 30"/><path d="M 92 70 V 92 H 70"/><path d="M 30 92 H 8 V 70"/></g><circle cx="50" cy="50" r="16" fill="currentColor"/></svg>
+      <span>Como começa</span>
+    </p>
+    <h2 class="section-title reveal">O ponto de partida <em>é um áudio no WhatsApp.</em></h2>
+
+    <p class="onb-corpo reveal">Sem formulário, sem agendamento de triagem. Você me manda cinco áudios curtos no WhatsApp respondendo as perguntas abaixo. Eu interpreto e devolvo a você o seu Dossiê de Contexto: um documento estruturado sobre como você trabalha, pensa e decide.</p>
+
+    <p class="onb-corpo reveal">Você aprova, ajusta, e a partir dele eu preparo a sua sessão. O Dossiê é seu, independente do que decidir depois. É a primeira amostra de como o método funciona: você fala solto, e recebe de volta estrutura feita para o seu contexto.</p>
+
+    <p class="perguntas-titulo reveal">As cinco perguntas que você responde por áudio</p>
+
+    <div class="perguntas reveal">
+      <div class="pergunta">
+        <p class="pergunta-num">i.</p>
+        <p class="pergunta-texto">Conte a sua trajetória profissional em três frases, e me diga onde você quer que a IA te leve: performar mais no trabalho atual, construir um projeto ou negócio próprio, ou os dois.</p>
+      </div>
+      <div class="pergunta">
+        <p class="pergunta-num">ii.</p>
+        <p class="pergunta-texto">Quais são as entregas mais frequentes do que você produz hoje. O que sai das suas mãos toda semana, e quem recebe.</p>
+      </div>
+      <div class="pergunta">
+        <p class="pergunta-num">iii.</p>
+        <p class="pergunta-texto">Onde você sente que a IA poderia te ajudar mais e ainda não está ajudando. O incômodo específico, não a expectativa abstrata.</p>
+      </div>
+      <div class="pergunta">
+        <p class="pergunta-num">iv.</p>
+        <p class="pergunta-texto">Como você gosta de receber informação para decidir. Síntese curta ou contexto completo. Número ou narrativa. Bullet ou prosa.</p>
+      </div>
+      <div class="pergunta">
+        <p class="pergunta-num">v.</p>
+        <p class="pergunta-texto">O que precisa estar diferente na sua rotina, depois da nossa sessão, para você considerar que valeu. Concreto, não adjetivo.</p>
+      </div>
+    </div>
+
+    <p class="onb-fecho reveal">Cerca de cinco a sete minutos de áudio no total. Você grava no seu horário, sem agenda compartilhada.</p>
+
+    <div class="cta-wrap reveal">
+      <a class="cta-button" href="https://wa.me/5521988582351?text=Ol%C3%A1%20Thiago%2C%20vim%20da%20p%C3%A1gina%20Patente.Advisory%20e%20quero%20come%C3%A7ar%20pelo%20meu%20Doss%C3%AA%20de%20Contexto." target="_blank">
+        Mandar meu Dossiê no WhatsApp →
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <a class="footer-marca" href="/">
+      <svg class="nav-simbolo" viewBox="0 0 100 100" width="18" height="18" aria-hidden="true">
+        <g fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="square">
+          <path d="M 8 30 V 8 H 30"/>
+          <path d="M 70 8 H 92 V 30"/>
+          <path d="M 92 70 V 92 H 70"/>
+          <path d="M 30 92 H 8 V 70"/>
+        </g>
+        <circle cx="50" cy="50" r="14" fill="currentColor"/>
+      </svg>
+      <span>Patente<span class="nav-ponto">.</span></span>
+    </a>
+    <div class="footer-info">
+      <div class="footer-by">thiagopatente.com.br</div>
+      <div class="footer-cargo">Marketing Strategy Manager · MBA em IA</div>
+    </div>
+  </div>
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/5521988582351?text=Ol%C3%A1%20Thiago%2C%20vim%20da%20p%C3%A1gina%20Patente.Advisory%20e%20quero%20come%C3%A7ar%20pelo%20meu%20Doss%C3%AA%20de%20Contexto." target="_blank" aria-label="Conversar no WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+</a>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
