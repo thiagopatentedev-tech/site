@@ -1,1224 +1,576 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="light" data-sidebar="expanded">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Verizon · Leitura Editorial dos Resultados</title>
+<title>Cockpit Patente · Verizon 1Q26</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --paper: #F5F1EA;
-    --paper-warm: #EDE6D8;
-    --ink: #1C1410;
-    --ink-soft: #3A2B22;
-    --bordeaux: #6B1F2B;
-    --bordeaux-soft: rgba(107, 31, 43, 0.08);
-    --gold: #A8763E;
-    --sage: #7A8471;
-    --rule: #C9BFAE;
-    --rule-soft: #DDD3BE;
-    --serif-display: 'Playfair Display', Georgia, serif;
-    --serif-body: 'Source Serif 4', Georgia, serif;
-    --sans: 'Inter', -apple-system, sans-serif;
-  }
-  body {
-    font-family: var(--serif-body);
-    background: var(--paper);
-    color: var(--ink);
-    line-height: 1.6;
-    font-size: 16px;
-  }
-  .container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 56px 64px 80px;
-  }
+/* ═══════ CSS VARIABLES ═══════ */
+:root {
+  --vz-red: #cd040b;
+  --vz-red-soft: #e8383f;
+  --navy: #1a1a2e;
+  --navy-deep: #12121f;
+  --green: #1a7a4c;
+  --green-bg: #e8f5ee;
+  --amber: #b8860b;
+  --amber-bg: #fdf3dc;
+  --alert-bg: #fde8e8;
+  --sidebar-bg: #13131f;
+  --sidebar-text: #a0a0b8;
+  --sidebar-active: #ffffff;
+  --sidebar-hover: #1e1e30;
+  --sidebar-w: 248px;
+  --sidebar-collapsed: 64px;
+  --header-h: 36px;
+  --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+  --patente-terracota: #7c2410;
+  --patente-coral: #d97757;
+}
+[data-theme="light"] {
+  --bg: #faf8f5;
+  --bg-card: #ffffff;
+  --bg-card-alt: #f5f3f0;
+  --text: #1a1a2e;
+  --text-secondary: #555566;
+  --text-muted: #888899;
+  --border: #e5e3df;
+  --border-light: #edebe8;
+  --chart-bar: #1a1a2e;
+  --chart-bar-alt: #cc040b;
+  --num-color: #1a1a2e;
+}
+[data-theme="dark"] {
+  --bg: #0e0e1a;
+  --bg-card: #1a1a2e;
+  --bg-card-alt: #222238;
+  --text: #e8e8f0;
+  --text-secondary: #a0a0b8;
+  --text-muted: #666680;
+  --border: #2a2a40;
+  --border-light: #222238;
+  --chart-bar: #e8e8f0;
+  --chart-bar-alt: #e8383f;
+  --num-color: #f0f0f8;
+}
 
-  /* === MASTHEAD === */
-  .masthead {
-    border-top: 4px double var(--ink);
-    border-bottom: 1px solid var(--ink);
-    padding: 24px 0;
-    margin-bottom: 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .masthead-left {
-    font-family: var(--sans);
-    font-size: 10px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    font-weight: 600;
-  }
-  .masthead-center {
-    font-family: var(--serif-display);
-    font-size: 32px;
-    font-weight: 900;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-  .masthead-right {
-    font-family: var(--sans);
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-weight: 500;
-    text-align: right;
-  }
+/* ═══════ RESET ═══════ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;transition:background var(--transition),color var(--transition)}
+a{color:inherit;text-decoration:none}
 
-  .masthead-sub {
-    text-align: center;
-    font-family: var(--serif-body);
-    font-style: italic;
-    font-size: 13px;
-    color: var(--ink-soft);
-    padding: 8px 0 32px;
-    border-bottom: 1px solid var(--rule);
-    margin-bottom: 48px;
-    letter-spacing: 0.5px;
-  }
+/* ═══════ TYPOGRAPHY ═══════ */
+.font-title{font-family:'Fraunces',serif}
+.font-mono{font-family:'JetBrains Mono',monospace}
+.eyebrow{font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--vz-red);margin-bottom:8px}
+.section-title{font-family:'Fraunces',serif;font-size:28px;font-weight:600;line-height:1.25;color:var(--text);margin-bottom:8px}
+.section-title em{font-style:italic;color:var(--vz-red)}
+.section-lede{font-size:15px;color:var(--text-secondary);line-height:1.6;max-width:680px;margin-bottom:32px}
 
-  /* === HERO HEADLINE === */
-  .hero {
-    text-align: center;
-    margin-bottom: 56px;
-    padding: 0 60px;
-  }
-  .hero-kicker {
-    font-family: var(--sans);
-    font-size: 11px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--bordeaux);
-    font-weight: 700;
-    margin-bottom: 24px;
-    display: inline-block;
-    padding: 4px 16px;
-    border-top: 1px solid var(--bordeaux);
-    border-bottom: 1px solid var(--bordeaux);
-  }
-  .hero-headline {
-    font-family: var(--serif-display);
-    font-size: 56px;
-    line-height: 1.1;
-    font-weight: 700;
-    color: var(--ink);
-    margin-bottom: 28px;
-    letter-spacing: -1px;
-  }
-  .hero-headline em {
-    font-style: italic;
-    color: var(--bordeaux);
-    font-weight: 600;
-  }
-  .hero-lede {
-    font-family: var(--serif-body);
-    font-size: 18px;
-    color: var(--ink-soft);
-    line-height: 1.5;
-    max-width: 720px;
-    margin: 0 auto;
-    font-style: italic;
-  }
-  .hero-lede::before {
-    content: "";
-    display: block;
-    width: 60px;
-    height: 1px;
-    background: var(--gold);
-    margin: 0 auto 20px;
-  }
+/* ═══════ LAYOUT ═══════ */
+.app{display:flex;min-height:100vh}
 
-  /* === DROP CAP STAT CARDS === */
-  .stats-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    margin: 56px 0;
-    padding: 40px 0;
-    border-top: 1px solid var(--ink);
-    border-bottom: 1px solid var(--ink);
-    background: var(--paper-warm);
-  }
-  .stat-cell {
-    text-align: center;
-    padding: 0 24px;
-    border-right: 1px solid var(--rule);
-  }
-  .stat-cell:last-child { border-right: none; }
-  .stat-number {
-    font-family: var(--serif-display);
-    font-size: 44px;
-    font-weight: 700;
-    color: var(--bordeaux);
-    line-height: 1;
-    margin-bottom: 8px;
-    letter-spacing: -1px;
-  }
-  .stat-label {
-    font-family: var(--sans);
-    font-size: 10px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    font-weight: 600;
-    margin-bottom: 6px;
-  }
-  .stat-note {
-    font-family: var(--serif-body);
-    font-size: 12px;
-    font-style: italic;
-    color: var(--ink-soft);
-  }
+/* SIDEBAR */
+.sidebar{position:fixed;top:0;left:0;bottom:0;width:var(--sidebar-w);background:var(--sidebar-bg);z-index:100;display:flex;flex-direction:column;transition:width var(--transition);overflow:hidden}
+[data-sidebar="collapsed"] .sidebar{width:var(--sidebar-collapsed)}
+.sidebar-brand{padding:24px 20px 16px;border-bottom:1px solid #222238;white-space:nowrap}
+.sidebar-brand h2{font-family:'Fraunces',serif;font-size:20px;color:#fff;font-weight:600;line-height:1}
+.sidebar-brand h2 .dot{color:var(--patente-coral)}
+.sidebar-brand span{display:block;font-size:11px;color:var(--sidebar-text);letter-spacing:1.5px;margin-top:6px;text-transform:uppercase}
+[data-sidebar="collapsed"] .sidebar-brand h2,[data-sidebar="collapsed"] .sidebar-brand span{opacity:0}
+.sidebar-group-label{font-size:10px;font-weight:600;letter-spacing:2px;color:#555570;padding:20px 20px 8px;text-transform:uppercase;white-space:nowrap}
+[data-sidebar="collapsed"] .sidebar-group-label{opacity:0;height:0;padding:0;margin:0}
+.sidebar-nav{flex:1;overflow-y:auto;padding:0 8px}
+.nav-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:8px;cursor:pointer;transition:background 0.2s;white-space:nowrap;color:var(--sidebar-text);font-size:13px;font-weight:500}
+.nav-item:hover{background:var(--sidebar-hover);color:#ddd}
+.nav-item.active{background:var(--vz-red);color:#fff}
+.nav-item svg{flex-shrink:0;width:20px;height:20px}
+[data-sidebar="collapsed"] .nav-item span{opacity:0;width:0}
+.sidebar-footer{padding:12px;border-top:1px solid #222238;display:flex;flex-direction:column;gap:8px}
+.sidebar-toggle{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;cursor:pointer;color:var(--sidebar-text);font-size:12px;background:none;border:none;transition:background 0.2s;white-space:nowrap}
+.sidebar-toggle:hover{background:var(--sidebar-hover);color:#ddd}
+.theme-toggle{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;cursor:pointer;color:var(--sidebar-text);font-size:12px;background:none;border:none;transition:background 0.2s;white-space:nowrap}
+.theme-toggle:hover{background:var(--sidebar-hover);color:#ddd}
+[data-sidebar="collapsed"] .sidebar-toggle span,[data-sidebar="collapsed"] .theme-toggle span{opacity:0;width:0}
 
-  /* === SECTION === */
-  .section {
-    margin: 72px 0 48px;
-  }
-  .section-marker {
-    text-align: center;
-    margin-bottom: 8px;
-  }
-  .section-marker-ornament {
-    font-family: var(--serif-display);
-    color: var(--gold);
-    font-size: 24px;
-    letter-spacing: 8px;
-  }
-  .section-number {
-    font-family: var(--sans);
-    font-size: 10px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--bordeaux);
-    font-weight: 700;
-    margin-top: 12px;
-  }
-  .section-title {
-    font-family: var(--serif-display);
-    font-size: 36px;
-    font-weight: 700;
-    text-align: center;
-    margin: 12px 0 8px;
-    color: var(--ink);
-    letter-spacing: -0.5px;
-  }
-  .section-deck {
-    font-family: var(--serif-body);
-    font-style: italic;
-    text-align: center;
-    color: var(--ink-soft);
-    max-width: 640px;
-    margin: 0 auto 40px;
-    font-size: 15px;
-    line-height: 1.5;
-  }
-  .section-rule {
-    width: 80px;
-    height: 1px;
-    background: var(--ink);
-    margin: 24px auto 32px;
-  }
+/* MAIN */
+.main{margin-left:var(--sidebar-w);flex:1;transition:margin-left var(--transition);min-height:100vh;display:flex;flex-direction:column}
+[data-sidebar="collapsed"] .main{margin-left:var(--sidebar-collapsed)}
 
-  /* === ARTICLE / CHART CARD === */
-  .article {
-    background: white;
-    border: 1px solid var(--rule);
-    padding: 36px 40px;
-    margin-bottom: 32px;
-    position: relative;
-  }
-  .article::before {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(to right, var(--bordeaux) 0%, var(--gold) 100%);
-  }
-  .article-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 28px;
-  }
-  .article-grid.single { grid-template-columns: 1fr; }
+/* TOP BAR */
+.topbar{height:var(--header-h);display:flex;align-items:center;justify-content:space-between;padding:0 32px;border-bottom:1px solid var(--border-light);flex-shrink:0;background:var(--bg);transition:background var(--transition)}
+.topbar-left{font-family:'Fraunces',serif;font-size:13px;font-style:italic;color:var(--text-muted)}
+.topbar-left b{color:var(--text);font-weight:600;font-size:14px;font-style:normal}
+.topbar-left b .dot{color:var(--patente-terracota)}
+.topbar-right{display:flex;gap:12px}
+.topbar-right a{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:6px;color:var(--text-muted);transition:color 0.2s,transform 0.2s}
+.topbar-right a:hover{color:var(--vz-red);transform:translateY(-1px)}
+.topbar-right a svg{width:16px;height:16px}
 
-  .article-header {
-    border-bottom: 1px solid var(--rule);
-    padding-bottom: 16px;
-    margin-bottom: 20px;
-  }
-  .article-category {
-    font-family: var(--sans);
-    font-size: 9px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--bordeaux);
-    font-weight: 700;
-    margin-bottom: 8px;
-  }
-  .article-title {
-    font-family: var(--serif-display);
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 1.2;
-    color: var(--ink);
-    margin-bottom: 6px;
-  }
-  .article-byline {
-    font-family: var(--serif-body);
-    font-style: italic;
-    font-size: 12px;
-    color: var(--ink-soft);
-  }
+/* CONTENT */
+.content{flex:1;padding:32px;max-width:1120px;width:100%}
+.chapter{display:none;animation:fadeIn 0.4s ease}
+.chapter.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 
-  .chart-container {
-    position: relative;
-    height: 260px;
-    margin: 16px 0;
-  }
-  .chart-container.tall { height: 320px; }
+/* CARDS */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:24px}
+.card-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
+.card-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:24px}
+.card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:20px;transition:background var(--transition),border var(--transition)}
+.card-label{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px}
+.card-value{font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:500;color:var(--num-color);line-height:1.2}
+.card-value.red{color:var(--vz-red)}
+.card-delta{font-family:'JetBrains Mono',monospace;font-size:12px;margin-top:4px;font-weight:500}
+.card-delta.up{color:var(--green)}
+.card-delta.down{color:var(--vz-red)}
+.card-note{font-size:11px;color:var(--text-muted);margin-top:6px}
 
-  /* === PROSE BLOCK === */
-  .prose {
-    font-family: var(--serif-body);
-    font-size: 14px;
-    line-height: 1.65;
-    color: var(--ink-soft);
-  }
-  .prose-dropcap::first-letter {
-    font-family: var(--serif-display);
-    font-size: 52px;
-    font-weight: 700;
-    float: left;
-    line-height: 0.9;
-    padding: 6px 10px 0 0;
-    color: var(--bordeaux);
-  }
-  .prose strong {
-    color: var(--ink);
-    font-weight: 600;
-  }
-  .prose .quote {
-    font-style: italic;
-    color: var(--bordeaux);
-    font-weight: 500;
-  }
+/* TABLES */
+.data-table{width:100%;border-collapse:collapse;margin-bottom:16px;font-size:13px}
+.data-table th{text-align:left;font-weight:600;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);padding:8px 12px;border-bottom:2px solid var(--border)}
+.data-table th.num{text-align:right}
+.data-table td{padding:8px 12px;border-bottom:1px solid var(--border-light);color:var(--text)}
+.data-table td.num{text-align:right;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--num-color)}
+.data-table tr:last-child td{border-bottom:none}
 
-  /* === PULL QUOTE === */
-  .pullquote {
-    margin: 48px auto;
-    max-width: 720px;
-    text-align: center;
-    padding: 32px 40px;
-    border-top: 3px double var(--bordeaux);
-    border-bottom: 3px double var(--bordeaux);
-  }
-  .pullquote-text {
-    font-family: var(--serif-display);
-    font-size: 26px;
-    font-style: italic;
-    line-height: 1.3;
-    color: var(--ink);
-    font-weight: 400;
-  }
-  .pullquote-text::before, .pullquote-text::after {
-    content: "";
-    display: inline-block;
-    color: var(--gold);
-    font-size: 32px;
-    line-height: 0;
-    vertical-align: middle;
-    padding: 0 4px;
-  }
-  .pullquote-attribution {
-    font-family: var(--sans);
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    margin-top: 16px;
-    font-weight: 600;
-  }
+/* CHARTS */
+.bar-chart{display:flex;align-items:flex-end;gap:8px;height:160px;padding-top:8px;margin-bottom:8px}
+.bar-group{display:flex;flex-direction:column;align-items:center;flex:1;gap:4px;height:100%;justify-content:flex-end}
+.bar{width:100%;max-width:48px;border-radius:4px 4px 0 0;background:var(--chart-bar);transition:height 0.6s cubic-bezier(0.4,0,0.2,1);position:relative}
+.bar.alt{background:var(--chart-bar-alt)}
+.bar.green{background:var(--green)}
+.bar.amber{background:var(--amber)}
+.bar-label{font-size:10px;color:var(--text-muted);text-align:center;font-family:'JetBrains Mono',monospace}
+.bar-val{font-size:10px;color:var(--text-secondary);font-family:'JetBrains Mono',monospace;text-align:center;font-weight:500}
+.chart-reading{font-size:13px;color:var(--text-secondary);line-height:1.5;margin-bottom:24px;padding:10px 14px;border-left:3px solid var(--border);background:var(--bg-card-alt);border-radius:0 6px 6px 0}
+.chart-reading b{color:var(--text)}
 
-  /* === FOOTER COLOFON === */
-  .colofon {
-    margin-top: 72px;
-    padding-top: 32px;
-    border-top: 3px double var(--ink);
-    text-align: center;
-    font-family: var(--serif-body);
-    font-style: italic;
-    font-size: 12px;
-    color: var(--ink-soft);
-    line-height: 1.7;
-  }
-  .colofon-ornament {
-    font-family: var(--serif-display);
-    color: var(--gold);
-    font-size: 18px;
-    letter-spacing: 6px;
-    margin-bottom: 12px;
-  }
-  .colofon strong {
-    font-family: var(--sans);
-    font-style: normal;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-size: 10px;
-    color: var(--ink);
-  }
+/* INSIGHT BOXES */
+.insight{padding:14px 16px;border-radius:8px;font-size:13px;line-height:1.5;margin-bottom:16px;border-left:4px solid}
+.insight.reading{background:var(--bg-card-alt);border-color:var(--navy);color:var(--text-secondary)}
+.insight.alert{background:var(--alert-bg);border-color:var(--vz-red);color:var(--text)}
+.insight.implication{background:var(--amber-bg);border-color:var(--amber);color:var(--text)}
+.insight.positive{background:var(--green-bg);border-color:var(--green);color:var(--text)}
+[data-theme="dark"] .insight.reading{background:#1e1e30;border-color:#4a4a6a}
+[data-theme="dark"] .insight.alert{background:#2a1a1a;border-color:var(--vz-red)}
+[data-theme="dark"] .insight.implication{background:#2a2518;border-color:var(--amber)}
+[data-theme="dark"] .insight.positive{background:#1a2a1e;border-color:var(--green)}
+.insight-tag{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px}
+.insight.reading .insight-tag{color:var(--navy)}
+.insight.alert .insight-tag{color:var(--vz-red)}
+.insight.implication .insight-tag{color:var(--amber)}
+.insight.positive .insight-tag{color:var(--green)}
+[data-theme="dark"] .insight.reading .insight-tag{color:#8888aa}
 
-  @media (max-width: 1024px) {
-    .container { padding: 32px 24px; }
-    .masthead { flex-direction: column; gap: 12px; text-align: center; }
-    .masthead-center { font-size: 22px; }
-    .hero-headline { font-size: 36px; }
-    .stats-row { grid-template-columns: repeat(2, 1fr); }
-    .stat-cell { border-right: none; border-bottom: 1px solid var(--rule); padding: 20px; }
-    .article-grid { grid-template-columns: 1fr; }
-    .section-title { font-size: 26px; }
-  }
+/* WATCH LIST */
+.watch-item{display:grid;grid-template-columns:1fr auto auto;gap:16px;align-items:center;padding:14px 16px;border-bottom:1px solid var(--border-light)}
+.watch-item:last-child{border-bottom:none}
+.watch-name{font-size:13px;font-weight:500}
+.watch-current{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:500;color:var(--num-color)}
+.watch-threshold{font-family:'JetBrains Mono',monospace;font-size:12px;padding:4px 10px;border-radius:20px;font-weight:500}
+.watch-threshold.ok{background:var(--green-bg);color:var(--green)}
+.watch-threshold.warn{background:var(--amber-bg);color:var(--amber)}
+.watch-threshold.danger{background:var(--alert-bg);color:var(--vz-red)}
+[data-theme="dark"] .watch-threshold.ok{background:#1a2a1e;color:#4ade80}
+[data-theme="dark"] .watch-threshold.warn{background:#2a2518;color:#fbbf24}
+[data-theme="dark"] .watch-threshold.danger{background:#2a1a1a;color:#f87171}
 
-  /* === MOLDURA PATENTE — paleta oficial da marca === */
-  :root {
-    --pat-papel: #f3efe6;
-    --pat-tinta: #15202b;
-    --pat-terracota: #7c2410;
-    --pat-coral: #d97757;
-  }
-  .pat-nav {
-    background: var(--pat-tinta);
-    color: var(--pat-papel);
-    font-family: 'Inter', -apple-system, sans-serif;
-  }
-  .pat-nav-inner {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 16px clamp(20px, 4vw, 64px);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 18px;
-    flex-wrap: wrap;
-  }
-  .pat-wordmark {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 20px;
-    font-weight: 600;
-    letter-spacing: -0.01em;
-    color: var(--pat-papel);
-    text-decoration: none;
-  }
-  .pat-wordmark .dot { color: var(--pat-coral); }
-  .pat-nav-tag {
-    font-size: 10px;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-    color: rgba(243,239,230,.6);
-    font-weight: 500;
-  }
-  .pat-nav-back {
-    font-family: 'Inter', sans-serif;
-    font-size: 10.5px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    font-weight: 600;
-    color: var(--pat-papel);
-    text-decoration: none;
-    border: 1px solid rgba(243,239,230,.4);
-    padding: 8px 16px;
-    transition: all .2s;
-  }
-  .pat-nav-back:hover {
-    background: var(--pat-coral);
-    border-color: var(--pat-coral);
-    color: var(--pat-tinta);
-  }
-  .pat-context {
-    background: var(--pat-papel);
-    border-bottom: 1px solid #cfc8b8;
-  }
-  .pat-context-inner {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 14px clamp(20px, 4vw, 64px);
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.04em;
-    color: rgba(21,32,43,.7);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .pat-context-dot {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--pat-terracota);
-    flex-shrink: 0;
-  }
-  .pat-footer {
-    background: var(--pat-tinta);
-    color: var(--pat-papel);
-    font-family: 'Inter', sans-serif;
-    margin-top: 0;
-  }
-  .pat-footer-inner {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 48px clamp(20px, 4vw, 64px);
-  }
-  .pat-footer-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 32px;
-    flex-wrap: wrap;
-    padding-bottom: 32px;
-    border-bottom: 1px solid rgba(243,239,230,.18);
-  }
-  .pat-footer-headline {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 22px;
-    font-weight: 600;
-    line-height: 1.35;
-    color: var(--pat-papel);
-    max-width: 520px;
-    letter-spacing: -0.01em;
-  }
-  .pat-footer-cta {
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    font-weight: 600;
-    color: var(--pat-tinta);
-    background: var(--pat-coral);
-    text-decoration: none;
-    padding: 14px 26px;
-    white-space: nowrap;
-    transition: opacity .2s;
-  }
-  .pat-footer-cta:hover { opacity: .88; }
-  .pat-footer-bottom {
-    padding-top: 24px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 18px;
-    flex-wrap: wrap;
-    font-size: 10px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: rgba(243,239,230,.5);
-  }
-  .pat-footer-bottom a { color: rgba(243,239,230,.7); text-decoration: none; }
-  .pat-footer-bottom a:hover { color: var(--pat-coral); }
-  @media (max-width: 1024px) {
-    .pat-footer-top { flex-direction: column; gap: 24px; }
-    .pat-footer-headline { font-size: 18px; }
-  }
+/* GUIDANCE CARDS */
+.guidance-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:20px;position:relative;overflow:hidden}
+.guidance-badge{position:absolute;top:12px;right:12px;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:20px}
+.guidance-badge.raised{background:var(--green-bg);color:var(--green)}
+.guidance-badge.reaffirmed{background:var(--bg-card-alt);color:var(--text-muted)}
+[data-theme="dark"] .guidance-badge.raised{background:#1a2a1e;color:#4ade80}
+[data-theme="dark"] .guidance-badge.reaffirmed{background:#222238;color:var(--text-muted)}
+
+/* FOOTER */
+.footer{border-top:1px solid var(--border);padding:32px 32px;display:flex;align-items:center;justify-content:space-between;margin-top:auto;flex-wrap:wrap;gap:16px}
+.footer-left .footer-brand{font-family:'Fraunces',serif;font-size:30px;font-weight:600;color:var(--text);line-height:1}
+.footer-left .footer-brand .dot{color:var(--patente-terracota)}
+.footer-left .footer-tagline{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-top:8px}
+.footer-left .footer-url{display:inline-block;font-size:11px;letter-spacing:1px;color:var(--text-secondary);margin-top:4px;border-bottom:1px solid transparent;transition:border-color 0.2s,color 0.2s}
+.footer-left .footer-url:hover{color:var(--patente-terracota);border-bottom-color:var(--patente-terracota)}
+.footer-right{display:flex;gap:12px}
+.footer-pill{display:flex;align-items:center;gap:6px;padding:6px 14px;border:1px solid var(--border);border-radius:20px;font-size:12px;color:var(--text-secondary);transition:border-color 0.2s,color 0.2s}
+.footer-pill:hover{border-color:var(--patente-terracota);color:var(--patente-terracota)}
+.footer-pill svg{width:14px;height:14px}
+
+/* SOURCE */
+.source{font-size:10px;color:var(--text-muted);margin-top:8px;font-style:italic}
+
+/* INDEX TABLE */
+.index-table{width:100%;border-collapse:collapse}
+.index-table td{padding:10px 14px;border-bottom:1px solid var(--border-light);font-size:13px;vertical-align:top}
+.index-table td:first-child{font-weight:600;width:160px;color:var(--text-muted);font-size:12px;letter-spacing:0.5px}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .card-grid-3{grid-template-columns:1fr 1fr}
+  .card-grid-2{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .card-grid-3,.card-grid{grid-template-columns:1fr}
+  .content{padding:20px}
+}
 </style>
 </head>
 <body>
+<div class="app">
 
-<!-- ===== MOLDURA PATENTE · HEADER ===== -->
-<nav class="pat-nav">
-  <div class="pat-nav-inner">
-    <a href="https://www.thiagopatente.com.br/" class="pat-wordmark">Patente<span class="dot">.</span></a>
-    <span class="pat-nav-tag">Inteligência aplicada · Capacitação executiva</span>
-    <a href="https://www.thiagopatente.com.br/" class="pat-nav-back">← Voltar ao site</a>
+<!-- ═══════ SIDEBAR ═══════ -->
+<aside class="sidebar">
+  <div class="sidebar-brand">
+    <h2>Patente<span class="dot">.</span></h2>
+    <span>Cockpit · Verizon 1Q26</span>
   </div>
-</nav>
-<div class="pat-context">
-  <div class="pat-context-inner">
-    <span class="pat-context-dot"></span>
-    <span>Dashboard gerado ao vivo durante o workshop, a partir da análise do relatório anual de uma empresa listada na bolsa de valores americana.</span>
+  <nav class="sidebar-nav">
+    <div class="sidebar-group-label">Diagnóstico</div>
+    <div class="nav-item active" data-chapter="overview" onclick="showChapter('overview',this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      <span>Visão Geral</span>
+    </div>
+    <div class="nav-item" data-chapter="growth" onclick="showChapter('growth',this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+      <span>Crescimento</span>
+    </div>
+    <div class="nav-item" data-chapter="profit" onclick="showChapter('profit',this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      <span>Rentabilidade</span>
+    </div>
+    <div class="nav-item" data-chapter="capital" onclick="showChapter('capital',this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      <span>Capital</span>
+    </div>
+    <div class="sidebar-group-label">Perspectiva</div>
+    <div class="nav-item" data-chapter="guidance" onclick="showChapter('guidance',this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <span>Guidance 2026</span>
+    </div>
+    <div class="nav-item" data-chapter="watch" onclick="showChapter('watch',this)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      <span>Watch List</span>
+    </div>
+  </nav>
+  <div class="sidebar-footer">
+    <button class="theme-toggle" onclick="toggleTheme()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="18" height="18" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <span>Alternar tema</span>
+    </button>
+    <button class="sidebar-toggle" onclick="toggleSidebar()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="18" height="18" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+      <span>Recolher menu</span>
+    </button>
+  </div>
+</aside>
+
+<!-- ═══════ MAIN ═══════ -->
+<div class="main">
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-left">uma leitura <b>Patente<span class="dot">.</span></b></div>
+  <div class="topbar-right">
+    <a href="https://linkedin.com/in/patente-thiago" target="_blank" rel="noopener" title="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+    </a>
+    <a href="https://instagram.com/patente.thiago" target="_blank" rel="noopener" title="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+    </a>
   </div>
 </div>
-<!-- ===== FIM HEADER ===== -->
 
-<div class="container">
+<div class="content">
 
-  <!-- MASTHEAD ESTILO JORNAL -->
-  <div class="masthead">
-    <div class="masthead-left">Vol. I · Edição 01</div>
-    <div class="masthead-center">The Verizon Chronicle</div>
-    <div class="masthead-right">Maio · 2026</div>
-  </div>
-  <div class="masthead-sub">Uma leitura editorial dos resultados estratégicos · Material executivo de circulação restrita</div>
+<!-- ═══════ CHAPTER 1: VISÃO GERAL ═══════ -->
+<div class="chapter active" id="ch-overview">
+  <div class="eyebrow">Visão Geral</div>
+  <h1 class="section-title">A Verizon apostou US$ 20 bi que <em>convergência</em> sustentará o crescimento que o wireless sozinho perdeu</h1>
+  <p class="section-lede">Frontier fechou em janeiro de 2026, fibra saltou de 9 para 31 estados, e a companhia prometeu US$ 55 bi em retorno a acionistas até 2028. A margem de erro é mínima. Este cockpit mapeia os números que decidem se a tese se sustenta.</p>
 
-  <!-- HERO HEADLINE -->
-  <div class="hero">
-    <div class="hero-kicker">Tese de Capa</div>
-    <h1 class="hero-headline">A Verizon escolheu <em>margem</em><br>em vez de receita</h1>
-    <p class="hero-lede">A operadora americana fechou 2025 com crescimento modesto de topline e margem EBITDA em recorde histórico. A aposta estrutural está em convergência fibra-mobile, que redefine o cálculo de valor por cliente e desloca o foco de volume para retenção.</p>
-  </div>
-
-  <!-- STATS ROW -->
-  <div class="stats-row">
-    <div class="stat-cell">
-      <div class="stat-label">Receita 2025</div>
-      <div class="stat-number">US$ 138,2bi</div>
-      <div class="stat-note">+2,5% sobre o ano anterior</div>
-    </div>
-    <div class="stat-cell">
-      <div class="stat-label">Margem EBITDA Aj.</div>
-      <div class="stat-number">38,9%</div>
-      <div class="stat-note">recorde histórico, no 1T26</div>
-    </div>
-    <div class="stat-cell">
-      <div class="stat-label">FCF 1T26</div>
-      <div class="stat-number">US$ 3,8bi</div>
-      <div class="stat-note">acima do mesmo período de 2025</div>
-    </div>
-    <div class="stat-cell">
-      <div class="stat-label">Alavancagem</div>
-      <div class="stat-number">2,6x</div>
-      <div class="stat-note">após consolidação da Frontier</div>
-    </div>
+  <div class="card-grid">
+    <div class="card"><div class="card-label">Receita consolidada</div><div class="card-value font-mono">$138,2 bi</div><div class="card-delta up font-mono">+2,5% vs 2024</div><div class="source">10-K p.23</div></div>
+    <div class="card"><div class="card-label">Adj. EBITDA</div><div class="card-value font-mono">$50,0 bi</div><div class="card-delta up font-mono">+2,5% vs 2024</div><div class="source">10-K p.25</div></div>
+    <div class="card"><div class="card-label">Free Cash Flow</div><div class="card-value font-mono">$20,1 bi</div><div class="card-delta up font-mono">+1,5% vs 2024</div><div class="source">10-K p.37</div></div>
+    <div class="card"><div class="card-label">Dívida Total</div><div class="card-value font-mono red">$158,2 bi</div><div class="card-delta down font-mono">+$14,2 bi vs 2024</div><div class="source">10-K p.38</div></div>
+    <div class="card"><div class="card-label">EPS GAAP</div><div class="card-value font-mono">$4,06</div><div class="card-delta down font-mono">-2,2% vs 2024</div><div class="source">10-K p.52</div></div>
+    <div class="card"><div class="card-label">Adj. EPS 1T26</div><div class="card-value font-mono">$1,28</div><div class="card-delta up font-mono">+7,6% YoY</div><div class="source">Transcript 1T26</div></div>
   </div>
 
-  <!-- ============================================ -->
-  <!-- SEÇÃO I — RECEITA E LUCRATIVIDADE -->
-  <!-- ============================================ -->
-  <div class="section">
-    <div class="section-marker">
-      <div class="section-marker-ornament">❦ ❦ ❦</div>
-      <div class="section-number">Seção I</div>
-    </div>
-    <h2 class="section-title">A Anatomia do Lucro</h2>
-    <p class="section-deck">Por que crescimento de receita conta uma história diferente da que aparece nas manchetes, e como a margem virou o verdadeiro indicador de sucesso desta gestão.</p>
-    <div class="section-rule"></div>
+  <div class="insight reading"><div class="insight-tag">Leitura</div>A receita cresce 2,5% enquanto o Adj. EBITDA cresce na mesma proporção e o Adj. EPS do 1T26 cresce 7,6%. A alavancagem operacional é real: custo de serviços caiu 0,7% e SGA caiu 0,9% no ano. Lucro cresce mais que receita por disciplina de custo, não por expansão de topline.</div>
 
-    <!-- ARTICLE 1 — Receita decomposta -->
-    <div class="article">
-      <div class="article-grid">
-        <div>
-          <div class="article-header">
-            <div class="article-category">Análise Quantitativa</div>
-            <h3 class="article-title">O crescimento que não vem do serviço</h3>
-            <div class="article-byline">Decomposição de receita · 2023 a 2025</div>
-          </div>
-          <div class="chart-container">
-            <canvas id="chart-receita"></canvas>
-          </div>
-        </div>
-        <div>
-          <div class="article-header">
-            <div class="article-category">Leitura Editorial</div>
-            <h3 class="article-title">Vender aparelho não é vender futuro</h3>
-            <div class="article-byline">Por que o número-cabeçalho engana</div>
-          </div>
-          <p class="prose prose-dropcap">A receita de serviço cresceu apenas <strong>1,0% em 2025</strong>, enquanto a venda de equipamento avançou <strong>9,7%</strong>. A diferença é mais que estatística. Receita de serviço captura o que clientes pagam pela presença contínua da operadora em suas vidas, é o ativo recorrente que justifica múltiplo de equity. Equipment revenue é venda de uma vez, com margem comprimida por subsídio promocional. Ao ler o titular de <strong>+2,5% de receita consolidada</strong>, o leitor sofisticado deveria perguntar: <span class="quote">quanto disso é monetização e quanto é apenas troca de aparelho?</span> A resposta determina se a Verizon está crescendo ou apenas girando estoque.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- PULL QUOTE -->
-    <div class="pullquote">
-      <p class="pullquote-text">A margem EBITDA ajustada de 38,9% no primeiro trimestre é o indicador que valida toda a tese estratégica da nova gestão.</p>
-      <div class="pullquote-attribution">Leitura Consultiva · Maio 2026</div>
-    </div>
-
-    <!-- ARTICLE 2 — EBITDA evolução -->
-    <div class="article">
-      <div class="article-grid single">
-        <div>
-          <div class="article-header">
-            <div class="article-category">Reportagem Especial</div>
-            <h3 class="article-title">A subida silenciosa da margem operacional</h3>
-            <div class="article-byline">Evolução do EBITDA ajustado · 2024-2025 e série trimestral até 1T26</div>
-          </div>
-          <div class="chart-container tall">
-            <canvas id="chart-ebitda"></canvas>
-          </div>
-          <p class="prose" style="margin-top: 20px;">
-            O EBITDA ajustado avançou de <strong>US$ 48,8 bilhões em 2024 para US$ 50,0 bilhões em 2025</strong>, um movimento modesto em termos absolutos. A história está na margem. Saltando de 36,2% no fechamento anual para <strong>38,9% no primeiro trimestre de 2026</strong>, a expansão de <strong>140 pontos-base em um único trimestre</strong> é resultado direto de três alavancas, redução de 13 mil pessoas, racionalização de IT e canal, e sinergias iniciais com Frontier. A sustentação dessa margem ao longo de 2026 é o teste real da execução. <span class="quote">Margem alta um trimestre é virtude. Margem alta sustentada é tese.</span>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ============================================ -->
-  <!-- SEÇÃO II — BASE E CONVERGÊNCIA -->
-  <!-- ============================================ -->
-  <div class="section">
-    <div class="section-marker">
-      <div class="section-marker-ornament">❦ ❦ ❦</div>
-      <div class="section-number">Seção II</div>
-    </div>
-    <h2 class="section-title">A Geografia dos Clientes</h2>
-    <p class="section-deck">Onde a Verizon está conquistando, onde está apenas segurando, e por que o mix de tecnologia de hoje não é o que sustentará valor em 2030.</p>
-    <div class="section-rule"></div>
-
-    <!-- ARTICLE 3 — Postpaid recovery -->
-    <div class="article">
-      <div class="article-grid">
-        <div>
-          <div class="article-header">
-            <div class="article-category">Análise Trimestral</div>
-            <h3 class="article-title">A volta ao verde, depois de doze anos</h3>
-            <div class="article-byline">Net adds postpaid phone · 1T25 a 1T26</div>
-          </div>
-          <div class="chart-container">
-            <canvas id="chart-postpaid"></canvas>
-          </div>
-        </div>
-        <div>
-          <div class="article-header">
-            <div class="article-category">Contexto</div>
-            <h3 class="article-title">O primeiro 1T positivo desde 2013</h3>
-            <div class="article-byline">Doze anos para reverter uma tendência estrutural</div>
-          </div>
-          <p class="prose prose-dropcap">A curva conta a história. No primeiro trimestre de 2025, a Verizon perdeu <strong>289 mil clientes postpaid</strong> em uma única janela, refletindo pressão competitiva do T-Mobile e da AT&T. Cinco trimestres depois, no 1T26, a operadora reportou <strong>55 mil net adds positivos</strong>, o primeiro trimestre verde desde 2013. A reviravolta é técnica e narrativa simultaneamente. Tecnicamente, vem de melhor segmentação, disciplina de oferta e novo regime promocional. Narrativamente, é o ponto de inflexão que permitiu à liderança subir o guidance de EPS para o ano. <span class="quote">Toda boa história executiva precisa de um marco temporal que valide a virada. Este é o marco.</span></p>
-        </div>
-      </div>
-    </div>
-
-    <!-- ARTICLE 4 — Broadband mix -->
-    <div class="article">
-      <div class="article-grid">
-        <div>
-          <div class="article-header">
-            <div class="article-category">Mix Tecnológico</div>
-            <h3 class="article-title">Quem está crescendo, FWA ou fibra?</h3>
-            <div class="article-byline">Composição dos net adds de broadband · 1T26</div>
-          </div>
-          <div class="chart-container">
-            <canvas id="chart-broadband-mix"></canvas>
-          </div>
-        </div>
-        <div>
-          <div class="article-header">
-            <div class="article-category">Tensão Estratégica</div>
-            <h3 class="article-title">O mix que monetiza não é o mix que retém</h3>
-            <div class="article-byline">A dança entre velocidade e durabilidade</div>
-          </div>
-          <p class="prose prose-dropcap">Dos <strong>341 mil novos clientes de broadband no 1T26, 63% vieram do FWA</strong>, a internet por rádio entregue sobre a rede móvel 5G. Apenas 37% foram para a fibra Fios. O FWA tem virtudes claras, monetiza capacidade espectral ociosa, exige capex marginal mínimo, e captura share em endereços que a fibra ainda não alcança. A fibra, no entanto, entrega <strong>churn 30% menor e LTV substancialmente maior</strong> quando combinada com mobile. A pergunta que se faz é simples: o mix de hoje cria valor de longo prazo ou apenas resultado de curto? A resposta da liderança é honesta, <span class="quote">FWA é stepping stone, fibra é destino</span>.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- ARTICLE 5 — Broadband histórico -->
-    <div class="article">
-      <div class="article-grid single">
-        <div>
-          <div class="article-header">
-            <div class="article-category">Série Histórica</div>
-            <h3 class="article-title">Três anos de transição tecnológica</h3>
-            <div class="article-byline">Conexões broadband Consumer por tecnologia · 2023-2025</div>
-          </div>
-          <div class="chart-container tall">
-            <canvas id="chart-broadband-historico"></canvas>
-          </div>
-          <p class="prose" style="margin-top: 20px;">
-            O <strong>FWA quase dobrou</strong> em dois anos, saindo de 1,87 milhão de conexões em 2023 para 3,41 milhões em 2025. Cresceu mais rápido do que qualquer linha de produto na história recente da empresa. A fibra Fios cresceu apenas 2,7% em 2025, refletindo a limitação geográfica do footprint pré-Frontier, restrito a nove estados. A aquisição da Frontier em janeiro de 2026 expandiu esse footprint para 31 estados. <span class="quote">A próxima edição desse gráfico, em 2027, terá uma curva azul muito diferente.</span>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ============================================ -->
-  <!-- SEÇÃO III — CAPITAL E RETORNO -->
-  <!-- ============================================ -->
-  <div class="section">
-    <div class="section-marker">
-      <div class="section-marker-ornament">❦ ❦ ❦</div>
-      <div class="section-number">Seção III</div>
-    </div>
-    <h2 class="section-title">O Equilíbrio do Caixa</h2>
-    <p class="section-deck">Como a Verizon está navegando o trade-off entre crescer via aquisição, retornar ao acionista e manter a saúde do balanço.</p>
-    <div class="section-rule"></div>
-
-    <!-- ARTICLE 6 — Dívida e FCF -->
-    <div class="article">
-      <div class="article-grid">
-        <div>
-          <div class="article-header">
-            <div class="article-category">Estrutura de Capital</div>
-            <h3 class="article-title">A conta da Frontier</h3>
-            <div class="article-byline">Dívida total e alavancagem · 1T25 vs 1T26</div>
-          </div>
-          <div class="chart-container">
-            <canvas id="chart-divida"></canvas>
-          </div>
-        </div>
-        <div>
-          <div class="article-header">
-            <div class="article-category">Geração de Caixa</div>
-            <h3 class="article-title">Cinco bilhões devolvidos em um trimestre</h3>
-            <div class="article-byline">Operating cash flow, FCF e retorno ao acionista · 1T</div>
-          </div>
-          <div class="chart-container">
-            <canvas id="chart-fcf"></canvas>
-          </div>
-        </div>
-      </div>
-      <p class="prose" style="margin-top: 28px;">
-        A consolidação da Frontier adicionou <strong>US$ 29 bilhões à dívida total</strong>, elevando a alavancagem de 2,3x para <strong>2,6x EBITDA</strong>. Ainda assim, a Verizon devolveu <strong>US$ 5,4 bilhões aos acionistas</strong> no trimestre, somando dividendo e o primeiro grande buyback do ano. O movimento é deliberado. A liderança escolheu defender o múltiplo de equity via retorno ao acionista mesmo durante o ciclo mais intensivo de capital da década. A meta declarada é retornar à alavancagem pré-Frontier até 2027, condicional à entrega do FCF guidance de <strong>US$ 21,5 bilhões para 2026</strong>. <span class="quote">A matemática do balanço fecha. A execução é o que precisa entregar.</span>
-      </p>
-    </div>
-  </div>
-
-  <!-- ============================================ -->
-  <!-- SEÇÃO IV — SEGMENTOS -->
-  <!-- ============================================ -->
-  <div class="section">
-    <div class="section-marker">
-      <div class="section-marker-ornament">❦ ❦ ❦</div>
-      <div class="section-number">Seção IV</div>
-    </div>
-    <h2 class="section-title">Dois Negócios Sob Um Teto</h2>
-    <p class="section-deck">A assimetria entre Consumer e Business é o ponto menos discutido nos demonstrativos, mas o que mais importa para entender a alocação de capital da próxima década.</p>
-    <div class="section-rule"></div>
-
-    <div class="article">
-      <div class="article-grid single">
-        <div>
-          <div class="article-header">
-            <div class="article-category">Comparativo Segmental</div>
-            <h3 class="article-title">A diferença de margem que ninguém quer discutir</h3>
-            <div class="article-byline">Operating income e margem · Consumer vs Business · 2024-2025</div>
-          </div>
-          <div class="chart-container tall">
-            <canvas id="chart-segmentos"></canvas>
-          </div>
-          <p class="prose" style="margin-top: 24px;">
-            O segmento Consumer entrega <strong>27,7% de margem operacional</strong> e <strong>US$ 29,6 bilhões de operating income</strong>. O segmento Business, mesmo após melhora expressiva em 2025, entrega apenas <strong>8,7% de margem e US$ 2,5 bilhões em valor absoluto</strong>. A diferença não é cíclica, é estrutural. Consumer monetiza relacionamento de longo prazo com famílias americanas, com baixo custo de aquisição relativo ao LTV. Business compete em um mercado de enterprise saturado, contra system integrators, hyperscalers e operadoras globais. A tese pública de <span class="quote">one Verizon</span> obscurece o fato de que Consumer subsidia Business. A pergunta que o board precisa responder em 2026 é simples, vale a pena seguir investindo em Business com horizonte de turnaround, ou é hora de reposicionar capital? <strong>Esta é a conversa que a próxima diretoria de comunicação vai precisar enquadrar.</strong>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- COLOFON -->
-  <div class="colofon">
-    <div class="colofon-ornament">❦ ❦ ❦</div>
-    <p>
-      <strong>The Verizon Chronicle</strong><br>
-      Material editorial executivo de circulação restrita<br>
-      Análise consultiva baseada em documentos públicos da Verizon Communications Inc.<br>
-      Fontes primárias: Form 10-K 2025 · 1Q26 Earnings Presentation & Transcript (Abril 2026)
-    </p>
-  </div>
-
+  <h3 style="font-family:'Fraunces',serif;font-size:18px;margin:28px 0 12px;color:var(--text)">Índice narrativo</h3>
+  <table class="index-table">
+    <tr><td>Crescimento</td><td>O motor de volume está migrando de postpaid puro para broadband, com FWA desacelerando e fibra ainda por provar escala.</td></tr>
+    <tr><td>Rentabilidade</td><td>O lucro cresce mais que a receita porque a disciplina de custo compensa a pressão de amortização promocional.</td></tr>
+    <tr><td>Capital</td><td>O balanço absorveu Frontier sem folga: dívida a US$ 172,5 bi no 1T26, leverage a 2,6x, meta de desalavancar até 2027.</td></tr>
+    <tr><td>Guidance 2026</td><td>O guidance elevado aposta em execução impecável de sinergias e volume, com zero buffer para erro.</td></tr>
+    <tr><td>Watch List</td><td>Oito gatilhos decidem nos próximos três trimestres se a tese se sustenta ou se o triângulo de capital cede.</td></tr>
+  </table>
 </div>
 
-<!-- ===== MOLDURA PATENTE · FOOTER ===== -->
-<footer class="pat-footer">
-  <div class="pat-footer-inner">
-    <div class="pat-footer-top">
-      <div class="pat-footer-headline">
-        Este é o tipo de entrega que sai do workshop. Em 2 horas, você aprende a construir a sua.
-      </div>
-      <a href="https://patente-workshop.vercel.app/" class="pat-footer-cta">Conhecer o workshop</a>
+<!-- ═══════ CHAPTER 2: CRESCIMENTO ═══════ -->
+<div class="chapter" id="ch-growth">
+  <div class="eyebrow">Crescimento</div>
+  <h1 class="section-title">O motor migra de postpaid puro para <em>broadband</em>, mas o novo motor ainda não atingiu velocidade de cruzeiro</h1>
+  <p class="section-lede">Net adds postpaid colapsaram em 2025, prepaid ressurgiu, e broadband é o único vetor em expansão consistente. A virada do 1T26 é promissora, mas precisa se sustentar.</p>
+
+  <h3 style="font-family:'Fraunces',serif;font-size:18px;margin:0 0 16px;color:var(--text)">Postpaid phone net adds</h3>
+  <div class="bar-chart" id="chart-postpaid">
+    <div class="bar-group"><div class="bar-val">-132</div><div class="bar alt" style="height:2px"></div><div class="bar-label">2023</div></div>
+    <div class="bar-group"><div class="bar-val">82</div><div class="bar" style="height:25px"></div><div class="bar-label">2024</div></div>
+    <div class="bar-group"><div class="bar-val">137</div><div class="bar" style="height:42px"></div><div class="bar-label">2025</div></div>
+    <div class="bar-group"><div class="bar-val">55</div><div class="bar green" style="height:17px"></div><div class="bar-label">1T26</div></div>
+  </div>
+  <div class="chart-reading"><b>Recuperação.</b> Primeiro Q1 positivo desde 2013, mas base de comparação fraca. A trajetória anual (137K em 2025) está longe dos 2.044K de 2023. <span class="source">10-K p.28; Presentation p.5</span></div>
+
+  <div class="card-grid-3">
+    <div class="card"><div class="card-label">Postpaid net adds (Consumer)</div><div class="card-value font-mono">581 mil</div><div class="card-delta down font-mono">-57% vs 2024</div><div class="source">10-K p.28</div></div>
+    <div class="card"><div class="card-label">Prepaid core net adds</div><div class="card-value font-mono">343 mil</div><div class="card-delta up font-mono">vs 2K em 2024</div><div class="source">10-K p.28</div></div>
+    <div class="card"><div class="card-label">ARPA Postpaid</div><div class="card-value font-mono">$147,31</div><div class="card-delta up font-mono">+2,3% vs 2024</div><div class="source">10-K p.28</div></div>
+  </div>
+
+  <h3 style="font-family:'Fraunces',serif;font-size:18px;margin:24px 0 12px;color:var(--text)">Churn postpaid phone (%)</h3>
+  <div class="bar-chart">
+    <div class="bar-group"><div class="bar-val">0,83%</div><div class="bar" style="height:60px"></div><div class="bar-label">2023</div></div>
+    <div class="bar-group"><div class="bar-val">0,83%</div><div class="bar" style="height:60px"></div><div class="bar-label">2024</div></div>
+    <div class="bar-group"><div class="bar-val">0,92%</div><div class="bar alt" style="height:80px"></div><div class="bar-label">2025</div></div>
+    <div class="bar-group"><div class="bar-val">0,90%</div><div class="bar green" style="height:75px"></div><div class="bar-label">1T26</div></div>
+  </div>
+  <div class="chart-reading"><b>Inversão incipiente.</b> Churn subiu 9 bps em 2025 mas recuou para 0,90% no 1T26, atingindo abaixo de 0,85% em março. Resultado atribuído a micro-segmentação de retenção. <span class="source">10-K p.28; Transcript 1T26</span></div>
+
+  <h3 style="font-family:'Fraunces',serif;font-size:18px;margin:24px 0 12px;color:var(--text)">Broadband net adds (Consumer, mil)</h3>
+  <div class="bar-chart">
+    <div class="bar-group"><div class="bar-val">989</div><div class="bar" style="height:130px"></div><div class="bar-label">FWA 23</div></div>
+    <div class="bar-group"><div class="bar-val">846</div><div class="bar" style="height:110px"></div><div class="bar-label">FWA 24</div></div>
+    <div class="bar-group"><div class="bar-val">693</div><div class="bar amber" style="height:90px"></div><div class="bar-label">FWA 25</div></div>
+    <div class="bar-group" style="border-left:1px dashed var(--border);padding-left:8px"><div class="bar-val">159</div><div class="bar" style="height:20px"></div><div class="bar-label">Fiber 23</div></div>
+    <div class="bar-group"><div class="bar-val">193</div><div class="bar" style="height:25px"></div><div class="bar-label">Fiber 24</div></div>
+    <div class="bar-group"><div class="bar-val">193</div><div class="bar" style="height:25px"></div><div class="bar-label">Fiber 25</div></div>
+  </div>
+  <div class="chart-reading"><b>Desaceleração no FWA.</b> Net adds caem 18% ao ano enquanto fibra permanece estável. O 1T26 entregou 341K broadband total (214K FWA + 127K fiber), sinalizando que Frontier começa a contribuir. <span class="source">10-K p.28; Transcript 1T26</span></div>
+
+  <div class="card-grid-3">
+    <div class="card"><div class="card-label">Base FWA total</div><div class="card-value font-mono">5,7 mi</div><div class="card-note">Consumer 3,4M + Business 2,3M</div><div class="source">10-K p.6</div></div>
+    <div class="card"><div class="card-label">Fios Internet</div><div class="card-value font-mono">7,3 mi</div><div class="card-delta up font-mono">+2,7% vs 2024</div><div class="source">10-K p.28</div></div>
+    <div class="card"><div class="card-label">Total Broadband</div><div class="card-value font-mono">13,6 mi</div><div class="card-note">Consumer 10,9M + Business 2,8M</div><div class="source">10-K p.28, 31</div></div>
+  </div>
+
+  <div class="insight implication"><div class="insight-tag">Implicação de board</div>Apenas 20% da base postpaid tem broadband Verizon. A oportunidade de cross-sell é massiva, mas depende da execução Frontier. Se a conversão de passings em clientes ativos replicar o ritmo pré-Frontier do Fios (receita +0,3%), o upside fica no papel.</div>
+</div>
+
+<!-- ═══════ CHAPTER 3: RENTABILIDADE ═══════ -->
+<div class="chapter" id="ch-profit">
+  <div class="eyebrow">Rentabilidade</div>
+  <h1 class="section-title">O lucro cresce mais que a receita porque a <em>disciplina de custo</em> compensa a pressão promocional</h1>
+  <p class="section-lede">Adj. EBITDA recorde no 1T26, EPS ajustado em alta de 7,6% YoY, custo de retenção caindo 35%. A rentabilidade é a parte da tese que está funcionando.</p>
+
+  <div class="card-grid-3">
+    <div class="card"><div class="card-label">Receita consolidada 2025</div><div class="card-value font-mono">$138,2 bi</div><div class="card-delta up font-mono">+2,5%</div><div class="source">10-K p.52</div></div>
+    <div class="card"><div class="card-label">Adj. EBITDA 2025</div><div class="card-value font-mono">$50,0 bi</div><div class="card-delta up font-mono">+2,5%</div><div class="source">10-K p.25</div></div>
+    <div class="card"><div class="card-label">Adj. EBITDA 1T26</div><div class="card-value font-mono">$13,4 bi</div><div class="card-delta up font-mono">+6,7% YoY</div><div class="card-note">Maior da história</div><div class="source">Presentation p.6</div></div>
+  </div>
+
+  <h3 style="font-family:'Fraunces',serif;font-size:18px;margin:24px 0 12px;color:var(--text)">Decomposição de receita por segmento (US$ bi)</h3>
+  <table class="data-table">
+    <thead><tr><th>Segmento</th><th class="num">2023</th><th class="num">2024</th><th class="num">2025</th><th class="num">Δ 25/24</th></tr></thead>
+    <tbody>
+      <tr><td>Consumer</td><td class="num">101,6</td><td class="num">102,9</td><td class="num">106,8</td><td class="num" style="color:var(--green)">+3,8%</td></tr>
+      <tr><td>Business</td><td class="num">30,1</td><td class="num">29,5</td><td class="num">29,1</td><td class="num" style="color:var(--vz-red)">-1,6%</td></tr>
+      <tr><td style="font-weight:600">Consolidado</td><td class="num" style="font-weight:600">134,0</td><td class="num" style="font-weight:600">134,8</td><td class="num" style="font-weight:600">138,2</td><td class="num" style="font-weight:600;color:var(--green)">+2,5%</td></tr>
+    </tbody>
+  </table>
+  <div class="source" style="margin-bottom:16px">10-K p.23, 52</div>
+
+  <div class="card-grid-2">
+    <div class="card"><div class="card-label">Consumer EBITDA margin</div><div class="card-value font-mono">41,0%</div><div class="card-delta down font-mono">vs 41,8% em 2024</div><div class="source">10-K p.30</div></div>
+    <div class="card"><div class="card-label">Business EBITDA margin</div><div class="card-value font-mono">22,9%</div><div class="card-delta up font-mono">vs 21,6% em 2024</div><div class="source">10-K p.33</div></div>
+  </div>
+
+  <div class="insight reading"><div class="insight-tag">Leitura</div>Consumer perde 80 bps de margem EBITDA mesmo com receita crescendo 3,8%. Causa: custo de equipamento wireless subiu 12,6% por volume de upgrades e mix de aparelhos mais caros. Business recupera margem via corte de SGA e redução de headcount.</div>
+
+  <h3 style="font-family:'Fraunces',serif;font-size:18px;margin:24px 0 12px;color:var(--text)">EPS e rentabilidade consolidada</h3>
+  <table class="data-table">
+    <thead><tr><th>Métrica</th><th class="num">2023</th><th class="num">2024</th><th class="num">2025</th></tr></thead>
+    <tbody>
+      <tr><td>Net Income (US$ bi)</td><td class="num">12,1</td><td class="num">17,9</td><td class="num">17,6</td></tr>
+      <tr><td>EPS GAAP</td><td class="num">$2,75</td><td class="num">$4,14</td><td class="num">$4,06</td></tr>
+      <tr><td>Operating Income (US$ bi)</td><td class="num">22,9</td><td class="num">28,7</td><td class="num">29,3</td></tr>
+      <tr><td>Adj. EPS 1T26</td><td class="num" colspan="2" style="text-align:center;color:var(--text-muted)">—</td><td class="num" style="color:var(--green)">$1,28 (+7,6%)</td></tr>
+    </tbody>
+  </table>
+  <div class="source" style="margin-bottom:16px">10-K p.52; Transcript 1T26</div>
+
+  <div class="insight positive"><div class="insight-tag">Sinal positivo</div>Custo de aquisição e retenção caiu cerca de 35% em março vs. final do 4T25, segundo o CEO. Mudança descrita como estrutural, não sazonal: micro-segmentação substituindo subsídio bruto de aparelhos.</div>
+
+  <div class="insight alert"><div class="insight-tag">Alerta</div><b>Hipótese a validar:</b> a amortização promocional ainda pressiona receita de serviço wireless (~180 bps de impacto no 1T26). Se a disciplina de custo não se sustentar em trimestres de pressão competitiva, a margem EBITDA do Consumer pode comprimir mais.</div>
+</div>
+
+<!-- ═══════ CHAPTER 4: CAPITAL ═══════ -->
+<div class="chapter" id="ch-capital">
+  <div class="eyebrow">Capital</div>
+  <h1 class="section-title">O balanço absorveu Frontier sem folga: dívida a US$ 172 bi, <em>leverage</em> a 2,6x, meta de desalavancar até 2027</h1>
+  <p class="section-lede">A companhia opera o triângulo de capital mais apertado de sua história: investir na rede, pagar acionistas e reduzir dívida, tudo com o mesmo caixa. Qualquer frustração de FCF força escolha.</p>
+
+  <div class="card-grid-3">
+    <div class="card"><div class="card-label">CFO 2025</div><div class="card-value font-mono">$37,1 bi</div><div class="card-delta up font-mono">+0,6% vs 2024</div><div class="source">10-K p.37</div></div>
+    <div class="card"><div class="card-label">Capex 2025</div><div class="card-value font-mono">$17,0 bi</div><div class="card-note">Guidance 2026: $16,0-16,5 bi</div><div class="source">10-K p.38</div></div>
+    <div class="card"><div class="card-label">FCF 2025</div><div class="card-value font-mono">$20,1 bi</div><div class="card-delta up font-mono">+1,5%</div><div class="source">10-K p.37</div></div>
+  </div>
+
+  <h3 style="font-family:'Fraunces',serif;font-size:18px;margin:24px 0 12px;color:var(--text)">Stack de dívida e alavancagem</h3>
+  <table class="data-table">
+    <thead><tr><th>Métrica</th><th class="num">FY2024</th><th class="num">FY2025</th><th class="num">1T26</th></tr></thead>
+    <tbody>
+      <tr><td>Dívida total</td><td class="num">$144,0 bi</td><td class="num">$158,2 bi</td><td class="num" style="color:var(--vz-red)">$172,5 bi</td></tr>
+      <tr><td>Dívida não garantida</td><td class="num">$117,3 bi</td><td class="num">$131,1 bi</td><td class="num">$142,5 bi</td></tr>
+      <tr><td>Dívida líquida não garantida</td><td class="num">$115,1 bi</td><td class="num">—</td><td class="num">$130,1 bi</td></tr>
+      <tr><td>Net unsec. debt / Adj. EBITDA</td><td class="num">2,3x</td><td class="num">—</td><td class="num" style="color:var(--amber)">2,6x</td></tr>
+      <tr><td>Taxa efetiva de juros</td><td class="num">5,1%</td><td class="num">5,0%</td><td class="num">—</td></tr>
+      <tr><td>Despesa de juros (anual)</td><td class="num">$6,6 bi</td><td class="num">$6,7 bi</td><td class="num">—</td></tr>
+    </tbody>
+  </table>
+  <div class="source" style="margin-bottom:16px">10-K p.24, 38; Presentation p.7</div>
+
+  <div class="insight alert"><div class="insight-tag">Alerta</div>Leverage saltou de 2,3x para 2,6x com a consolidação de Frontier. Meta de 2,0 a 2,25x até 2027 exige desalavancagem de ~US$ 20 bi em dívida líquida em 18 meses. Metade da dívida Frontier já foi paga no 1T26, mas o restante depende de FCF acima de US$ 21,5 bi sustentado.</div>
+
+  <h3 style="font-family:'Fraunces',serif;font-size:18px;margin:24px 0 12px;color:var(--text)">Retorno a acionistas</h3>
+  <div class="card-grid-3">
+    <div class="card"><div class="card-label">Dividendos pagos 2025</div><div class="card-value font-mono">$11,5 bi</div><div class="card-note">19º ano consecutivo de aumento</div><div class="source">10-K p.38</div></div>
+    <div class="card"><div class="card-label">Recompra 1T26</div><div class="card-value font-mono">$2,5 bi</div><div class="card-note">Primeira desde 2015</div><div class="source">Presentation p.7</div></div>
+    <div class="card"><div class="card-label">Compromisso até 2028</div><div class="card-value font-mono red">~$55 bi</div><div class="card-note">Dividendos + recompra de $25 bi</div><div class="source">10-K p.16</div></div>
+  </div>
+
+  <div class="insight implication"><div class="insight-tag">Implicação de board</div>O FCF de 2025 (US$ 20,1 bi) mal cobre dividendos (US$ 11,5 bi) + capex de manutenção implícito. A recompra de US$ 2,5 bi no 1T26 e a meta de US$ 25 bi total só cabem se o FCF 2026+ crescer conforme guiado. Qualquer trimestre de FCF abaixo de US$ 5 bi reabre a discussão sobre sustentabilidade do payout.</div>
+</div>
+
+<!-- ═══════ CHAPTER 5: GUIDANCE 2026 ═══════ -->
+<div class="chapter" id="ch-guidance">
+  <div class="eyebrow">Guidance 2026</div>
+  <h1 class="section-title">Guidance elevado aposta em <em>execução</em> impecável, com zero buffer para erro</h1>
+  <p class="section-lede">Após o 1T26, a companhia elevou EPS e net adds e reafirmou o restante. 2026 é declarado como ano de transição, o que significa que o crescimento sustentável ainda é promessa.</p>
+
+  <div class="card-grid-3">
+    <div class="guidance-card">
+      <div class="guidance-badge raised">Elevado</div>
+      <div class="card-label">Adj. EPS Growth</div>
+      <div class="card-value font-mono" style="margin-top:8px">5% a 6%</div>
+      <div class="card-note">Implica $4,95 a $4,99</div>
+      <div class="card-note" style="color:var(--amber)">Antes: 4% a 5%</div>
+      <div class="source">Presentation p.4</div>
     </div>
-    <div class="pat-footer-bottom">
-      <span>© 2026 Patente · Inteligência aplicada</span>
-      <a href="https://www.thiagopatente.com.br/">thiagopatente.com.br</a>
+    <div class="guidance-card">
+      <div class="guidance-badge raised">Elevado</div>
+      <div class="card-label">Postpaid phone net adds</div>
+      <div class="card-value font-mono" style="margin-top:8px">750K a 1M</div>
+      <div class="card-note">Agora espera top half do range</div>
+      <div class="source">Presentation p.4</div>
+    </div>
+    <div class="guidance-card">
+      <div class="guidance-badge reaffirmed">Reafirmado</div>
+      <div class="card-label">Mobility & Broadband Revenue</div>
+      <div class="card-value font-mono" style="margin-top:8px">+2% a 3%</div>
+      <div class="card-note">1T26 em +1,6% (com 80 bps de outage)</div>
+      <div class="source">Presentation p.4</div>
     </div>
   </div>
-</footer>
-<!-- ===== FIM FOOTER ===== -->
+  <div class="card-grid-3">
+    <div class="guidance-card">
+      <div class="guidance-badge reaffirmed">Reafirmado</div>
+      <div class="card-label">Capex</div>
+      <div class="card-value font-mono" style="margin-top:8px">$16,0 a $16,5 bi</div>
+      <div class="card-note">1T26: $4,2 bi (26% do ponto médio)</div>
+      <div class="source">Presentation p.4</div>
+    </div>
+    <div class="guidance-card">
+      <div class="guidance-badge reaffirmed">Reafirmado</div>
+      <div class="card-label">Free Cash Flow</div>
+      <div class="card-value font-mono" style="margin-top:8px">≥ $21,5 bi</div>
+      <div class="card-note">~7%+ de crescimento vs 2025</div>
+      <div class="source">Presentation p.4</div>
+    </div>
+    <div class="guidance-card">
+      <div class="guidance-badge reaffirmed">Reafirmado</div>
+      <div class="card-label">Fiber passings YE2026</div>
+      <div class="card-value font-mono" style="margin-top:8px">> 32 mi</div>
+      <div class="card-note">Meta médio prazo: 40-50M</div>
+      <div class="source">Transcript 1T26</div>
+    </div>
+  </div>
+
+  <div class="insight reading"><div class="insight-tag">Triangulação</div>Para entregar EPS de 5-6% com receita de serviço crescendo apenas 2-3%, a companhia precisa que (1) a disciplina de custo se mantenha, (2) sinergias Frontier acelerem, e (3) a amortização promocional não piore. Se qualquer uma dessas premissas falhar, o guidance cai para o piso.</div>
+
+  <div class="insight implication"><div class="insight-tag">Implicação de board</div>O guidance inclui resultados Frontier a partir de 20 de janeiro de 2026. Isso significa que o baseline de comparação muda a partir do 2T27. Qualquer leitura de crescimento orgânico em 2026 precisa separar contribuição Frontier, o que a companhia não desagrega publicamente.</div>
+</div>
+
+<!-- ═══════ CHAPTER 6: WATCH LIST ═══════ -->
+<div class="chapter" id="ch-watch">
+  <div class="eyebrow">Watch List</div>
+  <h1 class="section-title">Oito <em>gatilhos</em> que decidem se a tese se sustenta nos próximos três trimestres</h1>
+  <p class="section-lede">Cada indicador tem um valor atual e um threshold explícito. Se dois ou mais entrarem em zona de alerta simultaneamente, a tese precisa ser revisada.</p>
+
+  <div class="card" style="margin-bottom:24px;padding:0;overflow:hidden">
+    <div class="watch-item" style="background:var(--bg-card-alt)"><div class="watch-name" style="font-weight:600;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted)">Indicador</div><div class="watch-current" style="font-weight:600;font-size:11px;color:var(--text-muted);letter-spacing:1px">Atual</div><div class="watch-threshold" style="background:none;font-weight:600;font-size:11px;color:var(--text-muted);letter-spacing:1px">Threshold</div></div>
+    <div class="watch-item"><div class="watch-name">Consumer postpaid phone churn</div><div class="watch-current">0,90%</div><div class="watch-threshold ok">Alerta se > 1,00%</div></div>
+    <div class="watch-item"><div class="watch-name">Postpaid phone net adds (trimestral)</div><div class="watch-current">55K</div><div class="watch-threshold ok">Alerta se negativo por 2 trimestres</div></div>
+    <div class="watch-item"><div class="watch-name">Fiber net adds (pós-Frontier)</div><div class="watch-current">127K (1T26)</div><div class="watch-threshold warn">Alerta se < 100K por 2 trimestres</div></div>
+    <div class="watch-item"><div class="watch-name">FWA net adds (Consumer, trimestral)</div><div class="watch-current">214K (1T26)</div><div class="watch-threshold ok">Alerta se < 150K</div></div>
+    <div class="watch-item"><div class="watch-name">Net unsecured debt / Adj. EBITDA</div><div class="watch-current">2,6x</div><div class="watch-threshold warn">Alerta se > 2,8x no 3T26</div></div>
+    <div class="watch-item"><div class="watch-name">Wireless service revenue growth</div><div class="watch-current">-1,0% (1T26)</div><div class="watch-threshold danger">Negativo por 80 bps de outage; alerta se persistir</div></div>
+    <div class="watch-item"><div class="watch-name">Custo aquisição/retenção (tendência)</div><div class="watch-current">-35% vs 4T25</div><div class="watch-threshold ok">Alerta se reverter >10%</div></div>
+    <div class="watch-item"><div class="watch-name">Device payment default rate (Δ YoY)</div><div class="watch-current">+0,51 pp</div><div class="watch-threshold warn">Alerta se > +0,75 pp (≈$250M impacto)</div></div>
+  </div>
+
+  <div class="insight alert"><div class="insight-tag">Alerta</div>Dois indicadores já estão em zona amarela: leverage a 2,6x (meta 2,0-2,25x até 2027) e wireless service revenue negativo no 1T26 (mesmo com fator pontual). Se o 2T26 não mostrar melhora em ambos, a janela de conforto para o payout se estreita.</div>
+
+  <div class="insight implication"><div class="insight-tag">Implicação de board</div>O risco não monitorado: passivo de cabos de chumbo na rede de cobre. O 10-K declara que o custo não pode ser estimado e pode ser material (10-K, seção Risk Factors). Não entra em nenhum modelo, mas pode virar evento. Exigir da gestão uma faixa de exposição cenarizada.</div>
+
+  <div class="insight reading"><div class="insight-tag">Nota de validação</div><b>Antes de circular para C-level, validar com o time financeiro:</b> (1) a taxa implícita de juros pós-Frontier, que pode diferir do 5,0% reportado em 2025 se a dívida Frontier tiver perfil diferente; (2) o run-rate de sinergias Frontier contabilizado no guidance de EBITDA 2026, para separar crescimento orgânico de contribuição M&A; (3) a premissa de capex por passing de fibra que sustenta a meta de 32M+ passings com capex de US$ 16-16,5 bi.</div>
+</div>
+
+</div><!-- /content -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-left">
+    <div class="footer-brand">Patente<span class="dot">.</span></div>
+    <div class="footer-tagline">Estratégia · Análise · Comunicação executiva</div>
+    <a href="https://thiagopatente.com.br" target="_blank" rel="noopener" class="footer-url">thiagopatente.com.br</a>
+  </div>
+  <div class="footer-right">
+    <a href="https://linkedin.com/in/patente-thiago" target="_blank" rel="noopener" class="footer-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+    <a href="https://instagram.com/patente.thiago" target="_blank" rel="noopener" class="footer-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      @patente.thiago
+    </a>
+  </div>
+</div>
+
+</div><!-- /main -->
+</div><!-- /app -->
 
 <script>
-// PALETA EDITORIAL
-const COLORS = {
-  ink: '#1C1410',
-  inkSoft: '#3A2B22',
-  bordeaux: '#6B1F2B',
-  bordeauxLight: '#A04559',
-  gold: '#A8763E',
-  goldLight: '#D4B58A',
-  sage: '#7A8471',
-  sageLight: '#A8B0A1',
-  rule: '#C9BFAE',
-  paper: '#F5F1EA',
-  paperWarm: '#EDE6D8'
-};
-
-// DEFAULTS GLOBAIS - estética editorial
-Chart.defaults.font.family = "'Source Serif 4', Georgia, serif";
-Chart.defaults.font.size = 11;
-Chart.defaults.color = COLORS.inkSoft;
-Chart.defaults.borderColor = COLORS.rule;
-
-const commonOptions = {
-  responsive: true,
-  maintainAspectRatio: false,
-  plugins: {
-    legend: {
-      position: 'top',
-      align: 'end',
-      labels: {
-        boxWidth: 14,
-        padding: 14,
-        font: { size: 11, family: "'Inter', sans-serif", weight: '500' },
-        color: COLORS.inkSoft
-      }
-    },
-    tooltip: {
-      backgroundColor: COLORS.ink,
-      titleFont: { size: 12, weight: '700', family: "'Inter', sans-serif" },
-      bodyFont: { size: 12, family: "'Source Serif 4', serif" },
-      padding: 12,
-      cornerRadius: 2,
-      borderColor: COLORS.gold,
-      borderWidth: 1
-    }
-  },
-  scales: {
-    x: {
-      grid: { display: false },
-      ticks: { font: { size: 11, family: "'Inter', sans-serif" }, color: COLORS.inkSoft },
-      border: { color: COLORS.ink }
-    },
-    y: {
-      grid: { color: COLORS.rule, drawBorder: false },
-      ticks: { font: { size: 11, family: "'Inter', sans-serif" }, color: COLORS.inkSoft },
-      border: { display: false }
-    }
-  }
-};
-
-// ========================================
-// CHART 1 — Receita por componente
-// ========================================
-new Chart(document.getElementById('chart-receita'), {
-  type: 'bar',
-  data: {
-    labels: ['2023', '2024', '2025'],
-    datasets: [
-      {
-        label: 'Receita de serviço',
-        data: [109.7, 111.6, 112.7],
-        backgroundColor: COLORS.ink,
-        borderRadius: 2
-      },
-      {
-        label: 'Receita de equipamento',
-        data: [24.3, 23.2, 25.5],
-        backgroundColor: COLORS.bordeaux,
-        borderRadius: 2
-      }
-    ]
-  },
-  options: {
-    ...commonOptions,
-    scales: {
-      x: { stacked: true, grid: { display: false }, ticks: commonOptions.scales.x.ticks },
-      y: {
-        stacked: true,
-        grid: { color: COLORS.rule },
-        ticks: { ...commonOptions.scales.y.ticks, callback: v => 'US$ ' + v + ' bi' }
-      }
-    }
-  }
-});
-
-// ========================================
-// CHART 2 — EBITDA Ajustado
-// ========================================
-new Chart(document.getElementById('chart-ebitda'), {
-  type: 'bar',
-  data: {
-    labels: ['2024 (ano)', '2025 (ano)', '1T25', '2T25', '3T25', '4T25', '1T26'],
-    datasets: [
-      {
-        label: 'EBITDA Ajustado (US$ bi)',
-        data: [48.8, 50.0, 12.6, 12.3, 12.5, 12.6, 13.4],
-        backgroundColor: ctx => ctx.dataIndex < 2 ? COLORS.ink : COLORS.bordeauxLight,
-        borderRadius: 2,
-        yAxisID: 'y'
-      },
-      {
-        label: 'Margem EBITDA Ajustada (%)',
-        data: [36.2, 36.2, 37.5, 36.8, 37.2, 37.5, 38.9],
-        type: 'line',
-        borderColor: COLORS.gold,
-        backgroundColor: COLORS.gold,
-        borderWidth: 2.5,
-        pointRadius: 5,
-        pointBackgroundColor: COLORS.gold,
-        pointBorderColor: 'white',
-        pointBorderWidth: 1.5,
-        tension: 0.2,
-        yAxisID: 'y1'
-      }
-    ]
-  },
-  options: {
-    ...commonOptions,
-    scales: {
-      x: { grid: { display: false }, ticks: commonOptions.scales.x.ticks },
-      y: {
-        position: 'left',
-        grid: { color: COLORS.rule },
-        ticks: { ...commonOptions.scales.y.ticks, callback: v => 'US$ ' + v + ' bi' },
-        min: 0, max: 60
-      },
-      y1: {
-        position: 'right',
-        grid: { display: false },
-        ticks: { ...commonOptions.scales.y.ticks, callback: v => v + '%', color: COLORS.gold },
-        min: 30, max: 42
-      }
-    }
-  }
-});
-
-// ========================================
-// CHART 3 — Postpaid net adds
-// ========================================
-new Chart(document.getElementById('chart-postpaid'), {
-  type: 'bar',
-  data: {
-    labels: ['1T25', '2T25', '3T25', '4T25', '1T26'],
-    datasets: [{
-      label: 'Net adds (mil conexões)',
-      data: [-289, -9, 44, 616, 55],
-      backgroundColor: ctx => ctx.parsed.y < 0 ? COLORS.bordeaux : COLORS.ink,
-      borderRadius: 2
-    }]
-  },
-  options: {
-    ...commonOptions,
-    plugins: { ...commonOptions.plugins, legend: { display: false } },
-    scales: {
-      x: { grid: { display: false }, ticks: commonOptions.scales.x.ticks },
-      y: {
-        grid: { color: COLORS.rule },
-        ticks: { ...commonOptions.scales.y.ticks, callback: v => v + 'k' },
-        suggestedMin: -400, suggestedMax: 700
-      }
-    }
-  }
-});
-
-// ========================================
-// CHART 4 — Broadband mix 1T26
-// ========================================
-new Chart(document.getElementById('chart-broadband-mix'), {
-  type: 'doughnut',
-  data: {
-    labels: ['Fixed Wireless Access (FWA)', 'Fibra Fios'],
-    datasets: [{
-      data: [214, 127],
-      backgroundColor: [COLORS.bordeaux, COLORS.gold],
-      borderColor: COLORS.paper,
-      borderWidth: 3
-    }]
-  },
-  options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        position: 'bottom',
-        labels: {
-          boxWidth: 14, padding: 14,
-          font: { size: 12, family: "'Inter', sans-serif", weight: '500' },
-          color: COLORS.inkSoft
-        }
-      },
-      tooltip: {
-        backgroundColor: COLORS.ink,
-        titleFont: { family: "'Inter', sans-serif" },
-        callbacks: {
-          label: ctx => {
-            const total = ctx.dataset.data.reduce((a,b) => a+b, 0);
-            const pct = ((ctx.parsed / total) * 100).toFixed(0);
-            return '  ' + ctx.label + ': ' + ctx.parsed + 'k (' + pct + '%)';
-          }
-        }
-      }
-    },
-    cutout: '62%'
-  }
-});
-
-// ========================================
-// CHART 5 — Conexões broadband Consumer histórico
-// ========================================
-new Chart(document.getElementById('chart-broadband-historico'), {
-  type: 'bar',
-  data: {
-    labels: ['2023', '2024', '2025'],
-    datasets: [
-      {
-        label: 'Fibra Fios',
-        data: [6976, 7135, 7328],
-        backgroundColor: COLORS.gold,
-        borderRadius: 2
-      },
-      {
-        label: 'Fixed Wireless Access',
-        data: [1866, 2714, 3407],
-        backgroundColor: COLORS.bordeaux,
-        borderRadius: 2
-      },
-      {
-        label: 'DSL (legado)',
-        data: [214, 165, 123],
-        backgroundColor: COLORS.sageLight,
-        borderRadius: 2
-      }
-    ]
-  },
-  options: {
-    ...commonOptions,
-    scales: {
-      x: { stacked: true, grid: { display: false }, ticks: commonOptions.scales.x.ticks },
-      y: {
-        stacked: true,
-        grid: { color: COLORS.rule },
-        ticks: { ...commonOptions.scales.y.ticks, callback: v => (v/1000).toFixed(1) + ' mi' }
-      }
-    }
-  }
-});
-
-// ========================================
-// CHART 6 — Dívida e alavancagem
-// ========================================
-new Chart(document.getElementById('chart-divida'), {
-  type: 'bar',
-  data: {
-    labels: ['1T25', '1T26'],
-    datasets: [
-      {
-        label: 'Dívida total (US$ bi)',
-        data: [143.6, 172.5],
-        backgroundColor: COLORS.ink,
-        borderRadius: 2,
-        yAxisID: 'y'
-      },
-      {
-        label: 'Net Debt / EBITDA',
-        data: [2.3, 2.6],
-        type: 'line',
-        borderColor: COLORS.gold,
-        backgroundColor: COLORS.gold,
-        borderWidth: 2.5,
-        pointRadius: 7,
-        pointBackgroundColor: COLORS.gold,
-        pointBorderColor: 'white',
-        pointBorderWidth: 2,
-        tension: 0.2,
-        yAxisID: 'y1'
-      }
-    ]
-  },
-  options: {
-    ...commonOptions,
-    scales: {
-      x: { grid: { display: false }, ticks: commonOptions.scales.x.ticks },
-      y: {
-        position: 'left',
-        grid: { color: COLORS.rule },
-        ticks: { ...commonOptions.scales.y.ticks, callback: v => 'US$ ' + v + ' bi' },
-        suggestedMin: 0, suggestedMax: 200
-      },
-      y1: {
-        position: 'right',
-        grid: { display: false },
-        ticks: { ...commonOptions.scales.y.ticks, callback: v => v.toFixed(1) + 'x', color: COLORS.gold },
-        suggestedMin: 0, suggestedMax: 3.5
-      }
-    }
-  }
-});
-
-// ========================================
-// CHART 7 — FCF e retorno
-// ========================================
-new Chart(document.getElementById('chart-fcf'), {
-  type: 'bar',
-  data: {
-    labels: ['Cash Flow Ops', 'Capex', 'Free Cash Flow', 'Dividendos', 'Buyback'],
-    datasets: [
-      {
-        label: '1T25',
-        data: [7.8, 4.1, 3.6, 2.9, 0],
-        backgroundColor: COLORS.goldLight,
-        borderRadius: 2
-      },
-      {
-        label: '1T26',
-        data: [8.0, 4.2, 3.8, 2.9, 2.5],
-        backgroundColor: COLORS.bordeaux,
-        borderRadius: 2
-      }
-    ]
-  },
-  options: {
-    ...commonOptions,
-    scales: {
-      x: { grid: { display: false }, ticks: commonOptions.scales.x.ticks },
-      y: {
-        grid: { color: COLORS.rule },
-        ticks: { ...commonOptions.scales.y.ticks, callback: v => 'US$ ' + v + ' bi' }
-      }
-    }
-  }
-});
-
-// ========================================
-// CHART 8 — Segmentos
-// ========================================
-new Chart(document.getElementById('chart-segmentos'), {
-  type: 'bar',
-  data: {
-    labels: ['Consumer 2024', 'Consumer 2025', 'Business 2024', 'Business 2025'],
-    datasets: [
-      {
-        label: 'Operating Income (US$ bi)',
-        data: [29.5, 29.6, 2.1, 2.5],
-        backgroundColor: [COLORS.inkSoft, COLORS.ink, COLORS.bordeauxLight, COLORS.bordeaux],
-        borderRadius: 2,
-        yAxisID: 'y'
-      },
-      {
-        label: 'Margem operacional (%)',
-        data: [28.7, 27.7, 7.0, 8.7],
-        type: 'line',
-        borderColor: COLORS.gold,
-        backgroundColor: COLORS.gold,
-        borderWidth: 2.5,
-        pointRadius: 7,
-        pointBackgroundColor: COLORS.gold,
-        pointBorderColor: 'white',
-        pointBorderWidth: 2,
-        tension: 0,
-        yAxisID: 'y1'
-      }
-    ]
-  },
-  options: {
-    ...commonOptions,
-    scales: {
-      x: { grid: { display: false }, ticks: commonOptions.scales.x.ticks },
-      y: {
-        position: 'left',
-        grid: { color: COLORS.rule },
-        ticks: { ...commonOptions.scales.y.ticks, callback: v => 'US$ ' + v + ' bi' },
-        suggestedMin: 0, suggestedMax: 35
-      },
-      y1: {
-        position: 'right',
-        grid: { display: false },
-        ticks: { ...commonOptions.scales.y.ticks, callback: v => v + '%', color: COLORS.gold },
-        suggestedMin: 0, suggestedMax: 35
-      }
-    }
-  }
-});
+function showChapter(id, el) {
+  document.querySelectorAll('.chapter').forEach(c => c.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('ch-' + id).classList.add('active');
+  if (el) el.classList.add('active');
+  document.querySelector('.content').scrollTo(0, 0);
+  window.scrollTo(0, 0);
+}
+function toggleTheme() {
+  const html = document.documentElement;
+  html.setAttribute('data-theme', html.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+}
+function toggleSidebar() {
+  const html = document.documentElement;
+  html.setAttribute('data-sidebar', html.getAttribute('data-sidebar') === 'expanded' ? 'collapsed' : 'expanded');
+}
 </script>
 </body>
 </html>
