@@ -3,228 +3,213 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cockpit Patente · Verizon 1Q26</title>
+<title>Cockpit Patente · Apple FY2025</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-/* ═══════ CSS VARIABLES ═══════ */
 :root {
-  --vz-red: #cd040b;
-  --vz-red-soft: #e8383f;
-  --navy: #1a1a2e;
-  --navy-deep: #12121f;
-  --green: #1a7a4c;
-  --green-bg: #e8f5ee;
-  --amber: #b8860b;
-  --amber-bg: #fdf3dc;
-  --alert-bg: #fde8e8;
-  --sidebar-bg: #13131f;
-  --sidebar-text: #a0a0b8;
-  --sidebar-active: #ffffff;
-  --sidebar-hover: #1e1e30;
-  --sidebar-w: 248px;
-  --sidebar-collapsed: 64px;
-  --header-h: 36px;
-  --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+  --font: -apple-system,BlinkMacSystemFont,"SF Pro Text","Inter","Segoe UI",sans-serif;
+  --font-display: -apple-system,BlinkMacSystemFont,"SF Pro Display","Inter",sans-serif;
+  --font-mono: ui-monospace,"SF Mono","JetBrains Mono",monospace;
+  --blue: #0071e3;
+  --blue-dark: #0066cc;
+  --green: #1a8a51;
+  --amber: #b07b00;
+  --danger: #c8372d;
+  --sidebar-w: 256px;
+  --sidebar-collapsed: 72px;
+  --header-h: 44px;
+  --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
   --patente-terracota: #7c2410;
   --patente-coral: #d97757;
 }
 [data-theme="light"] {
-  --bg: #faf8f5;
+  --bg: #fbfbfd;
   --bg-card: #ffffff;
-  --bg-card-alt: #f5f3f0;
-  --text: #1a1a2e;
-  --text-secondary: #555566;
-  --text-muted: #888899;
-  --border: #e5e3df;
-  --border-light: #edebe8;
-  --chart-bar: #1a1a2e;
-  --chart-bar-alt: #cc040b;
-  --num-color: #1a1a2e;
+  --bg-soft: #f5f5f7;
+  --text: #1d1d1f;
+  --text-secondary: #6e6e73;
+  --text-muted: #86868b;
+  --border: #e3e3e6;
+  --border-soft: #f0f0f2;
+  --sidebar-bg: #f5f5f7;
+  --sidebar-text: #6e6e73;
+  --sidebar-active-bg: #ffffff;
+  --chart-bar: #d2d2d7;
+  --chart-bar-alt: #0071e3;
+  --shadow: 0 1px 3px rgba(0,0,0,0.04),0 6px 24px rgba(0,0,0,0.05);
+  --green-bg: #ecf7f0;
+  --amber-bg: #fbf3df;
+  --alert-bg: #fcecea;
+  --blue-bg: #eef5fd;
 }
 [data-theme="dark"] {
-  --bg: #0e0e1a;
-  --bg-card: #1a1a2e;
-  --bg-card-alt: #222238;
-  --text: #e8e8f0;
-  --text-secondary: #a0a0b8;
-  --text-muted: #666680;
-  --border: #2a2a40;
-  --border-light: #222238;
-  --chart-bar: #e8e8f0;
-  --chart-bar-alt: #e8383f;
-  --num-color: #f0f0f8;
+  --bg: #000000;
+  --bg-card: #1d1d1f;
+  --bg-soft: #161617;
+  --text: #f5f5f7;
+  --text-secondary: #a1a1a6;
+  --text-muted: #86868b;
+  --border: #38383a;
+  --border-soft: #2a2a2c;
+  --sidebar-bg: #161617;
+  --sidebar-text: #a1a1a6;
+  --sidebar-active-bg: #2a2a2c;
+  --chart-bar: #48484a;
+  --chart-bar-alt: #2997ff;
+  --blue: #2997ff;
+  --shadow: 0 1px 3px rgba(0,0,0,0.4);
+  --green-bg: #122a1d;
+  --amber-bg: #2a2410;
+  --alert-bg: #2a1513;
+  --blue-bg: #11233a;
 }
 
-/* ═══════ RESET ═══════ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;transition:background var(--transition),color var(--transition)}
+body{font-family:var(--font);background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;transition:background var(--transition),color var(--transition)}
 a{color:inherit;text-decoration:none}
 
-/* ═══════ TYPOGRAPHY ═══════ */
-.font-title{font-family:'Fraunces',serif}
-.font-mono{font-family:'JetBrains Mono',monospace}
-.eyebrow{font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--vz-red);margin-bottom:8px}
-.section-title{font-family:'Fraunces',serif;font-size:28px;font-weight:600;line-height:1.25;color:var(--text);margin-bottom:8px}
-.section-title em{font-style:italic;color:var(--vz-red)}
-.section-lede{font-size:15px;color:var(--text-secondary);line-height:1.6;max-width:680px;margin-bottom:32px}
+.font-mono{font-family:var(--font-mono)}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+.section-title{font-family:var(--font-display);font-size:40px;font-weight:600;line-height:1.08;letter-spacing:-0.022em;color:var(--text);margin-bottom:16px;max-width:880px}
+.section-title em{font-style:normal;color:var(--blue)}
+.section-lede{font-size:19px;font-weight:400;color:var(--text-secondary);line-height:1.5;max-width:720px;margin-bottom:48px;letter-spacing:-0.01em}
+.subhead{font-family:var(--font-display);font-size:24px;font-weight:600;letter-spacing:-0.018em;color:var(--text);margin:48px 0 20px}
 
-/* ═══════ LAYOUT ═══════ */
 .app{display:flex;min-height:100vh}
 
-/* SIDEBAR */
-.sidebar{position:fixed;top:0;left:0;bottom:0;width:var(--sidebar-w);background:var(--sidebar-bg);z-index:100;display:flex;flex-direction:column;transition:width var(--transition);overflow:hidden}
+.sidebar{position:fixed;top:0;left:0;bottom:0;width:var(--sidebar-w);background:var(--sidebar-bg);z-index:100;display:flex;flex-direction:column;transition:width var(--transition),background var(--transition);overflow:hidden;border-right:1px solid var(--border-soft)}
 [data-sidebar="collapsed"] .sidebar{width:var(--sidebar-collapsed)}
-.sidebar-brand{padding:24px 20px 16px;border-bottom:1px solid #222238;white-space:nowrap}
-.sidebar-brand h2{font-family:'Fraunces',serif;font-size:20px;color:#fff;font-weight:600;line-height:1}
+.sidebar-brand{padding:28px 24px 20px;white-space:nowrap}
+.sidebar-brand h2{font-family:var(--font-display);font-size:21px;color:var(--text);font-weight:600;line-height:1;letter-spacing:-0.02em}
 .sidebar-brand h2 .dot{color:var(--patente-coral)}
-.sidebar-brand span{display:block;font-size:11px;color:var(--sidebar-text);letter-spacing:1.5px;margin-top:6px;text-transform:uppercase}
+.sidebar-brand span{display:flex;align-items:center;font-size:12px;color:var(--text-muted);letter-spacing:0.2px;margin-top:10px}
+.apple-glyph{width:13px;height:13px;margin-right:7px;flex-shrink:0;color:var(--text-secondary)}
 [data-sidebar="collapsed"] .sidebar-brand h2,[data-sidebar="collapsed"] .sidebar-brand span{opacity:0}
-.sidebar-group-label{font-size:10px;font-weight:600;letter-spacing:2px;color:#555570;padding:20px 20px 8px;text-transform:uppercase;white-space:nowrap}
+.sidebar-group-label{font-size:11px;font-weight:600;letter-spacing:0.4px;color:var(--text-muted);padding:22px 24px 8px;text-transform:uppercase;white-space:nowrap}
 [data-sidebar="collapsed"] .sidebar-group-label{opacity:0;height:0;padding:0;margin:0}
-.sidebar-nav{flex:1;overflow-y:auto;padding:0 8px}
-.nav-item{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:8px;cursor:pointer;transition:background 0.2s;white-space:nowrap;color:var(--sidebar-text);font-size:13px;font-weight:500}
-.nav-item:hover{background:var(--sidebar-hover);color:#ddd}
-.nav-item.active{background:var(--vz-red);color:#fff}
-.nav-item svg{flex-shrink:0;width:20px;height:20px}
+.sidebar-nav{flex:1;overflow-y:auto;padding:0 12px}
+.nav-item{display:flex;align-items:center;gap:13px;padding:11px 14px;border-radius:12px;cursor:pointer;transition:background 0.2s,color 0.2s;white-space:nowrap;color:var(--sidebar-text);font-size:14px;font-weight:500;margin-bottom:2px}
+.nav-item:hover{background:var(--sidebar-active-bg);color:var(--text)}
+.nav-item.active{background:var(--sidebar-active-bg);color:var(--blue);box-shadow:var(--shadow)}
+.nav-item svg{flex-shrink:0;width:19px;height:19px}
 [data-sidebar="collapsed"] .nav-item span{opacity:0;width:0}
-.sidebar-footer{padding:12px;border-top:1px solid #222238;display:flex;flex-direction:column;gap:8px}
-.sidebar-toggle{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;cursor:pointer;color:var(--sidebar-text);font-size:12px;background:none;border:none;transition:background 0.2s;white-space:nowrap}
-.sidebar-toggle:hover{background:var(--sidebar-hover);color:#ddd}
-.theme-toggle{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:8px;cursor:pointer;color:var(--sidebar-text);font-size:12px;background:none;border:none;transition:background 0.2s;white-space:nowrap}
-.theme-toggle:hover{background:var(--sidebar-hover);color:#ddd}
+.sidebar-footer{padding:14px;display:flex;flex-direction:column;gap:6px}
+.sidebar-toggle,.theme-toggle{display:flex;align-items:center;gap:10px;padding:9px 14px;border-radius:12px;cursor:pointer;color:var(--sidebar-text);font-size:13px;background:none;border:none;transition:background 0.2s,color 0.2s;white-space:nowrap;font-family:var(--font)}
+.sidebar-toggle:hover,.theme-toggle:hover{background:var(--sidebar-active-bg);color:var(--text)}
 [data-sidebar="collapsed"] .sidebar-toggle span,[data-sidebar="collapsed"] .theme-toggle span{opacity:0;width:0}
 
-/* MAIN */
 .main{margin-left:var(--sidebar-w);flex:1;transition:margin-left var(--transition);min-height:100vh;display:flex;flex-direction:column}
 [data-sidebar="collapsed"] .main{margin-left:var(--sidebar-collapsed)}
 
-/* TOP BAR */
-.topbar{height:var(--header-h);display:flex;align-items:center;justify-content:space-between;padding:0 32px;border-bottom:1px solid var(--border-light);flex-shrink:0;background:var(--bg);transition:background var(--transition)}
-.topbar-left{font-family:'Fraunces',serif;font-size:13px;font-style:italic;color:var(--text-muted)}
-.topbar-left b{color:var(--text);font-weight:600;font-size:14px;font-style:normal}
+.topbar{height:var(--header-h);display:flex;align-items:center;justify-content:space-between;padding:0 40px;flex-shrink:0;background:transparent}
+.topbar-left{font-size:13px;color:var(--text-muted)}
+.topbar-left b{color:var(--text);font-weight:600}
 .topbar-left b .dot{color:var(--patente-terracota)}
-.topbar-right{display:flex;gap:12px}
-.topbar-right a{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:6px;color:var(--text-muted);transition:color 0.2s,transform 0.2s}
-.topbar-right a:hover{color:var(--vz-red);transform:translateY(-1px)}
+.topbar-right{display:flex;gap:8px}
+.topbar-right a{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;color:var(--text-muted);transition:color 0.2s,background 0.2s}
+.topbar-right a:hover{color:var(--blue);background:var(--bg-soft)}
 .topbar-right a svg{width:16px;height:16px}
 
-/* CONTENT */
-.content{flex:1;padding:32px;max-width:1120px;width:100%}
-.chapter{display:none;animation:fadeIn 0.4s ease}
+.content{flex:1;padding:48px 56px;max-width:1080px;width:100%}
+.chapter{display:none;animation:fadeIn 0.5s ease}
 .chapter.active{display:block}
-@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 
-/* CARDS */
-.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:24px}
-.card-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:24px}
-.card-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:24px}
-.card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:20px;transition:background var(--transition),border var(--transition)}
-.card-label{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px}
-.card-value{font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:500;color:var(--num-color);line-height:1.2}
-.card-value.red{color:var(--vz-red)}
-.card-delta{font-family:'JetBrains Mono',monospace;font-size:12px;margin-top:4px;font-weight:500}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(248px,1fr));gap:18px;margin-bottom:28px}
+.card-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:28px}
+.card-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-bottom:28px}
+.card{background:var(--bg-card);border-radius:18px;padding:26px;box-shadow:var(--shadow);transition:background var(--transition)}
+.card-label{font-size:13px;font-weight:500;letter-spacing:0;color:var(--text-muted);margin-bottom:12px}
+.card-value{font-family:var(--font-display);font-size:38px;font-weight:600;color:var(--text);line-height:1.05;letter-spacing:-0.02em;font-variant-numeric:tabular-nums}
+.card-value.accent{color:var(--blue)}
+.card-delta{font-size:13px;margin-top:10px;font-weight:500;font-variant-numeric:tabular-nums}
 .card-delta.up{color:var(--green)}
-.card-delta.down{color:var(--vz-red)}
-.card-note{font-size:11px;color:var(--text-muted);margin-top:6px}
+.card-delta.down{color:var(--danger)}
+.card-note{font-size:12px;color:var(--text-muted);margin-top:10px;line-height:1.4}
 
-/* TABLES */
-.data-table{width:100%;border-collapse:collapse;margin-bottom:16px;font-size:13px}
-.data-table th{text-align:left;font-weight:600;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted);padding:8px 12px;border-bottom:2px solid var(--border)}
+.data-table{width:100%;border-collapse:collapse;margin-bottom:14px;font-size:14px}
+.data-table th{text-align:left;font-weight:500;font-size:12px;letter-spacing:0;color:var(--text-muted);padding:12px 14px;border-bottom:1px solid var(--border)}
 .data-table th.num{text-align:right}
-.data-table td{padding:8px 12px;border-bottom:1px solid var(--border-light);color:var(--text)}
-.data-table td.num{text-align:right;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--num-color)}
+.data-table td{padding:12px 14px;border-bottom:1px solid var(--border-soft);color:var(--text)}
+.data-table td.num{text-align:right;font-family:var(--font-mono);font-size:13px;font-variant-numeric:tabular-nums}
 .data-table tr:last-child td{border-bottom:none}
 
-/* CHARTS */
-.bar-chart{display:flex;align-items:flex-end;gap:8px;height:160px;padding-top:8px;margin-bottom:8px}
-.bar-group{display:flex;flex-direction:column;align-items:center;flex:1;gap:4px;height:100%;justify-content:flex-end}
-.bar{width:100%;max-width:48px;border-radius:4px 4px 0 0;background:var(--chart-bar);transition:height 0.6s cubic-bezier(0.4,0,0.2,1);position:relative}
+.bar-chart{display:flex;align-items:flex-end;gap:14px;height:180px;padding-top:8px;margin-bottom:14px}
+.bar-group{display:flex;flex-direction:column;align-items:center;flex:1;gap:8px;height:100%;justify-content:flex-end}
+.bar{width:100%;max-width:52px;border-radius:8px 8px 4px 4px;background:var(--chart-bar);transition:height 0.7s cubic-bezier(0.4,0,0.2,1)}
 .bar.alt{background:var(--chart-bar-alt)}
 .bar.green{background:var(--green)}
 .bar.amber{background:var(--amber)}
-.bar-label{font-size:10px;color:var(--text-muted);text-align:center;font-family:'JetBrains Mono',monospace}
-.bar-val{font-size:10px;color:var(--text-secondary);font-family:'JetBrains Mono',monospace;text-align:center;font-weight:500}
-.chart-reading{font-size:13px;color:var(--text-secondary);line-height:1.5;margin-bottom:24px;padding:10px 14px;border-left:3px solid var(--border);background:var(--bg-card-alt);border-radius:0 6px 6px 0}
-.chart-reading b{color:var(--text)}
+.bar-label{font-size:12px;color:var(--text-muted);text-align:center}
+.bar-val{font-size:12px;color:var(--text-secondary);text-align:center;font-weight:600;font-variant-numeric:tabular-nums}
+.chart-reading{font-size:15px;color:var(--text-secondary);line-height:1.55;margin-bottom:32px;padding:0 0 0 18px;border-left:2px solid var(--border)}
+.chart-reading b{color:var(--text);font-weight:600}
 
-/* INSIGHT BOXES */
-.insight{padding:14px 16px;border-radius:8px;font-size:13px;line-height:1.5;margin-bottom:16px;border-left:4px solid}
-.insight.reading{background:var(--bg-card-alt);border-color:var(--navy);color:var(--text-secondary)}
-.insight.alert{background:var(--alert-bg);border-color:var(--vz-red);color:var(--text)}
-.insight.implication{background:var(--amber-bg);border-color:var(--amber);color:var(--text)}
-.insight.positive{background:var(--green-bg);border-color:var(--green);color:var(--text)}
-[data-theme="dark"] .insight.reading{background:#1e1e30;border-color:#4a4a6a}
-[data-theme="dark"] .insight.alert{background:#2a1a1a;border-color:var(--vz-red)}
-[data-theme="dark"] .insight.implication{background:#2a2518;border-color:var(--amber)}
-[data-theme="dark"] .insight.positive{background:#1a2a1e;border-color:var(--green)}
-.insight-tag{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px}
-.insight.reading .insight-tag{color:var(--navy)}
-.insight.alert .insight-tag{color:var(--vz-red)}
+.insight{padding:20px 22px;border-radius:16px;font-size:15px;line-height:1.55;margin-bottom:18px;background:var(--bg-soft)}
+.insight.reading{background:var(--bg-soft)}
+.insight.alert{background:var(--alert-bg)}
+.insight.implication{background:var(--amber-bg)}
+.insight.positive{background:var(--green-bg)}
+.insight-tag{font-size:11px;font-weight:600;letter-spacing:0.4px;text-transform:uppercase;margin-bottom:8px}
+.insight.reading .insight-tag{color:var(--text-muted)}
+.insight.alert .insight-tag{color:var(--danger)}
 .insight.implication .insight-tag{color:var(--amber)}
 .insight.positive .insight-tag{color:var(--green)}
-[data-theme="dark"] .insight.reading .insight-tag{color:#8888aa}
 
-/* WATCH LIST */
-.watch-item{display:grid;grid-template-columns:1fr auto auto;gap:16px;align-items:center;padding:14px 16px;border-bottom:1px solid var(--border-light)}
+.watch-wrap{background:var(--bg-card);border-radius:18px;box-shadow:var(--shadow);overflow:hidden;margin-bottom:28px}
+.watch-item{display:grid;grid-template-columns:1fr auto auto;gap:18px;align-items:center;padding:17px 22px;border-bottom:1px solid var(--border-soft)}
 .watch-item:last-child{border-bottom:none}
-.watch-name{font-size:13px;font-weight:500}
-.watch-current{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:500;color:var(--num-color)}
-.watch-threshold{font-family:'JetBrains Mono',monospace;font-size:12px;padding:4px 10px;border-radius:20px;font-weight:500}
+.watch-name{font-size:14px;font-weight:500}
+.watch-current{font-family:var(--font-mono);font-size:14px;font-weight:500;color:var(--text);font-variant-numeric:tabular-nums}
+.watch-threshold{font-size:12px;padding:5px 12px;border-radius:20px;font-weight:500}
 .watch-threshold.ok{background:var(--green-bg);color:var(--green)}
 .watch-threshold.warn{background:var(--amber-bg);color:var(--amber)}
-.watch-threshold.danger{background:var(--alert-bg);color:var(--vz-red)}
-[data-theme="dark"] .watch-threshold.ok{background:#1a2a1e;color:#4ade80}
-[data-theme="dark"] .watch-threshold.warn{background:#2a2518;color:#fbbf24}
-[data-theme="dark"] .watch-threshold.danger{background:#2a1a1a;color:#f87171}
+.watch-threshold.danger{background:var(--alert-bg);color:var(--danger)}
 
-/* GUIDANCE CARDS */
-.guidance-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:20px;position:relative;overflow:hidden}
-.guidance-badge{position:absolute;top:12px;right:12px;font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:20px}
-.guidance-badge.raised{background:var(--green-bg);color:var(--green)}
-.guidance-badge.reaffirmed{background:var(--bg-card-alt);color:var(--text-muted)}
-[data-theme="dark"] .guidance-badge.raised{background:#1a2a1e;color:#4ade80}
-[data-theme="dark"] .guidance-badge.reaffirmed{background:#222238;color:var(--text-muted)}
+.outlook-card{background:var(--bg-card);border-radius:18px;padding:26px;box-shadow:var(--shadow)}
+.outlook-card h4{font-family:var(--font-display);font-size:18px;font-weight:600;letter-spacing:-0.015em;margin-bottom:10px;color:var(--text)}
+.outlook-card p{font-size:14px;color:var(--text-secondary);line-height:1.55}
 
-/* FOOTER */
-.footer{border-top:1px solid var(--border);padding:32px 32px;display:flex;align-items:center;justify-content:space-between;margin-top:auto;flex-wrap:wrap;gap:16px}
-.footer-left .footer-brand{font-family:'Fraunces',serif;font-size:30px;font-weight:600;color:var(--text);line-height:1}
+.footer{padding:48px 56px;display:flex;align-items:center;justify-content:space-between;margin-top:32px;flex-wrap:wrap;gap:20px;border-top:1px solid var(--border-soft)}
+.footer-left .footer-brand{font-family:var(--font-display);font-size:28px;font-weight:600;color:var(--text);line-height:1;letter-spacing:-0.02em}
 .footer-left .footer-brand .dot{color:var(--patente-terracota)}
-.footer-left .footer-tagline{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted);margin-top:8px}
-.footer-left .footer-url{display:inline-block;font-size:11px;letter-spacing:1px;color:var(--text-secondary);margin-top:4px;border-bottom:1px solid transparent;transition:border-color 0.2s,color 0.2s}
-.footer-left .footer-url:hover{color:var(--patente-terracota);border-bottom-color:var(--patente-terracota)}
-.footer-right{display:flex;gap:12px}
-.footer-pill{display:flex;align-items:center;gap:6px;padding:6px 14px;border:1px solid var(--border);border-radius:20px;font-size:12px;color:var(--text-secondary);transition:border-color 0.2s,color 0.2s}
-.footer-pill:hover{border-color:var(--patente-terracota);color:var(--patente-terracota)}
-.footer-pill svg{width:14px;height:14px}
+.footer-left .footer-tagline{font-size:12px;letter-spacing:0.3px;color:var(--text-muted);margin-top:10px}
+.footer-left .footer-url{display:inline-block;font-size:13px;color:var(--blue);margin-top:6px}
+.footer-right{display:flex;gap:10px}
+.footer-pill{display:flex;align-items:center;gap:7px;padding:9px 18px;border-radius:20px;font-size:13px;color:var(--text-secondary);background:var(--bg-soft);transition:color 0.2s}
+.footer-pill:hover{color:var(--blue)}
+.footer-pill svg{width:15px;height:15px}
 
-/* SOURCE */
-.source{font-size:10px;color:var(--text-muted);margin-top:8px;font-style:italic}
+.source{font-size:11px;color:var(--text-muted);margin-top:12px}
 
-/* INDEX TABLE */
-.index-table{width:100%;border-collapse:collapse}
-.index-table td{padding:10px 14px;border-bottom:1px solid var(--border-light);font-size:13px;vertical-align:top}
-.index-table td:first-child{font-weight:600;width:160px;color:var(--text-muted);font-size:12px;letter-spacing:0.5px}
+.index-table{width:100%;border-collapse:collapse;margin-top:4px}
+.index-table td{padding:16px 0;border-bottom:1px solid var(--border-soft);font-size:15px;vertical-align:top;line-height:1.5}
+.index-table td:first-child{font-weight:600;width:180px;color:var(--text);font-size:15px;padding-right:24px}
+.index-table tr:last-child td{border-bottom:none}
 
-/* RESPONSIVE */
 @media(max-width:900px){
   .card-grid-3{grid-template-columns:1fr 1fr}
   .card-grid-2{grid-template-columns:1fr}
+  .section-title{font-size:32px}
+  .content{padding:36px 28px}
 }
 @media(max-width:600px){
   .card-grid-3,.card-grid{grid-template-columns:1fr}
-  .content{padding:20px}
 }
+.info{display:inline-flex;align-items:center;justify-content:center;width:15px;height:15px;border-radius:50%;border:1px solid var(--text-muted);color:var(--text-muted);font-size:10px;font-weight:600;cursor:help;margin-left:7px;vertical-align:middle;transition:border-color .2s,color .2s;line-height:1}
+.info:hover{border-color:var(--blue);color:var(--blue)}
+#tooltip{position:fixed;z-index:1000;max-width:260px;background:var(--text);color:var(--bg);padding:10px 13px;border-radius:10px;font-size:12.5px;line-height:1.45;box-shadow:0 8px 28px rgba(0,0,0,0.22);opacity:0;pointer-events:none;transition:opacity .15s;font-family:var(--font)}
 </style>
 </head>
 <body>
+<div id="tooltip"></div>
 <div class="app">
 
-<!-- ═══════ SIDEBAR ═══════ -->
 <aside class="sidebar">
   <div class="sidebar-brand">
     <h2>Patente<span class="dot">.</span></h2>
-    <span>Cockpit · Verizon 1Q26</span>
+    <span><svg class="apple-glyph" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 12.04c-.03-2.7 2.2-3.99 2.3-4.06-1.25-1.84-3.2-2.09-3.9-2.12-1.66-.17-3.24.97-4.08.97-.84 0-2.14-.95-3.52-.92-1.81.03-3.48 1.05-4.41 2.67-1.88 3.27-.48 8.1 1.35 10.76.9 1.3 1.97 2.76 3.38 2.71 1.36-.06 1.87-.88 3.51-.88 1.64 0 2.1.88 3.53.85 1.46-.03 2.38-1.32 3.27-2.63 1.03-1.51 1.46-2.97 1.48-3.05-.03-.01-2.84-1.09-2.87-4.32z"/><path d="M14.69 4.2c.74-.9 1.24-2.15 1.1-3.39-1.07.04-2.37.71-3.14 1.61-.69.8-1.29 2.07-1.13 3.29 1.19.09 2.42-.61 3.17-1.51z"/></svg>Cockpit · Apple FY2025</span>
   </div>
   <nav class="sidebar-nav">
     <div class="sidebar-group-label">Diagnóstico</div>
@@ -245,9 +230,9 @@ a{color:inherit;text-decoration:none}
       <span>Capital</span>
     </div>
     <div class="sidebar-group-label">Perspectiva</div>
-    <div class="nav-item" data-chapter="guidance" onclick="showChapter('guidance',this)">
+    <div class="nav-item" data-chapter="outlook" onclick="showChapter('outlook',this)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-      <span>Guidance 2026</span>
+      <span>Outlook e Riscos</span>
     </div>
     <div class="nav-item" data-chapter="watch" onclick="showChapter('watch',this)">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
@@ -266,14 +251,12 @@ a{color:inherit;text-decoration:none}
   </div>
 </aside>
 
-<!-- ═══════ MAIN ═══════ -->
 <div class="main">
 
-<!-- TOPBAR -->
 <div class="topbar">
   <div class="topbar-left">uma leitura <b>Patente<span class="dot">.</span></b></div>
   <div class="topbar-right">
-    <a href="https://linkedin.com/in/patente-thiago" target="_blank" rel="noopener" title="LinkedIn">
+    <a href="https://linkedin.com/in/thiagopatente" target="_blank" rel="noopener" title="LinkedIn">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
     </a>
     <a href="https://instagram.com/patente.thiago" target="_blank" rel="noopener" title="Instagram">
@@ -284,255 +267,186 @@ a{color:inherit;text-decoration:none}
 
 <div class="content">
 
-<!-- ═══════ CHAPTER 1: VISÃO GERAL ═══════ -->
+<!-- CHAPTER 1: VISÃO GERAL -->
 <div class="chapter active" id="ch-overview">
   <div class="eyebrow">Visão Geral</div>
-  <h1 class="section-title">A Verizon apostou US$ 20 bi que <em>convergência</em> sustentará o crescimento que o wireless sozinho perdeu</h1>
-  <p class="section-lede">Frontier fechou em janeiro de 2026, fibra saltou de 9 para 31 estados, e a companhia prometeu US$ 55 bi em retorno a acionistas até 2028. A margem de erro é mínima. Este cockpit mapeia os números que decidem se a tese se sustenta.</p>
+  <h1 class="section-title">A Apple bate recorde de receita, mas o valor migra do iPhone para os <em>Serviços</em></h1>
+  <p class="section-lede">No ano fiscal de 2025, encerrado em setembro, a receita chegou a US$ 416,2 bi, com lucro líquido de US$ 112,0 bi e recompra de US$ 89,3 bi. O iPhone ainda responde por metade da receita, enquanto Serviços cresce 14% com margem de 75%. Greater China é a única região em queda.</p>
 
   <div class="card-grid">
-    <div class="card"><div class="card-label">Receita consolidada</div><div class="card-value font-mono">$138,2 bi</div><div class="card-delta up font-mono">+2,5% vs 2024</div><div class="source">10-K p.23</div></div>
-    <div class="card"><div class="card-label">Adj. EBITDA</div><div class="card-value font-mono">$50,0 bi</div><div class="card-delta up font-mono">+2,5% vs 2024</div><div class="source">10-K p.25</div></div>
-    <div class="card"><div class="card-label">Free Cash Flow</div><div class="card-value font-mono">$20,1 bi</div><div class="card-delta up font-mono">+1,5% vs 2024</div><div class="source">10-K p.37</div></div>
-    <div class="card"><div class="card-label">Dívida Total</div><div class="card-value font-mono red">$158,2 bi</div><div class="card-delta down font-mono">+$14,2 bi vs 2024</div><div class="source">10-K p.38</div></div>
-    <div class="card"><div class="card-label">EPS GAAP</div><div class="card-value font-mono">$4,06</div><div class="card-delta down font-mono">-2,2% vs 2024</div><div class="source">10-K p.52</div></div>
-    <div class="card"><div class="card-label">Adj. EPS 1T26</div><div class="card-value font-mono">$1,28</div><div class="card-delta up font-mono">+7,6% YoY</div><div class="source">Transcript 1T26</div></div>
+    <div class="card"><div class="card-label">Receita total<span class="info" data-tip="Receita consolidada de todos os produtos e servicos no ano fiscal.">?</span></div><div class="card-value">$416,2 bi</div><div class="card-delta up">+6% vs 2024</div><div class="source">10-K p.22-23</div></div>
+    <div class="card"><div class="card-label">Lucro líquido<span class="info" data-tip="Lucro final apos todos os custos, despesas e impostos.">?</span></div><div class="card-value">$112,0 bi</div><div class="card-delta up">+19,5% vs 2024</div><div class="source">10-K p.29</div></div>
+    <div class="card"><div class="card-label">Margem bruta total<span class="info" data-tip="Percentual da receita que sobra apos o custo direto de produzir bens e servicos.">?</span></div><div class="card-value">46,9%</div><div class="card-delta up">vs 46,2% em 2024</div><div class="source">10-K p.24</div></div>
+    <div class="card"><div class="card-label">EPS diluído<span class="info" data-tip="Lucro por acao considerando todas as acoes que poderiam existir se opcoes e conversiveis fossem exercidas.">?</span></div><div class="card-value">$7,46</div><div class="card-delta up">vs $6,08 em 2024</div><div class="source">10-K p.29</div></div>
+    <div class="card"><div class="card-label">Caixa e títulos<span class="info" data-tip="Dinheiro disponivel mais investimentos de curto prazo conversiveis em caixa.">?</span></div><div class="card-value">$132,4 bi</div><div class="card-note">Posição de liquidez</div><div class="source">10-K p.25</div></div>
+    <div class="card"><div class="card-label">Retorno ao acionista<span class="info" data-tip="Total devolvido ao acionista no ano via recompra de acoes e dividendos.">?</span></div><div class="card-value accent">$104,7 bi</div><div class="card-note">Recompra $89,3 bi + dividendos $15,4 bi</div><div class="source">10-K p.25, 44</div></div>
   </div>
 
-  <div class="insight reading"><div class="insight-tag">Leitura</div>A receita cresce 2,5% enquanto o Adj. EBITDA cresce na mesma proporção e o Adj. EPS do 1T26 cresce 7,6%. A alavancagem operacional é real: custo de serviços caiu 0,7% e SGA caiu 0,9% no ano. Lucro cresce mais que receita por disciplina de custo, não por expansão de topline.</div>
+  <div class="insight reading"><div class="insight-tag">Leitura</div>O lucro líquido cresce 19,5% enquanto a receita cresce 6%. A diferença vem do mix, com Serviços a 75% de margem ganhando peso, e de uma alíquota efetiva de 15,6%. <b>Hipótese a validar:</b> parte do salto do lucro reflete uma base de 2024 deprimida por encargos fiscais não recorrentes. Confirmar antes de tratar os 19,5% como crescimento orgânico.</div>
 
-  <h3 style="font-family:'Fraunces',serif;font-size:18px;margin:28px 0 12px;color:var(--text)">Índice narrativo</h3>
+  <h3 class="subhead">Índice narrativo</h3>
   <table class="index-table">
-    <tr><td>Crescimento</td><td>O motor de volume está migrando de postpaid puro para broadband, com FWA desacelerando e fibra ainda por provar escala.</td></tr>
-    <tr><td>Rentabilidade</td><td>O lucro cresce mais que a receita porque a disciplina de custo compensa a pressão de amortização promocional.</td></tr>
-    <tr><td>Capital</td><td>O balanço absorveu Frontier sem folga: dívida a US$ 172,5 bi no 1T26, leverage a 2,6x, meta de desalavancar até 2027.</td></tr>
-    <tr><td>Guidance 2026</td><td>O guidance elevado aposta em execução impecável de sinergias e volume, com zero buffer para erro.</td></tr>
-    <tr><td>Watch List</td><td>Oito gatilhos decidem nos próximos três trimestres se a tese se sustenta ou se o triângulo de capital cede.</td></tr>
+    <tr><td>Crescimento</td><td>O iPhone ainda manda, mas Serviços e Mac puxam o crescimento, enquanto Greater China é a única região que recua.</td></tr>
+    <tr><td>Rentabilidade</td><td>A margem de Serviços, em 75%, sustenta a rentabilidade consolidada enquanto a de Produtos cede levemente.</td></tr>
+    <tr><td>Capital</td><td>A companhia devolve ao acionista quase 3x o que investe em P&D, sobre um modelo de capex baixo.</td></tr>
+    <tr><td>Outlook e Riscos</td><td>Sem guidance numérico, a tese se lê pelos riscos do 10-K: China, tarifas e a receita de busca do Google.</td></tr>
+    <tr><td>Watch List</td><td>Oito gatilhos reais do 10-K para monitorar nos próximos trimestres.</td></tr>
   </table>
 </div>
 
-<!-- ═══════ CHAPTER 2: CRESCIMENTO ═══════ -->
+<!-- CHAPTER 2: CRESCIMENTO -->
 <div class="chapter" id="ch-growth">
   <div class="eyebrow">Crescimento</div>
-  <h1 class="section-title">O motor migra de postpaid puro para <em>broadband</em>, mas o novo motor ainda não atingiu velocidade de cruzeiro</h1>
-  <p class="section-lede">Net adds postpaid colapsaram em 2025, prepaid ressurgiu, e broadband é o único vetor em expansão consistente. A virada do 1T26 é promissora, mas precisa se sustentar.</p>
+  <h1 class="section-title">O <em>iPhone</em> ainda manda, mas Serviços e Mac puxam o crescimento</h1>
+  <p class="section-lede">A receita total sobe 6%, com Serviços crescendo 14% e Mac 12%, contra apenas 4% do iPhone. Por região, todas avançam menos Greater China, a única em queda no ano.</p>
 
-  <h3 style="font-family:'Fraunces',serif;font-size:18px;margin:0 0 16px;color:var(--text)">Postpaid phone net adds</h3>
-  <div class="bar-chart" id="chart-postpaid">
-    <div class="bar-group"><div class="bar-val">-132</div><div class="bar alt" style="height:2px"></div><div class="bar-label">2023</div></div>
-    <div class="bar-group"><div class="bar-val">82</div><div class="bar" style="height:25px"></div><div class="bar-label">2024</div></div>
-    <div class="bar-group"><div class="bar-val">137</div><div class="bar" style="height:42px"></div><div class="bar-label">2025</div></div>
-    <div class="bar-group"><div class="bar-val">55</div><div class="bar green" style="height:17px"></div><div class="bar-label">1T26</div></div>
+  <h3 class="subhead">Receita por categoria, FY2025 (US$ bi)</h3>
+  <div class="bar-chart">
+    <div class="bar-group"><div class="bar-val">209,6</div><div class="bar alt" style="height:150px"></div><div class="bar-label">iPhone</div></div>
+    <div class="bar-group"><div class="bar-val">109,2</div><div class="bar green" style="height:78px"></div><div class="bar-label">Services</div></div>
+    <div class="bar-group"><div class="bar-val">35,7</div><div class="bar" style="height:26px"></div><div class="bar-label">Wearables</div></div>
+    <div class="bar-group"><div class="bar-val">33,7</div><div class="bar" style="height:24px"></div><div class="bar-label">Mac</div></div>
+    <div class="bar-group"><div class="bar-val">28,0</div><div class="bar" style="height:20px"></div><div class="bar-label">iPad</div></div>
   </div>
-  <div class="chart-reading"><b>Recuperação.</b> Primeiro Q1 positivo desde 2013, mas base de comparação fraca. A trajetória anual (137K em 2025) está longe dos 2.044K de 2023. <span class="source">10-K p.28; Presentation p.5</span></div>
+  <div class="chart-reading"><b>Serviços já é a segunda maior linha e cresce 3,5x mais rápido que o iPhone.</b> Products somam US$ 307,0 bi e Services US$ 109,2 bi. A concentração no iPhone, em 50,4% da receita, é o risco; a migração para Serviços é a tese de valor. <span class="source">10-K p.23</span></div>
 
   <div class="card-grid-3">
-    <div class="card"><div class="card-label">Postpaid net adds (Consumer)</div><div class="card-value font-mono">581 mil</div><div class="card-delta down font-mono">-57% vs 2024</div><div class="source">10-K p.28</div></div>
-    <div class="card"><div class="card-label">Prepaid core net adds</div><div class="card-value font-mono">343 mil</div><div class="card-delta up font-mono">vs 2K em 2024</div><div class="source">10-K p.28</div></div>
-    <div class="card"><div class="card-label">ARPA Postpaid</div><div class="card-value font-mono">$147,31</div><div class="card-delta up font-mono">+2,3% vs 2024</div><div class="source">10-K p.28</div></div>
+    <div class="card"><div class="card-label">iPhone<span class="info" data-tip="Receita da linha iPhone no ano e seu peso no total.">?</span></div><div class="card-value">$209,6 bi</div><div class="card-delta up">+4% vs 2024</div><div class="card-note">50,4% da receita total</div><div class="source">10-K p.23</div></div>
+    <div class="card"><div class="card-label">Services<span class="info" data-tip="Receita de servicos: App Store, iCloud, Apple Music, licenciamento e garantias.">?</span></div><div class="card-value">$109,2 bi</div><div class="card-delta up">+14% vs 2024</div><div class="source">10-K p.23</div></div>
+    <div class="card"><div class="card-label">Mac<span class="info" data-tip="Receita da linha de computadores Mac no ano.">?</span></div><div class="card-value">$33,7 bi</div><div class="card-delta up">+12% vs 2024</div><div class="source">10-K p.23</div></div>
   </div>
 
-  <h3 style="font-family:'Fraunces',serif;font-size:18px;margin:24px 0 12px;color:var(--text)">Churn postpaid phone (%)</h3>
+  <h3 class="subhead">Receita por região, FY2025 (US$ bi)</h3>
   <div class="bar-chart">
-    <div class="bar-group"><div class="bar-val">0,83%</div><div class="bar" style="height:60px"></div><div class="bar-label">2023</div></div>
-    <div class="bar-group"><div class="bar-val">0,83%</div><div class="bar" style="height:60px"></div><div class="bar-label">2024</div></div>
-    <div class="bar-group"><div class="bar-val">0,92%</div><div class="bar alt" style="height:80px"></div><div class="bar-label">2025</div></div>
-    <div class="bar-group"><div class="bar-val">0,90%</div><div class="bar green" style="height:75px"></div><div class="bar-label">1T26</div></div>
+    <div class="bar-group"><div class="bar-val">178,4</div><div class="bar" style="height:130px"></div><div class="bar-label">Americas</div></div>
+    <div class="bar-group"><div class="bar-val">111,0</div><div class="bar" style="height:81px"></div><div class="bar-label">Europe</div></div>
+    <div class="bar-group"><div class="bar-val">64,4</div><div class="bar amber" style="height:47px"></div><div class="bar-label">Gr. China</div></div>
+    <div class="bar-group"><div class="bar-val">33,7</div><div class="bar" style="height:25px"></div><div class="bar-label">Rest Asia</div></div>
+    <div class="bar-group"><div class="bar-val">28,7</div><div class="bar" style="height:21px"></div><div class="bar-label">Japan</div></div>
   </div>
-  <div class="chart-reading"><b>Inversão incipiente.</b> Churn subiu 9 bps em 2025 mas recuou para 0,90% no 1T26, atingindo abaixo de 0,85% em março. Resultado atribuído a micro-segmentação de retenção. <span class="source">10-K p.28; Transcript 1T26</span></div>
+  <div class="chart-reading"><b>Greater China é a única região que recua, com -4%.</b> Americas cresce 7%, Europe 10%, Japan 15% e o resto da Ásia-Pacífico 10%. A fraqueza está concentrada em um único mercado, não difusa. <span class="source">10-K p.22</span></div>
 
-  <h3 style="font-family:'Fraunces',serif;font-size:18px;margin:24px 0 12px;color:var(--text)">Broadband net adds (Consumer, mil)</h3>
-  <div class="bar-chart">
-    <div class="bar-group"><div class="bar-val">989</div><div class="bar" style="height:130px"></div><div class="bar-label">FWA 23</div></div>
-    <div class="bar-group"><div class="bar-val">846</div><div class="bar" style="height:110px"></div><div class="bar-label">FWA 24</div></div>
-    <div class="bar-group"><div class="bar-val">693</div><div class="bar amber" style="height:90px"></div><div class="bar-label">FWA 25</div></div>
-    <div class="bar-group" style="border-left:1px dashed var(--border);padding-left:8px"><div class="bar-val">159</div><div class="bar" style="height:20px"></div><div class="bar-label">Fiber 23</div></div>
-    <div class="bar-group"><div class="bar-val">193</div><div class="bar" style="height:25px"></div><div class="bar-label">Fiber 24</div></div>
-    <div class="bar-group"><div class="bar-val">193</div><div class="bar" style="height:25px"></div><div class="bar-label">Fiber 25</div></div>
-  </div>
-  <div class="chart-reading"><b>Desaceleração no FWA.</b> Net adds caem 18% ao ano enquanto fibra permanece estável. O 1T26 entregou 341K broadband total (214K FWA + 127K fiber), sinalizando que Frontier começa a contribuir. <span class="source">10-K p.28; Transcript 1T26</span></div>
-
-  <div class="card-grid-3">
-    <div class="card"><div class="card-label">Base FWA total</div><div class="card-value font-mono">5,7 mi</div><div class="card-note">Consumer 3,4M + Business 2,3M</div><div class="source">10-K p.6</div></div>
-    <div class="card"><div class="card-label">Fios Internet</div><div class="card-value font-mono">7,3 mi</div><div class="card-delta up font-mono">+2,7% vs 2024</div><div class="source">10-K p.28</div></div>
-    <div class="card"><div class="card-label">Total Broadband</div><div class="card-value font-mono">13,6 mi</div><div class="card-note">Consumer 10,9M + Business 2,8M</div><div class="source">10-K p.28, 31</div></div>
-  </div>
-
-  <div class="insight implication"><div class="insight-tag">Implicação de board</div>Apenas 20% da base postpaid tem broadband Verizon. A oportunidade de cross-sell é massiva, mas depende da execução Frontier. Se a conversão de passings em clientes ativos replicar o ritmo pré-Frontier do Fios (receita +0,3%), o upside fica no papel.</div>
+  <div class="insight implication"><div class="insight-tag">Implicação de board</div>Metade da receita depende de um único produto e a maior fonte de fraqueza é uma única região. A migração de valor para Serviços, com crescimento de dois dígitos e margem de 75%, é o que protege a tese de longo prazo. Monitorar se Serviços mantém o ritmo é mais relevante que o ciclo de lançamento do iPhone.</div>
 </div>
 
-<!-- ═══════ CHAPTER 3: RENTABILIDADE ═══════ -->
+<!-- CHAPTER 3: RENTABILIDADE -->
 <div class="chapter" id="ch-profit">
   <div class="eyebrow">Rentabilidade</div>
-  <h1 class="section-title">O lucro cresce mais que a receita porque a <em>disciplina de custo</em> compensa a pressão promocional</h1>
-  <p class="section-lede">Adj. EBITDA recorde no 1T26, EPS ajustado em alta de 7,6% YoY, custo de retenção caindo 35%. A rentabilidade é a parte da tese que está funcionando.</p>
+  <h1 class="section-title">A margem de <em>Serviços</em> sustenta a rentabilidade enquanto a de Produtos cede</h1>
+  <p class="section-lede">A margem bruta de Serviços sobe para 75,4% e a de Produtos recua para 36,8%. O resultado consolidado é cada vez mais função do mix, não do volume de hardware.</p>
 
   <div class="card-grid-3">
-    <div class="card"><div class="card-label">Receita consolidada 2025</div><div class="card-value font-mono">$138,2 bi</div><div class="card-delta up font-mono">+2,5%</div><div class="source">10-K p.52</div></div>
-    <div class="card"><div class="card-label">Adj. EBITDA 2025</div><div class="card-value font-mono">$50,0 bi</div><div class="card-delta up font-mono">+2,5%</div><div class="source">10-K p.25</div></div>
-    <div class="card"><div class="card-label">Adj. EBITDA 1T26</div><div class="card-value font-mono">$13,4 bi</div><div class="card-delta up font-mono">+6,7% YoY</div><div class="card-note">Maior da história</div><div class="source">Presentation p.6</div></div>
+    <div class="card"><div class="card-label">Margem Products<span class="info" data-tip="Margem bruta da venda de hardware, apos o custo de produzir os aparelhos.">?</span></div><div class="card-value">36,8%</div><div class="card-delta down">vs 37,2% em 2024</div><div class="source">10-K p.24</div></div>
+    <div class="card"><div class="card-label">Margem Services<span class="info" data-tip="Margem bruta de servicos, estruturalmente mais alta por ter custo marginal baixo.">?</span></div><div class="card-value">75,4%</div><div class="card-delta up">vs 73,9% em 2024</div><div class="source">10-K p.24</div></div>
+    <div class="card"><div class="card-label">Margem bruta total<span class="info" data-tip="Percentual da receita que sobra apos o custo direto de produzir bens e servicos.">?</span></div><div class="card-value">46,9%</div><div class="card-note">US$ 195,2 bi de lucro bruto</div><div class="source">10-K p.24</div></div>
   </div>
 
-  <h3 style="font-family:'Fraunces',serif;font-size:18px;margin:24px 0 12px;color:var(--text)">Decomposição de receita por segmento (US$ bi)</h3>
+  <h3 class="subhead">Margem bruta por linha (%)</h3>
   <table class="data-table">
-    <thead><tr><th>Segmento</th><th class="num">2023</th><th class="num">2024</th><th class="num">2025</th><th class="num">Δ 25/24</th></tr></thead>
+    <thead><tr><th>Linha</th><th class="num">2024</th><th class="num">2025</th><th class="num">Δ</th></tr></thead>
     <tbody>
-      <tr><td>Consumer</td><td class="num">101,6</td><td class="num">102,9</td><td class="num">106,8</td><td class="num" style="color:var(--green)">+3,8%</td></tr>
-      <tr><td>Business</td><td class="num">30,1</td><td class="num">29,5</td><td class="num">29,1</td><td class="num" style="color:var(--vz-red)">-1,6%</td></tr>
-      <tr><td style="font-weight:600">Consolidado</td><td class="num" style="font-weight:600">134,0</td><td class="num" style="font-weight:600">134,8</td><td class="num" style="font-weight:600">138,2</td><td class="num" style="font-weight:600;color:var(--green)">+2,5%</td></tr>
+      <tr><td>Products</td><td class="num">37,2</td><td class="num">36,8</td><td class="num" style="color:var(--danger)">-0,4 pp</td></tr>
+      <tr><td>Services</td><td class="num">73,9</td><td class="num">75,4</td><td class="num" style="color:var(--green)">+1,5 pp</td></tr>
+      <tr><td style="font-weight:600">Total</td><td class="num" style="font-weight:600">46,2</td><td class="num" style="font-weight:600">46,9</td><td class="num" style="font-weight:600;color:var(--green)">+0,7 pp</td></tr>
     </tbody>
   </table>
-  <div class="source" style="margin-bottom:16px">10-K p.23, 52</div>
+  <div class="source" style="margin-bottom:16px">10-K p.24</div>
 
-  <div class="card-grid-2">
-    <div class="card"><div class="card-label">Consumer EBITDA margin</div><div class="card-value font-mono">41,0%</div><div class="card-delta down font-mono">vs 41,8% em 2024</div><div class="source">10-K p.30</div></div>
-    <div class="card"><div class="card-label">Business EBITDA margin</div><div class="card-value font-mono">22,9%</div><div class="card-delta up font-mono">vs 21,6% em 2024</div><div class="source">10-K p.33</div></div>
-  </div>
-
-  <div class="insight reading"><div class="insight-tag">Leitura</div>Consumer perde 80 bps de margem EBITDA mesmo com receita crescendo 3,8%. Causa: custo de equipamento wireless subiu 12,6% por volume de upgrades e mix de aparelhos mais caros. Business recupera margem via corte de SGA e redução de headcount.</div>
-
-  <h3 style="font-family:'Fraunces',serif;font-size:18px;margin:24px 0 12px;color:var(--text)">EPS e rentabilidade consolidada</h3>
+  <h3 class="subhead">Resultado consolidado (US$ bi)</h3>
   <table class="data-table">
-    <thead><tr><th>Métrica</th><th class="num">2023</th><th class="num">2024</th><th class="num">2025</th></tr></thead>
+    <thead><tr><th>Métrica</th><th class="num">2024</th><th class="num">2025</th></tr></thead>
     <tbody>
-      <tr><td>Net Income (US$ bi)</td><td class="num">12,1</td><td class="num">17,9</td><td class="num">17,6</td></tr>
-      <tr><td>EPS GAAP</td><td class="num">$2,75</td><td class="num">$4,14</td><td class="num">$4,06</td></tr>
-      <tr><td>Operating Income (US$ bi)</td><td class="num">22,9</td><td class="num">28,7</td><td class="num">29,3</td></tr>
-      <tr><td>Adj. EPS 1T26</td><td class="num" colspan="2" style="text-align:center;color:var(--text-muted)">—</td><td class="num" style="color:var(--green)">$1,28 (+7,6%)</td></tr>
+      <tr><td>Lucro operacional</td><td class="num">—</td><td class="num">133,1</td></tr>
+      <tr><td>Lucro líquido</td><td class="num">93,7</td><td class="num">112,0</td></tr>
+      <tr><td>EPS diluído</td><td class="num">$6,08</td><td class="num">$7,46</td></tr>
+      <tr><td>Alíquota efetiva</td><td class="num">—</td><td class="num">15,6%</td></tr>
     </tbody>
   </table>
-  <div class="source" style="margin-bottom:16px">10-K p.52; Transcript 1T26</div>
+  <div class="source" style="margin-bottom:16px">10-K p.26, 29</div>
 
-  <div class="insight positive"><div class="insight-tag">Sinal positivo</div>Custo de aquisição e retenção caiu cerca de 35% em março vs. final do 4T25, segundo o CEO. Mudança descrita como estrutural, não sazonal: micro-segmentação substituindo subsídio bruto de aparelhos.</div>
+  <div class="insight reading"><div class="insight-tag">Leitura</div>Produtos perde 0,4 pp de margem, pressionado por mix e custo, enquanto Serviços ganha 1,5 pp. Cada ponto de receita que migra de hardware para serviço entra com o dobro da margem. O lucro consolidado é hoje uma aposta na composição da receita.</div>
 
-  <div class="insight alert"><div class="insight-tag">Alerta</div><b>Hipótese a validar:</b> a amortização promocional ainda pressiona receita de serviço wireless (~180 bps de impacto no 1T26). Se a disciplina de custo não se sustentar em trimestres de pressão competitiva, a margem EBITDA do Consumer pode comprimir mais.</div>
+  <div class="insight alert"><div class="insight-tag">Alerta</div><b>Hipótese a validar:</b> as tarifas dos EUA, em vigor desde o segundo trimestre de 2025, pressionam o custo de Produtos. Se ampliadas, a margem de 36,8% pode comprimir mais, e o peso de Serviços para segurar o consolidado aumenta. <span class="source">10-K p.6, p.21-22</span></div>
 </div>
 
-<!-- ═══════ CHAPTER 4: CAPITAL ═══════ -->
+<!-- CHAPTER 4: CAPITAL -->
 <div class="chapter" id="ch-capital">
   <div class="eyebrow">Capital</div>
-  <h1 class="section-title">O balanço absorveu Frontier sem folga: dívida a US$ 172 bi, <em>leverage</em> a 2,6x, meta de desalavancar até 2027</h1>
-  <p class="section-lede">A companhia opera o triângulo de capital mais apertado de sua história: investir na rede, pagar acionistas e reduzir dívida, tudo com o mesmo caixa. Qualquer frustração de FCF força escolha.</p>
+  <h1 class="section-title">A Apple devolve ao acionista quase <em>3x</em> o que investe em P&D</h1>
+  <p class="section-lede">A geração de caixa operacional foi de US$ 111,5 bi, contra apenas US$ 12,7 bi de capex. O excedente vai quase todo para recompra de ações, US$ 89,3 bi no ano, mais US$ 15,4 bi de dividendos.</p>
 
   <div class="card-grid-3">
-    <div class="card"><div class="card-label">CFO 2025</div><div class="card-value font-mono">$37,1 bi</div><div class="card-delta up font-mono">+0,6% vs 2024</div><div class="source">10-K p.37</div></div>
-    <div class="card"><div class="card-label">Capex 2025</div><div class="card-value font-mono">$17,0 bi</div><div class="card-note">Guidance 2026: $16,0-16,5 bi</div><div class="source">10-K p.38</div></div>
-    <div class="card"><div class="card-label">FCF 2025</div><div class="card-value font-mono">$20,1 bi</div><div class="card-delta up font-mono">+1,5%</div><div class="source">10-K p.37</div></div>
+    <div class="card"><div class="card-label">Caixa de operações<span class="info" data-tip="Caixa gerado pela operacao principal antes de investimentos e financiamento.">?</span></div><div class="card-value">$111,5 bi</div><div class="source">10-K p.33</div></div>
+    <div class="card"><div class="card-label">Capex<span class="info" data-tip="Investimento em ativos fisicos como equipamentos e instalacoes.">?</span></div><div class="card-value">$12,7 bi</div><div class="card-note">3% da receita, modelo asset-light</div><div class="source">10-K p.33</div></div>
+    <div class="card"><div class="card-label">Recompra de ações<span class="info" data-tip="Compra das proprias acoes no mercado, que reduz o numero de acoes e eleva o lucro por acao.">?</span></div><div class="card-value accent">$89,3 bi</div><div class="card-note">402 mi de ações</div><div class="source">10-K p.44</div></div>
   </div>
 
-  <h3 style="font-family:'Fraunces',serif;font-size:18px;margin:24px 0 12px;color:var(--text)">Stack de dívida e alavancagem</h3>
+  <h3 class="subhead">Alocação de capital e balanço (US$ bi)</h3>
   <table class="data-table">
-    <thead><tr><th>Métrica</th><th class="num">FY2024</th><th class="num">FY2025</th><th class="num">1T26</th></tr></thead>
+    <thead><tr><th>Métrica</th><th class="num">FY2025</th></tr></thead>
     <tbody>
-      <tr><td>Dívida total</td><td class="num">$144,0 bi</td><td class="num">$158,2 bi</td><td class="num" style="color:var(--vz-red)">$172,5 bi</td></tr>
-      <tr><td>Dívida não garantida</td><td class="num">$117,3 bi</td><td class="num">$131,1 bi</td><td class="num">$142,5 bi</td></tr>
-      <tr><td>Dívida líquida não garantida</td><td class="num">$115,1 bi</td><td class="num">—</td><td class="num">$130,1 bi</td></tr>
-      <tr><td>Net unsec. debt / Adj. EBITDA</td><td class="num">2,3x</td><td class="num">—</td><td class="num" style="color:var(--amber)">2,6x</td></tr>
-      <tr><td>Taxa efetiva de juros</td><td class="num">5,1%</td><td class="num">5,0%</td><td class="num">—</td></tr>
-      <tr><td>Despesa de juros (anual)</td><td class="num">$6,6 bi</td><td class="num">$6,7 bi</td><td class="num">—</td></tr>
+      <tr><td>Caixa de operações</td><td class="num">111,5</td></tr>
+      <tr><td>Capex</td><td class="num">12,7</td></tr>
+      <tr><td>Dividendos pagos</td><td class="num">15,4</td></tr>
+      <tr><td>Recompra de ações</td><td class="num">89,3</td></tr>
+      <tr><td>P&D</td><td class="num">34,5</td></tr>
+      <tr><td>Caixa e títulos</td><td class="num">132,4</td></tr>
+      <tr><td>Dívida de longo prazo</td><td class="num">91,3</td></tr>
+      <tr><td>Patrimônio líquido</td><td class="num">73,7</td></tr>
     </tbody>
   </table>
-  <div class="source" style="margin-bottom:16px">10-K p.24, 38; Presentation p.7</div>
+  <div class="source" style="margin-bottom:16px">10-K p.25, 31, 33, 43-44</div>
 
-  <div class="insight alert"><div class="insight-tag">Alerta</div>Leverage saltou de 2,3x para 2,6x com a consolidação de Frontier. Meta de 2,0 a 2,25x até 2027 exige desalavancagem de ~US$ 20 bi em dívida líquida em 18 meses. Metade da dívida Frontier já foi paga no 1T26, mas o restante depende de FCF acima de US$ 21,5 bi sustentado.</div>
+  <div class="insight implication"><div class="insight-tag">Implicação de board</div>Capex de apenas 3% da receita confirma o modelo de manufatura terceirizada: a Apple converte caixa com pouquíssimo investimento físico. O excedente vai para recompra, US$ 89,3 bi, que sozinha supera o lucro de quase qualquer empresa do índice. A alocação é coerente com uma máquina de caixa madura.</div>
 
-  <h3 style="font-family:'Fraunces',serif;font-size:18px;margin:24px 0 12px;color:var(--text)">Retorno a acionistas</h3>
-  <div class="card-grid-3">
-    <div class="card"><div class="card-label">Dividendos pagos 2025</div><div class="card-value font-mono">$11,5 bi</div><div class="card-note">19º ano consecutivo de aumento</div><div class="source">10-K p.38</div></div>
-    <div class="card"><div class="card-label">Recompra 1T26</div><div class="card-value font-mono">$2,5 bi</div><div class="card-note">Primeira desde 2015</div><div class="source">Presentation p.7</div></div>
-    <div class="card"><div class="card-label">Compromisso até 2028</div><div class="card-value font-mono red">~$55 bi</div><div class="card-note">Dividendos + recompra de $25 bi</div><div class="source">10-K p.16</div></div>
-  </div>
-
-  <div class="insight implication"><div class="insight-tag">Implicação de board</div>O FCF de 2025 (US$ 20,1 bi) mal cobre dividendos (US$ 11,5 bi) + capex de manutenção implícito. A recompra de US$ 2,5 bi no 1T26 e a meta de US$ 25 bi total só cabem se o FCF 2026+ crescer conforme guiado. Qualquer trimestre de FCF abaixo de US$ 5 bi reabre a discussão sobre sustentabilidade do payout.</div>
+  <div class="insight reading"><div class="insight-tag">Leitura</div><b>Hipótese a validar:</b> retorno ao acionista de US$ 104,7 bi, 3x o P&D de US$ 34,5 bi, pode ser lido como disciplina de capital ou como sinal de poucas avenidas de reinvestimento orgânico de alto retorno. A leitura muda a tese de crescimento de longo prazo.</div>
 </div>
 
-<!-- ═══════ CHAPTER 5: GUIDANCE 2026 ═══════ -->
-<div class="chapter" id="ch-guidance">
-  <div class="eyebrow">Guidance 2026</div>
-  <h1 class="section-title">Guidance elevado aposta em <em>execução</em> impecável, com zero buffer para erro</h1>
-  <p class="section-lede">Após o 1T26, a companhia elevou EPS e net adds e reafirmou o restante. 2026 é declarado como ano de transição, o que significa que o crescimento sustentável ainda é promessa.</p>
+<!-- CHAPTER 5: OUTLOOK E RISCOS -->
+<div class="chapter" id="ch-outlook">
+  <div class="eyebrow">Outlook e Riscos</div>
+  <h1 class="section-title">A Apple não dá <em>guidance</em> numérico, então a tese se lê pelos riscos do 10-K</h1>
+  <p class="section-lede">O 10-K traz apenas outlook qualitativo, sem metas numéricas. Os vetores que decidem 2026 estão nos fatores de risco: a queda da China, as tarifas dos EUA, a concentração de manufatura na Ásia e a receita de busca do Google sob risco antitruste.</p>
 
-  <div class="card-grid-3">
-    <div class="guidance-card">
-      <div class="guidance-badge raised">Elevado</div>
-      <div class="card-label">Adj. EPS Growth</div>
-      <div class="card-value font-mono" style="margin-top:8px">5% a 6%</div>
-      <div class="card-note">Implica $4,95 a $4,99</div>
-      <div class="card-note" style="color:var(--amber)">Antes: 4% a 5%</div>
-      <div class="source">Presentation p.4</div>
-    </div>
-    <div class="guidance-card">
-      <div class="guidance-badge raised">Elevado</div>
-      <div class="card-label">Postpaid phone net adds</div>
-      <div class="card-value font-mono" style="margin-top:8px">750K a 1M</div>
-      <div class="card-note">Agora espera top half do range</div>
-      <div class="source">Presentation p.4</div>
-    </div>
-    <div class="guidance-card">
-      <div class="guidance-badge reaffirmed">Reafirmado</div>
-      <div class="card-label">Mobility & Broadband Revenue</div>
-      <div class="card-value font-mono" style="margin-top:8px">+2% a 3%</div>
-      <div class="card-note">1T26 em +1,6% (com 80 bps de outage)</div>
-      <div class="source">Presentation p.4</div>
-    </div>
-  </div>
-  <div class="card-grid-3">
-    <div class="guidance-card">
-      <div class="guidance-badge reaffirmed">Reafirmado</div>
-      <div class="card-label">Capex</div>
-      <div class="card-value font-mono" style="margin-top:8px">$16,0 a $16,5 bi</div>
-      <div class="card-note">1T26: $4,2 bi (26% do ponto médio)</div>
-      <div class="source">Presentation p.4</div>
-    </div>
-    <div class="guidance-card">
-      <div class="guidance-badge reaffirmed">Reafirmado</div>
-      <div class="card-label">Free Cash Flow</div>
-      <div class="card-value font-mono" style="margin-top:8px">≥ $21,5 bi</div>
-      <div class="card-note">~7%+ de crescimento vs 2025</div>
-      <div class="source">Presentation p.4</div>
-    </div>
-    <div class="guidance-card">
-      <div class="guidance-badge reaffirmed">Reafirmado</div>
-      <div class="card-label">Fiber passings YE2026</div>
-      <div class="card-value font-mono" style="margin-top:8px">> 32 mi</div>
-      <div class="card-note">Meta médio prazo: 40-50M</div>
-      <div class="source">Transcript 1T26</div>
-    </div>
+  <div class="card-grid-2">
+    <div class="outlook-card"><h4>Greater China em queda</h4><p>Única região negativa, com -4% e US$ 64,4 bi. Concentra a fraqueza de demanda do ano. Estabilização é condição para a tese de receita. Fonte: 10-K p.22.</p></div>
+    <div class="outlook-card"><h4>Tarifas dos EUA</h4><p>Em vigor desde o segundo trimestre de 2025, pressionam o custo de Produtos e a margem de 36,8%. Ampliação é risco direto de margem. Fonte: 10-K p.6, 21-22.</p></div>
+    <div class="outlook-card"><h4>Receita de busca do Google</h4><p>O licenciamento de busca com o Google está sob risco antitruste. É receita de alta margem dentro de Serviços que pode evaporar por decisão judicial. Fonte: 10-K p.14.</p></div>
+    <div class="outlook-card"><h4>Concentração de manufatura</h4><p>Substancialmente toda a manufatura de hardware está na Ásia, em China, Índia, Japão, Coreia do Sul, Taiwan e Vietnã. Risco geopolítico e de cadeia. Fonte: 10-K p.8, 46.</p></div>
   </div>
 
-  <div class="insight reading"><div class="insight-tag">Triangulação</div>Para entregar EPS de 5-6% com receita de serviço crescendo apenas 2-3%, a companhia precisa que (1) a disciplina de custo se mantenha, (2) sinergias Frontier acelerem, e (3) a amortização promocional não piore. Se qualquer uma dessas premissas falhar, o guidance cai para o piso.</div>
+  <div class="insight reading"><div class="insight-tag">Triangulação</div>Para sustentar lucro e margem em 2026, a Apple depende de três premissas: Serviços manter crescimento de dois dígitos, Greater China estabilizar, e a receita de busca do Google não evaporar por decisão antitruste. Se duas dessas falharem ao mesmo tempo, a tese de qualidade de receita é revista.</div>
 
-  <div class="insight implication"><div class="insight-tag">Implicação de board</div>O guidance inclui resultados Frontier a partir de 20 de janeiro de 2026. Isso significa que o baseline de comparação muda a partir do 2T27. Qualquer leitura de crescimento orgânico em 2026 precisa separar contribuição Frontier, o que a companhia não desagrega publicamente.</div>
+  <div class="insight implication"><div class="insight-tag">Implicação de board</div>A ausência de guidance numérico obriga o analista a trabalhar por cenários, não por metas. Exigir da gestão uma faixa de exposição da receita de busca do Google, hoje o risco material mais difícil de quantificar e o que menos aparece nas tabelas financeiras.</div>
 </div>
 
-<!-- ═══════ CHAPTER 6: WATCH LIST ═══════ -->
+<!-- CHAPTER 6: WATCH LIST -->
 <div class="chapter" id="ch-watch">
   <div class="eyebrow">Watch List</div>
-  <h1 class="section-title">Oito <em>gatilhos</em> que decidem se a tese se sustenta nos próximos três trimestres</h1>
-  <p class="section-lede">Cada indicador tem um valor atual e um threshold explícito. Se dois ou mais entrarem em zona de alerta simultaneamente, a tese precisa ser revisada.</p>
+  <h1 class="section-title">Oito <em>gatilhos</em> reais do 10-K para monitorar a Apple</h1>
+  <p class="section-lede">Cada indicador tem um valor atual e um threshold explícito. Se dois ou mais entrarem em zona de alerta ao mesmo tempo, a tese de qualidade de receita precisa ser revista.</p>
 
-  <div class="card" style="margin-bottom:24px;padding:0;overflow:hidden">
-    <div class="watch-item" style="background:var(--bg-card-alt)"><div class="watch-name" style="font-weight:600;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--text-muted)">Indicador</div><div class="watch-current" style="font-weight:600;font-size:11px;color:var(--text-muted);letter-spacing:1px">Atual</div><div class="watch-threshold" style="background:none;font-weight:600;font-size:11px;color:var(--text-muted);letter-spacing:1px">Threshold</div></div>
-    <div class="watch-item"><div class="watch-name">Consumer postpaid phone churn</div><div class="watch-current">0,90%</div><div class="watch-threshold ok">Alerta se > 1,00%</div></div>
-    <div class="watch-item"><div class="watch-name">Postpaid phone net adds (trimestral)</div><div class="watch-current">55K</div><div class="watch-threshold ok">Alerta se negativo por 2 trimestres</div></div>
-    <div class="watch-item"><div class="watch-name">Fiber net adds (pós-Frontier)</div><div class="watch-current">127K (1T26)</div><div class="watch-threshold warn">Alerta se < 100K por 2 trimestres</div></div>
-    <div class="watch-item"><div class="watch-name">FWA net adds (Consumer, trimestral)</div><div class="watch-current">214K (1T26)</div><div class="watch-threshold ok">Alerta se < 150K</div></div>
-    <div class="watch-item"><div class="watch-name">Net unsecured debt / Adj. EBITDA</div><div class="watch-current">2,6x</div><div class="watch-threshold warn">Alerta se > 2,8x no 3T26</div></div>
-    <div class="watch-item"><div class="watch-name">Wireless service revenue growth</div><div class="watch-current">-1,0% (1T26)</div><div class="watch-threshold danger">Negativo por 80 bps de outage; alerta se persistir</div></div>
-    <div class="watch-item"><div class="watch-name">Custo aquisição/retenção (tendência)</div><div class="watch-current">-35% vs 4T25</div><div class="watch-threshold ok">Alerta se reverter >10%</div></div>
-    <div class="watch-item"><div class="watch-name">Device payment default rate (Δ YoY)</div><div class="watch-current">+0,51 pp</div><div class="watch-threshold warn">Alerta se > +0,75 pp (≈$250M impacto)</div></div>
+  <div class="watch-wrap">
+    <div class="watch-item" style="background:var(--bg-soft)"><div class="watch-name" style="font-weight:600;font-size:12px;color:var(--text-muted)">Indicador</div><div class="watch-current" style="font-weight:600;font-size:11px;color:var(--text-muted)">Atual</div><div class="watch-threshold" style="background:none;font-weight:600;font-size:11px;color:var(--text-muted)">Threshold</div></div>
+    <div class="watch-item"><div class="watch-name">Crescimento de Services<span class="info" data-tip="Ritmo de crescimento anual da receita de servicos; sustenta a tese de valor.">?</span></div><div class="watch-current">+14%</div><div class="watch-threshold ok">Alerta se &lt; 10%</div></div>
+    <div class="watch-item"><div class="watch-name">iPhone como % da receita<span class="info" data-tip="Grau de dependencia de um unico produto; quanto maior, maior o risco de concentracao.">?</span></div><div class="watch-current">50,4%</div><div class="watch-threshold warn">Alerta se &gt; 52%</div></div>
+    <div class="watch-item"><div class="watch-name">Receita Greater China (YoY)<span class="info" data-tip="Variacao anual da receita na China; unica regiao em queda no ano.">?</span></div><div class="watch-current">-4%</div><div class="watch-threshold warn">Alerta se queda persistir 2 anos</div></div>
+    <div class="watch-item"><div class="watch-name">Margem bruta de Products<span class="info" data-tip="Rentabilidade do hardware; sensivel a custo e a tarifas.">?</span></div><div class="watch-current">36,8%</div><div class="watch-threshold ok">Alerta se &lt; 36%</div></div>
+    <div class="watch-item"><div class="watch-name">Margem bruta de Services<span class="info" data-tip="Rentabilidade dos servicos; ancora da margem consolidada.">?</span></div><div class="watch-current">75,4%</div><div class="watch-threshold ok">Alerta se &lt; 73%</div></div>
+    <div class="watch-item"><div class="watch-name">Caixa de operações<span class="info" data-tip="Caixa gerado pela operacao; mede a capacidade real de gerar dinheiro.">?</span></div><div class="watch-current">$111,5 bi</div><div class="watch-threshold ok">Alerta se &lt; $100 bi</div></div>
+    <div class="watch-item"><div class="watch-name">Receita de busca do Google (antitruste)<span class="info" data-tip="Pagamento do Google para ser o buscador padrao; receita de alta margem sob risco em processo antitruste.">?</span></div><div class="watch-current">Risco material</div><div class="watch-threshold danger">Alerta em decisão adversa</div></div>
+    <div class="watch-item"><div class="watch-name">Tarifas dos EUA sobre Products<span class="info" data-tip="Tarifas de importacao que elevam o custo do hardware desde 2025.">?</span></div><div class="watch-current">Em vigor</div><div class="watch-threshold warn">Alerta se ampliação</div></div>
   </div>
 
-  <div class="insight alert"><div class="insight-tag">Alerta</div>Dois indicadores já estão em zona amarela: leverage a 2,6x (meta 2,0-2,25x até 2027) e wireless service revenue negativo no 1T26 (mesmo com fator pontual). Se o 2T26 não mostrar melhora em ambos, a janela de conforto para o payout se estreita.</div>
+  <div class="insight alert"><div class="insight-tag">Alerta</div>Dois vetores já estão em zona amarela: a dependência do iPhone em 50,4% da receita e Greater China em queda de 4%. Se o próximo ciclo não melhorar nenhum dos dois, a concentração de risco aumenta.</div>
 
-  <div class="insight implication"><div class="insight-tag">Implicação de board</div>O risco não monitorado: passivo de cabos de chumbo na rede de cobre. O 10-K declara que o custo não pode ser estimado e pode ser material (10-K, seção Risk Factors). Não entra em nenhum modelo, mas pode virar evento. Exigir da gestão uma faixa de exposição cenarizada.</div>
+  <div class="insight implication"><div class="insight-tag">Implicação de board</div>O risco não financeiro mais relevante não aparece nas tabelas: a receita de licenciamento de busca com o Google, sob risco antitruste. É receita de alta margem dentro de Serviços. Uma decisão adversa atinge justamente a linha que sustenta a tese de valor.</div>
 
-  <div class="insight reading"><div class="insight-tag">Nota de validação</div><b>Antes de circular para C-level, validar com o time financeiro:</b> (1) a taxa implícita de juros pós-Frontier, que pode diferir do 5,0% reportado em 2025 se a dívida Frontier tiver perfil diferente; (2) o run-rate de sinergias Frontier contabilizado no guidance de EBITDA 2026, para separar crescimento orgânico de contribuição M&A; (3) a premissa de capex por passing de fibra que sustenta a meta de 32M+ passings com capex de US$ 16-16,5 bi.</div>
+  <div class="insight reading"><div class="insight-tag">Nota de validação</div><b>Antes de circular para C-level, validar com o time financeiro:</b> (1) quanto da receita de Serviços vem do acordo de busca com o Google; (2) a exposição quantificada a tarifas sobre o custo de Produtos; (3) a sensibilidade da margem total ao mix Produtos contra Serviços.</div>
 </div>
 
 </div><!-- /content -->
 
-<!-- FOOTER -->
 <div class="footer">
   <div class="footer-left">
     <div class="footer-brand">Patente<span class="dot">.</span></div>
@@ -540,7 +454,7 @@ a{color:inherit;text-decoration:none}
     <a href="https://thiagopatente.com.br" target="_blank" rel="noopener" class="footer-url">thiagopatente.com.br</a>
   </div>
   <div class="footer-right">
-    <a href="https://linkedin.com/in/patente-thiago" target="_blank" rel="noopener" class="footer-pill">
+    <a href="https://linkedin.com/in/thiagopatente" target="_blank" rel="noopener" class="footer-pill">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
       LinkedIn
     </a>
@@ -560,7 +474,6 @@ function showChapter(id, el) {
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   document.getElementById('ch-' + id).classList.add('active');
   if (el) el.classList.add('active');
-  document.querySelector('.content').scrollTo(0, 0);
   window.scrollTo(0, 0);
 }
 function toggleTheme() {
@@ -571,6 +484,15 @@ function toggleSidebar() {
   const html = document.documentElement;
   html.setAttribute('data-sidebar', html.getAttribute('data-sidebar') === 'expanded' ? 'collapsed' : 'expanded');
 }
+
+(function(){
+  var tip=document.getElementById('tooltip');
+  document.querySelectorAll('.info').forEach(function(el){
+    el.addEventListener('mouseenter',function(){tip.textContent=el.getAttribute('data-tip');tip.style.opacity='1';});
+    el.addEventListener('mousemove',function(e){var x=e.clientX+16,y=e.clientY+16;if(x+272>window.innerWidth)x=e.clientX-272;if(x<8)x=8;tip.style.left=x+'px';tip.style.top=y+'px';});
+    el.addEventListener('mouseleave',function(){tip.style.opacity='0';});
+  });
+})();
 </script>
 </body>
 </html>
