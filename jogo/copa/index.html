@@ -530,7 +530,7 @@ function showWin(){
 }
 document.getElementById('nextBtn').onclick=()=>{ winEl.classList.remove('show'); startLevel(Math.min(state.level+1,LEVELS.length-1)); };
 document.getElementById('homeBtn').onclick=()=>{ winEl.classList.remove('show'); goHome(); };
-document.getElementById('backBtn').onclick=goHome;
+document.getElementById('backBtn').onclick=function(){location.href='/jogo/';};
 document.getElementById('againBtn').onclick=()=>startLevel(state.level);
 
 function goHome(){
