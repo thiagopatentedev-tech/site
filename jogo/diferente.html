@@ -1,0 +1,161 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/><title>Qual é Diferente · Jogos da Bibel</title><meta name="description" content="toque no que é diferente. Jogo de alfabetização feito com IA."><meta property="og:title" content="Qual é Diferente · Jogos da Bibel"><meta property="og:description" content="toque no que é diferente. Jogo de alfabetização feito com IA."><meta property="og:image" content="https://www.thiagopatente.com.br/jogo/og.png"><meta property="og:type" content="website"><meta property="og:url" content="https://www.thiagopatente.com.br/jogo/diferente.html"><link rel="canonical" href="https://www.thiagopatente.com.br/jogo/diferente.html"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://www.thiagopatente.com.br/jogo/og.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet"><style>
+:root{--papel:#f3efe6;--tinta:#15202b;--coral:#d97757;--terra:#7c2410;--verde:#2bb673;--azul:#3aa7ff;--amarelo:#ffc23f;--rosa:#ff6f9c}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:Fredoka,system-ui,sans-serif;color:var(--tinta);background:linear-gradient(180deg,#fdf6ea,#f0e7d6);overflow-x:hidden;-webkit-user-select:none;user-select:none}
+.wrap{max-width:680px;margin:0 auto;padding:14px;min-height:100%}
+.home{display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:14px}
+.kicker{font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);font-weight:600}
+h1{font-size:clamp(38px,11vw,66px);font-weight:700;color:var(--terra);line-height:1;margin:4px 0 2px}
+.tag{font-size:17px;color:#7a6f5c;font-weight:500;margin-bottom:10px}
+.hero{font-size:clamp(48px,15vw,84px);margin:6px 0 8px}
+.hint{font-size:18px;color:#6b6456;margin:4px 0 14px;font-weight:500}
+.levels{display:grid;gap:12px;width:100%;max-width:420px}
+.lvl{display:flex;align-items:center;gap:14px;background:#fff;border:3px solid #efe7d8;border-radius:20px;padding:14px 16px;cursor:pointer;box-shadow:0 5px 0 rgba(124,36,16,.10)}
+.lvl:active{transform:translateY(2px)}
+.lvl .num{width:42px;height:42px;flex:none;border-radius:50%;background:var(--coral);color:#fff;font-size:22px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.lvl .meta{flex:1;text-align:left}.lvl .meta b{display:block;font-size:19px}.lvl .meta span{font-size:14px;color:#8a7f6c}
+.lvl .star{font-size:22px;width:26px}
+.voice-toggle{margin:18px 0 6px;border:3px solid #efe7d8;background:#fff;border-radius:999px;padding:10px 18px;font-family:inherit;font-size:16px;font-weight:600;color:var(--tinta);cursor:pointer;display:flex;align-items:center;gap:10px}
+.voice-toggle .sw{width:16px;height:16px;border-radius:50%;background:var(--verde)}.voice-toggle.off .sw{background:#cbb}
+.backlink{margin-top:14px;font-size:14px;color:var(--terra);text-decoration:none;font-weight:600}
+.info-btn{position:fixed;top:12px;right:12px;z-index:6;border:3px solid #efe7d8;background:#fff;border-radius:999px;width:44px;height:44px;font-size:18px;cursor:pointer;color:var(--terra)}
+.game{display:none}.game.active{display:block}
+.topbar{display:flex;align-items:center;gap:10px;margin:4px 0 14px}
+.iconbtn{border:3px solid #efe7d8;background:#fff;border-radius:16px;width:48px;height:48px;font-size:22px;cursor:pointer}
+.scorebox{flex:1;display:flex;flex-direction:column;align-items:center;line-height:1.15}
+.scorebox .lvlname{font-size:18px;font-weight:700;color:var(--terra)}.scorebox .stats{font-size:14px;color:#8a7f6c}
+#stage{min-height:200px}
+.prompt{display:flex;flex-direction:column;align-items:center;justify-content:center;margin:6px 0 16px;min-height:120px}
+.emoji-xl{font-size:clamp(64px,22vw,120px);line-height:1}
+.big-letter{font-size:clamp(80px,26vw,150px);font-weight:700;color:var(--coral);line-height:1}
+.bigword{font-size:clamp(40px,12vw,72px);font-weight:700;letter-spacing:4px;color:var(--tinta)}
+.bigword .bl{color:var(--coral)}
+.countrow{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;max-width:90%}
+.countrow span{font-size:clamp(34px,9vw,54px)}
+.promptword{font-size:20px;font-weight:700;margin-top:4px;letter-spacing:1px}
+.options{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.options.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.opt{border:3px solid #efe7d8;background:#fff;border-radius:18px;min-width:84px;padding:14px 16px;font-family:inherit;cursor:pointer;box-shadow:0 4px 0 rgba(124,36,16,.10);display:flex;flex-direction:column;align-items:center;gap:4px}
+.opt:active{transform:translateY(2px)}
+.opt .oe{font-size:clamp(34px,9vw,52px);line-height:1}
+.opt .ol{font-size:15px;font-weight:700;color:#5a5346}
+.opt .big-letter{font-size:46px}
+.opt.ok{border-color:var(--verde);background:#eafaf1}
+.opt.bad{border-color:var(--rosa);background:#ffeef3}
+.opt.done{opacity:.55}
+.shake{animation:shk .4s}
+@keyframes shk{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.slots{display:flex;gap:8px;justify-content:center;margin-top:10px;flex-wrap:wrap}
+.slot{min-width:54px;height:54px;border-bottom:5px solid var(--coral);font-size:30px;font-weight:700;display:flex;align-items:center;justify-content:center;color:var(--tinta)}
+.slot.filled{border-bottom-color:var(--verde)}
+.board{display:grid;gap:10px;grid-template-columns:repeat(3,1fr)}.board.c4{grid-template-columns:repeat(4,1fr)}
+.card{position:relative;aspect-ratio:3/4;cursor:pointer;perspective:600px}
+.card .face{position:absolute;inset:0;border-radius:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;backface-visibility:hidden;transition:transform .35s;box-shadow:0 4px 0 rgba(124,36,16,.12)}
+.card .back{background:linear-gradient(150deg,var(--coral),#e8916f)}
+.card .back::after{content:"?";color:#fff;font-size:32px;font-weight:700;opacity:.85}
+.card .front{background:#fff;border:3px solid #efe7d8;transform:rotateY(180deg)}
+.card.flipped .back{transform:rotateY(180deg)}.card.flipped .front{transform:rotateY(360deg)}
+.card.matched .front{border-color:var(--verde);background:#eafaf1}.card.matched{animation:pop .4s}
+@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.08)}100%{transform:scale(1)}}
+.card .emoji{font-size:clamp(28px,8vw,48px)}.card .word{font-size:clamp(12px,3.4vw,17px);font-weight:700;margin-top:2px}
+.shadow{filter:brightness(0) saturate(0);opacity:.85}
+.win{position:fixed;inset:0;background:rgba(21,32,43,.55);display:none;align-items:center;justify-content:center;z-index:20;padding:20px}
+.win.show{display:flex}
+.wincard{background:#fff;border-radius:26px;padding:26px 22px;text-align:center;max-width:340px;width:100%;box-shadow:0 10px 0 rgba(124,36,16,.15)}
+.wincard .em{font-size:64px}.wincard h2{font-size:26px;color:var(--terra);margin:6px 0}.wincard p{font-size:16px;color:#6b6456;margin-bottom:10px}
+.wincard .btn{display:block;width:100%;border:none;border-radius:16px;padding:14px;font-family:inherit;font-size:18px;font-weight:700;cursor:pointer;margin-top:10px}
+.btn.primary{background:var(--verde);color:#fff}.btn.ghost{background:#f3efe6;color:var(--tinta)}
+.sheet{position:fixed;inset:0;background:rgba(21,32,43,.5);display:none;align-items:center;justify-content:center;z-index:30;padding:20px}.sheet.show{display:flex}
+.sheetcard{background:#fff;border-radius:24px;padding:24px;max-width:360px;width:100%;text-align:center;position:relative}
+.closex{position:absolute;top:12px;right:12px;border:none;background:#f3efe6;border-radius:50%;width:34px;height:34px;font-size:16px;cursor:pointer}
+.sheetcard .big{font-size:46px}.sheetcard h2{color:var(--terra);margin:6px 0 10px}.sheetcard p{font-size:15px;color:#5a5346;line-height:1.5}
+.sitelink{display:inline-block;margin-top:14px;color:var(--terra);font-weight:600;text-decoration:none}
+#confetti{position:fixed;inset:0;pointer-events:none;z-index:40;overflow:hidden}
+.conf{position:absolute;top:-12px;width:10px;height:14px;border-radius:2px;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg);opacity:.9}}
+.spark{position:fixed;width:9px;height:9px;border-radius:50%;pointer-events:none;z-index:40;animation:sp .7s ease-out forwards}
+@keyframes sp{to{transform:translate(var(--dx),var(--dy));opacity:0}}
+</style></head><body>
+<button class="info-btn" id="infoBtn" aria-label="Sobre">ⓘ</button>
+<div class="wrap">
+  <section class="home" id="home">
+    <div class="kicker" id="kicker"></div>
+    <h1 id="h1"></h1>
+    <div class="tag" id="tag"></div>
+    <div class="hero" id="hero"></div>
+    <div class="hint" id="hint"></div>
+    <div class="levels" id="levels"></div>
+    <button class="voice-toggle" id="voiceBtn"><span class="sw"></span> Falar</button>
+    <a class="backlink" href="index.html">← todos os jogos</a>
+  </section>
+  <section class="game" id="game">
+    <div class="topbar">
+      <button class="iconbtn" id="backBtn">🏠</button>
+      <div class="scorebox"><span class="lvlname" id="lvlName"></span><span class="stats"><span id="paresInfo"></span> · <span id="tempoInfo">⏱ 00:00</span></span></div>
+      <button class="iconbtn" id="againBtn">🔄</button>
+    </div>
+    <div id="stage"></div>
+  </section>
+</div>
+<div class="win" id="win"><div class="wincard"><div class="em" id="winEmoji">🎉</div><h2 id="winH">Você conseguiu!</h2><p id="winMsg"></p><button class="btn primary" id="nextBtn">Próximo nível ➜</button><button class="btn ghost" id="homeBtn">Escolher nível</button></div></div>
+<div class="sheet" id="about"><div class="sheetcard"><button class="closex" id="aboutClose">✕</button><div class="big" id="aboutEmoji">🎈</div><h2 id="aboutTitle"></h2><p id="aboutTxt"></p><a class="sitelink" href="https://www.thiagopatente.com.br" target="_blank" rel="noopener">🌐 www.thiagopatente.com.br</a></div></div>
+<div id="confetti"></div>
+<script>window.__G__={"slug": "diferente", "engine": "choice", "title": "Qual é Diferente", "kicker": "Jogos da Bibel", "hero": "🍎🍎🍌", "tag": "toque no que é diferente", "hint": "⚽ escolha um nível", "unit": "acertos", "levels": [{"nome": "Nível 1", "sub": "3 figuras", "rounds": [{"say": "Toque no que é diferente", "opts": [{"emoji": "🍎", "correct": false}, {"emoji": "🍎", "correct": false}, {"emoji": "🍌", "correct": true}]}, {"say": "Toque no que é diferente", "opts": [{"emoji": "🐱", "correct": false}, {"emoji": "🐱", "correct": false}, {"emoji": "🐶", "correct": true}]}, {"say": "Toque no que é diferente", "opts": [{"emoji": "⭐", "correct": false}, {"emoji": "⭐", "correct": false}, {"emoji": "🌙", "correct": true}]}, {"say": "Toque no que é diferente", "opts": [{"emoji": "🔴", "correct": false}, {"emoji": "🔴", "correct": false}, {"emoji": "🔵", "correct": true}]}]}, {"nome": "Nível 2", "sub": "4 figuras", "rounds": [{"say": "Toque no que é diferente", "opts": [{"emoji": "🐶", "correct": false}, {"emoji": "🐶", "correct": false}, {"emoji": "🐶", "correct": false}, {"emoji": "🐱", "correct": true}]}, {"say": "Toque no que é diferente", "opts": [{"emoji": "☀️", "correct": false}, {"emoji": "☀️", "correct": false}, {"emoji": "☀️", "correct": false}, {"emoji": "🌙", "correct": true}]}, {"say": "Toque no que é diferente", "opts": [{"emoji": "🍎", "correct": false}, {"emoji": "🍌", "correct": true}, {"emoji": "🍎", "correct": false}, {"emoji": "🍎", "correct": false}]}]}], "about": "Feito por <b>Thiago Patente</b>, para as duas filhas, e construído com inteligência artificial."};
+
+var G=window.__G__;
+var state={level:0,voice:true,completed:new Set(),lock:false};
+function $(id){return document.getElementById(id);}
+var stageEl=$('stage'),paresEl=$('paresInfo'),tempoEl=$('tempoInfo'),lvlNameEl=$('lvlName'),homeEl=$('home'),gameEl=$('game'),winEl=$('win'),voiceBtn=$('voiceBtn');
+// textos da home
+$('kicker').textContent=G.kicker;$('h1').textContent=G.title;$('tag').textContent=G.tag;$('hero').textContent=G.hero;$('hint').textContent=G.hint;
+$('aboutTitle').textContent=G.title;$('aboutEmoji').textContent=G.hero;$('aboutTxt').innerHTML=G.about;
+document.title=G.title+' · Jogos da Bibel';
+// voz
+var ptVoice=null;
+function pickVoice(){if(!('speechSynthesis'in window))return;var vs=speechSynthesis.getVoices()||[];var pt=vs.filter(function(v){return /pt[-_ ]?BR|portugu/i.test((v.lang||'')+' '+(v.name||''));});var fem=pt.find(function(v){return /maria|luciana|francisca|fem|google|hel|vit|ana|julia|liv/i.test(v.name||'');});ptVoice=fem||pt[0]||null;}
+if('speechSynthesis'in window){pickVoice();speechSynthesis.onvoiceschanged=pickVoice;}
+function say(t){if(!state.voice||!('speechSynthesis'in window))return;try{var u=new SpeechSynthesisUtterance(t);u.lang='pt-BR';if(ptVoice)u.voice=ptVoice;u.rate=.96;u.pitch=1.5;speechSynthesis.cancel();speechSynthesis.speak(u);}catch(e){}}
+// timer
+var timer={sec:0,id:null};
+function fmt(s){var m=Math.floor(s/60),x=s%60;return (m<10?'0':'')+m+':'+(x<10?'0':'')+x;}
+function startTimer(){stopTimer();timer.sec=0;tempoEl.textContent='⏱ 00:00';timer.id=setInterval(function(){timer.sec++;tempoEl.textContent='⏱ '+fmt(timer.sec);},1000);}
+function stopTimer(){if(timer.id){clearInterval(timer.id);timer.id=null;}}
+function setStats(done,total){paresEl.textContent=done+'/'+total+' '+G.unit;}
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function shake(el){el.classList.add('shake');setTimeout(function(){el.classList.remove('shake');},420);}
+// home
+function renderHome(){var L=$('levels');L.innerHTML='';G.levels.forEach(function(lv,i){var done=state.completed.has(i);var b=document.createElement('button');b.className='lvl';b.innerHTML='<span class="num">'+(i+1)+'</span><span class="meta"><b>'+lv.nome+'</b><span>'+lv.sub+'</span></span><span class="star">'+(done?'⭐':'')+'</span>';b.onclick=function(){startLevel(i);};L.appendChild(b);});}
+function startLevel(i){state.level=i;lvlNameEl.textContent=G.levels[i].nome;homeEl.style.display='none';gameEl.classList.add('active');window.scrollTo(0,0);engineStart(i);}
+function finishLevel(){stopTimer();state.completed.add(state.level);var last=state.level===G.levels.length-1;$('winEmoji').textContent=last?'🏆':'🎉';$('winMsg').textContent=(last?'Você terminou o jogo todo!':'Muito bem!')+'   ⏱ '+fmt(timer.sec);$('nextBtn').style.display=last?'none':'block';winEl.classList.add('show');confetti();say(last?'Parabéns!':'Muito bem!');}
+$('nextBtn').onclick=function(){winEl.classList.remove('show');startLevel(Math.min(state.level+1,G.levels.length-1));};
+$('homeBtn').onclick=function(){winEl.classList.remove('show');goHome();};
+$('backBtn').onclick=goHome;$('againBtn').onclick=function(){startLevel(state.level);};
+function goHome(){stopTimer();gameEl.classList.remove('active');homeEl.style.display='flex';renderHome();window.scrollTo(0,0);}
+function refreshVoice(){voiceBtn.classList.toggle('off',!state.voice);voiceBtn.innerHTML='<span class="sw"></span> '+(state.voice?'Falar':'Som desligado');}
+voiceBtn.onclick=function(){state.voice=!state.voice;refreshVoice();if(state.voice)say('Vamos jogar!');};
+var aboutEl=$('about');$('infoBtn').onclick=function(){aboutEl.classList.add('show');};$('aboutClose').onclick=function(){aboutEl.classList.remove('show');};aboutEl.onclick=function(e){if(e.target===aboutEl)aboutEl.classList.remove('show');};
+function burst(x,y){var box=$('confetti');var c=['#ffc23f','#3aa7ff','#ff6f9c','#2bb673','#d97757'];for(var i=0;i<14;i++){var p=document.createElement('div');p.className='spark';var a=Math.random()*6.28,d=36+Math.random()*54;p.style.left=x+'px';p.style.top=y+'px';p.style.background=c[i%c.length];p.style.setProperty('--dx',(Math.cos(a)*d).toFixed(0)+'px');p.style.setProperty('--dy',(Math.sin(a)*d).toFixed(0)+'px');box.appendChild(p);setTimeout(function(){p.remove();},720);}}
+function confetti(){var box=$('confetti');var c=['#ffc23f','#3aa7ff','#ff6f9c','#2bb673','#d97757'];for(var i=0;i<70;i++){var d=document.createElement('div');d.className='conf';d.style.left=Math.random()*100+'vw';d.style.background=c[i%c.length];d.style.animationDuration=(2+Math.random()*1.5)+'s';d.style.animationDelay=(Math.random()*.4)+'s';box.appendChild(d);setTimeout(function(){d.remove();},4000);}}
+renderHome();refreshVoice();
+
+
+function promptHtml(r){var s=r.show;if(!s)return '';
+ if(s.k==='letter')return '<div class="big-letter">'+s.v+'</div>';
+ if(s.k==='emoji')return '<div class="emoji-xl">'+s.v+'</div>'+(s.w?'<div class="promptword">'+s.w+'</div>':'');
+ if(s.k==='word')return '<div class="bigword">'+s.v+'</div>';
+ if(s.k==='count'){var h='<div class="countrow">';for(var i=0;i<s.n;i++)h+='<span>'+s.v+'</span>';return h+'</div>';}
+ return '';}
+function optHtml(o){if(o.emoji)return '<span class="oe">'+o.emoji+'</span>'+(o.t?'<span class="ol">'+o.t+'</span>':'');if(o.letter)return '<span class="big-letter">'+o.letter+'</span>';return '<span class="ol" style="font-size:30px">'+o.t+'</span>';}
+function engineStart(i){var lv=G.levels[i];var rounds=shuffle(lv.rounds.slice());var ri=0;startTimer();
+ function show(){if(ri>=rounds.length){finishLevel();return;}setStats(ri,rounds.length);var r=rounds[ri];
+  var h='<div class="prompt">'+promptHtml(r)+'</div><div class="options'+(r.grid?' grid':'')+'">';
+  var opts=r.shuffle===false?r.opts:shuffle(r.opts.slice());
+  opts.forEach(function(o,k){h+='<button class="opt" data-k="'+k+'">'+optHtml(o)+'</button>';});
+  h+='</div>';stageEl.innerHTML=h;say(r.say);
+  var need=r.multi?opts.filter(function(o){return o.correct;}).length:1;var got=0;
+  stageEl.querySelectorAll('.opt').forEach(function(btn){btn.onclick=function(){if(btn.classList.contains('done'))return;var o=opts[+btn.dataset.k];
+   if(o.correct){btn.classList.add('ok','done');var rc=btn.getBoundingClientRect();burst(rc.left+rc.width/2,rc.top+rc.height/2);if(o.say)say(o.say);got++;if(got>=need){ri++;setStats(ri,rounds.length);setTimeout(show,850);}}
+   else{btn.classList.add('bad');shake(btn);say('Tenta de novo!');setTimeout(function(){btn.classList.remove('bad');},500);}};});
+ }show();}
+</script></body></html>
