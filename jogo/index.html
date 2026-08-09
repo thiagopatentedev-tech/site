@@ -18,6 +18,15 @@
 .agebtn.on{background:var(--coral);color:#fff;border-color:var(--coral)}
 </style></head><body>
 <button class="lang-btn" id="langBtn" aria-label="Português / English" style="position:fixed;top:12px;right:12px"><span class="flag pt on"></span><span class="flag en"></span></button>
+<button class="info-btn" id="infoBtn" aria-label="Sobre" style="position:fixed;top:12px;left:12px">ⓘ</button>
+<div class="sheet" id="aboutSheet">
+ <div class="sheetcard">
+  <button class="closex" id="closeAbout">✕</button>
+  <div class="big">🧸</div>
+  <h2 id="aboutH2">Sobre</h2>
+  <p id="aboutP"></p>
+ </div>
+</div>
 <div class="wrap">
  <div class="head"><div class="k">Jogos da Bibel</div><h1 id="h1">Aprender brincando</h1><p id="tag">joguinhos de alfabetização, feitos com IA</p></div>
  <div class="turmabar">
@@ -58,8 +67,8 @@ var TILES=[
  {turma:"p2",href:"/jogo/qual-palavra/",e:"🔤",pt:["Qual Palavra?","escolha a palavra certa"],en:["Word Match","pick the right word"]},
  {turma:"p2",href:"/jogo/maior-grupo/",e:"🔢",pt:["Maior Grupo","compare as quantidades"],en:["Which Group Has More","compare the quantities"]}
 ];
-var HEAD={pt:{h1:"Aprender brincando",tag:"joguinhos de alfabetização, feitos com IA",foot:'Feito por Thiago Patente, para as duas filhas. · <a href="https://www.thiagopatente.com.br" style="color:var(--terra)">thiagopatente.com.br</a>',profileLbl:"toque maior pra mãozinha pequena?",m2:"Maternal II",p2:"Pré II",hintOn:"mostrando só os jogos da ",hintOff:"toque numa turma pra ver só os jogos dela.",sectRec:"recomendados pra essa turma",sectOther:"outros jogos"},
- en:{h1:"Learn by playing",tag:"early learning games, made with AI",foot:'Made by Thiago Patente, for his two daughters. · <a href="https://www.thiagopatente.com.br" style="color:var(--terra)">thiagopatente.com.br</a>',profileLbl:"bigger buttons for a little hand?",m2:"Maternal II",p2:"Pre II",hintOn:"showing only games for ",hintOff:"tap a class to see only its games.",sectRec:"recommended for this class",sectOther:"other games"}};
+var HEAD={pt:{h1:"Aprender brincando",tag:"joguinhos de alfabetização, feitos com IA",foot:'Feito por Thiago Patente, para as duas filhas. · <a href="https://www.thiagopatente.com.br" style="color:var(--terra)">thiagopatente.com.br</a>',profileLbl:"toque maior pra mãozinha pequena?",m2:"Maternal II",p2:"Pré II",hintOn:"mostrando só os jogos da ",hintOff:"toque numa turma pra ver só os jogos dela.",sectRec:"recomendados pra essa turma",sectOther:"outros jogos",aboutH2:"Sobre os Jogos da Bibel",aboutP:"Uma coleção de 20 joguinhos de alfabetização e matemática, feitos por Thiago Patente com IA, pra suas duas filhas praticarem em português e inglês no celular. Nada de anúncio, nada de cadastro, é só brincar."},
+ en:{h1:"Learn by playing",tag:"early learning games, made with AI",foot:'Made by Thiago Patente, for his two daughters. · <a href="https://www.thiagopatente.com.br" style="color:var(--terra)">thiagopatente.com.br</a>',profileLbl:"bigger buttons for a little hand?",m2:"Maternal II",p2:"Pre II",hintOn:"showing only games for ",hintOff:"tap a class to see only its games.",sectRec:"recommended for this class",sectOther:"other games",aboutH2:"About Jogos da Bibel",aboutP:"A collection of 20 early literacy and math games, made by Thiago Patente with AI, for his two daughters to practice in Portuguese and English on the phone. No ads, no sign-up, just play."}};
 function getLang(){try{return localStorage.getItem('bibel_lang')||'pt';}catch(e){return 'pt';}}
 function setLang(l){try{localStorage.setItem('bibel_lang',l);}catch(e){}}
 function getProfile(){try{return localStorage.getItem('bibel_profile')||'';}catch(e){return '';}}
@@ -80,6 +89,8 @@ function render(){
  document.getElementById('tag').textContent=HEAD[lang].tag;
  document.getElementById('foot').innerHTML=HEAD[lang].foot;
  document.getElementById('profileLbl').textContent=HEAD[lang].profileLbl;
+ document.getElementById('aboutH2').textContent=HEAD[lang].aboutH2;
+ document.getElementById('aboutP').textContent=HEAD[lang].aboutP;
  document.getElementById('turmaM2').querySelector('span').textContent=HEAD[lang].m2;
  document.getElementById('turmaP2').querySelector('span').textContent=HEAD[lang].p2;
  document.getElementById('turmaM2').classList.toggle('on',turma==='m2');
@@ -101,6 +112,9 @@ function render(){
  document.documentElement.setAttribute('data-profile',profile);
 }
 document.getElementById('langBtn').onclick=function(){lang=lang==='pt'?'en':'pt';setLang(lang);render();};
+document.getElementById('infoBtn').onclick=function(){document.getElementById('aboutSheet').classList.add('show');};
+document.getElementById('closeAbout').onclick=function(){document.getElementById('aboutSheet').classList.remove('show');};
+document.getElementById('aboutSheet').onclick=function(e){if(e.target.id==='aboutSheet')e.target.classList.remove('show');};
 [document.getElementById('turmaM2'),document.getElementById('turmaP2')].forEach(function(btn){
  btn.onclick=function(){
   var t=btn.dataset.t;
