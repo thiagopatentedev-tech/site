@@ -83,3 +83,17 @@ h1{font-size:clamp(38px,11vw,66px);font-weight:700;color:var(--terra);line-heigh
 @keyframes fall{to{transform:translateY(110vh) rotate(540deg);opacity:.9}}
 .spark{position:fixed;width:9px;height:9px;border-radius:50%;pointer-events:none;z-index:40;animation:sp .7s ease-out forwards}
 @keyframes sp{to{transform:translate(var(--dx),var(--dy));opacity:0}}
+
+/* ---------- Perfil etário (toque maior pra mão ainda pequena) ---------- */
+.profile-btn{position:fixed;top:62px;right:12px;z-index:7;border:3px solid #efe7d8;background:#fff;border-radius:999px;height:40px;padding:0 8px;cursor:pointer;display:flex;align-items:center;gap:5px}
+.profile-btn .age{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;font-weight:700;font-size:13px;background:#f3efe6;color:#8a7f6c;opacity:.45;transition:opacity .15s,transform .15s}
+.profile-btn .age.on{opacity:1;transform:scale(1.14);background:var(--coral);color:#fff}
+:root[data-profile="p3"] .opt{min-width:104px;padding:18px 22px}
+:root[data-profile="p3"] .opt .oe{font-size:clamp(40px,11vw,62px)}
+:root[data-profile="p3"] .options.grid{grid-template-columns:repeat(2,1fr)}
+:root[data-profile="p3"] .big-letter{font-size:clamp(96px,30vw,175px)}
+:root[data-profile="p3"] .lvl{padding:18px 20px}
+:root[data-profile="p3"] .lvl .num{width:54px;height:54px;font-size:26px}
+:root[data-profile="p3"] .board.c4{grid-template-columns:repeat(3,1fr)}
+:root[data-profile="p3"] .card .emoji{font-size:clamp(32px,9vw,54px)}
+:root[data-profile="p3"] .slot{min-width:64px;height:64px;font-size:34px}

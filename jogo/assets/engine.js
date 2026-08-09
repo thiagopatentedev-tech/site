@@ -7,6 +7,10 @@ var UI={
 };
 function getLang(){try{return localStorage.getItem('bibel_lang')||'pt';}catch(e){return 'pt';}}
 function setLang(l){try{localStorage.setItem('bibel_lang',l);}catch(e){}}
+function getProfile(){try{return localStorage.getItem('bibel_profile')||'';}catch(e){return '';}}
+function setProfile(p){try{if(p)localStorage.setItem('bibel_profile',p);else localStorage.removeItem('bibel_profile');}catch(e){}}
+function applyProfile(){document.documentElement.setAttribute('data-profile', getProfile());}
+applyProfile();
 function T(v){if(v&&typeof v==='object'&&('pt' in v))return v[state.lang]||v.pt;return v;}
 
 var G=window.__G__;

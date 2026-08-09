@@ -6,10 +6,19 @@
 .tile{background:#fff;border:3px solid #efe7d8;border-radius:22px;padding:18px 12px;text-align:center;text-decoration:none;color:var(--tinta);box-shadow:0 5px 0 rgba(124,36,16,.10)}
 .tile:active{transform:translateY(2px)}.tile .te{font-size:46px}.tile .tt{font-weight:700;font-size:19px;color:var(--terra);margin-top:6px}.tile .td{font-size:13px;color:#8a7f6c;margin-top:2px;line-height:1.3}
 .foot{text-align:center;color:#8a7f6c;font-size:13px;margin:26px 0 10px}
+.profilebar{display:flex;align-items:center;justify-content:center;gap:10px;margin:14px 0 2px;flex-wrap:wrap}
+.profilebar .lbl{font-size:14px;color:#8a7f6c;font-weight:600}
+.agebtn{border:3px solid #efe7d8;background:#fff;border-radius:999px;width:40px;height:40px;font-weight:700;font-size:15px;color:#8a7f6c;cursor:pointer}
+.agebtn.on{background:var(--coral);color:#fff;border-color:var(--coral)}
 </style></head><body>
 <button class="lang-btn" id="langBtn" aria-label="Português / English" style="position:fixed;top:12px;right:12px"><span class="flag pt on"></span><span class="flag en"></span></button>
 <div class="wrap">
  <div class="head"><div class="k">Jogos da Bibel</div><h1 id="h1">Aprender brincando</h1><p id="tag">joguinhos de alfabetização, feitos com IA</p></div>
+ <div class="profilebar">
+  <span class="lbl" id="profileLbl">toque maior pra mãozinha pequena?</span>
+  <button class="agebtn" id="ageP3" data-p="p3">3</button>
+  <button class="agebtn" id="ageP5" data-p="p5">5</button>
+ </div>
  <div class="grid2" id="grid"></div>
  <div class="foot" id="foot">Feito por Thiago Patente, para as duas filhas. · <a href="https://www.thiagopatente.com.br" style="color:var(--terra)">thiagopatente.com.br</a></div>
 </div>
@@ -27,15 +36,19 @@ var TILES=[
  {href:"/jogo/sequencia/",e:"1️⃣2️⃣3️⃣",pt:["A Sequência","coloque os números em ordem"],en:["The Sequence","put the numbers in order"]},
  {href:"/jogo/diferente/",e:"🍎🍎🍌",pt:["Qual é Diferente","toque no que é diferente"],en:["Odd One Out","touch the one that's different"]}
 ];
-var HEAD={pt:{h1:"Aprender brincando",tag:"joguinhos de alfabetização, feitos com IA",foot:'Feito por Thiago Patente, para as duas filhas. · <a href="https://www.thiagopatente.com.br" style="color:var(--terra)">thiagopatente.com.br</a>'},
- en:{h1:"Learn by playing",tag:"early learning games, made with AI",foot:'Made by Thiago Patente, for his two daughters. · <a href="https://www.thiagopatente.com.br" style="color:var(--terra)">thiagopatente.com.br</a>'}};
+var HEAD={pt:{h1:"Aprender brincando",tag:"joguinhos de alfabetização, feitos com IA",foot:'Feito por Thiago Patente, para as duas filhas. · <a href="https://www.thiagopatente.com.br" style="color:var(--terra)">thiagopatente.com.br</a>',profileLbl:"toque maior pra mãozinha pequena?"},
+ en:{h1:"Learn by playing",tag:"early learning games, made with AI",foot:'Made by Thiago Patente, for his two daughters. · <a href="https://www.thiagopatente.com.br" style="color:var(--terra)">thiagopatente.com.br</a>',profileLbl:"bigger buttons for a little hand?"}};
 function getLang(){try{return localStorage.getItem('bibel_lang')||'pt';}catch(e){return 'pt';}}
 function setLang(l){try{localStorage.setItem('bibel_lang',l);}catch(e){}}
+function getProfile(){try{return localStorage.getItem('bibel_profile')||'';}catch(e){return '';}}
+function setProfile(p){try{if(p)localStorage.setItem('bibel_profile',p);else localStorage.removeItem('bibel_profile');}catch(e){}}
 var lang=getLang();
+var profile=getProfile();
 function render(){
  document.getElementById('h1').textContent=HEAD[lang].h1;
  document.getElementById('tag').textContent=HEAD[lang].tag;
  document.getElementById('foot').innerHTML=HEAD[lang].foot;
+ document.getElementById('profileLbl').textContent=HEAD[lang].profileLbl;
  var grid=document.getElementById('grid');grid.innerHTML='';
  TILES.forEach(function(t){
   var d=t[lang];
@@ -46,8 +59,19 @@ function render(){
  var lb=document.getElementById('langBtn');
  lb.querySelector('.pt').classList.toggle('on',lang==='pt');
  lb.querySelector('.en').classList.toggle('on',lang==='en');
+ document.getElementById('ageP3').classList.toggle('on',profile==='p3');
+ document.getElementById('ageP5').classList.toggle('on',profile==='p5');
+ document.documentElement.setAttribute('data-profile',profile);
 }
 document.getElementById('langBtn').onclick=function(){lang=lang==='pt'?'en':'pt';setLang(lang);render();};
+[document.getElementById('ageP3'),document.getElementById('ageP5')].forEach(function(btn){
+ btn.onclick=function(){
+  var p=btn.dataset.p;
+  profile = profile===p ? '' : p;
+  setProfile(profile);
+  render();
+ };
+});
 render();
 </script>
 </body></html>
