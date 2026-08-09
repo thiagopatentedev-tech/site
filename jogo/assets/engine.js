@@ -111,7 +111,7 @@ function promptHtml(r){var s=r.show;if(!s)return '';
  if(s.k==='word')return '<div class="bigword">'+T(s.v)+'</div>';
  if(s.k==='count'){var h='<div class="countrow">';var v=T(s.v);for(var i=0;i<s.n;i++)h+='<span>'+v+'</span>';return h+'</div>';}
  return '';}
-function optHtml(o){if(o.emoji)return '<span class="oe">'+T(o.emoji)+'</span>'+(o.t?'<span class="ol">'+T(o.t)+'</span>':'');if(o.letter)return '<span class="big-letter">'+T(o.letter)+'</span>';return '<span class="ol" style="font-size:30px">'+T(o.t)+'</span>';}
+function optHtml(o){if(o.emoji)return '<span class="oe"'+(o.scale?' style="display:inline-block;transform:scale('+o.scale+')"':'')+'>'+T(o.emoji)+'</span>'+(o.t?'<span class="ol">'+T(o.t)+'</span>':'');if(o.letter)return '<span class="big-letter">'+T(o.letter)+'</span>';return '<span class="ol" style="font-size:30px">'+T(o.t)+'</span>';}
 
 function engineChoice(i){
  var lv=curLevels()[i];var rounds=shuffle(lv.rounds.slice());var ri=0;startTimer();
