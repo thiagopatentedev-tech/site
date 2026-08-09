@@ -92,6 +92,7 @@ function finishLevel(){
  try{localStorage.setItem('bibel_'+G.slug,JSON.stringify(Array.from(state.completed)));}catch(e){}
  var last=state.level===curLevels().length-1;
  $('winEmoji').textContent=last?'🏆':'🎉';
+ if($('winMascote'))$('winMascote').innerHTML=window.mascoteHtml?window.mascoteHtml(G.turma,64,window.mascoteNome(G.turma)):'';
  $('winH').textContent=pt_('vocêConseguiu');
  $('winMsg').textContent=(last?pt_('terminouTudo'):pt_('muitoBem'))+'   ⏱ '+fmt(timer.sec);
  $('nextBtn').textContent=pt_('proximoNivel');

@@ -1,12 +1,13 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><title>Jogos da Bibel</title><meta name="description" content="Coleção de joguinhos de alfabetização para crianças, feitos com IA."><meta property="og:title" content="Jogos da Bibel"><meta property="og:description" content="Joguinhos de alfabetização feitos com IA."><meta property="og:image" content="https://www.thiagopatente.com.br/jogo/og.png"><meta property="og:type" content="website"><meta property="og:url" content="https://www.thiagopatente.com.br/jogo/"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://www.thiagopatente.com.br/jogo/og.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/jogo/assets/style.css"><style>
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><title>Jogos da Bibel</title><meta name="description" content="Coleção de joguinhos de alfabetização para crianças, feitos com IA."><meta property="og:title" content="Jogos da Bibel"><meta property="og:description" content="Joguinhos de alfabetização feitos com IA."><meta property="og:image" content="https://www.thiagopatente.com.br/jogo/og.png"><meta property="og:type" content="website"><meta property="og:url" content="https://www.thiagopatente.com.br/jogo/"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://www.thiagopatente.com.br/jogo/og.png"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/jogo/assets/style.css"><script src="/jogo/assets/mascotes.js"></script><style>
 .head{text-align:center;padding:18px 0 6px}.head .k{font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:var(--coral);font-weight:600}
 .head h1{font-size:clamp(40px,12vw,64px)}.head p{color:#7a6f5c;font-size:17px}
 .turmabar{display:flex;align-items:center;justify-content:center;gap:10px;margin:16px 0 4px;flex-wrap:wrap}
 .turmabtn{border:3px solid #efe7d8;background:#fff;border-radius:999px;padding:12px 20px;font-family:inherit;font-weight:700;font-size:16px;color:var(--tinta);cursor:pointer;display:flex;align-items:center;gap:8px;box-shadow:0 4px 0 rgba(124,36,16,.10)}
 .turmabtn:active{transform:translateY(2px)}
 .turmabtn.on{background:var(--coral);color:#fff;border-color:var(--coral)}
+.turmaface{display:inline-flex;margin-right:2px}
 .turmahint{text-align:center;color:#8a7f6c;font-size:13px;margin:2px 0 0}
-.secttl{font-weight:700;font-size:14px;color:var(--terra);text-transform:uppercase;letter-spacing:.06em;margin:22px 4px 4px;grid-column:1/-1}
+.secttl{font-weight:700;font-size:14px;color:var(--terra);text-transform:uppercase;letter-spacing:.06em;margin:22px 4px 8px;grid-column:1/-1;display:flex;align-items:center;gap:8px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:10px}
 @media(min-width:560px){.grid2{grid-template-columns:1fr 1fr 1fr}}
 .tile{background:#fff;border:3px solid #efe7d8;border-radius:22px;padding:18px 12px;text-align:center;text-decoration:none;color:var(--tinta);box-shadow:0 5px 0 rgba(124,36,16,.10)}
@@ -30,8 +31,8 @@
 <div class="wrap">
  <div class="head"><div class="k">Jogos da Bibel</div><h1 id="h1">Aprender brincando</h1><p id="tag">joguinhos de alfabetização, feitos com IA</p></div>
  <div class="turmabar">
-  <button class="turmabtn" id="turmaM2" data-t="m2">🐣 <span></span></button>
-  <button class="turmabtn" id="turmaP2" data-t="p2">🎓 <span></span></button>
+  <button class="turmabtn" id="turmaM2" data-t="m2"><span class="turmaface" id="faceM2"></span><span></span></button>
+  <button class="turmabtn" id="turmaP2" data-t="p2"><span class="turmaface" id="faceP2"></span><span></span></button>
  </div>
  <p class="turmahint" id="turmaHint"></p>
  <div class="grid2" id="grid"></div>
@@ -44,7 +45,7 @@
 </div>
 <script>
 var TILES=[
- {turma:"p2",href:"/jogo/copa/",e:"🏆",pt:["Copa das Bandeiras","memória das bandeiras da Copa"],en:["Flag Cup","World Cup flag memory match"]},
+ {turma:"p2",href:"/jogo/copa/",e:"🏆",pt:["Bia e as Bandeiras do Mundo","memória das bandeiras do mundo"],en:["Bia and the World Flags","world flags memory match"]},
  // Maternal II
  {turma:"m2",href:"/jogo/cores/",e:"🎨",pt:["As Cores","toque na cor que eu falar"],en:["Colors","touch the color I say"]},
  {turma:"m2",href:"/jogo/contar/",e:"🔢",pt:["Conta os Bichos","conte e toque no número certo"],en:["Count the Animals","count and touch the right number"]},
@@ -91,13 +92,20 @@ function render(){
  document.getElementById('profileLbl').textContent=HEAD[lang].profileLbl;
  document.getElementById('aboutH2').textContent=HEAD[lang].aboutH2;
  document.getElementById('aboutP').textContent=HEAD[lang].aboutP;
- document.getElementById('turmaM2').querySelector('span').textContent=HEAD[lang].m2;
- document.getElementById('turmaP2').querySelector('span').textContent=HEAD[lang].p2;
+ document.getElementById('turmaM2').querySelector('span:last-child').textContent=HEAD[lang].m2;
+ document.getElementById('turmaP2').querySelector('span:last-child').textContent=HEAD[lang].p2;
  document.getElementById('turmaM2').classList.toggle('on',turma==='m2');
  document.getElementById('turmaP2').classList.toggle('on',turma==='p2');
+ if(window.mascoteHtml){
+  document.getElementById('faceM2').innerHTML=window.mascoteHtml('m2',28);
+  document.getElementById('faceP2').innerHTML=window.mascoteHtml('p2',28);
+ }
  var grid=document.getElementById('grid');grid.innerHTML='';
  if(turma){
   var mine=TILES.filter(function(t){return t.turma===turma;});
+  var h1=document.createElement('div');h1.className='secttl';
+  h1.innerHTML=(window.mascoteHtml?window.mascoteHtml(turma,26):'')+'<span>'+HEAD[lang].sectRec+'</span>';
+  grid.appendChild(h1);
   mine.forEach(function(t){grid.appendChild(tile(t));});
   document.getElementById('turmaHint').textContent=HEAD[lang].hintOn+HEAD[lang][turma];
  } else {

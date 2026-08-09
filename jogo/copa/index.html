@@ -3,34 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Bibel · Copa das Bandeiras</title>
-<meta name="description" content="Um jogo da memória das bandeiras da Copa, feito em 15 minutos com IA. Jogue grátis no celular.">
+<title>Bibel · Bia e as Bandeiras do Mundo</title>
+<meta name="description" content="Um jogo da memória das bandeiras do mundo, feito em 15 minutos com IA. Jogue grátis no celular.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Patente">
-<meta property="og:title" content="Bibel · Copa das Bandeiras">
-<meta property="og:description" content="Um jogo da memória das bandeiras da Copa, feito em 15 minutos com IA. Jogue grátis.">
+<meta property="og:title" content="Bibel · Bia e as Bandeiras do Mundo">
+<meta property="og:description" content="Um jogo da memória das bandeiras do mundo, feito em 15 minutos com IA. Jogue grátis.">
 <meta property="og:url" content="https://jogo.thiagopatente.com.br/">
 <meta property="og:image" content="https://jogo.thiagopatente.com.br/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Bibel · Copa das Bandeiras">
-<meta name="twitter:description" content="Um jogo da memória das bandeiras da Copa, feito em 15 minutos com IA.">
+<meta name="twitter:title" content="Bibel · Bia e as Bandeiras do Mundo">
+<meta name="twitter:description" content="Um jogo da memória das bandeiras do mundo, feito em 15 minutos com IA.">
 <meta name="twitter:image" content="https://jogo.thiagopatente.com.br/og.png">
 <link rel="canonical" href="https://jogo.thiagopatente.com.br/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Luckiest+Guy&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<script src="/jogo/assets/mascotes.js"></script>
 <style>
   :root{
-    --campo:#2bb673;      /* verde gramado */
-    --campo-fundo:#0f8a52;
-    --sol:#ffd23f;        /* amarelo sol */
-    --ceu:#3aa7ff;        /* azul céu */
-    --festa:#ff5d8f;      /* rosa festa */
-    --roxo:#7b5cff;
-    --papel:#fffdf6;
-    --tinta:#163020;
+    /* sistema único Bibel (marca-bibel.html), migrado do verde-gramado próprio do Copa */
+    --campo:#d97757;      /* era verde gramado, agora coral */
+    --campo-fundo:#7c2410; /* era verde escuro, agora terra */
+    --sol:#ffc23f;         /* amarelo do sistema */
+    --ceu:#3aa7ff;         /* azul do sistema */
+    --festa:#ff6f9c;       /* rosa do sistema */
+    --roxo:#2bb673;        /* verde do sistema (era roxo próprio) */
+    --papel:#f3efe6;
+    --tinta:#15202b;
     --sombra:0 10px 0 rgba(0,0,0,.12);
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -38,8 +40,7 @@
   body{
     font-family:'Nunito',system-ui,sans-serif;
     color:var(--tinta);
-    background:
-      radial-gradient(120% 80% at 50% -10%, #8fd3ff 0%, var(--ceu) 38%, var(--campo) 38%, var(--campo-fundo) 100%);
+    background:linear-gradient(180deg,#fdf6ea,#f0e7d6);
     min-height:100%;
     overflow-x:hidden;
   }
@@ -55,20 +56,22 @@
     font-size:clamp(30px,8vw,46px);line-height:1.02;margin:4px 0 0;
     color:var(--papel);text-shadow:0 4px 0 rgba(0,0,0,.18)
   }
-  .kicker{font-family:'Fredoka';font-weight:600;color:var(--papel);
+  .kicker{font-family:'Fredoka';font-weight:600;color:var(--campo);
     font-size:clamp(15px,4.6vw,20px);letter-spacing:2px;text-transform:uppercase;
-    text-shadow:0 2px 0 rgba(0,0,0,.18);margin-top:4px}
+    margin-top:48px}
+  .gamename{font-family:'Fredoka';font-weight:700;color:var(--campo-fundo);
+    font-size:clamp(20px,6vw,28px);margin:2px 0 0;text-align:center}
   h1.bibel{
     font-family:'Luckiest Guy',cursive;font-weight:400;
     font-size:clamp(58px,18vw,96px);line-height:.9;margin:0;
-    color:var(--sol);
-    -webkit-text-stroke:3px #0f8a52;paint-order:stroke fill;
-    text-shadow:0 8px 0 rgba(0,0,0,.18);letter-spacing:2px
+    color:var(--campo);
+    -webkit-text-stroke:3px var(--campo-fundo);paint-order:stroke fill;
+    letter-spacing:2px
   }
   .info-btn{
     position:absolute;top:6px;right:4px;z-index:6;
-    border:2px solid rgba(255,255,255,.65);background:rgba(255,255,255,.22);
-    color:var(--papel);font-family:'Fredoka';font-weight:600;font-size:14px;
+    border:3px solid #efe7d8;background:#fff;
+    color:var(--campo-fundo);font-family:'Fredoka';font-weight:600;font-size:14px;
     padding:7px 14px;border-radius:999px;cursor:pointer
   }
   .info-btn:active{transform:translateY(2px)}
@@ -82,7 +85,7 @@
   .lang-btn .flag.pt{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 42'%3E%3Crect width='60' height='42' fill='%23009c3b'/%3E%3Cpolygon points='30,4 56,21 30,38 4,21' fill='%23ffdf00'/%3E%3Ccircle cx='30' cy='21' r='10' fill='%23002776'/%3E%3C/svg%3E")}
   .lang-btn .flag.en{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 42'%3E%3Crect width='60' height='42' fill='%23fff'/%3E%3Cg fill='%23b22234'%3E%3Crect y='0' width='60' height='3.23'/%3E%3Crect y='6.46' width='60' height='3.23'/%3E%3Crect y='12.92' width='60' height='3.23'/%3E%3Crect y='19.38' width='60' height='3.23'/%3E%3Crect y='25.85' width='60' height='3.23'/%3E%3Crect y='32.31' width='60' height='3.23'/%3E%3Crect y='38.77' width='60' height='3.23'/%3E%3C/g%3E%3Crect width='26' height='22.6' fill='%233c3b6e'/%3E%3C/svg%3E")}
   .sheet{position:fixed;inset:0;z-index:35;display:none;align-items:center;justify-content:center;
-    background:rgba(15,90,55,.55);backdrop-filter:blur(3px);padding:24px}
+    background:rgba(21,32,43,.5);backdrop-filter:blur(3px);padding:24px}
   .sheet.show{display:flex}
   .sheetcard{position:relative;background:var(--papel);border-radius:28px;
     box-shadow:0 14px 0 rgba(0,0,0,.18);padding:32px 24px 26px;text-align:center;
@@ -95,7 +98,7 @@
   .sitelink:active{transform:translateY(4px);box-shadow:0 2px 0 rgba(0,0,0,.16)}
   .closex{position:absolute;top:12px;right:14px;border:none;background:#eee;width:34px;height:34px;
     border-radius:50%;font-size:15px;cursor:pointer;font-weight:800;color:#555}
-  .sub{color:var(--papel);font-weight:800;opacity:.95;margin-bottom:10px;font-size:16px}
+  .sub{color:var(--campo-fundo);font-weight:800;opacity:.85;margin-bottom:10px;font-size:16px}
 
   .levels{display:grid;grid-template-columns:1fr;gap:14px;width:100%;max-width:420px;margin-top:8px}
   .lvl{
@@ -122,11 +125,11 @@
 
   .voice-toggle{
     margin-top:18px;display:inline-flex;align-items:center;gap:10px;
-    background:rgba(255,255,255,.22);border:2px solid rgba(255,255,255,.6);
-    color:var(--papel);font-weight:800;font-size:15px;
+    background:#fff;border:3px solid #efe7d8;
+    color:var(--tinta);font-weight:800;font-size:15px;
     padding:10px 16px;border-radius:999px;cursor:pointer
   }
-  .voice-toggle .sw{width:20px;height:20px;border-radius:50%;background:var(--papel);box-shadow:0 0 0 3px var(--campo)}
+  .voice-toggle .sw{width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px var(--campo)}
   .voice-toggle.off{opacity:.65}
   .voice-toggle.off .sw{box-shadow:0 0 0 3px #999}
 
@@ -183,7 +186,7 @@
   /* ---------- WIN ---------- */
   .win{
     position:fixed;inset:0;z-index:30;display:none;align-items:center;justify-content:center;
-    background:rgba(15,90,55,.55);backdrop-filter:blur(3px);padding:24px
+    background:rgba(21,32,43,.5);backdrop-filter:blur(3px);padding:24px
   }
   .win.show{display:flex}
   .wincard{
@@ -225,109 +228,8 @@
     <button class="info-btn" id="infoBtn" aria-label="Sobre o jogo">ⓘ Sobre</button>
     <div class="kicker" id="copaKicker">Jogo da Memória</div>
     <h1 class="bibel">Bibel</h1>
-    <div class="hero-art">
-<svg viewBox="0 0 440 360" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#ffe07a"/>
-      <stop offset="1" stop-color="#e6a012"/>
-    </linearGradient>
-    <linearGradient id="dress" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#2fc079"/>
-      <stop offset="1" stop-color="#1f9c5e"/>
-    </linearGradient>
-  </defs>
-
-  <!-- confetti -->
-  <g opacity=".9">
-    <rect x="40" y="40" width="10" height="14" rx="2" fill="#3aa7ff" transform="rotate(20 45 47)"/>
-    <rect x="392" y="60" width="10" height="14" rx="2" fill="#ff5d8f" transform="rotate(-15 397 67)"/>
-    <circle cx="70" cy="120" r="5" fill="#ffd23f"/>
-    <circle cx="380" cy="150" r="5" fill="#7b5cff"/>
-    <rect x="406" y="120" width="9" height="12" rx="2" fill="#2fc079" transform="rotate(25 410 126)"/>
-    <circle cx="30" cy="200" r="5" fill="#ff8a3d"/>
-  </g>
-
-  <!-- ===================== TROFÉU ===================== -->
-  <g>
-    <!-- base -->
-    <rect x="278" y="84" width="44" height="12" rx="3" fill="#3a2a12"/>
-    <rect x="285" y="74" width="30" height="14" rx="3" fill="url(#gold)"/>
-    <!-- taça flares (estilo taça da Copa) -->
-    <path d="M286 78
-             C 280 50, 286 28, 300 18
-             C 314 28, 320 50, 314 78 Z" fill="url(#gold)"/>
-    <path d="M300 18 C 309 27, 312 46, 308 70 L 300 70 Z" fill="#ffe9a8" opacity=".7"/>
-    <ellipse cx="300" cy="20" rx="15" ry="6" fill="#ffe07a"/>
-  </g>
-
-  <!-- ===================== MENINA MAIOR (direita) ===================== -->
-  <g>
-    <!-- pernas -->
-    <rect x="288" y="292" width="13" height="42" rx="6" fill="#d99a6b"/>
-    <rect x="309" y="292" width="13" height="42" rx="6" fill="#d99a6b"/>
-    <ellipse cx="293" cy="336" rx="13" ry="7" fill="#ffffff"/>
-    <ellipse cx="318" cy="336" rx="13" ry="7" fill="#ffffff"/>
-    <!-- vestido -->
-    <path d="M270 178 q35 -16 70 0 l12 92 q-47 16 -94 0 z" fill="url(#dress)"/>
-    <!-- babado -->
-    <path d="M256 266 q49 20 98 0 l7 26 q-56 20 -112 0 z" fill="#1f9c5e"/>
-    <!-- gola amarela -->
-    <path d="M289 174 q16 11 32 0 l-3 13 q-13 6 -26 0 z" fill="#ffd23f"/>
-    <!-- 10 -->
-    <text x="305" y="210" font-family="Arial, sans-serif" font-weight="bold" font-size="13" letter-spacing="1" fill="#ffd23f" text-anchor="middle">BRASIL</text>
-    <text x="305" y="240" font-family="Arial, sans-serif" font-weight="bold" font-size="32" fill="#ffd23f" text-anchor="middle">10</text>
-    <!-- braços levantados segurando a taça -->
-    <path d="M276 184 C 262 150, 272 108, 292 86" stroke="#d99a6b" stroke-width="15" fill="none" stroke-linecap="round"/>
-    <path d="M334 184 C 348 150, 338 108, 318 86" stroke="#d99a6b" stroke-width="15" fill="none" stroke-linecap="round"/>
-    <!-- cabeça -->
-    <circle cx="305" cy="138" r="36" fill="#d99a6b"/>
-    <!-- cabelo -->
-    <path d="M269 138 a36 36 0 0 1 72 0 q-8 -20 -36 -20 q-28 0 -36 20 z" fill="#2c1b13"/>
-    <path d="M271 132 q-6 30 4 50 q-14 -6 -16 -28 q-1 -16 12 -22 z" fill="#2c1b13"/>
-    <path d="M339 132 q6 30 -4 50 q14 -6 16 -28 q1 -16 -12 -22 z" fill="#2c1b13"/>
-    <!-- rosto -->
-    <circle cx="294" cy="140" r="3.6" fill="#2c1b13"/>
-    <circle cx="316" cy="140" r="3.6" fill="#2c1b13"/>
-    <circle cx="287" cy="150" r="5" fill="#ff9aa7" opacity=".55"/>
-    <circle cx="323" cy="150" r="5" fill="#ff9aa7" opacity=".55"/>
-    <path d="M297 152 q8 9 16 0" stroke="#2c1b13" stroke-width="3" fill="none" stroke-linecap="round"/>
-  </g>
-
-  <!-- ===================== MENINA MENOR (esquerda) ===================== -->
-  <g>
-    <!-- pernas -->
-    <rect x="132" y="300" width="13" height="36" rx="6" fill="#e0a574"/>
-    <rect x="152" y="300" width="13" height="36" rx="6" fill="#e0a574"/>
-    <ellipse cx="137" cy="338" rx="12" ry="7" fill="#ffffff"/>
-    <ellipse cx="160" cy="338" rx="12" ry="7" fill="#ffffff"/>
-    <!-- vestido -->
-    <path d="M118 206 q31 -15 62 0 l11 80 q-42 15 -84 0 z" fill="url(#dress)"/>
-    <!-- babado -->
-    <path d="M106 282 q43 18 86 0 l6 23 q-49 18 -98 0 z" fill="#1f9c5e"/>
-    <!-- gola -->
-    <path d="M134 202 q15 10 28 0 l-3 12 q-11 5 -22 0 z" fill="#ffd23f"/>
-    <!-- 10 -->
-    <text x="149" y="237" font-family="Arial, sans-serif" font-weight="bold" font-size="11" letter-spacing="1" fill="#ffd23f" text-anchor="middle">BRASIL</text>
-    <text x="149" y="263" font-family="Arial, sans-serif" font-weight="bold" font-size="27" fill="#ffd23f" text-anchor="middle">10</text>
-    <!-- braços (um aponta pra cima junto da irmã) -->
-    <path d="M124 212 C 116 184, 122 156, 138 138" stroke="#e0a574" stroke-width="13" fill="none" stroke-linecap="round"/>
-    <path d="M174 212 q10 16 6 34" stroke="#e0a574" stroke-width="13" fill="none" stroke-linecap="round"/>
-    <!-- cabeça -->
-    <circle cx="149" cy="172" r="33" fill="#e0a574"/>
-    <!-- cabelo com franjinha + maria-chiquinhas -->
-    <path d="M116 172 a33 33 0 0 1 66 0 q-7 -22 -33 -22 q-26 0 -33 22 z" fill="#2c1b13"/>
-    <circle cx="118" cy="158" r="11" fill="#2c1b13"/>
-    <circle cx="180" cy="158" r="11" fill="#2c1b13"/>
-    <!-- rosto -->
-    <circle cx="139" cy="174" r="3.4" fill="#2c1b13"/>
-    <circle cx="159" cy="174" r="3.4" fill="#2c1b13"/>
-    <circle cx="132" cy="183" r="4.6" fill="#ff9aa7" opacity=".55"/>
-    <circle cx="166" cy="183" r="4.6" fill="#ff9aa7" opacity=".55"/>
-    <path d="M142 185 q7 7 14 0" stroke="#2c1b13" stroke-width="2.8" fill="none" stroke-linecap="round"/>
-  </g>
-</svg>
-    </div>
+    <div class="hero-art" id="heroArt" style="display:flex;justify-content:center;margin:10px auto 4px"></div>
+    <div class="gamename" id="gameName">Bia e as Bandeiras do Mundo</div>
     <div class="sub" id="copaSub">⚽ escolha um nível</div>
     <div class="levels" id="levels"></div>
     <button class="voice-toggle" id="voiceBtn"><span class="sw"></span> Falar o nome dos países</button>
@@ -351,6 +253,7 @@
 <div class="win" id="win">
   <div class="wincard">
     <div class="big" id="winEmoji">🎉</div>
+    <div id="winMascote" style="display:flex;justify-content:center;margin:2px 0 6px"></div>
     <div class="winstars">⭐⭐⭐</div>
     <h2 id="winH2">Você ganhou!</h2>
     <p id="winMsg">Achou todos os pares!</p>
@@ -400,21 +303,21 @@ function setLang(l){try{localStorage.setItem('bibel_lang',l);}catch(e){}}
 let lang = getLang();
 function F(){ return lang==='en' ? F_EN : F_PT; }
 const UI = {
-  pt:{kicker:"Jogo da Memória", sub:"⚽ escolha um nível", falar:"Falar o nome dos países", somOff:"Som desligado",
+  pt:{kicker:"Jogo da Memória", gamename:"Bia e as Bandeiras do Mundo", sub:"⚽ escolha um nível", falar:"Falar o nome dos países", somOff:"Som desligado",
       pares:function(n){return n+" pares de bandeiras";}, nivel:function(i){return "Nível "+i;},
       placar:function(a,b){return a+"/"+b+" pares";}, ganhou:"Você ganhou!",
-      msgUltimo:"Você zerou todos os níveis da Copa!", msgNormal:"Achou todos os pares de bandeiras!",
+      msgUltimo:"Você zerou todos os níveis!", msgNormal:"Achou todos os pares de bandeiras!",
       proximo:"Próximo nível ➜", escolher:"Escolher nível", sobre:"Sobre o jogo",
-      aboutHtml:'Feito por <b>Thiago Patente</b>, para as duas filhas.<br><br>Elas são apaixonadas pela Copa e pediram um jogo de memória com as bandeiras. O pai atendeu na hora e montou o aplicativo em <b>15 minutos</b>, só pra elas.',
-      compartilhar:"↗ Compartilhar", linkCopiado:"✓ Link copiado", shareTxt:"Bibel, o jogo da memória das bandeiras da Copa. Feito em 15 min com IA.",
+      aboutHtml:'Feito por <b>Thiago Patente</b>, para as duas filhas.<br><br>A Bia é apaixonada por bandeiras do mundo todo e pediu um jogo de memória com elas. O pai atendeu na hora e montou o aplicativo em <b>15 minutos</b>, só pra ela e pra irmã.',
+      compartilhar:"↗ Compartilhar", linkCopiado:"✓ Link copiado", shareTxt:"Bibel, o jogo da memória das bandeiras do mundo. Feito em 15 min com IA.",
       cheers:["Muito bem!","Você conseguiu!","Parabéns!","Mandou bem!"], vamosJogar:"Vamos jogar!"},
-  en:{kicker:"Memory Game", sub:"⚽ choose a level", falar:"Say the country names", somOff:"Sound off",
+  en:{kicker:"Memory Game", gamename:"Bia and the World Flags", sub:"⚽ choose a level", falar:"Say the country names", somOff:"Sound off",
       pares:function(n){return n+" flag pairs";}, nivel:function(i){return "Level "+i;},
       placar:function(a,b){return a+"/"+b+" pairs";}, ganhou:"You won!",
-      msgUltimo:"You cleared every level of the Cup!", msgNormal:"You found all the flag pairs!",
+      msgUltimo:"You cleared every level!", msgNormal:"You found all the flag pairs!",
       proximo:"Next level ➜", escolher:"Choose level", sobre:"About the game",
-      aboutHtml:'Made by <b>Thiago Patente</b> for his two daughters.<br><br>They love the World Cup and asked for a flag memory game. Their dad built it right away in <b>15 minutes</b>, just for them.',
-      compartilhar:"↗ Share", linkCopiado:"✓ Link copied", shareTxt:"Bibel, the World Cup flag memory game. Built in 15 minutes with AI.",
+      aboutHtml:'Made by <b>Thiago Patente</b> for his two daughters.<br><br>Bia loves flags from all over the world and asked for a flag memory game. Their dad built it right away in <b>15 minutes</b>, just for her and her sister.',
+      compartilhar:"↗ Share", linkCopiado:"✓ Link copied", shareTxt:"Bibel, the world flags memory game. Built in 15 minutes with AI.",
       cheers:["Great job!","You did it!","Congrats!","Nice work!"], vamosJogar:"Let's play!"}
 };
 function t(){ return UI[lang]; }
@@ -564,6 +467,7 @@ function showWin(){
   state.completed.add(state.level);
   const last = state.level===LEVELS.length-1;
   document.getElementById('winEmoji').textContent= last?'🏆':'🎉';
+  if(window.mascoteHtml)document.getElementById('winMascote').innerHTML=window.mascoteHtml('p2',64,'Bia');
   document.getElementById('winH2').textContent = t().ganhou;
   document.getElementById('winMsg').textContent = last ? t().msgUltimo : t().msgNormal;
   document.getElementById('nextBtn').textContent = t().proximo;
@@ -635,6 +539,7 @@ function refreshLangBtn(){
 }
 function refreshChrome(){
   document.getElementById('copaKicker').textContent = t().kicker;
+  document.getElementById('gameName').textContent = t().gamename;
   document.getElementById('copaSub').textContent = t().sub;
   document.getElementById('aboutH2').textContent = t().sobre;
   document.getElementById('aboutTxt').innerHTML = t().aboutHtml;
@@ -653,10 +558,10 @@ langBtn.onclick = () => {
 
 /* ---------- Start ---------- */
 renderHome();
-refreshVoiceBtn();
-refreshLangBtn();
+refreshChrome();
+if(window.mascoteHtml)document.getElementById('heroArt').innerHTML=window.mascoteHtml('p2',140,'Bia');
 </script>
-<button id="shareBtn" aria-label="Compartilhar" style="position:fixed;left:62px;top:8px;z-index:60;border:none;border-radius:999px;padding:7px 13px;font:700 14px system-ui,sans-serif;background:#0f8a52;color:#fff;cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.18)">↗ Compartilhar</button>
+<button id="shareBtn" aria-label="Compartilhar" style="position:fixed;left:62px;top:8px;z-index:60;border:none;border-radius:999px;padding:7px 13px;font:700 14px system-ui,sans-serif;background:#d97757;color:#fff;cursor:pointer;box-shadow:0 4px 0 rgba(0,0,0,.18)">↗ Compartilhar</button>
 <script>
 (function(){
   var url="https://jogo.thiagopatente.com.br/";
