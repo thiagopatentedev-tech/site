@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patente.Advisory · Preview</title>
+<style>
+@font-face { font-family: 'Newsreader'; src: local('Newsreader'), url('marca/fonts/Newsreader-Variable.ttf') format('truetype'); font-weight: 300 700; font-style: normal; }
+@font-face { font-family: 'Newsreader'; src: local('Newsreader Italic'), url('marca/fonts/Newsreader-Italic-Variable.ttf') format('truetype'); font-weight: 300 700; font-style: italic; }
+@font-face { font-family: 'Playfair Display'; src: local('Playfair Display'), url('marca/fonts/PlayfairDisplay-Variable.ttf') format('truetype'); font-weight: 400 700; font-style: normal; }
+@font-face { font-family: 'Inter'; src: local('Inter'), url('marca/fonts/Inter-Variable.ttf') format('truetype'); font-weight: 300 700; font-style: normal; }
+@font-face { font-family: 'JetBrains Mono'; src: local('JetBrains Mono'), url('marca/fonts/JetBrainsMono-Variable.ttf') format('truetype'); font-weight: 400 600; font-style: normal; }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --papel: #f3efe6;
+  --tinta: #15202b;
+  --terracota: #7c2410;
+  --coral: #d97757;
+  --linha: rgba(21,32,43,0.12);
+}
+
+html, body { background: var(--papel); color: var(--tinta); }
+
+body {
+  font-family: 'Newsreader', Georgia, serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
+}
+
+.aviso-preview {
+  background: var(--tinta);
+  color: var(--papel);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-align: center;
+  padding: 0.6rem 1rem;
+  text-transform: uppercase;
+}
+.aviso-preview b { color: var(--coral); }
+
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 2rem; }
+
+/* HEADER */
+header.topo {
+  padding: 2.4rem 0 1.6rem 0;
+  border-bottom: 1px solid var(--linha);
+  margin-bottom: 0;
+}
+.marca-lockup { display: flex; align-items: center; gap: 0.55rem; }
+.marca-lockup svg { transform: translateY(-0.1em); }
+.marca-wordmark {
+  font-family: 'Newsreader', serif;
+  font-weight: 500;
+  font-size: 19px;
+  letter-spacing: -0.025em;
+  color: var(--tinta);
+}
+.marca-wordmark .ponto { color: var(--terracota); }
+
+/* HERO */
+.hero { padding: 4.5rem 0 3.5rem 0; }
+.eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--terracota);
+  margin-bottom: 1.2rem;
+}
+h1.titulo {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.2;
+  margin-bottom: 1.6rem;
+}
+h1.titulo em { font-style: italic; color: var(--terracota); }
+
+h2.titulo-bloco {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-size: clamp(1.5rem, 3.2vw, 1.9rem);
+  line-height: 1.3;
+  margin-bottom: 1.4rem;
+}
+h2.titulo-bloco em { font-style: italic; color: var(--terracota); }
+
+p.sub {
+  font-weight: 300;
+  font-size: 1.08rem;
+  max-width: 600px;
+  color: rgba(21,32,43,0.78);
+}
+p.escassez {
+  font-family: 'Inter', sans-serif;
+  font-size: 12.5px;
+  color: rgba(21,32,43,0.55);
+  margin-top: 1.4rem;
+  letter-spacing: 0.02em;
+}
+
+/* BLOCOS */
+section.bloco { padding: 3.4rem 0; border-top: 1px solid var(--linha); }
+section.bloco:first-of-type { border-top: none; }
+
+p.corpo { font-weight: 300; font-size: 1rem; margin-bottom: 1.1rem; max-width: 640px; }
+p.corpo:last-child { margin-bottom: 0; }
+p.corpo strong { font-weight: 500; }
+
+ul.lista-dor { list-style: none; margin-top: 1.6rem; }
+ul.lista-dor li {
+  font-weight: 300;
+  font-size: 0.98rem;
+  padding: 0.8rem 0 0.8rem 1.6rem;
+  border-top: 1px solid var(--linha);
+  position: relative;
+}
+ul.lista-dor li:first-child { border-top: none; padding-top: 0; }
+ul.lista-dor li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--terracota);
+}
+
+.destaque-quote {
+  border-left: 3px solid var(--terracota);
+  background: rgba(124,36,16,0.04);
+  padding: 1.3rem 1.6rem;
+  margin-top: 1.8rem;
+}
+.destaque-quote p {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+/* BLOCO CONSELHO — novo, do curso 8h */
+.conselho-card {
+  border: 1px solid var(--linha);
+  background: rgba(21,32,43,0.02);
+  padding: 1.6rem 1.8rem;
+  margin-top: 1.8rem;
+}
+.conselho-card .tag {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  color: var(--terracota);
+  border: 1px solid var(--terracota);
+  padding: 0.2rem 0.6rem;
+  margin-bottom: 1rem;
+}
+.cadeiras-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.5rem;
+  margin-top: 1.2rem;
+}
+.cadeira-pill {
+  font-family: 'Inter', sans-serif;
+  font-size: 11.5px;
+  font-weight: 500;
+  color: var(--tinta);
+  background: var(--papel);
+  border: 1px solid var(--linha);
+  padding: 0.5rem 0.7rem;
+  text-align: center;
+}
+
+.btn-expandir {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.4rem;
+  background: none;
+  border: 1px solid var(--terracota);
+  color: var(--terracota);
+  font-family: 'Inter', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+}
+.btn-expandir:hover { background: rgba(124,36,16,0.06); }
+.btn-expandir .seta { display: inline-block; transition: transform 0.15s; font-size: 11px; }
+
+.cadeiras-detalhe {
+  display: none;
+  margin-top: 1.4rem;
+  padding-top: 1.3rem;
+  border-top: 1px solid var(--linha);
+}
+.cadeira-linha { padding: 0.75rem 0; border-top: 1px solid var(--linha); }
+.cadeira-linha:first-child { border-top: none; padding-top: 0; }
+.cadeira-nome {
+  font-family: 'Inter', sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--tinta);
+  margin-bottom: 0.3rem;
+}
+.cadeira-papel {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--terracota);
+  margin-left: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.cadeira-gatilho {
+  font-weight: 300;
+  font-size: 0.85rem;
+  color: rgba(21,32,43,0.65);
+  line-height: 1.5;
+}
+
+/* DEMO AO VIVO — novo bloco */
+.demo-flow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.6rem;
+}
+.demo-step {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--linha);
+  background: rgba(21,32,43,0.02);
+}
+.demo-step.destaque { border-color: var(--terracota); color: var(--terracota); }
+.demo-arrow { color: rgba(21,32,43,0.4); }
+
+/* PLANOS */
+.plano {
+  border: 1px solid var(--linha);
+  padding: 2rem 2.2rem;
+  margin-bottom: 1.6rem;
+}
+.plano.destaque-plano { border-color: var(--terracota); background: rgba(124,36,16,0.03); }
+.plano-nome {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.35rem;
+  margin-bottom: 0.3rem;
+}
+.plano-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  color: rgba(21,32,43,0.55);
+  margin-bottom: 1.2rem;
+}
+.plano h4 {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--terracota);
+  margin: 1.3rem 0 0.7rem 0;
+}
+.plano h4:first-of-type { margin-top: 0; }
+.plano ul { list-style: none; }
+.plano ul li {
+  font-weight: 300;
+  font-size: 0.93rem;
+  padding: 0.4rem 0 0.4rem 1.1rem;
+  position: relative;
+}
+.plano ul li::before { content: "•"; position: absolute; left: 0; color: var(--terracota); }
+.plano-preco {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.15rem;
+  color: var(--terracota);
+  margin-top: 1.4rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--linha);
+}
+
+/* PLANO ÚNICO · preço com desconto e alerta de vagas */
+.vagas-alerta {
+  border: 1px solid var(--terracota);
+  background: rgba(124,36,16,0.05);
+  padding: 1.1rem 1.4rem;
+  margin-bottom: 1.8rem;
+}
+.vagas-alerta p {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 400;
+  color: var(--tinta);
+}
+.vagas-alerta strong { color: var(--terracota); font-weight: 700; }
+
+.preco-box {
+  margin-top: 1.4rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--linha);
+}
+.preco-riscado {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.05rem;
+  color: rgba(21,32,43,0.4);
+  text-decoration: line-through;
+  margin-bottom: 0.2rem;
+}
+.preco-final {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: var(--terracota);
+}
+.preco-nota {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: rgba(21,32,43,0.6);
+  margin-top: 0.6rem;
+  max-width: 420px;
+}
+.bonus-box {
+  margin-top: 1.4rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--linha);
+}
+.bonus-box p { font-weight: 300; font-size: 0.9rem; margin-bottom: 0.8rem; }
+.bonus-box p:last-child { margin-bottom: 0; }
+.bonus-box b { font-weight: 500; color: var(--terracota); }
+
+/* TABELA */
+.tabela-wrap { overflow-x: auto; margin-top: 1.6rem; border: 1px solid var(--linha); }
+table { width: 100%; border-collapse: collapse; min-width: 520px; }
+th {
+  font-family: 'Inter', sans-serif;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-align: left;
+  color: rgba(21,32,43,0.55);
+  background: rgba(21,32,43,0.03);
+  padding: 0.7rem 0.9rem;
+  border-bottom: 1px solid var(--linha);
+}
+th:first-child { color: var(--tinta); }
+th.acento { color: var(--terracota); }
+td {
+  font-weight: 300;
+  font-size: 0.85rem;
+  color: rgba(21,32,43,0.75);
+  padding: 0.75rem 0.9rem;
+  border-bottom: 1px solid var(--linha);
+}
+tr:last-child td { border-bottom: none; }
+td:first-child { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; color: var(--tinta); white-space: nowrap; }
+
+/* CTA FINAL */
+.cta-final { padding: 4rem 0 3.5rem 0; }
+.perguntas-audio { margin-top: 1.6rem; }
+.pergunta-item {
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 0.9rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--linha);
+}
+.pergunta-item:first-child { border-top: none; padding-top: 0.2rem; }
+.pergunta-num {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  color: var(--terracota);
+}
+.pergunta-txt { font-weight: 300; font-size: 0.94rem; }
+
+.btn-cta {
+  display: inline-block;
+  margin-top: 2rem;
+  background: var(--tinta);
+  color: var(--papel);
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  font-weight: 600;
+  padding: 1rem 1.8rem;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+footer.rodape {
+  padding: 2.5rem 0 3rem 0;
+  border-top: 1px solid var(--linha);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  color: rgba(21,32,43,0.4);
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .wrap { padding: 0 1.4rem; }
+  .plano { padding: 1.6rem 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="aviso-preview">PREVIEW LOCAL · não publicado no site · <b>revisão de copy, Advisory + material do curso de 8h</b></div>
+
+<header class="topo">
+  <div class="wrap">
+    <div class="marca-lockup">
+      <svg width="24" height="24" viewBox="0 0 100 100"><g stroke="#7c2410" stroke-width="4.5" fill="none" stroke-linecap="square"><path d="M8 30V8H30"/><path d="M70 8H92V30"/><path d="M92 70V92H70"/><path d="M8 70V92H30"/></g><circle cx="50" cy="50" r="9" fill="#7c2410"/></svg>
+      <span class="marca-wordmark">Patente<span class="ponto">.</span>Advisory</span>
+    </div>
+  </div>
+</header>
+
+<!-- BLOCO 1 · HERO -->
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Patente.Advisory · A sessão executiva de IA</p>
+    <h1 class="titulo">Você já passou do básico.<br>Falta a <em>arquitetura.</em></h1>
+    <p class="sub">Você usa IA todo dia e já entendeu o potencial. Mas bateu num teto que nenhum tutorial resolve. O Advisory é mentoria 1:1 para construir a arquitetura de inteligência que está na sua altura. Feita com os seus contextos, no seu nível, para o seu trabalho. Não para uma turma.</p>
+    <p class="escassez">Formato 1:1, agenda limitada a quatro pessoas por mês.</p>
+  </div>
+</section>
+
+<!-- BLOCO 2 · ESPELHO -->
+<section class="bloco">
+  <div class="wrap">
+    <p class="eyebrow">Se você se reconhece aqui, é para você</p>
+    <h2 class="titulo-bloco">Você virou <em>o que mais sabe de IA na sua mesa.</em> E isso é o problema.</h2>
+    <p class="corpo">Você testou, leu, aplicou. Hoje entrega com IA mais que a maioria à sua volta. Mas é justamente aí que trava: não tem mais de quem aprender no seu círculo, e o conteúdo que acha online é raso demais para o seu nível.</p>
+    <p class="corpo">Você não precisa de mais um curso de introdução. Precisa de alguém no seu nível que construa com você o sistema que você já consegue imaginar, mas não teve tempo de arquitetar.</p>
+    <ul class="lista-dor">
+      <li>Você tem contexto demais na cabeça e sistema de menos no Claude</li>
+      <li>Repete a mesma explicação a cada nova conversa, porque nada fica</li>
+      <li>Vê que dá para ir muito além, mas não sabe montar a estrutura</li>
+      <li>É o mais avançado da sua sala, e isso te deixou sem par para trocar</li>
+    </ul>
+  </div>
+</section>
+
+<!-- BLOCO 3 · O QUE MUDA -->
+<section class="bloco">
+  <div class="wrap">
+    <p class="eyebrow">O que você ganha</p>
+    <h2 class="titulo-bloco">No fim, você diz: <em>"agora eu sei usar isso de verdade."</em></h2>
+    <p class="corpo">O Advisory não te ensina sobre IA. Você já sabe que ela funciona. Construímos juntos o seu jeito de trabalhar com IA, calibrado com o seu contexto, os seus documentos, o seu modo de decidir.</p>
+    <p class="corpo">A estrutura do método é a mesma para todos. O que muda é o resultado no dia de cada um. O gerente de marketing para de reescrever o mesmo briefing toda semana. O do financeiro recebe o relatório de resultado já analisado, não só os números crus. O de atendimento responde o caso difícil com o rascunho pronto para revisar. O método é o mesmo. O ganho é de cada um.</p>
+    <p class="corpo">É a mesma arquitetura que eu uso. Nas minhas próprias entregas do último mês, análises, apresentações e automações que exigiriam cerca de 164 horas de trabalho manual saíram em 20.</p>
+    <div class="destaque-quote">
+      <p>O resultado não é saber mais sobre IA. É não conseguir mais trabalhar sem ela.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCO 4 · PERSONALIZAÇÃO — atualizado com o conceito de Conselho, do curso 8h -->
+<section class="bloco">
+  <div class="wrap">
+    <p class="eyebrow">O que torna isto diferente</p>
+    <h2 class="titulo-bloco">Construído para o seu contexto. <em>Não para um aluno genérico.</em></h2>
+    <p class="corpo">Antes da primeira sessão, você grava o seu Dossiê de Contexto por áudio. Eu interpreto e preparo a sua sessão sobre a sua realidade profissional. Quando começamos, eu já sei quem você é, o que você produz e onde você quer chegar.</p>
+    <p class="corpo">Cada exemplo é do seu trabalho. Cada documento analisado é seu. Cada tarefa que a IA passa a resolver é de fato sua. Você não assiste a uma demonstração genérica. Você vê a sua própria IA ganhando forma na tela.</p>
+    <p class="corpo">O que você constrói não é um chat mais esperto. É um <strong>Conselho</strong>: um time fixo de cadeiras especialistas, cada uma com papel, gatilho e limite definidos, que se aciona conforme a tarefa pede. O Dossiê muda a cada projeto seu. As cadeiras não.</p>
+    <div class="conselho-card">
+      <span class="tag">Exemplo · Conselho de 16 cadeiras</span>
+      <div class="cadeiras-grid">
+        <div class="cadeira-pill">Estrategista</div>
+        <div class="cadeira-pill">Advogado do Diabo</div>
+        <div class="cadeira-pill">Comunicação</div>
+        <div class="cadeira-pill">Pesquisa de mercado</div>
+        <div class="cadeira-pill">Analista Sênior</div>
+        <div class="cadeira-pill">Modelador Financeiro</div>
+        <div class="cadeira-pill">Arquiteto e Engenheiro</div>
+        <div class="cadeira-pill">Diretor de Arte</div>
+      </div>
+
+      <button class="btn-expandir" onclick="var p=document.getElementById('cadeiras-detalhe'); var a=p.style.display==='block'; p.style.display=a?'none':'block'; this.querySelector('.seta').style.transform=a?'rotate(0deg)':'rotate(180deg)'; this.querySelector('.txt').textContent=a?'Ver as 16 cadeiras e o papel de cada uma':'Recolher';">
+        <span class="txt">Ver as 16 cadeiras e o papel de cada uma</span>
+        <span class="seta">▾</span>
+      </button>
+
+      <div id="cadeiras-detalhe" class="cadeiras-detalhe">
+        <div class="cadeira-linha">
+          <p class="cadeira-nome">0 · Orquestração <span class="cadeira-papel">Coordenação</span></p>
+          <p class="cadeira-gatilho">Sempre presente. Roteia quem entra e sintetiza o resultado final.</p>
+        </div>
+        <div class="cadeira-linha">
+          <p class="cadeira-nome">1 · Estrategista de Cenário <span class="cadeira-papel">Estratégia</span></p>
+          <p class="cadeira-gatilho">Aciona em cenário, trade-off, posicionamento.</p>
+        </div>
+        <div class="cadeira-linha">
+          <p class="cadeira-nome">2 · Advogado do Diabo <span class="cadeira-papel">Estresse</span></p>
+          <p class="cadeira-gatilho">Aciona para estressar uma recomendação antes dela sair.</p>
+        </div>
+        <div class="cadeira-linha">
+          <p class="cadeira-nome">3 · Comunicação e Copy <span class="cadeira-papel">Narrativa</span></p>
+          <p class="cadeira-gatilho">Aciona em narrativa, copy, headline, deck, página.</p>
+        </div>
+        <div class="cadeira-linha">
+          <p class="cadeira-nome">4 · Tradutor de Complexidade <span class="cadeira-papel">Clareza</span></p>
+          <p class="cadeira-gatilho">Aciona para explicar o técnico para quem não é técnico.</p>
+        </div>
+        <div class="cadeira-linha">
+          <p class="cadeira-nome">5 · Pesquisador de Mercado <span class="cadeira-papel">Dado externo</span></p>
+          <p class="cadeira-gatilho">Aciona em mercado, concorrente, benchmark, dimensionamento.</p>
+        </div>
+        <div class="cadeira-linha">
+          <p class="cadeira-nome">6 · Investigador de Tendências <span class="cadeira-papel">Futuro</span></p>
+          <p class="cadeira-gatilho">Aciona em sinais fracos, foresight, cenário futuro.</p>
+        </div>
+        <div class="cadeira-linha">
+          <p class="cadeira-nome">7 · Analista Sênior <span class="cadeira-papel">Leitura crítica</span></p>
+          <p class="cadeira-gatilho">Aciona para ler criticamente um dado ou relatório antes de usar.</p>
+        </div>
+        <div class="cadeira-linha">
+          <p class="cadeira-nome">8 · Head de Projetos <span class="cadeira-papel">Governança</span></p>
+          <p class="cadeira-gatilho">Aciona em projeto, plano, cronograma, governança.</p>
+        </div>
+        <div class="cadeira-linha">
+          <p class="cadeira-nome">9 · Modelador Financeiro <span class="cadeira-papel">Números</span></p>
+          <p class="cadeira-gatilho">Aciona em business case, preço, e se a conta fecha.</p>
+        </div>
+        <div class="cadeira-linha">
+          <p class="cadeira-nome">10 · Regulação e Contratos <span class="cadeira-papel">Jurídico</span></p>
+          <p class="cadeira-gatilho">Aciona em regulação, contrato, cláusula, parceria.</p>
+        </div>
+        <div class="cadeira-linha">
+          <p class="cadeira-nome">11 · Cientista de Dados e Geo <span class="cadeira-papel">Dado próprio</span></p>
+          <p class="cadeira-gatilho">Aciona em dado, modelo, geomarketing, análise quantitativa.</p>
+        </div>
+        <div class="cadeira-linha">
+          <p class="cadeira-nome">12 · Estrategista de Consumidor <span class="cadeira-papel">Comportamento</span></p>
+          <p class="cadeira-gatilho">Aciona em comportamento, segmentação, jornada do cliente.</p>
+        </div>
+        <div class="cadeira-linha">
+          <p class="cadeira-nome">13 · Growth, Performance e Social <span class="cadeira-papel">Aquisição</span></p>
+          <p class="cadeira-gatilho">Aciona em funil, aquisição, retenção, métrica, social.</p>
+        </div>
+        <div class="cadeira-linha">
+          <p class="cadeira-nome">14 · Arquiteto e Engenheiro <span class="cadeira-papel">Execução</span></p>
+          <p class="cadeira-gatilho">Aciona em viabilidade técnica, build vs buy, desenvolvimento, deploy.</p>
+        </div>
+        <div class="cadeira-linha">
+          <p class="cadeira-nome">15 · Diretora de Arte e Marca <span class="cadeira-papel">Apresentação</span></p>
+          <p class="cadeira-gatilho">Aciona em apresentação, deck, marca, peça visual.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCO NOVO · DEMONSTRAÇÃO AO VIVO — do Módulo ii do curso 8h -->
+<section class="bloco">
+  <div class="wrap">
+    <p class="eyebrow">Antes de construir o seu</p>
+    <h2 class="titulo-bloco">Você vê o Conselho <em>funcionando de verdade</em>, primeiro.</h2>
+    <p class="corpo">Na sessão, antes de montar o seu, eu rodo o meu próprio Conselho ao vivo, na tela, sobre um pedido real. Você vê o time de cadeiras debater, convergir e entregar antes de decidir como quer o seu.</p>
+    <div class="demo-flow">
+      <div class="demo-step">Pedido real</div>
+      <span class="demo-arrow">→</span>
+      <div class="demo-step">Cadeiras entram</div>
+      <span class="demo-arrow">→</span>
+      <div class="demo-step">Debate visível</div>
+      <span class="demo-arrow">→</span>
+      <div class="demo-step destaque">Entrega no seu padrão</div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCO 5 · PLANO ÚNICO -->
+<section class="bloco">
+  <div class="wrap">
+    <p class="eyebrow">Plano único</p>
+    <h2 class="titulo-bloco">Um programa. <em>Uma profundidade só, a máxima.</em></h2>
+    <p class="corpo">Toda sessão é execução ao vivo, com você no teclado. Nada de teoria.</p>
+
+    <div class="vagas-alerta">
+      <p><strong>Só duas vagas por mês.</strong> Turma em dias de semana, aulas à noite. Formato individual, agenda que não estica. O preço de teste abaixo vale só para os cinco primeiros alunos do módulo básico, contagem separada das vagas mensais.</p>
+    </div>
+
+    <div class="plano destaque-plano">
+      <p class="plano-nome">Advisory Operar</p>
+      <p class="plano-meta">8 horas · 4 sessões de 2h · 7 dias entre as duas primeiras, 30 dias antes da última</p>
+      <h4>Para quem</h4>
+      <p class="corpo" style="font-size:0.93rem">Você quer se tornar a referência em IA no seu contexto, capaz de resolver qualquer desafio novo sem depender de apoio.</p>
+      <h4>O que construímos juntos, ao vivo</h4>
+      <ul>
+        <li>Um espaço de trabalho que conhece o seu contexto e não esquece quem você é a cada conversa, com a memória da IA já configurada</li>
+        <li>As tarefas que mais tomam o seu tempo, prontas para a IA resolver sob um comando, com os seus entregáveis nascendo no seu tom</li>
+        <li>O seu próprio Conselho, cadeiras especialistas separadas por frente: a do emprego não se mistura com a do projeto pessoal nem com a dos clientes</li>
+        <li>O Conselho agindo entre as suas ferramentas: busca o anexo no email, cruza com a planilha e prepara o resumo, sem você abrir cada aba</li>
+        <li>Um modo de conduzir as decisões mais difíceis com o Conselho debatendo ao vivo, passo a passo, em vez de cuspir uma resposta rasa</li>
+      </ul>
+      <h4>Você sai habilitado a</h4>
+      <ul>
+        <li>Abrir a IA e ela já saber quem você é, sem reexplicar nada</li>
+        <li>Trabalhar várias frentes sem uma contaminar a outra</li>
+        <li>Ter o Conselho puxando informação entre as suas ferramentas sozinho</li>
+        <li>Conduzir uma decisão complexa com método, não no improviso</li>
+        <li>Resolver qualquer novidade que apareça, sem depender de ninguém</li>
+      </ul>
+      <div class="bonus-box">
+        <p><b>Lista de agentes sob medida.</b> Ao final do programa, você recebe uma lista de cadeiras personalizadas, desenhadas para o seu objetivo específico. Não modelos genéricos.</p>
+        <p><b>Grupo fechado no WhatsApp, por dois meses.</b> Você entra num grupo com os demais alunos do programa, para trocar experiência e aprendizado de aplicação real. Gente no seu nível, construindo o mesmo tipo de sistema, cada um no seu contexto.</p>
+      </div>
+      <div class="preco-box">
+        <p class="preco-final">R$ 1.600</p>
+        <p class="preco-nota">Turma de teste. Preço válido para os cinco primeiros que concluírem o módulo básico de 8h, não para toda a base de alunos. Vagas limitadas do mês, sem exceção.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCO 7 · CONSTANTE -->
+<section class="bloco">
+  <div class="wrap">
+    <p class="eyebrow">O que não muda entre os planos</p>
+    <h2 class="titulo-bloco">A estrutura é igual para todos. <em>Os exemplos são cem por cento seus.</em></h2>
+    <p class="corpo"><strong>Primeiro:</strong> trabalhamos no seu material. Os seus documentos, os seus entregáveis, os seus casos. Nunca exercício genérico.</p>
+    <p class="corpo"><strong>Segundo:</strong> você fica no teclado. Eu conduzo, você opera. O sistema sai construído por você, não para você.</p>
+    <p class="corpo"><strong>Terceiro:</strong> você sai com protocolo documentado. Uma página, no seu formato, reutilizável de imediato. Não anotações de aula.</p>
+  </div>
+</section>
+
+<!-- BLOCO 8 · AGENDA -->
+<section class="bloco">
+  <div class="wrap">
+    <p class="eyebrow">Disponibilidade</p>
+    <h2 class="titulo-bloco">Duas pessoas <em>por mês.</em></h2>
+    <p class="corpo">O formato é individual e o programa comporta só duas pessoas por mês, em dias de semana, com aulas à noite. Não é escassez de marketing, é a matemática de um programa de 8 horas, ao vivo, com material real e atenção dedicada.</p>
+    <p class="corpo">Quem manda o Dossiê primeiro entra primeiro na fila do mês.</p>
+  </div>
+</section>
+
+<!-- BLOCO 9 · O QUE NÃO É -->
+<section class="bloco">
+  <div class="wrap">
+    <p class="eyebrow">Transparência</p>
+    <h2 class="titulo-bloco"><em>Para evitar mal-entendido.</em></h2>
+    <ul class="lista-dor">
+      <li>Não é curso de IA com aulas gravadas</li>
+      <li>Não é treinamento em prompt engineering</li>
+      <li>Não é coaching de carreira ou de produtividade</li>
+      <li>Não é serviço recorrente cobrado por hora</li>
+    </ul>
+    <p class="corpo" style="margin-top:1.4rem">É advisory 1:1, com escopo finito, resultado documentado e sem dependência recorrente.</p>
+  </div>
+</section>
+
+<!-- BLOCO 10 · ONBOARDING E CTA -->
+<section class="bloco cta-final">
+  <div class="wrap">
+    <p class="eyebrow">Como começa</p>
+    <h2 class="titulo-bloco">O ponto de partida <em>é um áudio no WhatsApp.</em></h2>
+    <p class="corpo">Sem formulário, sem agendamento de triagem. Você me manda cinco áudios curtos no WhatsApp respondendo as perguntas abaixo. Eu interpreto e devolvo a você o seu Dossiê de Contexto: um documento estruturado sobre como você trabalha, pensa e decide.</p>
+    <p class="corpo">Você aprova, ajusta, e a partir dele eu preparo a sua sessão. O Dossiê é seu, independente do que decidir depois. É a primeira amostra de como o método funciona: você fala solto, e recebe de volta estrutura feita para o seu contexto.</p>
+
+    <div class="perguntas-audio">
+      <div class="pergunta-item">
+        <span class="pergunta-num">i.</span>
+        <span class="pergunta-txt">Conte a sua trajetória profissional em três frases, e me diga onde você quer que a IA te leve: performar mais no trabalho atual, construir um projeto ou negócio próprio, ou os dois.</span>
+      </div>
+      <div class="pergunta-item">
+        <span class="pergunta-num">ii.</span>
+        <span class="pergunta-txt">Quais são as entregas mais frequentes do que você produz hoje. O que sai das suas mãos toda semana, e quem recebe.</span>
+      </div>
+      <div class="pergunta-item">
+        <span class="pergunta-num">iii.</span>
+        <span class="pergunta-txt">Onde você sente que a IA poderia te ajudar mais e ainda não está ajudando. O incômodo específico, não a expectativa abstrata.</span>
+      </div>
+      <div class="pergunta-item">
+        <span class="pergunta-num">iv.</span>
+        <span class="pergunta-txt">Como você gosta de receber informação para decidir. Síntese curta ou contexto completo. Número ou narrativa. Bullet ou prosa.</span>
+      </div>
+      <div class="pergunta-item">
+        <span class="pergunta-num">v.</span>
+        <span class="pergunta-txt">O que precisa estar diferente na sua rotina, depois da nossa sessão, para você considerar que valeu. Concreto, não adjetivo.</span>
+      </div>
+    </div>
+    <p class="corpo" style="margin-top:1rem; font-size:0.9rem">Cerca de cinco a sete minutos de áudio no total. Você grava no seu horário, sem agenda compartilhada.</p>
+
+    <a href="#" class="btn-cta">Mandar meu Dossiê no WhatsApp →</a>
+  </div>
+</section>
+
+<footer class="rodape">preview local · pagina_advisory.md + modulo-8h-prototipo.html · não publicado</footer>
+
+</body>
+</html>
