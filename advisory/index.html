@@ -999,7 +999,7 @@ footer {
     <p class="hero-eyebrow">Patente<span class="marca-ponto-dark">.</span>Advisory · A sessão executiva de IA</p>
     <h1 class="hero-headline">Você já passou do básico.<br><em>Falta a arquitetura.</em></h1>
     <p class="hero-sub">Você usa IA todo dia e já entendeu o potencial. Mas bateu num teto que nenhum tutorial resolve. O Advisory é mentoria 1:1 para construir a arquitetura de inteligência que está na sua altura. Feita com os seus contextos, no seu nível, para o seu trabalho. Não para uma turma.</p>
-    <p class="hero-escassez">Formato 1:1, agenda limitada a quatro pessoas por mês.</p>
+    <p class="hero-escassez">Formato 1:1, agenda limitada a duas pessoas por mês.</p>
   </div>
 </section>
 
@@ -1060,6 +1060,8 @@ footer {
 
     <p class="bloco-corpo reveal">A estrutura do método é a mesma para todos. O que muda é o resultado no dia de cada um. O gerente de marketing para de reescrever o mesmo briefing toda semana. O do financeiro recebe o relatório de resultado já analisado, não só os números crus. O de atendimento responde o caso difícil com o rascunho pronto para revisar. O método é o mesmo. O ganho é de cada um.</p>
 
+    <p class="bloco-corpo reveal">É a mesma arquitetura que eu uso. Nas minhas próprias entregas do último mês, análises, apresentações e automações que exigiriam cerca de 164 horas de trabalho manual saíram em 20.</p>
+
     <p class="destaque-quote reveal">O resultado não é saber mais sobre IA. É não conseguir mais trabalhar sem ela.</p>
   </div>
 </section>
@@ -1076,6 +1078,69 @@ footer {
     <p class="bloco-corpo reveal">Antes da primeira sessão, você grava o seu Dossiê de Contexto por áudio. Eu interpreto e preparo a sua sessão sobre a sua realidade profissional. Quando começamos, eu já sei quem você é, o que você produz e onde você quer chegar.</p>
 
     <p class="bloco-corpo reveal">Cada exemplo é do seu trabalho. Cada documento analisado é seu. Cada tarefa que a IA passa a resolver é de fato sua. Você não assiste a uma demonstração genérica. Você vê a sua própria IA ganhando forma na tela.</p>
+
+    <p class="bloco-corpo reveal">O que você constrói não é um chat mais esperto. É um <strong>Conselho</strong>: um time fixo de cadeiras especialistas, cada uma com papel, gatilho e limite definidos, que se aciona conforme a tarefa pede. O Dossiê muda a cada projeto seu. As cadeiras não.</p>
+
+    <div class="conselho-card reveal">
+      <span class="tag">Exemplo · Conselho de 16 cadeiras</span>
+      <div class="cadeiras-grid">
+        <div class="cadeira-pill">Estrategista</div>
+        <div class="cadeira-pill">Advogado do Diabo</div>
+        <div class="cadeira-pill">Comunicação</div>
+        <div class="cadeira-pill">Pesquisa de mercado</div>
+        <div class="cadeira-pill">Analista Sênior</div>
+        <div class="cadeira-pill">Modelador Financeiro</div>
+        <div class="cadeira-pill">Arquiteto e Engenheiro</div>
+        <div class="cadeira-pill">Diretor de Arte</div>
+      </div>
+
+      <button class="btn-expandir" type="button" onclick="var p=document.getElementById('cadeiras-detalhe'); var a=p.style.display==='block'; p.style.display=a?'none':'block'; this.querySelector('.seta').style.transform=a?'rotate(0deg)':'rotate(180deg)'; this.querySelector('.txt').textContent=a?'Ver as 16 cadeiras e o papel de cada uma':'Recolher';">
+        <span class="txt">Ver as 16 cadeiras e o papel de cada uma</span>
+        <span class="seta">▾</span>
+      </button>
+
+      <div id="cadeiras-detalhe" class="cadeiras-detalhe">
+        <div class="cadeira-linha"><p class="cadeira-nome">0 · Orquestração <span class="cadeira-papel">Coordenação</span></p><p class="cadeira-gatilho">Sempre presente. Roteia quem entra e sintetiza o resultado final.</p></div>
+        <div class="cadeira-linha"><p class="cadeira-nome">1 · Estrategista de Cenário <span class="cadeira-papel">Estratégia</span></p><p class="cadeira-gatilho">Aciona em cenário, trade-off, posicionamento.</p></div>
+        <div class="cadeira-linha"><p class="cadeira-nome">2 · Advogado do Diabo <span class="cadeira-papel">Estresse</span></p><p class="cadeira-gatilho">Aciona para estressar uma recomendação antes dela sair.</p></div>
+        <div class="cadeira-linha"><p class="cadeira-nome">3 · Comunicação e Copy <span class="cadeira-papel">Narrativa</span></p><p class="cadeira-gatilho">Aciona em narrativa, copy, headline, deck, página.</p></div>
+        <div class="cadeira-linha"><p class="cadeira-nome">4 · Tradutor de Complexidade <span class="cadeira-papel">Clareza</span></p><p class="cadeira-gatilho">Aciona para explicar o técnico para quem não é técnico.</p></div>
+        <div class="cadeira-linha"><p class="cadeira-nome">5 · Pesquisador de Mercado <span class="cadeira-papel">Dado externo</span></p><p class="cadeira-gatilho">Aciona em mercado, concorrente, benchmark, dimensionamento.</p></div>
+        <div class="cadeira-linha"><p class="cadeira-nome">6 · Investigador de Tendências <span class="cadeira-papel">Futuro</span></p><p class="cadeira-gatilho">Aciona em sinais fracos, foresight, cenário futuro.</p></div>
+        <div class="cadeira-linha"><p class="cadeira-nome">7 · Analista Sênior <span class="cadeira-papel">Leitura crítica</span></p><p class="cadeira-gatilho">Aciona para ler criticamente um dado ou relatório antes de usar.</p></div>
+        <div class="cadeira-linha"><p class="cadeira-nome">8 · Head de Projetos <span class="cadeira-papel">Governança</span></p><p class="cadeira-gatilho">Aciona em projeto, plano, cronograma, governança.</p></div>
+        <div class="cadeira-linha"><p class="cadeira-nome">9 · Modelador Financeiro <span class="cadeira-papel">Números</span></p><p class="cadeira-gatilho">Aciona em business case, preço, e se a conta fecha.</p></div>
+        <div class="cadeira-linha"><p class="cadeira-nome">10 · Regulação e Contratos <span class="cadeira-papel">Jurídico</span></p><p class="cadeira-gatilho">Aciona em regulação, contrato, cláusula, parceria.</p></div>
+        <div class="cadeira-linha"><p class="cadeira-nome">11 · Cientista de Dados e Geo <span class="cadeira-papel">Dado próprio</span></p><p class="cadeira-gatilho">Aciona em dado, modelo, geomarketing, análise quantitativa.</p></div>
+        <div class="cadeira-linha"><p class="cadeira-nome">12 · Estrategista de Consumidor <span class="cadeira-papel">Comportamento</span></p><p class="cadeira-gatilho">Aciona em comportamento, segmentação, jornada do cliente.</p></div>
+        <div class="cadeira-linha"><p class="cadeira-nome">13 · Growth, Performance e Social <span class="cadeira-papel">Aquisição</span></p><p class="cadeira-gatilho">Aciona em funil, aquisição, retenção, métrica, social.</p></div>
+        <div class="cadeira-linha"><p class="cadeira-nome">14 · Arquiteto e Engenheiro <span class="cadeira-papel">Execução</span></p><p class="cadeira-gatilho">Aciona em viabilidade técnica, build vs buy, desenvolvimento, deploy.</p></div>
+        <div class="cadeira-linha"><p class="cadeira-nome">15 · Diretora de Arte e Marca <span class="cadeira-papel">Apresentação</span></p><p class="cadeira-gatilho">Aciona em apresentação, deck, marca, peça visual.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOCO 4B · DEMONSTRAÇÃO AO VIVO -->
+<section id="demonstracao">
+  <div class="container">
+    <p class="section-label reveal">
+      <svg class="label-simbolo" viewBox="0 0 100 100" width="12" height="12" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="square"><path d="M 8 30 V 8 H 30"/><path d="M 70 8 H 92 V 30"/><path d="M 92 70 V 92 H 70"/><path d="M 30 92 H 8 V 70"/></g><circle cx="50" cy="50" r="16" fill="currentColor"/></svg>
+      <span>Antes de construir o seu</span>
+    </p>
+    <h2 class="section-title reveal">Você vê o Conselho <em>funcionando de verdade</em>, primeiro.</h2>
+    <p class="bloco-corpo reveal">Na primeira aula, antes de instalar o seu, eu rodo o meu próprio Conselho ao vivo, na tela, sobre um pedido real. Você vê o time de cadeiras debater, convergir e entregar. Nada é produzido sem um "ok" seu antes: o Conselho propõe quem entra e por quê, e só depois delibera.</p>
+    <div class="demo-flow reveal">
+      <div class="demo-step">Pedido real</div>
+      <span class="demo-arrow">→</span>
+      <div class="demo-step">Cadeiras entram</div>
+      <span class="demo-arrow">→</span>
+      <div class="demo-step destaque">Portão · você aprova</div>
+      <span class="demo-arrow">→</span>
+      <div class="demo-step">Debate visível</div>
+      <span class="demo-arrow">→</span>
+      <div class="demo-step destaque">Entrega no seu padrão</div>
+    </div>
   </div>
 </section>
 

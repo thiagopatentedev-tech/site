@@ -110,6 +110,13 @@ section.bloco:first-of-type { border-top: none; }
 p.corpo { font-weight: 300; font-size: 1rem; margin-bottom: 1.1rem; max-width: 640px; }
 p.corpo:last-child { margin-bottom: 0; }
 p.corpo strong { font-weight: 500; }
+code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85em;
+  color: var(--terracota);
+  background: rgba(124,36,16,0.06);
+  padding: 0.1em 0.35em;
+}
 
 ul.lista-dor { list-style: none; margin-top: 1.6rem; }
 ul.lista-dor li {
@@ -380,6 +387,20 @@ td:first-child { font-family: 'Inter', sans-serif; font-size: 12px; font-weight:
 }
 .pergunta-txt { font-weight: 300; font-size: 0.94rem; }
 
+.fecho-final {
+  border-left: 3px solid var(--terracota);
+  background: rgba(124,36,16,0.04);
+  padding: 1.1rem 1.4rem;
+  margin-top: 2rem;
+}
+.fecho-final p {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--tinta);
+  line-height: 1.4;
+}
+
 .btn-cta {
   display: inline-block;
   margin-top: 2rem;
@@ -427,7 +448,7 @@ footer.rodape {
     <p class="eyebrow">Patente.Advisory · A sessão executiva de IA</p>
     <h1 class="titulo">Você já passou do básico.<br>Falta a <em>arquitetura.</em></h1>
     <p class="sub">Você usa IA todo dia e já entendeu o potencial. Mas bateu num teto que nenhum tutorial resolve. O Advisory é mentoria 1:1 para construir a arquitetura de inteligência que está na sua altura. Feita com os seus contextos, no seu nível, para o seu trabalho. Não para uma turma.</p>
-    <p class="escassez">Formato 1:1, agenda limitada a quatro pessoas por mês.</p>
+    <p class="escassez">Formato 1:1, agenda limitada a duas pessoas por mês.</p>
   </div>
 </section>
 
@@ -557,16 +578,18 @@ footer.rodape {
   </div>
 </section>
 
-<!-- BLOCO NOVO · DEMONSTRAÇÃO AO VIVO — do Módulo ii do curso 8h -->
+<!-- BLOCO NOVO · DEMONSTRAÇÃO AO VIVO — Aula 1 do módulo -->
 <section class="bloco">
   <div class="wrap">
     <p class="eyebrow">Antes de construir o seu</p>
     <h2 class="titulo-bloco">Você vê o Conselho <em>funcionando de verdade</em>, primeiro.</h2>
-    <p class="corpo">Na sessão, antes de montar o seu, eu rodo o meu próprio Conselho ao vivo, na tela, sobre um pedido real. Você vê o time de cadeiras debater, convergir e entregar antes de decidir como quer o seu.</p>
+    <p class="corpo">Na primeira aula, antes de instalar o seu, eu rodo o meu próprio Conselho ao vivo, na tela, sobre um pedido real. Você vê o time de cadeiras debater, convergir e entregar. Nada é produzido sem um "ok" seu antes: o Conselho propõe quem entra e por quê, e só depois delibera.</p>
     <div class="demo-flow">
       <div class="demo-step">Pedido real</div>
       <span class="demo-arrow">→</span>
       <div class="demo-step">Cadeiras entram</div>
+      <span class="demo-arrow">→</span>
+      <div class="demo-step destaque">Portão · você aprova</div>
       <span class="demo-arrow">→</span>
       <div class="demo-step">Debate visível</div>
       <span class="demo-arrow">→</span>
@@ -578,55 +601,46 @@ footer.rodape {
 <!-- BLOCO 5 · PLANO ÚNICO -->
 <section class="bloco">
   <div class="wrap">
-    <p class="eyebrow">Plano único</p>
-    <h2 class="titulo-bloco">Um programa. <em>Uma profundidade só, a máxima.</em></h2>
-    <p class="corpo">Toda sessão é execução ao vivo, com você no teclado. Nada de teoria.</p>
+    <p class="eyebrow">O módulo</p>
+    <h2 class="titulo-bloco">Um módulo único. <em>Uma profundidade só, a máxima.</em></h2>
+    <p class="corpo">Toda aula é execução ao vivo, com você no teclado. Nada de teoria solta.</p>
 
     <div class="vagas-alerta">
-      <p><strong>Só duas vagas por mês.</strong> Turma em dias de semana, aulas à noite. Formato individual, agenda que não estica. O preço de teste abaixo vale só para os cinco primeiros alunos do módulo básico, contagem separada das vagas mensais.</p>
+      <p><strong>Só duas vagas por mês.</strong> Turma em dias de semana, aulas à noite. Formato individual, agenda que não estica. O preço de teste abaixo vale só para os quatro primeiros alunos, contagem separada das vagas mensais.</p>
     </div>
 
     <div class="plano destaque-plano">
-      <p class="plano-nome">Advisory Operar</p>
-      <p class="plano-meta">8 horas · 4 sessões de 2h · 7 dias entre as duas primeiras, 30 dias antes da última</p>
+      <p class="plano-nome">Patente.Advisory</p>
+      <p class="plano-meta">8 horas · 4 aulas de 2h · Aula 3 sete dias depois das duas primeiras, Aula 4 fecha o módulo</p>
       <h4>Para quem</h4>
-      <p class="corpo" style="font-size:0.93rem">Você quer se tornar a referência em IA no seu contexto, capaz de resolver qualquer desafio novo sem depender de apoio.</p>
+      <p class="corpo" style="font-size:0.93rem">Gestor e executivo que precisa usar IA para incentivar a equipe e tomar decisões mais assertivas, mas não sabe por onde começar. Ou profissional sênior que já opera, analisa, cruza informação, mas sente que usa pouca IA para acelerar o próprio resultado.</p>
+      <h4>Requerido</h4>
+      <p class="corpo" style="font-size:0.93rem">Máquina de uso pessoal (notebook ou desktop) e assinatura básica do Claude. Sem os dois, não tem onde instalar nem rodar o Conselho.</p>
       <h4>O que construímos juntos, ao vivo</h4>
       <ul>
-        <li>Um espaço de trabalho que conhece o seu contexto e não esquece quem você é a cada conversa, com a memória da IA já configurada</li>
-        <li>As tarefas que mais tomam o seu tempo, prontas para a IA resolver sob um comando, com os seus entregáveis nascendo no seu tom</li>
-        <li>O seu próprio Conselho, cadeiras especialistas separadas por frente: a do emprego não se mistura com a do projeto pessoal nem com a dos clientes</li>
+        <li>Seu próprio Conselho instalado no seu ambiente real de trabalho, com os cinco comandos que você vai usar de verdade</li>
+        <li>Um caso real seu, resolvido de ponta a ponta com o Conselho já rodando, não um exemplo genérico</li>
+        <li>Uma semana de uso real antes de voltar: a Aula 3 ajusta o que travou na prática, não repete o que já foi visto</li>
         <li>O Conselho agindo entre as suas ferramentas: busca o anexo no email, cruza com a planilha e prepara o resumo, sem você abrir cada aba</li>
-        <li>Um modo de conduzir as decisões mais difíceis com o Conselho debatendo ao vivo, passo a passo, em vez de cuspir uma resposta rasa</li>
+        <li>Um modo de conduzir as decisões mais difíceis com <code>/convocar-conselho</code> debatendo ao vivo, passo a passo, em vez de cuspir uma resposta rasa</li>
       </ul>
       <h4>Você sai habilitado a</h4>
       <ul>
         <li>Abrir a IA e ela já saber quem você é, sem reexplicar nada</li>
+        <li>Reconhecer e usar os cinco comandos do Conselho no seu dia a dia, sem depender de ninguém pra lembrar qual usar</li>
         <li>Trabalhar várias frentes sem uma contaminar a outra</li>
-        <li>Ter o Conselho puxando informação entre as suas ferramentas sozinho</li>
         <li>Conduzir uma decisão complexa com método, não no improviso</li>
-        <li>Resolver qualquer novidade que apareça, sem depender de ninguém</li>
+        <li>Resolver qualquer novidade que apareça depois do módulo, sem depender de ninguém</li>
       </ul>
       <div class="bonus-box">
-        <p><b>Lista de agentes sob medida.</b> Ao final do programa, você recebe uma lista de cadeiras personalizadas, desenhadas para o seu objetivo específico. Não modelos genéricos.</p>
-        <p><b>Grupo fechado no WhatsApp, por dois meses.</b> Você entra num grupo com os demais alunos do programa, para trocar experiência e aprendizado de aplicação real. Gente no seu nível, construindo o mesmo tipo de sistema, cada um no seu contexto.</p>
+        <p><b>Seu próprio plugin de trabalho.</b> Não é uma lista entregue no final. Ao longo do módulo, tudo o que construímos vai virando um plugin instalado no seu ambiente, com a mesma estrutura de 16 cadeiras que eu uso no meu dia a dia hoje.</p>
+        <p><b>Grupo fechado no WhatsApp, por dois meses.</b> Você entra num grupo com os demais alunos do módulo, para trocar experiência e aprendizado de aplicação real. Gente no seu nível, construindo o mesmo tipo de sistema, cada um no seu contexto.</p>
       </div>
       <div class="preco-box">
         <p class="preco-final">R$ 1.600</p>
-        <p class="preco-nota">Turma de teste. Preço válido para os cinco primeiros que concluírem o módulo básico de 8h, não para toda a base de alunos. Vagas limitadas do mês, sem exceção.</p>
+        <p class="preco-nota">Turma de teste. Preço válido para os quatro primeiros alunos, não para toda a base. Vagas limitadas do mês, sem exceção.</p>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- BLOCO 7 · CONSTANTE -->
-<section class="bloco">
-  <div class="wrap">
-    <p class="eyebrow">O que não muda entre os planos</p>
-    <h2 class="titulo-bloco">A estrutura é igual para todos. <em>Os exemplos são cem por cento seus.</em></h2>
-    <p class="corpo"><strong>Primeiro:</strong> trabalhamos no seu material. Os seus documentos, os seus entregáveis, os seus casos. Nunca exercício genérico.</p>
-    <p class="corpo"><strong>Segundo:</strong> você fica no teclado. Eu conduzo, você opera. O sistema sai construído por você, não para você.</p>
-    <p class="corpo"><strong>Terceiro:</strong> você sai com protocolo documentado. Uma página, no seu formato, reutilizável de imediato. Não anotações de aula.</p>
   </div>
 </section>
 
@@ -636,7 +650,7 @@ footer.rodape {
     <p class="eyebrow">Disponibilidade</p>
     <h2 class="titulo-bloco">Duas pessoas <em>por mês.</em></h2>
     <p class="corpo">O formato é individual e o programa comporta só duas pessoas por mês, em dias de semana, com aulas à noite. Não é escassez de marketing, é a matemática de um programa de 8 horas, ao vivo, com material real e atenção dedicada.</p>
-    <p class="corpo">Quem manda o Dossiê primeiro entra primeiro na fila do mês.</p>
+    <p class="corpo">Disponibilidade por ordem de reserva: quem confirma primeiro garante a vaga do mês.</p>
   </div>
 </section>
 
@@ -658,40 +672,45 @@ footer.rodape {
 <!-- BLOCO 10 · ONBOARDING E CTA -->
 <section class="bloco cta-final">
   <div class="wrap">
-    <p class="eyebrow">Como começa</p>
-    <h2 class="titulo-bloco">O ponto de partida <em>é um áudio no WhatsApp.</em></h2>
-    <p class="corpo">Sem formulário, sem agendamento de triagem. Você me manda cinco áudios curtos no WhatsApp respondendo as perguntas abaixo. Eu interpreto e devolvo a você o seu Dossiê de Contexto: um documento estruturado sobre como você trabalha, pensa e decide.</p>
-    <p class="corpo">Você aprova, ajusta, e a partir dele eu preparo a sua sessão. O Dossiê é seu, independente do que decidir depois. É a primeira amostra de como o método funciona: você fala solto, e recebe de volta estrutura feita para o seu contexto.</p>
+    <p class="eyebrow">Por que isso importa</p>
+    <h2 class="titulo-bloco">O ganho não é entender IA. <em>É o tempo profissional que você recupera.</em></h2>
+    <p class="corpo">Cada entrega que a arquitetura resolve por você é tempo que volta para o que só você pode fazer: decidir, orientar a equipe, pensar no que vem a seguir. Não é sobre virar mais um especialista em IA. É sobre parar de perder horas em trabalho manual que uma boa estrutura já resolve sozinha.</p>
 
-    <div class="perguntas-audio">
-      <div class="pergunta-item">
-        <span class="pergunta-num">i.</span>
-        <span class="pergunta-txt">Conte a sua trajetória profissional em três frases, e me diga onde você quer que a IA te leve: performar mais no trabalho atual, construir um projeto ou negócio próprio, ou os dois.</span>
-      </div>
-      <div class="pergunta-item">
-        <span class="pergunta-num">ii.</span>
-        <span class="pergunta-txt">Quais são as entregas mais frequentes do que você produz hoje. O que sai das suas mãos toda semana, e quem recebe.</span>
-      </div>
-      <div class="pergunta-item">
-        <span class="pergunta-num">iii.</span>
-        <span class="pergunta-txt">Onde você sente que a IA poderia te ajudar mais e ainda não está ajudando. O incômodo específico, não a expectativa abstrata.</span>
-      </div>
-      <div class="pergunta-item">
-        <span class="pergunta-num">iv.</span>
-        <span class="pergunta-txt">Como você gosta de receber informação para decidir. Síntese curta ou contexto completo. Número ou narrativa. Bullet ou prosa.</span>
-      </div>
-      <div class="pergunta-item">
-        <span class="pergunta-num">v.</span>
-        <span class="pergunta-txt">O que precisa estar diferente na sua rotina, depois da nossa sessão, para você considerar que valeu. Concreto, não adjetivo.</span>
-      </div>
+    <div class="fecho-final">
+      <p>Cada mês sem essa arquitetura é um mês de trabalho manual que não volta.</p>
     </div>
-    <p class="corpo" style="margin-top:1rem; font-size:0.9rem">Cerca de cinco a sete minutos de áudio no total. Você grava no seu horário, sem agenda compartilhada.</p>
 
-    <a href="#" class="btn-cta">Mandar meu Dossiê no WhatsApp →</a>
+    <a href="https://wa.me/5521988582351?text=Oi%20Thiago%2C%20vi%20a%20p%C3%A1gina%20do%20Advisory%20e%20quero%20saber%20mais." class="btn-cta" target="_blank" rel="noopener">Ver se essa arquitetura é pra mim →</a>
   </div>
 </section>
 
 <footer class="rodape">preview local · pagina_advisory.md + modulo-8h-prototipo.html · não publicado</footer>
+
+<a href="https://wa.me/5521988582351?text=Oi%20Thiago%2C%20vi%20a%20p%C3%A1gina%20do%20Advisory%20e%20quero%20saber%20mais." class="whatsapp-flutuante" target="_blank" rel="noopener" aria-label="Chamar no WhatsApp, vindo da página do Advisory">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4C7.62 4 4 7.6 4 12.03c0 1.42.38 2.8 1.1 4.02L4 20l4.06-1.06a8.03 8.03 0 0 0 3.99 1.02h.01c4.43 0 8.03-3.6 8.03-8.03a7.94 7.94 0 0 0-2.5-5.6zm-5.55 12.35h-.01a6.66 6.66 0 0 1-3.4-.93l-.24-.14-2.4.63.64-2.34-.16-.24a6.63 6.63 0 0 1-1.02-3.56c0-3.68 3-6.68 6.68-6.68a6.63 6.63 0 0 1 4.72 1.96 6.63 6.63 0 0 1 1.95 4.72c0 3.68-3 6.58-6.76 6.58zm3.66-4.93c-.2-.1-1.18-.58-1.36-.65-.18-.07-.32-.1-.45.1-.13.2-.51.65-.63.78-.12.13-.23.15-.43.05-.2-.1-.85-.31-1.62-1a6.06 6.06 0 0 1-1.12-1.39c-.12-.2-.01-.31.09-.41.09-.09.2-.23.3-.35.1-.12.13-.2.2-.33.07-.13.03-.25-.02-.35-.05-.1-.45-1.08-.61-1.48-.16-.39-.33-.33-.45-.34h-.38c-.13 0-.35.05-.53.25-.18.2-.7.68-.7 1.66s.72 1.93.82 2.06c.1.13 1.4 2.14 3.4 3 .47.2.84.32 1.13.42.48.15.91.13 1.25.08.38-.06 1.18-.48 1.35-.95.17-.46.17-.86.12-.95-.05-.09-.18-.14-.38-.24z" fill="var(--papel)"/>
+  </svg>
+</a>
+
+<style>
+.whatsapp-flutuante {
+  position: fixed;
+  right: 1.4rem;
+  bottom: 1.4rem;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--tinta);
+  border: 1px solid var(--terracota);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 40;
+  box-shadow: 0 4px 14px rgba(21,32,43,0.28);
+  transition: transform 0.15s;
+}
+.whatsapp-flutuante:hover { transform: scale(1.06); }
+</style>
 
 </body>
 </html>

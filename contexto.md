@@ -13,7 +13,11 @@ Público-alvo do Advisory, dois perfis:
 2. Profissional sênior que opera, analisa, cruza informações, mas sente que usa pouca IA para acelerar os próprios resultados.
 Restante do escopo: a definir.
 
-Bônus do plano Operar, atualizado: grupo fechado no WhatsApp por dois meses (substitui a ideia anterior de "Patente.Advisory Sênior" de três meses), para troca de experiência e aprendizado entre os alunos do programa.
+Bônus do módulo, atualizado: grupo fechado no WhatsApp por dois meses (substitui a ideia anterior de "Patente.Advisory Sênior" de três meses), para troca de experiência e aprendizado entre os alunos do módulo.
+
+Oferta unificada, 17/08/2026: não existe mais distinção entre "módulo básico" (curso) e "Advisory Operar" (mentoria) como dois produtos separados. É um módulo único, 8h, 4 aulas de 2h, vendido diretamente nesta página. Não usar mais o nome "Operar" nem citar outros planos (Destravar, Aplicar), que não existem. O que era descrito como bônus "entregue ao final" (lista de agentes) virou: o próprio plugin de trabalho (Conselho de 16 cadeiras) é construído ao longo do módulo, não entregue no fim.
+
+WhatsApp de contato: 5521988582351 (usado no botão flutuante e no CTA final da página, ambos com link wa.me e texto pré-preenchido identificando que veio da página do Advisory).
 
 ## 4. Princípios fundadores deste projeto
 Herda os princípios fundadores da Patente (Dossiê da Patente, seção 4): a plataforma é prova, não o produto; IA é o meio, não o fim; diferenciação por profundidade e prova, nunca atacando concorrente; toda peça prova um resultado real.
