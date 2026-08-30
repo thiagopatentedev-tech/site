@@ -1,6 +1,13 @@
 # Diário · Site thiagopatente.com.br
 > Registro cronológico de decisões e próximos passos. Mais recente no topo.
 
+## 29/08/2026
+- Feito: 23 joguinhos de alfabetização abertos como repositório público `jogos-bibel` (fora deste repo, em `c:\dev\00-patente\jogos-bibel`), com README de passo a passo, `docs/anatomia-de-um-jogo.md`, `docs/prompt-para-ia.md`, LICENSE MIT. GitHub Pages no ar em `thiagopatentedev-tech.github.io/jogos-bibel`. Rascunhos de post de abertura (LinkedIn e Instagram) em scratchpad.
+- Feito: Conselho convocado sobre evoluir os jogos para plataforma de personalização (ata em `atas\2026-08-29-plataforma-de-jogos.md`). Decisão do Thiago: os jogos são um ativo do ecossistema Patente (prova de execução e funil), não uma segunda empresa. Sem assinatura de consumo, sem plataforma SaaS. Segue o Cenário B (conteúdo mensal "um jogo novo mais como eu fiz") com um editor estático open-core como isca, sem backend e sem conta.
+- Em andamento: subir o nível de produção dos jogos (fidelidade visual, animação, áudio, variedade de mecânica) mantendo o motor de dados e o "sem servidor".
+- Pendências: definir a cadência editorial mensal. Escrever o `contexto.md` do repo `jogos-bibel` herdando os bloqueios da Patente. Decidir portão de 90 dias sobre demanda profissional (fono, professor).
+- Próximo passo: plano de melhoria de qualidade dos jogos.
+
 ## 17/08/2026 (3)
 - Feito: Conselho convocado sobre o bloco de fechamento (ata em `atas\2026-08-17-bloco-de-fechamento.md`). Aplicado no `preview-advisory.html`: parágrafo de convite ("sem formulário, sem triagem") removido, citação de impacto agora direto antes do botão, texto do botão trocado de "Falar no WhatsApp" para "Ver se essa arquitetura é pra mim".
 - Em andamento:
