@@ -1,0 +1,9 @@
+# contexto interno de negocio, nunca em git publico (regra permanente)
+/contexto.md
+/diario.md
+/atas/
+/_local/
+/rascunho/
+.DS_Store
+Thumbs.db
+desktop.ini
