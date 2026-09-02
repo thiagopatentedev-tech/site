@@ -1,8 +1,0 @@
-{
-  "redirects": [
-    { "source": "/jogo", "destination": "/jogo/", "permanent": false }
-  ],
-  "rewrites": [
-    { "source": "/jogo/:path*", "destination": "https://thiagopatentedev-tech.github.io/jogos-bibel/:path*" }
-  ]
-}
